@@ -5,3 +5,14 @@ This module is intended to be used with https://github.com/superdav42/magento-im
 
 **Not ready for production use**
 *Contributions welcome*
+
+# Installation
+
+Use composer
+```
+composer require devstone/magento2-module-usagecalculator
+```
+or if your really want copy all files in this repository into:
+```
+app/code/DevStone/UsageCalculator
+```
