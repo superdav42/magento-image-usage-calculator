@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * acl
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="DevStone_UsageCalculator::usage" title="Usage" sortOrder="10" />
+                <resource id="DevStone_UsageCalculator::size" title="Size" sortOrder="11" />
+                <resource id="DevStone_UsageCalculator::category" title="Category" sortOrder="12" />
+            </resource>
+        </resources>
+    </acl>
+</config>

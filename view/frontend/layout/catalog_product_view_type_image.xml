@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="DevStone_UsageCalculator::css/styles-product-page.css" /> 
+    </head>
+    <body>
+        <attribute name="class" value="page-product-image"/>
+        <referenceBlock name="product.info.options.wrapper">
+            <block class="DevStone\UsageCalculator\Block\Catalog\Product\Usage" name="usage.info" as="type_image_usage" before="-" template="DevStone_UsageCalculator::catalog/product/usages.phtml">
+                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\DefaultType" name="usage.info.options.default" as="default" template="DevStone_UsageCalculator::catalog/product/type/default.phtml"/>
+                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Text" name="usage.info.options.text" as="text" template="DevStone_UsageCalculator::catalog/product/type/text.phtml"/>
+                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\File" name="usage.info.options.file" as="file" template="DevStone_UsageCalculator::catalog/product/type/file.phtml"/>
+                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Select" name="usage.info.options.select" as="select" template="DevStone_UsageCalculator::catalog/product/type/select.phtml"/>
+                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Date" name="usage.info.options.date" as="date" template="DevStone_UsageCalculator::catalog/product/type/date.phtml"/>
+<!--                <block class="Magento\Catalog\Pricing\Render" name="product.price.link" after="product.info.usage.options">
+                    <arguments>
+                        <argument name="price_render" xsi:type="string">product.price.render.default</argument>
+                        <argument name="price_type_code" xsi:type="string">link_price</argument>
+                    </arguments>
+                </block>-->
+            </block>
+<!--            <block class="DevStone\UsageCalculator\Block\Usage\View\Options" name="usage.info.options" as="type_image_usage_options" after="usage.info" template="Magento_Catalog::product/view/options.phtml">-->
+                
+<!--            </block>-->
+        </referenceBlock>
+        <referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="usage_page_head_components" template="DevStone_UsageCalculator::js/components.phtml"/>
+        </referenceBlock>
+<!--            <referenceContainer name="product.info.options.wrapper.bottom">
+            <block class="Magento\Catalog\Pricing\Render" name="product.price.final.copy" before="-">
+                <arguments>
+                    <argument name="price_render" xsi:type="string">product.price.render.default</argument>
+                    <argument name="price_type_code" xsi:type="string">final_price</argument>
+                    <argument name="display_msrp_help_message" xsi:type="string">1</argument>
+                    <argument name="zone" xsi:type="string">item_view</argument>
+                    <argument name="id_suffix" xsi:type="string">copy-</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        
+        <move element="product.info" destination="content" after="product.info.media" />
+        <move element="product.info.social" destination="product.info.options.wrapper.bottom" after="-" />-->
+    </body>
+</page>

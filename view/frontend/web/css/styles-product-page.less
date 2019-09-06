@@ -1,0 +1,47 @@
+.fieldset .legend.usages-title {
+    margin: 0 0 11px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+#usages-container {
+    position: relative;
+    #usage-button-close {
+        position: absolute;
+        right: 0;
+        z-index: 10;
+    }
+    .field {
+        margin: 10px 0;
+        position: relative;
+        &:after {
+            content: ' ';
+            border-radius: 4px;
+            height: 100%;
+            position: absolute;
+            left: -10px;
+            width: 100%;
+            padding: 6px 10px;
+            top: -3px;
+            z-index: -1;
+            transition: background 0.5s ease;
+        }
+        &.active:after {
+            background: #f5f5f5;
+        }
+        .control {
+            margin-top: 1px;
+        }
+        .label {
+            font-weight: bold;
+            display: block;
+            a {
+                float: right;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+.product-info-main .product-info-price .price-box {
+    margin-top: 10px;
+}

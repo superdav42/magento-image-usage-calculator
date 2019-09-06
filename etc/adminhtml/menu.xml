@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * menu
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="DevStone_UsageCalculator::usaget_elements" title="Calculator" translate="title" module="DevStone_UsageCalculator" sortOrder="20" parent="Magento_Catalog::catalog" resource="DevStone_UsageCalculator::usaget_elements"/>
+        
+        <add id="DevStone_UsageCalculator::category" title="Categories" module="DevStone_UsageCalculator" sortOrder="20" parent="DevStone_UsageCalculator::usaget_elements" action="devstone_usagecalculator/category" resource="DevStone_UsageCalculator::category"/>
+        <add id="DevStone_UsageCalculator::usage" title="Usages" module="DevStone_UsageCalculator" sortOrder="25" parent="DevStone_UsageCalculator::usaget_elements" action="devstone_usagecalculator/usage" resource="DevStone_UsageCalculator::usage"/>
+        <add id="DevStone_UsageCalculator::size" title="Image Sizes" module="DevStone_UsageCalculator" sortOrder="30" parent="DevStone_UsageCalculator::usaget_elements" action="devstone_usagecalculator/size" resource="DevStone_UsageCalculator::size"/>
+    </menu>
+</config>

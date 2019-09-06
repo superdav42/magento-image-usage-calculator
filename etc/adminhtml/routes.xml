@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * routes
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="devstone_usagecalculator" frontName="devstone_usagecalculator">
+            <module name="DevStone_UsageCalculator" />
+        </route>
+    </router>
+</config>
