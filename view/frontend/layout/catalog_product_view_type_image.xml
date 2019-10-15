@@ -1,13 +1,10 @@
 <?xml version="1.0"?>
 <!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
+
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <css src="DevStone_UsageCalculator::css/styles-product-page.css" /> 
+        <css src="DevStone_UsageCalculator::css/styles-product-page.css" />
     </head>
     <body>
         <attribute name="class" value="page-product-image"/>
@@ -26,7 +23,7 @@
                 </block>-->
             </block>
 <!--            <block class="DevStone\UsageCalculator\Block\Usage\View\Options" name="usage.info.options" as="type_image_usage_options" after="usage.info" template="Magento_Catalog::product/view/options.phtml">-->
-                
+
 <!--            </block>-->
         </referenceBlock>
         <referenceBlock name="head.components">
@@ -43,7 +40,7 @@
                 </arguments>
             </block>
         </referenceContainer>
-        
+
         <move element="product.info" destination="content" after="product.info.media" />
         <move element="product.info.social" destination="product.info.options.wrapper.bottom" after="-" />-->
     </body>
