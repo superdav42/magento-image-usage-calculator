@@ -164,12 +164,6 @@ class InstallSchema implements InstallSchemaInterface
             null,
             ['unsigned' => true, 'nullable' => false, 'default' => '1'],
             'Is Active'
-        )->addColumn(
-            'price',
-            \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
-            '12,4',
-            ['nullable' => false, 'default' => '0.0000'],
-            'Price'
         );
         
         $table->addColumn(

@@ -66,6 +66,15 @@ class UsageSetup extends EavSetup
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                 'group' => 'General',
             ],
+            'credits' => [
+                'type' => 'decimal',
+                'label' => 'Credits',
+                'input' => 'credits',
+                'backend' => \Magento\Catalog\Model\Product\Attribute\Backend\Price::class,
+                'sort_order' => 2,
+                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                'group' => 'General',
+            ],
         ];
     }
 
@@ -78,7 +87,7 @@ class UsageSetup extends EavSetup
     {
         $categoryAttributes = $this->getAttributes();
         unset($categoryAttributes['price']);
-        
+
         $entities = [
             self::ENTITY_TYPE_CODE => [
                 'entity_model' => \DevStone\UsageCalculator\Model\ResourceModel\Usage::class,

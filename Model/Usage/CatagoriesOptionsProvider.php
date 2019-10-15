@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
 namespace DevStone\UsageCalculator\Model\Usage;
 
 class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceInterface

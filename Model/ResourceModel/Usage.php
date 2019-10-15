@@ -47,7 +47,7 @@ class Usage extends AbstractEntity
     }
 
     /**
-     * Retrieve employee entity default attributes
+     * Retrieve entity default attributes
      *
      * @return string[]
      */

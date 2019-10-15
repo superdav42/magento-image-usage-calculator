@@ -1,8 +1,5 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
+
 namespace DevStone\UsageCalculator\Block\Catalog\Product;
 
 use Magento\Catalog\Pricing\Price\FinalPrice;
@@ -27,7 +24,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @var EncoderInterface
      */
     protected $encoder;
-    
+
     /**
      * @var \Magento\Framework\Api\SearchCriteriaBuilder
      */
@@ -37,21 +34,21 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @var UsageRepositoryInterface
      */
     protected $usageRepository;
-    
+
     /**
      * @var CategoryRepositoryInterface
      */
     protected $categoryRepository;
-    
+
     /**
      *
-     * @var \DevStone\UsageCalculator\Model\Category[] 
+     * @var \DevStone\UsageCalculator\Model\Category[]
      */
     private $categories;
-    
+
     /**
      *
-     * @var \DevStone\UsageCalculator\Model\Usage[] 
+     * @var \DevStone\UsageCalculator\Model\Usage[]
      */
     private $usages;
 
@@ -112,7 +109,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     {
         return $this->getProduct()->getTypeInstance()->getLinks($this->getProduct());
     }
-    
+
     /**
      * @return array
      */
@@ -129,7 +126,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
             }
         }
         if ($category) {
-            if( isset($this->usages[$category->getId()])) { 
+            if( isset($this->usages[$category->getId()])) {
                 return $this->usages[$category->getId()];
             } else {
                 return [];
@@ -137,23 +134,23 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         }
         if ($this->usages) {
             return call_user_func_array('array_merge', $this->usages);
-        } else { 
+        } else {
             return $this->usages;
         }
     }
-    
-    
+
+
     public function getCategories()
     {
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $list = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $list;
     }
-    
+
     public function getUsagesSelectHtml($usages, $category)
     {
 		$store = $this->getProduct()->getStore();
-        
+
         $extraParams = '';
         $select = $this->getLayout()->createBlock(
             \Magento\Framework\View\Element\Html\Select::class
@@ -163,9 +160,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                 'class' => 'required product-custom-option admin__control-select usage-select-box'
             ]
         );
-        
+
         $select->setName('usage_id['.$category->getId().']')->addOption('', __('-- Please Select --'));
-        
+
         foreach ($usages as $usage) {
 
             $select->addOption(
@@ -174,18 +171,19 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
 				[
 					'price' => $this->pricingHelper->currencyByStore($usage->getPrice(), $store, false),
 					'data-terms' => $usage->getTerms(),
+                    'credits' => $usage->getCredits(),
 				]
             );
-			
+
         }
         $extraParams .= ' data-selector="' . $select->getName() . '"';
         $select->setExtraParams($extraParams);
 
         return $select->getHtml();
     }
-    
+
     public function getCategoriesSelectHtml()
-    {        
+    {
         $extraParams = '';
         $select = $this->getLayout()->createBlock(
             \Magento\Framework\View\Element\Html\Select::class
@@ -195,14 +193,14 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                 'class' => 'required product-custom-option admin__control-select'
             ]
         );
-        
+
         $select->setName('usage_category')->addOption('', __('-- Please Select --'));
-        
+
         foreach ($this->getCategories() as $category) {
 
             $select->addOption(
                 $category->getId(),
-                $category->getName() 
+                $category->getName()
             );
         }
         $extraParams .= ' data-selector="' . $select->getName() . '"';
@@ -210,7 +208,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
 
         return $select->getHtml();
     }
-    
+
     /**
      * Returns price converted to current currency rate
      *
@@ -343,8 +341,8 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     {
         return $this->getProduct()->getPriceInfo()->getPrice(LinkPrice::PRICE_CODE);
     }
-    
-    
+
+
     /**
      * Get option html block
      *
@@ -360,7 +358,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
 
         return $this->getChildHtml($type, false);
     }
-    
+
     /**
      * @param string $type
      * @return string

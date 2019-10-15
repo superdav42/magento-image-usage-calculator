@@ -28,7 +28,7 @@ use Magento\Framework\Locale\CurrencyInterface;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier
-{    
+{
     const DATA_SOURCE_DEFAULT = 'usage';
 
     /**#@+
@@ -122,13 +122,13 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
      * @var CurrencyInterface
      */
     private $localeCurrency;
-    
-    
+
+
     /**
-     * @var \DevStone\UsageCalculator\Api\UsageCustomOptionRepositoryInterface 
+     * @var \DevStone\UsageCalculator\Api\UsageCustomOptionRepositoryInterface
      */
     protected $optionRepository;
-	
+
 	/**
 	 * @var \DevStone\UsageCalculator\Model\Usage\SizesOptionsProvider
 	 */
@@ -185,13 +185,13 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                     );
                 }
             }
-            
+
             $usage[static::DATA_SOURCE_DEFAULT] = [
                 static::FIELD_ENABLE => 1,
                 static::GRID_OPTIONS_NAME => $options,
             ];
         }
-        
+
         return $data;
     }
 
@@ -569,7 +569,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                     'children' => [
                         static::FIELD_TITLE_NAME => $this->getTitleFieldConfig(
                             10,
-                            [] 
+                            []
                         ),
                         static::FIELD_PRICE_NAME => $this->getPriceFieldConfigForSelectType(20),
                         static::FIELD_PRICE_TYPE_NAME => $this->getPriceTypeFieldConfig(30, ['fit' => true]),
@@ -846,7 +846,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
             $config
         );
     }
-	
+
 	protected function getImageSizeFieldConfig($sortOrder)
 	{
 		return [
@@ -874,7 +874,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
      */
     protected function getProductOptionTypes()
     {
-        
+
         return  array(
                     array(
                         'value' => 0,
@@ -914,7 +914,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                             ),
                         ),
                     ),
-                    
+
         );
     }
 
