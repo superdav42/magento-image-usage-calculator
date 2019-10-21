@@ -35,4 +35,19 @@ interface UsageInterface
      */
     public function setOptions(array $options = null);
 
+    /**
+     * Set category_id
+     * @param string $categoryId
+     * @return \DevStone\UsageCalculator\Api\Data\UsageInterface
+     */
+
+    public function setCategoryId($categoryId);
+
+    /**
+     * Get category_id
+     * @return string|null
+     */
+
+    public function getCategoryId();
+
 }
