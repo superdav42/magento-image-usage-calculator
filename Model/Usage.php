@@ -105,4 +105,23 @@ class Usage extends AbstractModel implements IdentityInterface, \DevStone\UsageC
         
         $readHandler->execute($this);
     }
+
+    /**
+     * Set category_id
+     * @param string $categoryId
+     * @return \DevStone\UsageCalculator\Api\Data\UsageInterface
+     */
+    public function setCategoryId($categoryId)
+    {
+        return $this->setData('category_id',$categoryId);
+    }
+
+    /**
+     * Get category_id
+     * @return string|null
+     */
+    public function getCategoryId()
+    {
+        return $this->getData('category_id');
+    }
 }

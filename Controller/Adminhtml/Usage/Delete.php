@@ -10,11 +10,28 @@ namespace DevStone\UsageCalculator\Controller\Adminhtml\Usage;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use DevStone\UsageCalculator\Model\UsageFactory;
+use Magento\Ui\Component\MassAction\Filter;
 
+/**
+ * Class Delete
+ * @package DevStone\UsageCalculator\Controller\Adminhtml\Usage
+ */
 class Delete extends Action
 {
     /** @var usageFactory $objectFactory */
     protected $objectFactory;
+
+    /**
+     * @var Filter
+     */
+    protected $filter;
+
+    /**
+     * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory
+     */
+    protected $usageCollectionFactory;
+
+
 
     /**
      * @param Context $context
@@ -22,8 +39,12 @@ class Delete extends Action
      */
     public function __construct(
         Context $context,
-        UsageFactory $objectFactory
+        UsageFactory $objectFactory,
+        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory,
+        Filter $filter
     ) {
+        $this->filter = $filter;
+        $this->usageCollectionFactory = $collectionFactory;
         $this->objectFactory = $objectFactory;
         parent::__construct($context);
     }
@@ -57,7 +78,19 @@ class Delete extends Action
         } catch (\Exception $exception) {
             $this->messageManager->addErrorMessage($exception->getMessage());
         }
-        
+        $this->deleteUsageCustomer();
         return $resultRedirect->setPath('*/*');
+    }
+
+    public function deleteUsageCustomer()
+    {
+        $collection = $this->usageCollectionFactory->create();
+
+        $id = $this->getRequest()->getParam('entity_id', null);
+        $collection->addFieldToFilter('usage_id', ['eq' => $id]);
+
+        foreach ($collection as $usage) {
+            $usage->delete();
+        }
     }
 }

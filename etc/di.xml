@@ -178,4 +178,22 @@
     <type name="Magento\Catalog\Block\Product\ListProduct">
         <plugin name="devstone_calculate_price" type="DevStone\UsageCalculator\Plugin\Block\Product\ListProduct" sortOrder="1"/>
     </type>
+
+    <virtualType name="DevStone\UsageCalculator\Ui\Component\Form\Usage\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="custom_license" xsi:type="array">
+                    <item name="class" xsi:type="string">DevStone\UsageCalculator\Ui\Component\Form\Usage\Modifier\CustomLicense</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="DevStone\UsageCalculator\Ui\Component\Form\Usage\DataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">DevStone\UsageCalculator\Ui\Component\Form\Usage\Modifier\Pool</argument>
+        </arguments>
+    </type>
+
 </config>

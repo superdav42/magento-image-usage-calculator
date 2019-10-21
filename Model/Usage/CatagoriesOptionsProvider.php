@@ -3,6 +3,9 @@ namespace DevStone\UsageCalculator\Model\Usage;
 
 class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceInterface
 {
+
+    const CUSTOM_LICENSE = 'Custom License';
+
     /**
      * @var \DevStone\UsageCalculator\Api\CategoryRepositoryInterface
      */
@@ -35,13 +38,42 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
 
     /**
      * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function toOptionArray()
     {
         $catagories = $this->categoryRepository->getList(
             $this->searchCriteriaBuilder->create()
         )->getItems();
-        
-        return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
+
+        // Remove the Custom License Option
+        $newCategories = [];
+        foreach ($catagories as $catagory) {
+            if ($catagory->getName() != self::CUSTOM_LICENSE) {
+                $newCategories[] = $catagory;
+            }
+        }
+        return $this->objectConverter->toOptionArray($newCategories, 'entity_id', 'name');
+    }
+
+    /**
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function customToOptionArray()
+    {
+
+        $catagories = $this->categoryRepository->getList(
+            $this->searchCriteriaBuilder->create()
+        )->getItems();
+
+        // Get the Custom License Option
+        $newCategories = [];
+        foreach ($catagories as $catagory) {
+            if ($catagory->getName() == self::CUSTOM_LICENSE) {
+                $newCategories[] = $catagory;
+            }
+        }
+        return $this->objectConverter->toOptionArray($newCategories, 'entity_id', 'name');
     }
 }

@@ -24,6 +24,9 @@
             <item name="save_and_continue" xsi:type="string">DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit\SaveAndContinueButton</item>
         </item>
     </argument>
+    <settings>
+        <namespace>devstone_usagecalculator_usage_form</namespace>
+    </settings>
     <dataSource name="devstone_usagecalculator_usage_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">DevStone\UsageCalculator\Ui\Component\Form\Usage\DataProvider</argument>
@@ -192,13 +195,16 @@
                     <link name="value">${ $.provider }:data.usage.category_id</link>
                 </imports>
             </settings>
-            <formElements>
-                <select>
-                    <settings>
-                        <options class="DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider"/>
-                    </settings>
-                </select>
-            </formElements>
         </field>
+        <container name="assign_customer_container" sortOrder="160">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content">
+                <block name="gallery" class="DevStone\UsageCalculator\Block\Adminhtml\Customer\AssignCustomers"/>
+            </htmlContent>
+        </container>
     </fieldset>
 </form>

@@ -20,7 +20,7 @@ class Save extends Action
      * @var Initialization\Helper $helper
      */
     protected $helper;
-    
+
     /**
      * @param Context $context
      * @param UsageFactory $objectFactory
@@ -67,15 +67,16 @@ class Save extends Action
             }
             $objectInstance->addData($data);
 
-            $this->_eventManager->dispatch(
-                'devstone_usagecalculator_usage_prepare_save',
-                ['object' => $this->objectFactory, 'request' => $this->getRequest()]
-            );
-            
+
             $objectInstance = $this->helper->initialize($objectInstance);
 
             try {
-                $objectInstance->save();
+                $usage = $objectInstance->save();
+                $this->_eventManager->dispatch(
+                    'devstone_usagecalculator_usage_prepare_save',
+                    ['object' => $this->objectFactory, 'request' => $this->getRequest(),'usage' => $usage]
+                );
+
                 $this->messageManager->addSuccessMessage(__('You saved this record.'));
                 $this->_getSession()->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
