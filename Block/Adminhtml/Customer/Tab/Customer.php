@@ -85,8 +85,32 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
         parent::_construct();
         $this->setId('usage_calculator_customers');
         $this->setDefaultSort('id');
+        $this->setDefaultFilter(['in_usage' => 1]);
+
         $this->setUseAjax(true);
     }
+
+    protected function _addColumnFilterToCollection($column)
+    {
+        if ($column->getId() == 'in_usage') {
+            $customerIds = $this->_getSelectedCustomer();
+            if (empty($customerIds)) {
+                $customerIds = 0;
+            }
+            $linkField = 'entity_id';
+            $filter    = $column->getFilter();
+            if ($filter !== false && $column->getFilter()->getValue()) {
+                $this->getCollection()->addFieldToFilter($linkField, ['in' => $customerIds]);
+            } elseif (!empty($customerIds)) {
+                $this->getCollection()->addFieldToFilter($linkField, ['nin' => $customerIds]);
+            }
+        } else {
+            parent::_addColumnFilterToCollection($column);
+        }
+
+        return $this;
+    }
+
 
     /**
      * @return Extended

@@ -142,12 +142,11 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      */
     public function getCustomLicenseId()
     {
-        $searchCriteria = $this->searchCriteriaBuilder->create();
+        $searchCriteria = $this->searchCriteriaBuilder->addFilter('name',
+            \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE, 'eq')->create();
         $list = $this->categoryRepository->getList($searchCriteria)->getItems();
-        foreach ($list as $catagory) {
-            if ($catagory->getName() == \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE) {
-                return $catagory->getId();
-            }
+        if (count($list)) {
+            return array_values($list)[0]->getId();
         }
         return null;
     }
@@ -159,28 +158,24 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     public function getUsages($category = null)
     {
         if (empty($this->usages)) {
-            $searchCriteria = $this->searchCriteriaBuilder->create();
+            $customLicenseId = $this->getCustomLicenseId();
+            $searchCriteria = $this->searchCriteriaBuilder->addFilter('category_id', $customLicenseId, 'neq')->create();
             $items = $this->usageRepository->getList($searchCriteria)->getItems();
 
             if ($this->isCustomerLoggedIn()) {
                 $customerId = $this->getCustomerId();
                 $usageCollection = $this->getUsageListAccordingToCustomer($customerId);
 
-                $customLicenseId = $this->getCustomLicenseId();
-                if (count($usageCollection)) {
+                if ($usageCollection->getSize() > 0) {
                     $customerUsage = [];
-
                     foreach ($usageCollection as $usage) {
-                        $customerUsage[$usage->getUsageId()] = $usage;
-                    }
-                    foreach ($items as $key => $usage) {
-                        if ($usage->getCategoryId() == $customLicenseId) {
-                            if (!array_key_exists($usage->getId(), $customerUsage)) {
-                                unset($items[$key]);
-                            }
-                        }
+                        $customerUsage[] = $usage->getUsageId();
                     }
 
+                    $searchCriteria = $this->searchCriteriaBuilder->addFilter('entity_id', $customerUsage,
+                        'in')->create();
+                    $customerUsageItems = $this->usageRepository->getList($searchCriteria)->getItems();
+                    $items = array_merge_recursive($items, $customerUsageItems);
                 }
             }
 
@@ -224,7 +219,8 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param $customerId
      * @return \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\Collection
      */
-    public function getUsageListAccordingToCustomer($customerId) {
+    public function getUsageListAccordingToCustomer($customerId)
+    {
         /**
          * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\Collection $usageCustomerCollection
          */
@@ -239,23 +235,20 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      */
     public function getCategories()
     {
-        $searchCriteria = $this->searchCriteriaBuilder->create();
-        $list = $this->categoryRepository->getList($searchCriteria)->getItems();
-
-        if (!$this->isCustomerLoggedIn()) {
+        $list = [];
+        if ($this->isCustomerLoggedIn()) {
             $customerId = $this->getCustomerId();
             $usageCollection = $this->getUsageListAccordingToCustomer($customerId);
-            if (count($usageCollection)) {
-                $newCategories = [];
-                foreach ($list as $catagory) {
-                    if ($catagory->getName() != \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE) {
-                        $newCategories[] = $catagory;
-                    }
-                }
-                $list = $newCategories;
+            if ($usageCollection->getSize() > 0) {
+                $searchCriteria = $this->searchCriteriaBuilder->create();
+                $list = $this->categoryRepository->getList($searchCriteria)->getItems();
+                return $list;
+
             }
         }
-
+        $searchCriteria = $this->searchCriteriaBuilder->addFilter('name',
+            \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE, 'neq')->create();
+        $list = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $list;
     }
 
@@ -265,8 +258,10 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @return mixed
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getUsagesSelectHtml($usages, $category)
-    {
+    public function getUsagesSelectHtml(
+        $usages,
+        $category
+    ) {
         $store = $this->getProduct()->getStore();
 
         $extraParams = '';
@@ -337,8 +332,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param float $price
      * @return float
      */
-    public function getCurrencyPrice($price)
-    {
+    public function getCurrencyPrice(
+        $price
+    ) {
         $store = $this->getProduct()->getStore();
         return $this->pricingHelper->currencyByStore($price, $store, false);
     }
@@ -368,8 +364,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param Link $link
      * @return string
      */
-    public function getLinkSampleUrl($link)
-    {
+    public function getLinkSampleUrl(
+        $link
+    ) {
         $store = $this->getProduct()->getStore();
         return $store->getUrl('downloadable/download/linkSample', ['link_id' => $link->getId()]);
     }

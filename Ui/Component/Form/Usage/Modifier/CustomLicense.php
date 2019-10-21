@@ -49,7 +49,6 @@ class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterfa
     public function modifyMeta(array $meta)
     {
         $customLicense = $this->request->getParam('custom_license');
-        //TODO: Hide the grid
         if (isset($customLicense) && $customLicense) {
             $meta['main_fieldset']['children']['category_id']['arguments']['data']['config']['options'] = $this->catagoriesOptionsProvider->customToOptionArray();
 

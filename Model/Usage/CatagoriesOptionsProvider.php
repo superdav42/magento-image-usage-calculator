@@ -30,6 +30,7 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
         \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository,
         \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
         \Magento\Framework\Convert\DataObject $objectConverter
+
     ) {
         $this->categoryRepository = $categoryRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
@@ -42,18 +43,10 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
      */
     public function toOptionArray()
     {
-        $catagories = $this->categoryRepository->getList(
-            $this->searchCriteriaBuilder->create()
-        )->getItems();
-
-        // Remove the Custom License Option
-        $newCategories = [];
-        foreach ($catagories as $catagory) {
-            if ($catagory->getName() != self::CUSTOM_LICENSE) {
-                $newCategories[] = $catagory;
-            }
-        }
-        return $this->objectConverter->toOptionArray($newCategories, 'entity_id', 'name');
+        $searchCriteria = $this->searchCriteriaBuilder->addFilter('name',
+            \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE, 'neq')->create();
+        $catagories = $this->categoryRepository->getList($searchCriteria)->getItems();
+        return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
     }
 
     /**
@@ -62,18 +55,9 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
      */
     public function customToOptionArray()
     {
-
-        $catagories = $this->categoryRepository->getList(
-            $this->searchCriteriaBuilder->create()
-        )->getItems();
-
-        // Get the Custom License Option
-        $newCategories = [];
-        foreach ($catagories as $catagory) {
-            if ($catagory->getName() == self::CUSTOM_LICENSE) {
-                $newCategories[] = $catagory;
-            }
-        }
-        return $this->objectConverter->toOptionArray($newCategories, 'entity_id', 'name');
+        $searchCriteria = $this->searchCriteriaBuilder->addFilter('name',
+            \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE, 'neq')->create();
+        $catagories = $this->categoryRepository->getList($searchCriteria)->getItems();
+        return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
     }
 }

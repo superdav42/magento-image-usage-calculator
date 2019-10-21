@@ -116,4 +116,11 @@ class AssignCustomers extends \Magento\Backend\Block\Template
         }
         return $customerArray;
     }
+
+    public function showGrid(){
+        $customLicense = $this->request->getParam('custom_license');
+        if(isset($customLicense))
+            return $customLicense;
+        return false;
+    }
 }
