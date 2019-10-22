@@ -5,6 +5,7 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Controller\Adminhtml\Usage;
 
 use Magento\Backend\App\Action;
@@ -70,15 +71,13 @@ class MassDelete extends Action
     }
 
     /**
-     *
+     * Delete all the Custom License Usage
      */
     public function deleteUsageCustomer()
     {
         $collection = $this->usageCollectionFactory->create();
-
         $selectedUsage = $this->getRequest()->getParam('selected');
         $collection->addFieldToFilter('usage_id', ['in' => $selectedUsage]);
-
         foreach ($collection as $usage) {
             $usage->delete();
         }

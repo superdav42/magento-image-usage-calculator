@@ -26,14 +26,23 @@ class UsageActions extends Column
      */
     protected $urlBuilder;
 
+    /**
+     * @var \DevStone\UsageCalculator\Model\ResourceModel\Category\CollectionFactory
+     */
     protected $collectionFactory;
 
     /**
-     * Constructor
-     *
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $scopeConfig;
+
+    /**
+     * UsageActions constructor.
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     * @param \DevStone\UsageCalculator\Model\ResourceModel\Category\CollectionFactory $collectionFactory
      * @param array $components
      * @param array $data
      */
@@ -41,12 +50,14 @@ class UsageActions extends Column
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
         UrlInterface $urlBuilder,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \DevStone\UsageCalculator\Model\ResourceModel\Category\CollectionFactory $collectionFactory,
         array $components = [],
         array $data = []
     ) {
         $this->urlBuilder = $urlBuilder;
         $this->collectionFactory = $collectionFactory;
+        $this->scopeConfig = $scopeConfig;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
@@ -58,7 +69,6 @@ class UsageActions extends Column
      */
     public function prepareDataSource(array $dataSource)
     {
-        //TODO: change the url
         if (isset($dataSource['data']['items'])) {
             $storeId = $this->context->getFilterParam('store_id');
 
@@ -82,7 +92,6 @@ class UsageActions extends Column
                             'label' => __('Edit'),
                             'hidden' => false,
                         ];
-
                     }
                 }
             }
@@ -91,12 +100,13 @@ class UsageActions extends Column
         return $dataSource;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCustomLicenseId()
     {
         $collection = $this->collectionFactory->create()->addFieldToFilter('name',
             ['eq' => \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE]);
-
         return $collection->getFirstItem()->getId();
     }
-
 }

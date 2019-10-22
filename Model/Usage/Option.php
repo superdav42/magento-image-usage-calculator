@@ -550,8 +550,8 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
     {
         return $this->_getData(self::KEY_TITLE);
     }
-	
-	/**
+
+    /**
      * Get help text
      *
      * @return string
@@ -634,8 +634,8 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
     {
         return $this->setData(self::KEY_TITLE, $title);
     }
-	
-	/**
+
+    /**
      * Set help text
      *
      * @param string $help
@@ -776,7 +776,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @return $this
      */
     public function setExtensionAttributes(
-            \DevStone\UsageCalculator\Api\Data\UsageCustomOptionExtensionInterface $extensionAttributes
+        \DevStone\UsageCalculator\Api\Data\UsageCustomOptionExtensionInterface $extensionAttributes
     ) {
         return $this->_setExtensionAttributes($extensionAttributes);
     }

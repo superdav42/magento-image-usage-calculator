@@ -20,11 +20,11 @@ define([
          * @param {Object} element
          * @param {Boolean} checked
          */
-        function registerUsageCustomer(grid, element, checked) {
+        function registerUsageCustomer(grid, element, checked)
+        {
             if (checked) {
-                    usageCustomer.set(element.value, element.value);
-                }
-            else {
+                usageCustomer.set(element.value, element.value);
+            } else {
                 usageCustomer.unset(element.value);
             }
             $('in_usage_customers').value = Object.toJSON(usageCustomer);
@@ -39,7 +39,8 @@ define([
          * @param {Object} grid
          * @param {String} event
          */
-        function usageCustomerRowClick(grid, event) {
+        function usageCustomerRowClick(grid, event)
+        {
             var trElement = Event.findElement(event, 'tr'),
                 isInput = Event.element(event).tagName === 'INPUT',
                 checked = false,
@@ -61,7 +62,8 @@ define([
          * @param {Object} grid
          * @param {String} row
          */
-        function usageCustomersRowInit(grid, row) {
+        function usageCustomersRowInit(grid, row)
+        {
             var checkbox = $(row).getElementsByClassName('checkbox')[0]
         }
 

@@ -1,4 +1,10 @@
 <?php
+/**
+ * CustomLicense
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit;
 
@@ -17,9 +23,8 @@ class CustomLicense implements \Magento\Framework\View\Element\UiComponent\Contr
      * CustomLicense constructor.
      * @param \Magento\Framework\UrlInterface $urlBuilder
      */
-    public function __construct(
-        \Magento\Framework\UrlInterface $urlBuilder
-    ) {
+    public function __construct(\Magento\Framework\UrlInterface $urlBuilder)
+    {
         $this->urlBuilder = $urlBuilder;
     }
 

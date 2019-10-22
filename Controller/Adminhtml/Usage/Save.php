@@ -5,12 +5,17 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Controller\Adminhtml\Usage;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use DevStone\UsageCalculator\Model\UsageFactory;
 
+/**
+ * Class Save
+ * @package DevStone\UsageCalculator\Controller\Adminhtml\Usage
+ */
 class Save extends Action
 {
     /** @var UsageFactory $objectFactory */
@@ -51,7 +56,7 @@ class Save extends Action
     public function execute()
     {
         $storeId = (int)$this->getRequest()->getParam('store_id');
-        $data = $this->getRequest()->getParams();        
+        $data = $this->getRequest()->getParams();
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {
@@ -66,15 +71,13 @@ class Save extends Action
                 $params['entity_id'] = $data['entity_id'];
             }
             $objectInstance->addData($data);
-
-
             $objectInstance = $this->helper->initialize($objectInstance);
 
             try {
                 $usage = $objectInstance->save();
                 $this->_eventManager->dispatch(
                     'devstone_usagecalculator_usage_prepare_save',
-                    ['object' => $this->objectFactory, 'request' => $this->getRequest(),'usage' => $usage]
+                    ['object' => $this->objectFactory, 'request' => $this->getRequest(), 'usage' => $usage]
                 );
 
                 $this->messageManager->addSuccessMessage(__('You saved this record.'));
@@ -95,5 +98,4 @@ class Save extends Action
         }
         return $resultRedirect->setPath('*/*/');
     }
-
 }

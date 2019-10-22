@@ -77,7 +77,8 @@ class Value extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_value', 'option_type_id');
+        $this->_init(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_value',
+            'option_type_id');
     }
 
     /**
@@ -106,7 +107,7 @@ class Value extends AbstractDb
     protected function _saveValuePrices(AbstractModel $object)
     {
         $objectPrice = $object->getPrice();
-        $priceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_price');
+        $priceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_price');
         $formattedPrice = $this->getLocaleFormatter()->getNumber($objectPrice);
 
         $price = (double)sprintf('%F', $formattedPrice);
@@ -235,7 +236,7 @@ class Value extends AbstractDb
     protected function _saveValueTitles(AbstractModel $object)
     {
         foreach ([Store::DEFAULT_STORE_ID, $object->getStoreId()] as $storeId) {
-            $titleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_title');
+            $titleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_title');
             $select = $this->getConnection()->select()->from(
                 $titleTable,
                 ['option_type_id']
@@ -329,7 +330,7 @@ class Value extends AbstractDb
     public function deleteValue($optionId)
     {
         $statement = $this->getConnection()->select()->from(
-            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_value')
+            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_value')
         )->where(
             'option_id = ?',
             $optionId
@@ -356,9 +357,11 @@ class Value extends AbstractDb
     {
         $condition = ['option_type_id = ?' => $optionTypeId];
 
-        $this->getConnection()->delete($this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_price'), $condition);
+        $this->getConnection()->delete($this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_price'),
+            $condition);
 
-        $this->getConnection()->delete($this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_title'), $condition);
+        $this->getConnection()->delete($this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_title'),
+            $condition);
     }
 
     /**
@@ -390,7 +393,7 @@ class Value extends AbstractDb
 
         foreach ($valueCond as $oldTypeId => $newTypeId) {
             // price
-            $priceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_price');
+            $priceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_price');
             $columns = [new \Zend_Db_Expr($newTypeId), 'store_id', 'price', 'price_type'];
 
             $select = $connection->select()->from(
@@ -410,7 +413,7 @@ class Value extends AbstractDb
             $connection->query($insertSelect);
 
             // title
-            $titleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_title');
+            $titleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_title');
             $columns = [new \Zend_Db_Expr($newTypeId), 'store_id', 'title'];
 
             $select = $this->getConnection()->select()->from(

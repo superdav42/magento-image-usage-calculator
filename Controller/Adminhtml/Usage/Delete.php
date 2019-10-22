@@ -5,12 +5,12 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Controller\Adminhtml\Usage;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use DevStone\UsageCalculator\Model\UsageFactory;
-use Magento\Ui\Component\MassAction\Filter;
 
 /**
  * Class Delete
@@ -22,28 +22,21 @@ class Delete extends Action
     protected $objectFactory;
 
     /**
-     * @var Filter
-     */
-    protected $filter;
-
-    /**
      * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory
      */
     protected $usageCollectionFactory;
 
-
-
     /**
+     * Delete constructor.
      * @param Context $context
      * @param UsageFactory $objectFactory
+     * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
      */
     public function __construct(
         Context $context,
         UsageFactory $objectFactory,
-        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory,
-        Filter $filter
+        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
     ) {
-        $this->filter = $filter;
         $this->usageCollectionFactory = $collectionFactory;
         $this->objectFactory = $objectFactory;
         parent::__construct($context);
@@ -82,6 +75,9 @@ class Delete extends Action
         return $resultRedirect->setPath('*/*');
     }
 
+    /**
+     *
+     */
     public function deleteUsageCustomer()
     {
         $collection = $this->usageCollectionFactory->create();

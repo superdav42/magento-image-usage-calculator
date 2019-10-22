@@ -1,4 +1,10 @@
 <?php
+/**
+ * Usage
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Block\Catalog\Product;
 
@@ -137,22 +143,6 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     }
 
     /**
-     * @return string|null
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
-    public function getCustomLicenseId()
-    {
-        $searchCriteria = $this->searchCriteriaBuilder->addFilter('name',
-            \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE, 'eq')->create();
-        $list = $this->categoryRepository->getList($searchCriteria)->getItems();
-        if (count($list)) {
-            return array_values($list)[0]->getId();
-        }
-        return null;
-    }
-
-
-    /**
      * @return array
      */
     public function getUsages($category = null)
@@ -246,8 +236,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
 
             }
         }
-        $searchCriteria = $this->searchCriteriaBuilder->addFilter('name',
-            \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE, 'neq')->create();
+        $searchCriteria = $this->searchCriteriaBuilder
+            ->addFilter('entity_id', $this->getCustomLicenseId(), 'neq')
+            ->create();
         $list = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $list;
     }
@@ -487,5 +478,25 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $group = $this->optionModel->getGroupByType($type);
 
         return $group == '' ? 'default' : $group;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomLicenseId()
+    {
+        $searchCriteria = $this->searchCriteriaBuilder->addFilter('name',
+            \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE, 'eq')->create();
+        $list = $this->categoryRepository->getList($searchCriteria)->getItems();
+        if (count($list)) {
+            return array_values($list)[0]->getId();
+        }
+        return null;
+
+//        return $this->_scopeConfig
+//            ->getValue(
+//                'usagecalculator\general\customer_license',
+//                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+//            );
     }
 }

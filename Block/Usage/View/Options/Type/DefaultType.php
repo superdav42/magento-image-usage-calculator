@@ -1,8 +1,11 @@
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * DefaultType
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Block\Usage\View\Options\Type;
 
 /**

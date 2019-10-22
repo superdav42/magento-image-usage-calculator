@@ -195,5 +195,4 @@
             <argument name="pool" xsi:type="object">DevStone\UsageCalculator\Ui\Component\Form\Usage\Modifier\Pool</argument>
         </arguments>
     </type>
-
 </config>

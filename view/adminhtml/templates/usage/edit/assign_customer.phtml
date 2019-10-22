@@ -6,7 +6,6 @@ $blockGrid = $block->getBlockGrid();
 $gridJsObjectName = $blockGrid->getJsObjectName();
 ?>
 <?php if ($block->showGrid()): ?>
-
     <?= $block->getGridHtml() ?>
     <input type="hidden" name="usage_customers" id="in_usage_customers" data-form-part="devstone_usagecalculator_usage_form" value="" />
     <script type="text/x-magento-init">
@@ -19,7 +18,6 @@ $gridJsObjectName = $blockGrid->getJsObjectName();
             }
         }
     </script>
-<!-- @todo remove when "UI components" will support such initialization -->
     <script>
         require('mage/apply/main').apply();
     </script>

@@ -15,6 +15,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init(\DevStone\UsageCalculator\Model\UsageCustomer::class, \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer::class);
+        $this->_init(\DevStone\UsageCalculator\Model\UsageCustomer::class,
+            \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer::class);
     }
 }

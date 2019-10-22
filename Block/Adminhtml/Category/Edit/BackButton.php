@@ -5,6 +5,7 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Block\Adminhtml\Category\Edit;
 
 use Magento\Backend\Block\Widget\Context;

@@ -94,7 +94,8 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(\DevStone\UsageCalculator\Model\Usage::class, \DevStone\UsageCalculator\Model\ResourceModel\Usage::class);
+        $this->_init(\DevStone\UsageCalculator\Model\Usage::class,
+            \DevStone\UsageCalculator\Model\ResourceModel\Usage::class);
     }
 
     /**

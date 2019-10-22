@@ -5,6 +5,7 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Controller\Adminhtml\Usage;
 
 use Magento\Backend\App\Action;
@@ -29,7 +30,7 @@ class Index extends Action
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
     }
-    
+
     /**
      * Check the permission to run it
      *

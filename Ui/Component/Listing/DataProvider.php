@@ -11,6 +11,10 @@ namespace DevStone\UsageCalculator\Ui\Component\Listing;
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider as UiDataProvider;
 
+/**
+ * Class DataProvider
+ * @package DevStone\UsageCalculator\Ui\Component\Listing
+ */
 class DataProvider extends UiDataProvider
 {
     /**

@@ -50,10 +50,11 @@ class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterfa
     {
         $customLicense = $this->request->getParam('custom_license');
         if (isset($customLicense) && $customLicense) {
-            $meta['main_fieldset']['children']['category_id']['arguments']['data']['config']['options'] = $this->catagoriesOptionsProvider->customToOptionArray();
-
+            $meta['main_fieldset']['children']['category_id']['arguments']['data']['config']['options'] =
+                $this->catagoriesOptionsProvider->customLicenseOption();
         } else {
-            $meta['main_fieldset']['children']['category_id']['arguments']['data']['config']['options'] = $this->catagoriesOptionsProvider->toOptionArray();
+            $meta['main_fieldset']['children']['category_id']['arguments']['data']['config']['options'] =
+                $this->catagoriesOptionsProvider->allOptionsExcludingCustomLicense();
         }
         return $meta;
     }

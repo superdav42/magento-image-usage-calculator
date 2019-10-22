@@ -5,6 +5,7 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Controller\Adminhtml\Size;
 
 use Magento\Backend\App\Action;
@@ -21,8 +22,8 @@ class Delete extends Action
      * @param SizeFactory $objectFactory
      */
     public function __construct(
-    Context $context,
-    SizeFactory $objectFactory
+        Context $context,
+        SizeFactory $objectFactory
     ) {
         $this->objectFactory = $objectFactory;
         parent::__construct($context);
@@ -57,7 +58,7 @@ class Delete extends Action
         } catch (\Exception $exception) {
             $this->messageManager->addErrorMessage($exception->getMessage());
         }
-        
+
         return $resultRedirect->setPath('*/*');
     }
 }

@@ -1,4 +1,10 @@
 <?php
+/**
+ * AssignCustomers
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Block\Adminhtml\Customer;
 
@@ -99,7 +105,6 @@ class AssignCustomers extends \Magento\Backend\Block\Template
         return '{}';
     }
 
-
     /**
      * @return array
      */
@@ -108,7 +113,7 @@ class AssignCustomers extends \Magento\Backend\Block\Template
         $id = $this->getRequest()->getParam('entity_id');
         $customerArray = [];
 
-        if(isset($id)){
+        if (isset($id)) {
             $collection = $this->collectionFactory->create();
             foreach ($collection as $item) {
                 $customerArray[$item->getCustomerId()] = $item->getCustomerId();
@@ -117,10 +122,15 @@ class AssignCustomers extends \Magento\Backend\Block\Template
         return $customerArray;
     }
 
-    public function showGrid(){
+    /**
+     * @return bool|mixed
+     */
+    public function showGrid()
+    {
         $customLicense = $this->request->getParam('custom_license');
-        if(isset($customLicense))
+        if (isset($customLicense)) {
             return $customLicense;
+        }
         return false;
     }
 }
