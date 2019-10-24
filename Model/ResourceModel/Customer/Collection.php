@@ -18,14 +18,15 @@ class Collection extends \Magento\Customer\Model\ResourceModel\Customer\Collecti
         $this->getSelect()
             ->columns(
                 ['name' => "CONCAT(e.firstname, ' ', e.lastname)"]
-            )->joinLeft(
+            )
+            ->joinLeft(
                 ['ca' => 'customer_address_entity'],
                 'e.entity_id = ca.parent_id',
                 [
                     'ca.company as company'
                 ]
             )->group(
-                'ca.parent_id'
+                'e.entity_id'
             );
         return $this;
     }

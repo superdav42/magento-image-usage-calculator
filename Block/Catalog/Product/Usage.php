@@ -485,18 +485,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      */
     public function getCustomLicenseId()
     {
-        $searchCriteria = $this->searchCriteriaBuilder->addFilter('name',
-            \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE, 'eq')->create();
-        $list = $this->categoryRepository->getList($searchCriteria)->getItems();
-        if (count($list)) {
-            return array_values($list)[0]->getId();
-        }
-        return null;
-
-//        return $this->_scopeConfig
-//            ->getValue(
-//                'usagecalculator\general\customer_license',
-//                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-//            );
+        return $this->_scopeConfig->getValue(
+            'usage_cal/general/category_id',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }
 }

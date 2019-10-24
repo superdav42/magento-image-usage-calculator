@@ -105,8 +105,9 @@ class UsageActions extends Column
      */
     public function getCustomLicenseId()
     {
-        $collection = $this->collectionFactory->create()->addFieldToFilter('name',
-            ['eq' => \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider::CUSTOM_LICENSE]);
-        return $collection->getFirstItem()->getId();
+        return $this->scopeConfig->getValue(
+            'usage_cal/general/category_id',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }
 }

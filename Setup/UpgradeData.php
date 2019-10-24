@@ -1,4 +1,5 @@
 <?php
+
 namespace DevStone\UsageCalculator\Setup;
 
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -15,23 +16,35 @@ class UpgradeData implements UpgradeDataInterface
      */
     protected $usageSetupFactory;
 
+    protected $categoryFactory;
 
     /**
-     * Init
-     *
+     * UpgradeData constructor.
      * @param UsageSetupFactory $usageSetupFactory
+     * @param \DevStone\UsageCalculator\Model\CategoryFactory $categoryFactory
      */
     public function __construct(
-        UsageSetupFactory $usageSetupFactory
+        UsageSetupFactory $usageSetupFactory,
+        \DevStone\UsageCalculator\Model\CategoryFactory $categoryFactory
     ) {
         $this->usageSetupFactory = $usageSetupFactory;
+        $this->categoryFactory = $categoryFactory;
     }
 
-    public function  upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
+    public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    {
         /** @var UsageSetup $usageSetup */
         $usageSetup = $this->usageSetupFactory->create(['setup' => $setup]);
 
         $setup->startSetup();
+
+        if (version_compare($context->getVersion(), '1.0.4') < 0) {
+            $category = $this->categoryFactory->create();
+            $category
+                ->setName('Custom License')
+                ->setTerms('Customer License Terms')
+                ->save();
+        }
 
         $usageSetup->installEntities();
         $entities = $usageSetup->getDefaultEntities();

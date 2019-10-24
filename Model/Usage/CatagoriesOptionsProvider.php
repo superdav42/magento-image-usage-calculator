@@ -9,11 +9,6 @@ namespace DevStone\UsageCalculator\Model\Usage;
 class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceInterface
 {
     /**
-     * Constant to check if a usage falls in Custom License category
-     */
-    const CUSTOM_LICENSE = 'Custom License';
-
-    /**
      * @var \DevStone\UsageCalculator\Api\CategoryRepositoryInterface
      */
     private $categoryRepository;
@@ -59,7 +54,7 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
     public function allOptionsExcludingCustomLicense()
     {
         $searchCriteria = $this->searchCriteriaBuilder
-            ->addFilter('name', self::CUSTOM_LICENSE, 'neq')
+            ->addFilter('entity_id', $this->getCustomLicenseId(), 'neq')
             ->create();
         $catagories = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
@@ -72,7 +67,7 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
     public function customLicenseOption()
     {
         $searchCriteria = $this->searchCriteriaBuilder
-            ->addFilter('name', self::CUSTOM_LICENSE, 'eq')
+            ->addFilter('entity_id', $this->getCustomLicenseId(), 'eq')
             ->create();
         $catagories = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
@@ -87,5 +82,16 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $catagories = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomLicenseId()
+    {
+        return $this->scopeConfig->getValue(
+            'usage_cal/general/category_id',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }
 }
