@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="devstone" translate="label" sortOrder="152">
+            <label>DevStone Extensions</label>
+        </tab>
+        <section id="usage_cal" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Usage Calculator</label>
+            <tab>devstone</tab>
+            <resource>DevStone_UsageCalculator::usage_cal</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="category_id" type="select" translate="label,comment,tooltip" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Category</label>
+                    <source_model>DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider</source_model>
+                    <comment>select the custom category</comment>
+                    <tooltip>This field is going to be used for Custom License</tooltip>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

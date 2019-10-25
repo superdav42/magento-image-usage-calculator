@@ -41,7 +41,7 @@ class Collection extends SizeCollection implements SearchResultInterface
      * @param string $model
      * @param null $connection
      * @param AbstractDb|null $resource
-     * 
+     *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(

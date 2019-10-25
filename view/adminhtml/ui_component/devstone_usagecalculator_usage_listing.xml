@@ -20,6 +20,7 @@
                 <item name="class" xsi:type="string">primary</item>
                 <item name="url" xsi:type="string">*/*/edit</item>
             </item>
+            <item name="custom-license-button" xsi:type="string">DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit\CustomLicense</item>
         </item>
     </argument>
     <dataSource name="devstone_usagecalculator_usage_listing_data_source">

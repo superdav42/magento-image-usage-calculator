@@ -41,7 +41,7 @@ class Category extends AbstractModel implements IdentityInterface, \DevStone\Usa
         parent::_construct();
         $this->_init(\DevStone\UsageCalculator\Model\ResourceModel\Category::class);
     }
-    
+
     /**
      * Get identities
      *
@@ -66,12 +66,13 @@ class Category extends AbstractModel implements IdentityInterface, \DevStone\Usa
         }
         return $this;
     }
-    
-    public function setName($name) {
+
+    public function setName($name)
+    {
         $this->setData(self::NAME, $name);
         return $this;
     }
-    
+
     public function getName()
     {
         return $this->getData(self::NAME);

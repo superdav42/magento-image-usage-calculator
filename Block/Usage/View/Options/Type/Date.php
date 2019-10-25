@@ -1,4 +1,10 @@
 <?php
+/**
+ * Date
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Block\Usage\View\Options\Type;
 
@@ -155,8 +161,8 @@ class Date extends \DevStone\UsageCalculator\Block\Usage\View\Options\AbstractOp
      * Return drop-down html with range of values
      *
      * @param string $name Id/name of html select element
-     * @param int $from  Start position
-     * @param int $to    End position
+     * @param int $from Start position
+     * @param int $to End position
      * @param int|null $value Value selected
      * @return string Formatted Html
      */

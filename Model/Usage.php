@@ -12,6 +12,10 @@ namespace DevStone\UsageCalculator\Model;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
 
+/**
+ * Class Usage
+ * @package DevStone\UsageCalculator\Model
+ */
 class Usage extends AbstractModel implements IdentityInterface, \DevStone\UsageCalculator\Api\Data\UsageInterface
 {
     /**
@@ -66,7 +70,7 @@ class Usage extends AbstractModel implements IdentityInterface, \DevStone\UsageC
         }
         return $this;
     }
-    
+
     /**
      * Get all options of usage
      *
@@ -86,23 +90,49 @@ class Usage extends AbstractModel implements IdentityInterface, \DevStone\UsageC
         $this->setData('options', $options);
         return $this;
     }
-    
-    public function afterSave() 
+
+    /**
+     * @return AbstractModel|void
+     */
+    public function afterSave()
     {
         parent::afterSave();
-        
+
         $saveHandler = \Magento\Framework\App\ObjectManager::getInstance()
             ->get(\DevStone\UsageCalculator\Model\Usage\Option\SaveHandler::class);
-        
+
         $saveHandler->execute($this);
     }
-    
-    public function afterLoad() {
+
+    /**
+     * @return AbstractModel|void
+     */
+    public function afterLoad()
+    {
         parent::afterLoad();
-        
+
         $readHandler = \Magento\Framework\App\ObjectManager::getInstance()
             ->get(\DevStone\UsageCalculator\Model\Usage\Option\ReadHandler::class);
-        
+
         $readHandler->execute($this);
+    }
+
+    /**
+     * Set category_id
+     * @param string $categoryId
+     * @return \DevStone\UsageCalculator\Api\Data\UsageInterface
+     */
+    public function setCategoryId($categoryId)
+    {
+        return $this->setData('category_id', $categoryId);
+    }
+
+    /**
+     * Get category_id
+     * @return string|null
+     */
+    public function getCategoryId()
+    {
+        return $this->getData('category_id');
     }
 }

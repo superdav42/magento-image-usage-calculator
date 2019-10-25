@@ -1,4 +1,10 @@
 <?php
+/**
+ * AbstractOptions
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Block\Usage\View\Options;
 
@@ -36,7 +42,7 @@ abstract class AbstractOptions extends \Magento\Framework\View\Element\Template
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\Pricing\Helper\Data $pricingHelper
-     * @param \Magento\Catalog\Helper\Data $catalogData,
+     * @param \Magento\Catalog\Helper\Data $catalogData ,
      * @param array $data
      */
     public function __construct(

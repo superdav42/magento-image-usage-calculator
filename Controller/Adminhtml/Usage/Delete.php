@@ -5,25 +5,39 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Controller\Adminhtml\Usage;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use DevStone\UsageCalculator\Model\UsageFactory;
 
+/**
+ * Class Delete
+ * @package DevStone\UsageCalculator\Controller\Adminhtml\Usage
+ */
 class Delete extends Action
 {
     /** @var usageFactory $objectFactory */
     protected $objectFactory;
 
     /**
+     * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory
+     */
+    protected $usageCollectionFactory;
+
+    /**
+     * Delete constructor.
      * @param Context $context
      * @param UsageFactory $objectFactory
+     * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
      */
     public function __construct(
         Context $context,
-        UsageFactory $objectFactory
+        UsageFactory $objectFactory,
+        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
     ) {
+        $this->usageCollectionFactory = $collectionFactory;
         $this->objectFactory = $objectFactory;
         parent::__construct($context);
     }
@@ -57,7 +71,22 @@ class Delete extends Action
         } catch (\Exception $exception) {
             $this->messageManager->addErrorMessage($exception->getMessage());
         }
-        
+        $this->deleteUsageCustomer();
         return $resultRedirect->setPath('*/*');
+    }
+
+    /**
+     *
+     */
+    public function deleteUsageCustomer()
+    {
+        $collection = $this->usageCollectionFactory->create();
+
+        $id = $this->getRequest()->getParam('entity_id', null);
+        $collection->addFieldToFilter('usage_id', ['eq' => $id]);
+
+        foreach ($collection as $usage) {
+            $usage->delete();
+        }
     }
 }

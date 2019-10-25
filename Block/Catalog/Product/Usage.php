@@ -1,4 +1,10 @@
 <?php
+/**
+ * Usage
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Block\Catalog\Product;
 
@@ -53,9 +59,31 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     private $usages;
 
     /**
+     * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory
+     */
+    protected $usageCustomerCollectionFactory;
+
+    /**
+     * @var \DevStone\UsageCalculator\Model\Usage\Option
+     */
+    protected $optionModel;
+
+    /**
+     * @var \Magento\Customer\Model\Session
+     */
+    protected $session;
+
+    /**
+     * Usage constructor.
      * @param \Magento\Catalog\Block\Product\Context $context
      * @param \Magento\Framework\Pricing\Helper\Data $pricingHelper
      * @param EncoderInterface $encoder
+     * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository
+     * @param \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository
+     * @param \DevStone\UsageCalculator\Model\Usage\Option $option
+     * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $usageCustomerCollectionFactory
+     * @param \Magento\Customer\Model\Session $session
      * @param array $data
      */
     public function __construct(
@@ -66,6 +94,8 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository,
         \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository,
         \DevStone\UsageCalculator\Model\Usage\Option $option,
+        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $usageCustomerCollectionFactory,
+        \Magento\Customer\Model\Session $session,
         array $data = []
     ) {
         $this->pricingHelper = $pricingHelper;
@@ -74,6 +104,8 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $this->usageRepository = $usageRepository;
         $this->categoryRepository = $categoryRepository;
         $this->optionModel = $option;
+        $this->usageCustomerCollectionFactory = $usageCustomerCollectionFactory;
+        $this->session = $session;
         parent::__construct($context, $data);
     }
 
@@ -116,17 +148,35 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     public function getUsages($category = null)
     {
         if (empty($this->usages)) {
-            $searchCriteria = $this->searchCriteriaBuilder->create();
+            $customLicenseId = $this->getCustomLicenseId();
+            $searchCriteria = $this->searchCriteriaBuilder->addFilter('category_id', $customLicenseId, 'neq')->create();
             $items = $this->usageRepository->getList($searchCriteria)->getItems();
 
+            if ($this->isCustomerLoggedIn()) {
+                $customerId = $this->getCustomerId();
+                $usageCollection = $this->getUsageListAccordingToCustomer($customerId);
+
+                if ($usageCollection->getSize() > 0) {
+                    $customerUsage = [];
+                    foreach ($usageCollection as $usage) {
+                        $customerUsage[] = $usage->getUsageId();
+                    }
+
+                    $searchCriteria = $this->searchCriteriaBuilder->addFilter('entity_id', $customerUsage,
+                        'in')->create();
+                    $customerUsageItems = $this->usageRepository->getList($searchCriteria)->getItems();
+                    $items = array_merge_recursive($items, $customerUsageItems);
+                }
+            }
+
             $this->usages = [];
-            foreach($items as $item) {
+            foreach ($items as $item) {
                 $item->afterLoad();
                 $this->usages[$item->getCategoryId()][] = $item;
             }
         }
         if ($category) {
-            if( isset($this->usages[$category->getId()])) {
+            if (isset($this->usages[$category->getId()])) {
                 return $this->usages[$category->getId()];
             } else {
                 return [];
@@ -139,40 +189,94 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         }
     }
 
+    /**
+     * @return bool
+     */
+    public function isCustomerLoggedIn()
+    {
+        return $this->session->isLoggedIn();
+    }
 
+    /**
+     * @return int|null
+     */
+    public function getCustomerId()
+    {
+        return $this->session->getCustomerId();
+    }
+
+    /**
+     * @param $customerId
+     * @return \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\Collection
+     */
+    public function getUsageListAccordingToCustomer($customerId)
+    {
+        /**
+         * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\Collection $usageCustomerCollection
+         */
+        $usageCustomerCollection = $this->usageCustomerCollectionFactory->create();
+        $usageCustomerCollection->addFieldToFilter('customer_id', $customerId);
+        return $usageCustomerCollection;
+    }
+
+    /**
+     * @return array|\DevStone\UsageCalculator\Api\Data\CategoryInterface[]
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function getCategories()
     {
-        $searchCriteria = $this->searchCriteriaBuilder->create();
+        $list = [];
+        if ($this->isCustomerLoggedIn()) {
+            $customerId = $this->getCustomerId();
+            $usageCollection = $this->getUsageListAccordingToCustomer($customerId);
+            if ($usageCollection->getSize() > 0) {
+                $searchCriteria = $this->searchCriteriaBuilder->create();
+                $list = $this->categoryRepository->getList($searchCriteria)->getItems();
+                return $list;
+
+            }
+        }
+        $searchCriteria = $this->searchCriteriaBuilder
+            ->addFilter('entity_id', $this->getCustomLicenseId(), 'neq')
+            ->create();
         $list = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $list;
     }
 
-    public function getUsagesSelectHtml($usages, $category)
-    {
-		$store = $this->getProduct()->getStore();
+    /**
+     * @param $usages
+     * @param $category
+     * @return mixed
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getUsagesSelectHtml(
+        $usages,
+        $category
+    ) {
+        $store = $this->getProduct()->getStore();
 
         $extraParams = '';
         $select = $this->getLayout()->createBlock(
             \Magento\Framework\View\Element\Html\Select::class
         )->setData(
             [
-                'id' => 'usage_'.$category->getId().'_usages',
+                'id' => 'usage_' . $category->getId() . '_usages',
                 'class' => 'required product-custom-option admin__control-select usage-select-box'
             ]
         );
 
-        $select->setName('usage_id['.$category->getId().']')->addOption('', __('-- Please Select --'));
+        $select->setName('usage_id[' . $category->getId() . ']')->addOption('', __('-- Please Select --'));
 
         foreach ($usages as $usage) {
 
             $select->addOption(
                 $usage->getId(),
                 $usage->getName(),
-				[
-					'price' => $this->pricingHelper->currencyByStore($usage->getPrice(), $store, false),
-					'data-terms' => $usage->getTerms(),
+                [
+                    'price' => $this->pricingHelper->currencyByStore($usage->getPrice(), $store, false),
+                    'data-terms' => $usage->getTerms(),
                     'credits' => $usage->getCredits(),
-				]
+                ]
             );
 
         }
@@ -182,6 +286,10 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         return $select->getHtml();
     }
 
+    /**
+     * @return mixed
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function getCategoriesSelectHtml()
     {
         $extraParams = '';
@@ -215,8 +323,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param float $price
      * @return float
      */
-    public function getCurrencyPrice($price)
-    {
+    public function getCurrencyPrice(
+        $price
+    ) {
         $store = $this->getProduct()->getStore();
         return $this->pricingHelper->currencyByStore($price, $store, false);
     }
@@ -246,8 +355,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param Link $link
      * @return string
      */
-    public function getLinkSampleUrl($link)
-    {
+    public function getLinkSampleUrl(
+        $link
+    ) {
         $store = $this->getProduct()->getStore();
         return $store->getUrl('downloadable/download/linkSample', ['link_id' => $link->getId()]);
     }
@@ -368,5 +478,16 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $group = $this->optionModel->getGroupByType($type);
 
         return $group == '' ? 'default' : $group;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomLicenseId()
+    {
+        return $this->_scopeConfig->getValue(
+            'usage_cal/general/category_id',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }
 }

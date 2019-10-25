@@ -4,7 +4,6 @@ namespace DevStone\UsageCalculator\Plugin\Block\Product;
 
 class ListProduct
 {
-
     /**
      * @param \Magento\Catalog\Block\Product\ListProduct $subject
      * @param \Closure $proceed

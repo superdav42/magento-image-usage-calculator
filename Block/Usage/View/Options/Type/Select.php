@@ -1,4 +1,10 @@
 <?php
+/**
+ * Select
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Block\Usage\View\Options\Type;
 
@@ -38,7 +44,7 @@ class Select extends \DevStone\UsageCalculator\Block\Usage\View\Options\Abstract
                 [
                     'id' => 'select_' . $_option->getId(),
                     'class' => $require . ' product-custom-option admin__control-select',
-					'title' => $_option->getTitle(),
+                    'title' => $_option->getTitle(),
                 ]
             );
             if ($_option->getType() == \Magento\Catalog\Api\Data\ProductCustomOptionInterface::OPTION_TYPE_DROP_DOWN) {

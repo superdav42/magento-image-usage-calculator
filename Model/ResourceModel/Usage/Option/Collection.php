@@ -105,7 +105,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function addTitleToResult($storeId)
     {
-        $productOptionTitleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_title');
+        $productOptionTitleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_title');
         $connection = $this->getConnection();
         $titleExpr = $connection->getCheckSql(
             'store_option_title.title IS NULL',
@@ -131,8 +131,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 
         return $this;
     }
-	
-	/**
+
+    /**
      * Add help to result
      *
      * @param int $storeId
@@ -140,7 +140,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function addHelpToResult($storeId)
     {
-        $productOptionTitleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_help');
+        $productOptionTitleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_help');
         $connection = $this->getConnection();
         $helpExpr = $connection->getCheckSql(
             'store_option_help.help IS NULL',
@@ -175,7 +175,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function addPriceToResult($storeId)
     {
-        $productOptionPriceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_price');
+        $productOptionPriceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_price');
         $connection = $this->getConnection();
         $priceExpr = $connection->getCheckSql(
             'store_option_price.price IS NULL',
@@ -286,7 +286,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         parent::_initSelect();
         $this->getSelect()->join(
-            ['cpe' => $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_entity')],
+            ['cpe' => $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_entity')],
             'cpe.entity_id = main_table.usage_id',
             []
         );
@@ -306,8 +306,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         )->addTitleToResult(
             $storeId
         )->addHelpToResult(
-			$storeId
-		)->addPriceToResult(
+            $storeId
+        )->addPriceToResult(
             $storeId
         )->setOrder(
             'sort_order',

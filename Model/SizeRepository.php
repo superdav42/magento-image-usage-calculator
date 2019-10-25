@@ -16,23 +16,51 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Api\DataObjectHelper;
 use DevStone\UsageCalculator\Api\Data\SizeInterfaceFactory;
 
+/**
+ * Class SizeRepository
+ * @package DevStone\UsageCalculator\Model
+ */
 class SizeRepository implements SizeRepositoryInterface
 {
 
+    /**
+     * @var SizeInterfaceFactory
+     */
     protected $dataSizeFactory;
 
+    /**
+     * @var DataObjectProcessor
+     */
     protected $dataObjectProcessor;
 
+    /**
+     * @var SizeFactory
+     */
     protected $sizeFactory;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var SizeCollectionFactory
+     */
     protected $sizeCollectionFactory;
 
+    /**
+     * @var SizeSearchResultsInterfaceFactory
+     */
     protected $searchResultsFactory;
 
+    /**
+     * @var ResourceSize
+     */
     protected $resource;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
 
 
@@ -117,7 +145,7 @@ class SizeRepository implements SizeRepositoryInterface
                 $collection->addFieldToFilter($filter->getField(), [$condition => $filter->getValue()]);
             }
         }
-        
+
         $sortOrders = $criteria->getSortOrders();
         if ($sortOrders) {
             /** @var SortOrder $sortOrder */
@@ -130,7 +158,7 @@ class SizeRepository implements SizeRepositoryInterface
         }
         $collection->setCurPage($criteria->getCurrentPage());
         $collection->setPageSize($criteria->getPageSize());
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
         $searchResults->setTotalCount($collection->getSize());

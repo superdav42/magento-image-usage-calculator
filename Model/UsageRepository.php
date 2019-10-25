@@ -15,28 +15,52 @@ use DevStone\UsageCalculator\Api\UsageRepositoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Api\DataObjectHelper;
 
+/**
+ * Class UsageRepository
+ * @package DevStone\UsageCalculator\Model
+ */
 class UsageRepository implements UsageRepositoryInterface
 {
 
+    /**
+     * @var DataObjectProcessor
+     */
     protected $dataObjectProcessor;
 
+    /**
+     * @var UsageFactory
+     */
     protected $usageFactory;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var UsageCollectionFactory
+     */
     protected $usageCollectionFactory;
 
+    /**
+     * @var UsageSearchResultsInterfaceFactory
+     */
     protected $searchResultsFactory;
 
+    /**
+     * @var ResourceUsage
+     */
     protected $resource;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
-    
+
     /**
      * @var \Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface
      */
     protected $extensionAttributesJoinProcessor;
-
 
 
     /**
@@ -125,7 +149,7 @@ class UsageRepository implements UsageRepositoryInterface
         $collection = $this->usageCollectionFactory->create();
 
         $collection->addAttributeToSelect('*');
-        
+
         foreach ($criteria->getFilterGroups() as $filterGroup) {
             foreach ($filterGroup->getFilters() as $filter) {
                 if ($filter->getField() === 'store_id') {
@@ -136,7 +160,7 @@ class UsageRepository implements UsageRepositoryInterface
                 $collection->addFieldToFilter($filter->getField(), [$condition => $filter->getValue()]);
             }
         }
-        
+
         $sortOrders = $criteria->getSortOrders();
         if ($sortOrders) {
             /** @var SortOrder $sortOrder */
@@ -149,7 +173,7 @@ class UsageRepository implements UsageRepositoryInterface
         }
         $collection->setCurPage($criteria->getCurrentPage());
         $collection->setPageSize($criteria->getPageSize());
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
         $searchResults->setTotalCount($collection->getSize());
