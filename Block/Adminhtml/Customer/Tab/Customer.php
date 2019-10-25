@@ -94,7 +94,8 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
         parent::_construct();
         $this->setId('usage_calculator_customers');
         $this->setDefaultSort('id');
-        $this->setDefaultFilter(['in_usage' => 1]);
+        $usageId = $this->getRequest()->getParam('entity_id');
+        isset($usageId) ? $this->setDefaultFilter(['in_usage' => 1]) : $this->setDefaultFilter(['in_usage' => '']);
         $this->setUseAjax(true);
     }
 
@@ -118,9 +119,13 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
                 $this->getCollection()->addFieldToFilter($linkField, ['nin' => $customerIds]);
             }
         } elseif ($column->getId() == 'name') {
-            $this->getCollection()->getSelect()->where("CONCAT(e.firstname, ' ', e.lastname) like '%" . $column->getFilter()->getValue() . "%'");
+            $this->getCollection()
+                ->getSelect()
+                ->where("CONCAT(e.firstname, ' ', e.lastname) like '%" . $column->getFilter()->getValue() . "%'");
         } elseif ($column->getId() == 'company') {
-            $this->getCollection()->getSelect()->where('company like "%' . $column->getFilter()->getValue() . '%"');
+            $this->getCollection()
+                ->getSelect()
+                ->where('company like "%' . $column->getFilter()->getValue() . '%"');
         } else {
             parent::_addColumnFilterToCollection($column);
         }
