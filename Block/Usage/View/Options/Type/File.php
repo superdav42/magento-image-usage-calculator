@@ -1,4 +1,10 @@
 <?php
+/**
+ * File
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Block\Usage\View\Options\Type;
 

@@ -5,20 +5,27 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Ui\Component\Form\Usage;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use DevStone\UsageCalculator\Model\ResourceModel\Usage\Collection;
+use Magento\Ui\DataProvider\Modifier\ModifierInterface;
+use Magento\Ui\DataProvider\Modifier\PoolInterface;
 
+/**
+ * Class DataProvider
+ * @package DevStone\UsageCalculator\Ui\Component\Form\Usage
+ */
 class DataProvider extends AbstractDataProvider
 {
     /**
      * @var Collection
      */
     protected $collection;
-    
+
     /**
      * @var FilterPool
      */
@@ -38,7 +45,12 @@ class DataProvider extends AbstractDataProvider
      * @var UsageOptions
      */
     protected $usageOptions;
-    
+
+    /**
+     * @var PoolInterface
+     */
+    protected $pool;
+
     /**
      * Construct
      *
@@ -49,6 +61,7 @@ class DataProvider extends AbstractDataProvider
      * @param FilterPool $filterPool
      * @param RequestInterface $request
      * @param UsageOptions $usageOptions
+     * @param PoolInterface $pool
      * @param array $meta
      * @param array $data
      */
@@ -60,15 +73,17 @@ class DataProvider extends AbstractDataProvider
         FilterPool $filterPool,
         RequestInterface $request,
         UsageOptions $usageOptions,
+        PoolInterface $pool,
         array $meta = [],
         array $data = []
     ) {
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->collection = $collection;
         $this->filterPool = $filterPool;
-        
+
         $this->request = $request;
         $this->usageOptions = $usageOptions;
+        $this->pool = $pool;
     }
 
     /**
@@ -90,17 +105,23 @@ class DataProvider extends AbstractDataProvider
                 $this->loadedData[$item->getId()] = $item->getData();
                 break;
             }
-            
+
             $this->loadedData = $this->usageOptions->modifydata($this->loadedData);
         }
         return $this->loadedData;
     }
 
-    public function getMeta() 
+    /**
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getMeta()
     {
         $meta = parent::getMeta();
-        
+        /** @var ModifierInterface $modifier */
+        foreach ($this->pool->getModifiersInstances() as $modifier) {
+            $meta = $modifier->modifyMeta($meta);
+        }
         return $this->usageOptions->modifyMeta($meta);
     }
-
 }

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Helper
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Controller\Adminhtml\Usage\Initialization;
 
@@ -10,9 +16,6 @@ class Helper
      * @var \Magento\Framework\App\RequestInterface
      */
     protected $request;
-
-
-
 
     /**
      * @var CustomOptionFactory
@@ -30,7 +33,7 @@ class Helper
         \DevStone\UsageCalculator\Api\Data\UsageCustomOptionInterfaceFactory $customOptionFactory
     ) {
         $this->request = $request;
-        $this->customOptionFactory = $customOptionFactory;        
+        $this->customOptionFactory = $customOptionFactory;
     }
 
     /**
@@ -41,10 +44,10 @@ class Helper
      * @return \DevStone\UsageCalculator\Model\Usage
      */
     public function initializeFromData(
-            \DevStone\UsageCalculator\Model\Usage $usage, 
-            array $usageData
+        \DevStone\UsageCalculator\Model\Usage $usage,
+        array $usageData
     ) {
-        
+
 
 //        $usageData = $this->normalize($usageData);
 
@@ -54,7 +57,7 @@ class Helper
         } else {
             $usageOptions = [];
         }
-        
+
 
         $usage = $this->fillProductOptions($usage, $usageOptions);
 
@@ -71,7 +74,7 @@ class Helper
      * @param \DevStone\UsageCalculator\Model\Usage $usage
      * @return \DevStone\UsageCalculator\Model\Usage
      */
-    public function initialize( \DevStone\UsageCalculator\Model\Usage $usage)
+    public function initialize(\DevStone\UsageCalculator\Model\Usage $usage)
     {
         $usageData = $this->request->getPost('usage', []);
         return $this->initializeFromData($usage, $usageData);
@@ -156,7 +159,7 @@ class Helper
                     if ('title' == $fieldName) {
                         $option['is_delete_store_title'] = 1;
                     }
-					if ('help' == $fieldName) {
+                    if ('help' == $fieldName) {
                         $option['is_delete_store_help'] = 1;
                     }
                 }
@@ -175,7 +178,7 @@ class Helper
      * @return \DevStone\UsageCalculator\Model\Usage
      */
     private function fillProductOptions(
-        \DevStone\UsageCalculator\Model\Usage $usage, 
+        \DevStone\UsageCalculator\Model\Usage $usage,
         array $usageOptions
     ) {
         if ($usage->getOptionsReadonly()) {

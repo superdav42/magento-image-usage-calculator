@@ -1,4 +1,11 @@
 <?php
+/**
+ * Options
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
+
 
 namespace DevStone\UsageCalculator\Block\Usage\View;
 
@@ -113,25 +120,25 @@ class Options extends \Magento\Framework\View\Element\Template
         $this->_product = $product;
         return $this;
     }
-    
+
     public function getUsage()
     {
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $list = $this->usageRepository->getList($searchCriteria)->getItems();
         return current($list);
     }
-    
+
     public function getCategories()
     {
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $list = $this->usageRepository->getList($searchCriteria)->getItems();
         return current($list);
     }
-    
+
     public function getCategoriesSelectHtml()
     {
         $this->getCategories();
-        
+
         $extraParams = '';
         $select = $this->getLayout()->createBlock(
             \Magento\Framework\View\Element\Html\Select::class
@@ -141,14 +148,14 @@ class Options extends \Magento\Framework\View\Element\Template
                 'class' => 'required product-custom-option admin__control-select'
             ]
         );
-        
+
         $select->setName('usage_category')->addOption('', __('-- Please Select --'));
-        
+
         foreach ($this->getCategories() as $category) {
 
             $select->addOption(
                 $category->getId(),
-                $category->getName() 
+                $category->getName()
             );
         }
         if (!$this->getSkipJsReloadPrice()) {
@@ -275,7 +282,7 @@ class Options extends \Magento\Framework\View\Element\Template
         //pass the return array encapsulated in an object for the other modules to be able to alter it eg: weee
         $this->_eventManager->dispatch('catalog_product_option_price_configuration_after', ['configObj' => $configObj]);
 
-        $config=$configObj->getConfig();
+        $config = $configObj->getConfig();
 
         return $this->_jsonEncoder->encode($config);
     }

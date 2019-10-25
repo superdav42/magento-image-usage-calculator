@@ -60,7 +60,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option', 'option_id');
+        $this->_init(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option', 'option_id');
     }
 
     /**
@@ -73,7 +73,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $this->_saveValuePrices($object);
         $this->_saveValueTitles($object);
-		$this->_saveValueHelps($object);
+        $this->_saveValueHelps($object);
 
         return parent::_afterSave($object);
     }
@@ -88,7 +88,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _saveValuePrices(\Magento\Framework\Model\AbstractModel $object)
     {
-        $priceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_price');
+        $priceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_price');
         $connection = $this->getConnection();
 
         /*
@@ -229,7 +229,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected function _saveValueTitles(\Magento\Framework\Model\AbstractModel $object)
     {
         $connection = $this->getConnection();
-        $titleTableName = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_title');
+        $titleTableName = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_title');
         foreach ([\Magento\Store\Model\Store::DEFAULT_STORE_ID, $object->getStoreId()] as $storeId) {
             $existInCurrentStore = $this->getColFromOptionTable($titleTableName, (int)$object->getId(), (int)$storeId);
             $existInDefaultStore = (int)$storeId == \Magento\Store\Model\Store::DEFAULT_STORE_ID ?
@@ -296,7 +296,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             }
         }
     }
-	
+
     /**
      * Save titles
      *
@@ -307,7 +307,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected function _saveValueHelps(\Magento\Framework\Model\AbstractModel $object)
     {
         $connection = $this->getConnection();
-        $titleTableName = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_help');
+        $titleTableName = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_help');
         foreach ([\Magento\Store\Model\Store::DEFAULT_STORE_ID, $object->getStoreId()] as $storeId) {
             $existInCurrentStore = $this->getColFromOptionTable($titleTableName, (int)$object->getId(), (int)$storeId);
             $existInDefaultStore = (int)$storeId == \Magento\Store\Model\Store::DEFAULT_STORE_ID ?
@@ -408,7 +408,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     public function deletePrices($optionId)
     {
         $this->getConnection()->delete(
-            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_price'),
+            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_price'),
             ['option_id = ?' => $optionId]
         );
 
@@ -424,14 +424,14 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     public function deleteTitles($optionId)
     {
         $this->getConnection()->delete(
-            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_title'),
+            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_title'),
             ['option_id = ?' => $optionId]
         );
 
         return $this;
     }
-	
-	/**
+
+    /**
      * Delete helps
      *
      * @param int $optionId
@@ -440,7 +440,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     public function deleteHelps($optionId)
     {
         $this->getConnection()->delete(
-            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_help'),
+            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_help'),
             ['option_id = ?' => $optionId]
         );
 
@@ -464,7 +464,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
         // read and prepare original product options
         $select = $connection->select()->from(
-            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option')
+            $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option')
         )->where(
             'product_id = ?',
             $oldProductId
@@ -487,7 +487,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         // copy options prefs
         foreach ($optionsCond as $oldOptionId => $newOptionId) {
             // title
-            $table = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_title');
+            $table = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_title');
 
             $select = $this->getConnection()->select()->from(
                 $table,
@@ -504,9 +504,9 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 \Magento\Framework\DB\Adapter\AdapterInterface::INSERT_ON_DUPLICATE
             );
             $connection->query($insertSelect);
-			
-			// help
-            $table = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_help');
+
+            // help
+            $table = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_help');
 
             $select = $this->getConnection()->select()->from(
                 $table,
@@ -525,7 +525,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             $connection->query($insertSelect);
 
             // price
-            $table = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_price');
+            $table = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_price');
 
             $select = $connection->select()->from(
                 $table,

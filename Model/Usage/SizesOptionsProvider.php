@@ -1,4 +1,5 @@
 <?php
+
 namespace DevStone\UsageCalculator\Model\Usage;
 
 class SizesOptionsProvider implements \Magento\Framework\Data\OptionSourceInterface
@@ -41,13 +42,13 @@ class SizesOptionsProvider implements \Magento\Framework\Data\OptionSourceInterf
         $sizes = $this->sizeRepository->getList(
             $this->searchCriteriaBuilder->create()
         )->getItems();
-        
-        $optionArray = $this->objectConverter->toOptionArray($sizes, 'entity_id', 'code');
-		
-		if ($placeholder) {
-			array_unshift($optionArray, ['value' => '', 'label' => $placeholder]);
-		}
 
-		return $optionArray;
+        $optionArray = $this->objectConverter->toOptionArray($sizes, 'entity_id', 'code');
+
+        if ($placeholder) {
+            array_unshift($optionArray, ['value' => '', 'label' => $placeholder]);
+        }
+
+        return $optionArray;
     }
 }

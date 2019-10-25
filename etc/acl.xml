@@ -13,6 +13,13 @@
                 <resource id="DevStone_UsageCalculator::usage" title="Usage" sortOrder="10" />
                 <resource id="DevStone_UsageCalculator::size" title="Size" sortOrder="11" />
                 <resource id="DevStone_UsageCalculator::category" title="Category" sortOrder="12" />
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="DevStone_UsageCalculator::usage_cal" title="Calculator" />
+                        </resource>
+                    </resource>
+                </resource>
             </resource>
         </resources>
     </acl>

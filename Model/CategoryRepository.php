@@ -17,22 +17,48 @@ use Magento\Framework\Api\DataObjectHelper;
 use DevStone\UsageCalculator\Api\Data\CategoryInterfaceFactory;
 use DevStone\UsageCalculator\Api\Data\CategoryInterface;
 
+/**
+ * Class CategoryRepository
+ * @package DevStone\UsageCalculator\Model
+ */
 class CategoryRepository implements CategoryRepositoryInterface
 {
 
+    /**
+     * @var DataObjectProcessor
+     */
     protected $dataObjectProcessor;
 
+    /**
+     * @var CategoryFactory
+     */
     protected $categoryFactory;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var CategoryCollectionFactory
+     */
     protected $categoryCollectionFactory;
 
+    /**
+     * @var CategorySearchResultsInterfaceFactory
+     */
     protected $searchResultsFactory;
 
+    /**
+     * @var ResourceCategory
+     */
     protected $resource;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
+
     /**
      * @param ResourceCategory $resource
      * @param CategoryFactory $categoryFactory
@@ -102,7 +128,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->categoryCollectionFactory->create();
-        
+
         foreach ($criteria->getFilterGroups() as $filterGroup) {
             foreach ($filterGroup->getFilters() as $filter) {
                 if ($filter->getField() === 'store_id') {
@@ -113,7 +139,7 @@ class CategoryRepository implements CategoryRepositoryInterface
                 $collection->addFieldToFilter($filter->getField(), [$condition => $filter->getValue()]);
             }
         }
-        
+
         $sortOrders = $criteria->getSortOrders();
         if ($sortOrders) {
             /** @var SortOrder $sortOrder */
@@ -126,13 +152,13 @@ class CategoryRepository implements CategoryRepositoryInterface
         }
         $collection->setCurPage($criteria->getCurrentPage());
         $collection->setPageSize($criteria->getPageSize());
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
         $searchResults->setTotalCount($collection->getSize());
         $searchResults->setItems($collection->getItems());
         return $searchResults;
-        
+
 //        
 //        $searchResults = $this->searchResultsFactory->create();
 //        $searchResults->setSearchCriteria($searchCriteria);
@@ -167,7 +193,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 //        }
 //        $searchResults->setItems($customers);
 //        return $searchResults;
-        
+
     }
 
     /**

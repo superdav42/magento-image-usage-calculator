@@ -1,11 +1,11 @@
 <?php
-
 /**
  * CategoryActions.php
  *
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;

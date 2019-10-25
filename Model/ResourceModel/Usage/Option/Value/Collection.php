@@ -44,8 +44,12 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     public function addTitlesToResult($storeId)
     {
         $connection = $this->getConnection();
-        $optionTypePriceTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_price');
-        $optionTitleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_title');
+        $optionTypePriceTable = $this->getTable(
+            \DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_price'
+        );
+        $optionTitleTable = $this->getTable(
+            \DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_title'
+        );
         $priceExpr = $connection->getCheckSql(
             'store_value_price.price IS NULL',
             'default_value_price.price',
@@ -68,9 +72,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             $connection->quoteInto('store_value_price.store_id = ?', $storeId);
 
         $joinExprTitle = 'store_value_title.option_type_id = main_table.option_type_id AND ' . $connection->quoteInto(
-            'store_value_title.store_id = ?',
-            $storeId
-        );
+                'store_value_title.store_id = ?',
+                $storeId
+            );
 
         $this->getSelect()->joinLeft(
             ['default_value_price' => $optionTypePriceTable],
@@ -109,7 +113,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function addTitleToResult($storeId)
     {
-        $optionTitleTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_title');
+        $optionTitleTable = $this->getTable(
+            \DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_title'
+        );
         $titleExpr = $this->getConnection()->getCheckSql(
             'store_value_title.title IS NULL',
             'default_value_title.title',
@@ -142,7 +148,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function addPriceToResult($storeId)
     {
-        $optionTypeTable = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE.'_option_type_price');
+        $optionTypeTable = $this->getTable(
+            \DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_price'
+        );
         $priceExpr = $this->getConnection()->getCheckSql(
             'store_value_price.price IS NULL',
             'default_value_price.price',

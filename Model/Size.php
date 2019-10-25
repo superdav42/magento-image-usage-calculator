@@ -30,7 +30,7 @@ class Size extends AbstractModel implements IdentityInterface
      * @var string
      */
     protected $_eventPrefix = 'devstone_usagecalculator_size';
-    
+
     protected $_idFieldName = 'entity_id';
 
     /**

@@ -5,6 +5,7 @@
  * @copyright Copyright © 2018 DevStone. All rights reserved.
  * @author    david@nnucomputerwhiz.com
  */
+
 namespace DevStone\UsageCalculator\Block\Adminhtml\Size\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Usage.php
  *
@@ -102,7 +101,7 @@ class Usage extends AbstractEntity
         }
 
         $entityIdField = $attribute->getBackend()->getEntityIdField();
-        $storeId = $object->getStoreId()?:Store::DEFAULT_STORE_ID;
+        $storeId = $object->getStoreId() ?: Store::DEFAULT_STORE_ID;
         $data = [
             $entityIdField => $object->getId(),
             'attribute_id' => $attribute->getId(),
