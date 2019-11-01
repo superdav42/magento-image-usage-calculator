@@ -54,8 +54,11 @@ define([
                 $('#usage-button').toggle();
                 if ( self.hidden ) {
                     self.element.find(self.options.categorySelectElement).prop('disabled', false).val('').trigger('change');
+                    location.hash = "#license";
                 } else {
                     $('.usages-container-inner').find('select, input, textarea').prop('disabled', true);
+                    $(self.options.priceHolderSelector + ', .product-options-bottom').hide();
+                    location.hash = "";
                 }
 
                 self.hidden = ! self.hidden;
@@ -77,6 +80,10 @@ define([
             });
 
             $(self.options.priceHolderSelector + ', .product-options-bottom').hide();
+
+            if ('#license' === location.hash) {
+                $('#usage-button, #usage-button-close').click();
+            }
         },
 
         /**
