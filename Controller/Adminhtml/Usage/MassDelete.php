@@ -33,21 +33,30 @@ class MassDelete extends Action
     protected $usageCollectionFactory;
 
     /**
+     * @var \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory
+     */
+    protected $maxUsageCollectionFactory;
+
+    /**
      * MassDelete constructor.
      * @param Context $context
      * @param Filter $filter
      * @param Collection $objectCollection
      * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
+     * @param \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory $maxUsageCollectionFactory
      */
     public function __construct(
         Context $context,
         Filter $filter,
         Collection $objectCollection,
-        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
+        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory,
+        \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory $maxUsageCollectionFactory
+
     ) {
         $this->filter = $filter;
         $this->objectCollection = $objectCollection;
         $this->usageCollectionFactory = $collectionFactory;
+        $this->maxUsageCollectionFactory = $maxUsageCollectionFactory;
         parent::__construct($context);
     }
 
@@ -59,6 +68,7 @@ class MassDelete extends Action
      */
     public function execute()
     {
+        $this->deleteMaxUsage();
         $collection = $this->filter->getCollection($this->objectCollection);
         $collectionSize = $collection->getSize();
         $collection->walk('delete');
@@ -82,4 +92,17 @@ class MassDelete extends Action
             $usage->delete();
         }
     }
+
+    /**
+     *
+     */
+    public function deleteMaxUsage(){
+        $collection = $this->maxUsageCollectionFactory->create();
+        $selectedUsage = $this->getRequest()->getParam('selected');
+        $collection->addFieldToFilter('usage_id', ['in' => $selectedUsage]);
+        foreach ($collection as $usage) {
+            $usage->delete();
+        }
+    }
+
 }

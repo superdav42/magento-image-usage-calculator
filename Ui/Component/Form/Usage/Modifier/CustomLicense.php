@@ -8,6 +8,8 @@ namespace DevStone\UsageCalculator\Ui\Component\Form\Usage\Modifier;
  */
 class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterface
 {
+    const FIELD_NAME = 'max_usage';
+
     /**
      * @var \Magento\Framework\App\RequestInterface
      */
@@ -49,13 +51,69 @@ class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterfa
     public function modifyMeta(array $meta)
     {
         $customLicense = $this->request->getParam('custom_license');
+        $maxUsages = [];
         if (isset($customLicense) && $customLicense) {
-            $meta['main_fieldset']['children']['category_id']['arguments']['data']['config']['options'] =
-                $this->catagoriesOptionsProvider->customLicenseOption();
+            $meta = array_replace_recursive(
+                $meta,
+                [
+                    'main_fieldset' => [
+                        'children' => [
+                            'category_id' => [
+                                'arguments' => [
+                                    'data' => [
+                                        'config' => [
+                                            'options' => $this->catagoriesOptionsProvider->customLicenseOption()
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            'max_usage' => $this->getMaxUsage()
+                        ]
+                    ]
+                ]
+            );
+
         } else {
-            $meta['main_fieldset']['children']['category_id']['arguments']['data']['config']['options'] =
-                $this->catagoriesOptionsProvider->allOptionsExcludingCustomLicense();
+            $meta = array_replace_recursive(
+                $meta,
+                [
+                    'main_fieldset' => [
+                        'children' => [
+                            'category_id' => [
+                                'arguments' => [
+                                    'data' => [
+                                        'config' => [
+                                            'options' => $this->catagoriesOptionsProvider->allOptionsExcludingCustomLicense()
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            );
         }
         return $meta;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getMaxUsage()
+    {
+        return [
+            'arguments' => [
+                'data' => [
+                    'config' => [
+                        'label' => __('Max Usage'),
+                        'formElement' => \Magento\Ui\Component\Form\Field::NAME,
+                        'componentType' => \Magento\Ui\Component\Form\Element\Input::NAME,
+                        'dataScope' => static::FIELD_NAME,
+                        'dataType' => \Magento\Ui\Component\Form\Element\DataType\Number::NAME,
+                        'sortOrder' => 50,
+                    ],
+                ],
+            ],
+        ];
     }
 }

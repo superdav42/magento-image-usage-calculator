@@ -27,17 +27,25 @@ class Delete extends Action
     protected $usageCollectionFactory;
 
     /**
+     * @var \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory
+     */
+    protected $maxUsageCollectionFactory;
+
+    /**
      * Delete constructor.
      * @param Context $context
      * @param UsageFactory $objectFactory
      * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
+     * @param \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory $maxUsageCollectionFactory
      */
     public function __construct(
         Context $context,
         UsageFactory $objectFactory,
-        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
+        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory,
+        \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory $maxUsageCollectionFactory
     ) {
         $this->usageCollectionFactory = $collectionFactory;
+        $this->maxUsageCollectionFactory = $maxUsageCollectionFactory;
         $this->objectFactory = $objectFactory;
         parent::__construct($context);
     }
@@ -63,6 +71,7 @@ class Delete extends Action
         try {
             $objectInstance = $this->objectFactory->create()->load($id);
             if ($objectInstance->getId()) {
+                $this->deleteMaxUsage();
                 $objectInstance->delete();
                 $this->messageManager->addSuccessMessage(__('You deleted the record.'));
             } else {
@@ -82,6 +91,19 @@ class Delete extends Action
     {
         $collection = $this->usageCollectionFactory->create();
 
+        $id = $this->getRequest()->getParam('entity_id', null);
+        $collection->addFieldToFilter('usage_id', ['eq' => $id]);
+
+        foreach ($collection as $usage) {
+            $usage->delete();
+        }
+    }
+
+    /**
+     *
+     */
+    public function deleteMaxUsage(){
+        $collection = $this->maxUsageCollectionFactory->create();
         $id = $this->getRequest()->getParam('entity_id', null);
         $collection->addFieldToFilter('usage_id', ['eq' => $id]);
 

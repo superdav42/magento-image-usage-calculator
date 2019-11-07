@@ -33,6 +33,19 @@
                 <?= $block->getCategoriesSelectHtml() ?>
             </div>
         </div>
+        <?php if(count($block->getPreviousCategories())): ?>
+            <div class="category-container field" style="display:none;" id="category_container_previous">
+                <label class="label" for="usage_previous_usages">
+                    <span><?= __('Previous Usage') ?>:</span> <a href="#" data-less="<?= __('less info') ?>" tabindex="-1"><?= __('more info') ?></a>
+                </label>
+                <div class="help-text">
+                    <?= __('Choose a previousl usage to use it for available usages.') ?>
+                </div>
+                <div class="control">
+                    <?= $block->getPreviousSelectHtml() ?>
+                </div>
+            </div>
+        <?php endif; ?>
         <?php foreach ($block->getCategories() as $category):  ?>
             <?php $usages = $block->getUsages($category) ?>
 

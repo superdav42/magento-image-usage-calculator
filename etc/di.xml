@@ -195,4 +195,7 @@
             <argument name="pool" xsi:type="object">DevStone\UsageCalculator\Ui\Component\Form\Usage\Modifier\Pool</argument>
         </arguments>
     </type>
+    <type name="\Magento\Checkout\Controller\Cart\Add">
+        <plugin name="check_max_usage" type="DevStone\UsageCalculator\Plugin\Controller\Cart\Add" sortOrder="10" disabled="false" />
+    </type>
 </config>
