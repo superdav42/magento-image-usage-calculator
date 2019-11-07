@@ -575,9 +575,11 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                     $value .= $this->getCategoryName($data['usage_category']) . ' - ';
                     $id .= $data['usage_id'][$data['usage_category']] . ' - ';
                     $value .= $this->getUsageName($data['usage_id'][$data['usage_category']]) . ' - ';
-                    foreach ($data['options'] as $key => $option) {
-                        $id .= $key . ':' . $option . ' - ';
-                        $value .= $this->getOptionName($option) . ' - ';
+                    if (isset($data['options'])) {
+                        foreach ($data['options'] as $key => $option) {
+                            $id .= $key . ':' . $option . ' - ';
+                            $value .= $this->getOptionName($option) . ' - ';
+                        }
                     }
                 }
             }
@@ -617,9 +619,11 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                         $value .= $this->getCategoryName($data['usage_category']) . ' - ';
                         $id .= $data['usage_id'][$data['usage_category']] . ' - ';
                         $value .= $this->getUsageName($data['usage_id'][$data['usage_category']]) . ' - ';
-                        foreach ($data['options'] as $key => $option) {
-                            $id .= $key . ':' . $option . ' - ';
-                            $value .= $this->getOptionName($option) . ' - ';
+                        if (isset($data['options'])) {
+                            foreach ($data['options'] as $key => $option) {
+                                $id .= $key . ':' . $option . ' - ';
+                                $value .= $this->getOptionName($option) . ' - ';
+                            }
                         }
                         $previousCategoriesByItems['id'] = rtrim(ltrim($id, ' - '), ' - ');
                         $previousCategoriesByItems['name'] = rtrim(ltrim($value, ' - '), ' - ');

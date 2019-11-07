@@ -1,4 +1,10 @@
 <?php
+/**
+ * Add
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Plugin\Controller\Cart;
 
@@ -12,10 +18,12 @@ class Add
      * @var \Magento\Customer\Model\Session
      */
     private $customerSession;
+
     /**
      * @var \Magento\Framework\App\RequestInterface
      */
     private $request;
+
     /**
      * @var \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory
      */

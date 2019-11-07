@@ -24,11 +24,12 @@ define([
                 self.element.find(".usage-container").hide();
                 self.element.find("#category_container_" + $(this).val()).show()
                     .find('.usage-select-box').val('').prop('disabled', false);
+                self.__addHashToURL();
             });
 
             $('#category_container_previous').change(function () {
-                var values = jQuery('#usage_previous_usages').val().split(' - ');
-                var elements = jQuery('#downloadable-usages-list .usage-container').find('select, input, textarea');
+                var values = $('#usage_previous_usages').val().split(' - ');
+                var elements = $('#downloadable-usages-list .usage-container').find('select, input, textarea');
 
                 // Setting first two values (category and its usage)
                 $('#usage_category').val(values[0]);
@@ -44,6 +45,7 @@ define([
                 });
                 $(this).hide().find('.usage-select-box').prop('disabled', true);
                 self._reloadPrice();
+                self.__addHashToURL();
             });
 
             this.element.find('select, input, textarea').on('change', this._reloadPrice);
@@ -62,6 +64,7 @@ define([
             this.element.find(".usage-select-box").on('change', function () {
                 self.element.find(".usage-container").hide().find('select, input, textarea').prop('disabled', true);
                 self.element.find("#usage_container_" + $(this).val()).show().find('select, input, textarea').prop('disabled', false);
+                self.__addHashToURL();
             });
 
             $('.usages-container-inner').hide().find('select, input, textarea').prop('disabled', true);
@@ -74,6 +77,7 @@ define([
                 $('#usage-button').toggle();
                 if (self.hidden) {
                     self.element.find(self.options.categorySelectElement).prop('disabled', false).val('').trigger('change');
+                    $('#previously_usage_category').prop('disabled', false);
                     location.hash = "#license";
                 } else {
                     $('.usages-container-inner').find('select, input, textarea').prop('disabled', true);
@@ -101,9 +105,22 @@ define([
 
             $(self.options.priceHolderSelector + ', .product-options-bottom').hide();
 
-            if ('#license' === location.hash) {
-                $('#usage-button, #usage-button-close').click();
+            $('.usage-container select').on('change', function () {
+                self.__addHashToURL();
+            });
+
+            $('.usage-container input').change(function () {
+                self.__addHashToURL();
+            });
+
+            if (location.hash.substr(0, 8) === '#license') {
+                var properties = location.hash.substr(9, location.hash.length);
+                $('#usage-button').click();
+                if (properties.length) {
+                    self._loadProperties(properties);
+                }
             }
+
         },
 
         /**
@@ -192,6 +209,34 @@ define([
                 $('#usages-advice-container').html(terms);
                 $(self.options.priceHolderSelector + ', .product-options-bottom').show();
             }
+        },
+
+        /**
+         * Load all the options according to url
+         * @param properties
+         * @private
+         */
+        _loadProperties: function (properties) {
+            var decodeProperties = decodeURI(properties).split('&');
+            decodeProperties.forEach(function (option) {
+                var kvp = option.split('=');
+                kvp[0] = kvp[0].replace('[', '\\[').replace(']', '\\]');
+                self.element.find('[name=' + kvp[0] + ']').val(kvp[1]).show().prop('disabled', false).change();
+                self.element.find('[name=' + kvp[0] + ']').closest('.field').show();
+                self.element.find('[name=' + kvp[0] + ']').closest('.usage-container').show();
+            });
+            self._reloadPrice();
+        },
+
+        __addHashToURL: function () {
+            var hashVal = '#license';
+            $('#product_addtocart_form input, #product_addtocart_form select').each(function (index) {
+                var isDisabled = $(this).is(':disabled') || $(this).attr('type') == 'hidden' || !$(this).is(':visible') || $(this).val() == null || !$(this).val();
+                if (!isDisabled) {
+                    hashVal += '&' + $(this).attr('name') + '=' + $(this).val();
+                }
+            });
+            location.hash = encodeURI(hashVal);
         }
     });
 
