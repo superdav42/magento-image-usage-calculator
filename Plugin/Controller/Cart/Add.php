@@ -1,10 +1,4 @@
 <?php
-/**
- * Add
- *
- * @copyright Copyright © 2018 DevStone. All rights reserved.
- * @author    david@nnucomputerwhiz.com
- */
 
 namespace DevStone\UsageCalculator\Plugin\Controller\Cart;
 
@@ -18,12 +12,10 @@ class Add
      * @var \Magento\Customer\Model\Session
      */
     private $customerSession;
-
     /**
      * @var \Magento\Framework\App\RequestInterface
      */
     private $request;
-
     /**
      * @var \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory
      */
@@ -107,19 +99,15 @@ class Add
                     $maxUsage = $maxUsageColleciton->getFirstItem()['max_usage'];
                     if ($maxUsage) {
                         $totalUsageCountByOrder = $this->getUsageCountByOrders($usageId);
-                        if ($totalUsageCountByOrder < $maxUsage) {
-                            $totalUsageCountByQuote = $this->getUsageCountByQuote($usageId);
-                            if ($totalUsageCountByQuote < $maxUsage) {
-                                return $proceed();
-                            } else {
-                                $this->messageInterface->addErrorMessage(__('We can\'t add this item to your shopping cart right now Becuase you have reached you\'r  max usage limit'));
-                                return $this->resultRedirectFactory->create()->setPath('*/*/');
-
-                            }
+                        $totalUsageCountByQuote = $this->getUsageCountByQuote($usageId);
+                        if (($totalUsageCountByOrder + $totalUsageCountByQuote) < $maxUsage) {
+                            return $proceed();
                         } else {
-                            $this->messageInterface->addErrorMessage(__('We can\'t add this item to your shopping cart right now Becuase you have reached you\'r  max usage limit'));
+                            $this->messageInterface->addErrorMessage(
+                                __('You cannot add this item to your cart because this 
+                                custom license can only be used %1 times', $maxUsage)
+                            );
                             return $this->resultRedirectFactory->create()->setPath('*/*/');
-
                         }
                     }
                 }

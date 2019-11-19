@@ -560,35 +560,14 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     {
         $previousCategories = [];
         $items = $this->checkoutSession->getQuote()->getAllVisibleItems();
-
         foreach ($items as $item) {
             /**
              * @var \Magento\Quote\Model\Quote\Item $item
              */
-            $id = '';
-            $value = '';
-            $previousCategoriesByItems = [];
             $getBuyRequest = $item->getBuyRequest();
-            foreach ($getBuyRequest as $data) {
-                if (isset($data['usage_category'])) {
-                    $id .= $data['usage_category'] . ' - ';
-                    $value .= $this->getCategoryName($data['usage_category']) . ' - ';
-                    $id .= $data['usage_id'][$data['usage_category']] . ' - ';
-                    $value .= $this->getUsageName($data['usage_id'][$data['usage_category']]) . ' - ';
-                    if (isset($data['options'])) {
-                        foreach ($data['options'] as $key => $option) {
-                            $id .= $key . ':' . $option . ' - ';
-                            $value .= $this->getOptionName($option) . ' - ';
-                        }
-                    }
-                }
-            }
-            if (!empty($id) && !empty($value)) {
-                $previousCategoriesByItems['id'] = rtrim(ltrim($id, ' - '), ' - ');
-                $previousCategoriesByItems['name'] = rtrim(ltrim($value, ' - '), ' - ');
-                if (!in_array($previousCategoriesByItems, $previousCategories)) {
-                    $previousCategories[] = $previousCategoriesByItems;
-                }
+            $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
+            if (count($previousCategoriesByItems) && !in_array($previousCategoriesByItems, $previousCategories)) {
+                $previousCategories[] = $previousCategoriesByItems;
             }
             if (count($previousCategories) >= 10) {
                 break;
@@ -598,47 +577,52 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
             $ordersCollection = $this->orderCollectionFactory->create()
                 ->addFieldToSelect('*')
                 ->addFieldToFilter('customer_id', $this->getCustomerId())
+                ->setPageSize(10 - count($previousCategories))
                 ->setOrder('created_at', 'desc');
             /**
              * @var \Magento\Sales\Model\Order $order
              * @var \Magento\Sales\Api\Data\OrderItemInterface $item
              */
             foreach ($ordersCollection as $order) {
-
                 $items = $order->getAllVisibleItems();
                 foreach ($items as $item) {
                     /**
                      * @var \Magento\Quote\Model\Quote\Item $item
                      */
-                    $id = '';
-                    $value = '';
-                    $previousCategoriesByItems = [];
-                    if (isset($item->getProductOptions()['info_buyRequest']['usage_category'])) {
-                        $data = $item->getProductOptions()['info_buyRequest'];
-                        $id .= $data['usage_category'] . ' - ';
-                        $value .= $this->getCategoryName($data['usage_category']) . ' - ';
-                        $id .= $data['usage_id'][$data['usage_category']] . ' - ';
-                        $value .= $this->getUsageName($data['usage_id'][$data['usage_category']]) . ' - ';
-                        if (isset($data['options'])) {
-                            foreach ($data['options'] as $key => $option) {
-                                $id .= $key . ':' . $option . ' - ';
-                                $value .= $this->getOptionName($option) . ' - ';
-                            }
-                        }
-                        $previousCategoriesByItems['id'] = rtrim(ltrim($id, ' - '), ' - ');
-                        $previousCategoriesByItems['name'] = rtrim(ltrim($value, ' - '), ' - ');
-
-                        if (!in_array($previousCategoriesByItems, $previousCategories)) {
-                            $previousCategories[] = $previousCategoriesByItems;
-                        }
-                        if (count($previousCategories) >= 10) {
-                            break;
-                        }
+                    $getBuyRequest = $item->getProductOptions()['info_buyRequest'];
+                    $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
+                    if (count($previousCategoriesByItems) && !in_array($previousCategoriesByItems, $previousCategories)) {
+                        $previousCategories[] = $previousCategoriesByItems;
+                    }
+                    if (count($previousCategories) >= 10) {
+                        break;
                     }
                 }
             }
         }
         return $previousCategories;
+    }
+
+    public function getPreviousCategoriesByItemsFromBuyRequest($buyRequest)
+    {
+        $id = '';
+        $value = '';
+        $previousCategoriesByItems = [];
+        if (isset($buyRequest['usage_category'])) {
+            $id .= $buyRequest['usage_category'] . ' - ';
+            $value .= $this->getCategoryName($buyRequest['usage_category']) . ' - ';
+            $id .= $buyRequest['usage_id'][$buyRequest['usage_category']] . ' - ';
+            $value .= $this->getUsageName($buyRequest['usage_id'][$buyRequest['usage_category']]) . ' - ';
+            if (isset($buyRequest['options'])) {
+                foreach ($buyRequest['options'] as $key => $option) {
+                    $id .= $key . ':' . $option . ' - ';
+                    $value .= $this->getOptionName($option) . ' - ';
+                }
+            }
+            $previousCategoriesByItems['id'] = trim($id, ' - ');
+            $previousCategoriesByItems['name'] = trim($value, ' - ');
+        }
+        return $previousCategoriesByItems;
     }
 
     /**
