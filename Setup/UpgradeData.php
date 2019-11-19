@@ -6,6 +6,10 @@ use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\UpgradeDataInterface;
 
+/**
+ * Class UpgradeData
+ * @package DevStone\UsageCalculator\Setup
+ */
 class UpgradeData implements UpgradeDataInterface
 {
 
@@ -16,6 +20,9 @@ class UpgradeData implements UpgradeDataInterface
      */
     protected $usageSetupFactory;
 
+    /**
+     * @var \DevStone\UsageCalculator\Model\CategoryFactory
+     */
     protected $categoryFactory;
 
     /**
@@ -31,6 +38,10 @@ class UpgradeData implements UpgradeDataInterface
         $this->categoryFactory = $categoryFactory;
     }
 
+    /**
+     * @param ModuleDataSetupInterface $setup
+     * @param ModuleContextInterface $context
+     */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
         /** @var UsageSetup $usageSetup */

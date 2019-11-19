@@ -12,12 +12,14 @@ class Add
      * @var \Magento\Customer\Model\Session
      */
     private $customerSession;
+
     /**
      * @var \Magento\Framework\App\RequestInterface
      */
     private $request;
+
     /**
-     * @var \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory
+     * @var \DevStone\UsageCalculator\Model\ResourceModel\Usage\CollectionFactory
      */
     private $collectionFactory;
 
@@ -55,7 +57,7 @@ class Add
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $config
      * @param \Magento\Framework\Message\ManagerInterface $messageInterface
      * @param \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory
-     * @param \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory $collectionFactory
+     * @param \DevStone\UsageCalculator\Model\ResourceModel\Usage\CollectionFactory $collectionFactory
      */
     public function __construct(
         \Magento\Customer\Model\Session $session,
@@ -65,7 +67,7 @@ class Add
         \Magento\Framework\App\Config\ScopeConfigInterface $config,
         \Magento\Framework\Message\ManagerInterface $messageInterface,
         \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory,
-        \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\CollectionFactory $collectionFactory
+        \DevStone\UsageCalculator\Model\ResourceModel\Usage\CollectionFactory $collectionFactory
     ) {
         $this->request = $request;
         $this->customerSession = $session;
@@ -90,7 +92,7 @@ class Add
         } elseif (array_key_exists($this->getCustomLicenseId(), $usageId)) {
             if ($this->customerSession->isLoggedIn()) {
                 /**
-                 * @var \DevStone\UsageCalculator\Model\ResourceModel\MaxUsage\Collection $maxUsageColleciton
+                 * @var \DevStone\UsageCalculator\Model\ResourceModel\Usage\Collection $maxUsageColleciton
                  */
                 $maxUsageColleciton = $this->collectionFactory->create()
                     ->addFieldToSelect('max_usage')

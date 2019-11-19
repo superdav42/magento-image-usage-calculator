@@ -75,6 +75,14 @@ class UsageSetup extends EavSetup
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                 'group' => 'General',
             ],
+            'max_usage' => [
+                'type' => 'int',
+                'label' => 'Max Usage',
+                'input' => 'text',
+                'sort_order' => 1,
+                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                'group' => 'General Information',
+            ]
         ];
     }
 

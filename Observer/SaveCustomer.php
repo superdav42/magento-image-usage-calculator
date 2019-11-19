@@ -23,11 +23,6 @@ class SaveCustomer implements \Magento\Framework\Event\ObserverInterface
     protected $usageCustomerCollectionFactory;
 
     /**
-     * @var \DevStone\UsageCalculator\Model\MaxUsageFactory
-     */
-    protected $maxUsageFactory;
-
-    /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $scopeConfig;
@@ -37,17 +32,14 @@ class SaveCustomer implements \Magento\Framework\Event\ObserverInterface
      * @param Config\ScopeConfigInterface $config
      * @param \DevStone\UsageCalculator\Model\UsageCustomerFactory $usageCustomerFactory
      * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
-     * @param \DevStone\UsageCalculator\Model\MaxUsageFactory $maxUsageFactory
      */
     public function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $config,
         \DevStone\UsageCalculator\Model\UsageCustomerFactory $usageCustomerFactory,
-        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory,
-        \DevStone\UsageCalculator\Model\MaxUsageFactory $maxUsageFactory
+        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
     ) {
         $this->usageCustomerFactory = $usageCustomerFactory;
         $this->usageCustomerCollectionFactory = $collectionFactory;
-        $this->maxUsageFactory = $maxUsageFactory;
         $this->scopeConfig = $config;
     }
 
@@ -67,18 +59,6 @@ class SaveCustomer implements \Magento\Framework\Event\ObserverInterface
          */
         $usage = $observer->getData('usage');
         $usageId = $usage->getEntityId();
-
-        //If usage is custom Licenese it will be store in devstone_usage_limit
-        if ($usage->getCategoryId() == $this->getCustomLicenseId()) {
-            $maxUsage = $this->maxUsageFactory->create();
-            $maxUsage->setData('usage_id', $usageId);
-            if (empty($request->getParam('max_usage'))) {
-                $maxUsage->setData('max_usage', null);
-            } else {
-                $maxUsage->setData('max_usage', $request->getParam('max_usage'));
-            }
-            $maxUsage->save();
-        }
 
         if (isset($customers)) {
             $customersArray = json_decode($customers);
