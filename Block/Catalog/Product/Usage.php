@@ -577,7 +577,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
             $ordersCollection = $this->orderCollectionFactory->create()
                 ->addFieldToSelect('*')
                 ->addFieldToFilter('customer_id', $this->getCustomerId())
-                ->setPageSize(10 - count($previousCategories))
+                ->setPageSize(20 - count($previousCategories))
                 ->setOrder('created_at', 'desc');
             /**
              * @var \Magento\Sales\Model\Order $order

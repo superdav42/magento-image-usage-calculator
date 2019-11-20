@@ -1,4 +1,10 @@
 <?php
+/**
+ * Add
+ *
+ * @copyright Copyright © 2018 DevStone. All rights reserved.
+ * @author    david@nnucomputerwhiz.com
+ */
 
 namespace DevStone\UsageCalculator\Plugin\Controller\Cart;
 
@@ -128,6 +134,7 @@ class Add
         $ordersCollection = $this->orderCollectionFactory->create()
             ->addFieldToSelect('*')
             ->addFieldToFilter('customer_id', $this->customerSession->getCustomerId())
+            ->setPageSize(20)
             ->setOrder('created_at', 'desc');
         /**
          * @var \Magento\Sales\Model\Order $order
