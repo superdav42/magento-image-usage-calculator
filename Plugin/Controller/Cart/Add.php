@@ -102,7 +102,7 @@ class Add
                  */
                 $maxUsageColleciton = $this->collectionFactory->create()
                     ->addFieldToSelect('max_usage')
-                    ->addFieldToFilter('usage_id', $usageId[$this->getCustomLicenseId()]);
+                    ->addFieldToFilter('entity_id', $usageId[$this->getCustomLicenseId()]);
                 if ($maxUsageColleciton->count()) {
                     $maxUsage = $maxUsageColleciton->getFirstItem()['max_usage'];
                     if ($maxUsage) {
@@ -134,7 +134,6 @@ class Add
         $ordersCollection = $this->orderCollectionFactory->create()
             ->addFieldToSelect('*')
             ->addFieldToFilter('customer_id', $this->customerSession->getCustomerId())
-            ->setPageSize(20)
             ->setOrder('created_at', 'desc');
         /**
          * @var \Magento\Sales\Model\Order $order
