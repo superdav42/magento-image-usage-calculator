@@ -25,9 +25,9 @@ class Add
     private $request;
 
     /**
-     * @var \DevStone\UsageCalculator\Model\ResourceModel\Usage\CollectionFactory
+     * @var \DevStone\UsageCalculator\Api\UsageRepositoryInterface
      */
-    private $collectionFactory;
+    private $usageRepository;
 
     /**
      * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
@@ -63,7 +63,7 @@ class Add
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $config
      * @param \Magento\Framework\Message\ManagerInterface $messageInterface
      * @param \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory
-     * @param \DevStone\UsageCalculator\Model\ResourceModel\Usage\CollectionFactory $collectionFactory
+     * @param \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository
      */
     public function __construct(
         \Magento\Customer\Model\Session $session,
@@ -73,11 +73,11 @@ class Add
         \Magento\Framework\App\Config\ScopeConfigInterface $config,
         \Magento\Framework\Message\ManagerInterface $messageInterface,
         \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory,
-        \DevStone\UsageCalculator\Model\ResourceModel\Usage\CollectionFactory $collectionFactory
+        \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository
     ) {
         $this->request = $request;
         $this->customerSession = $session;
-        $this->collectionFactory = $collectionFactory;
+        $this->usageRepository = $usageRepository;
         $this->orderCollectionFactory = $orderCollectionFactory;
         $this->checkoutSession = $checkoutSession;
         $this->scopeConfig = $config;
@@ -97,26 +97,19 @@ class Add
             return $proceed();
         } elseif (array_key_exists($this->getCustomLicenseId(), $usageId)) {
             if ($this->customerSession->isLoggedIn()) {
-                /**
-                 * @var \DevStone\UsageCalculator\Model\ResourceModel\Usage\Collection $maxUsageColleciton
-                 */
-                $maxUsageColleciton = $this->collectionFactory->create()
-                    ->addFieldToSelect('max_usage')
-                    ->addFieldToFilter('entity_id', $usageId[$this->getCustomLicenseId()]);
-                if ($maxUsageColleciton->count()) {
-                    $maxUsage = $maxUsageColleciton->getFirstItem()['max_usage'];
-                    if ($maxUsage) {
-                        $totalUsageCountByOrder = $this->getUsageCountByOrders($usageId);
-                        $totalUsageCountByQuote = $this->getUsageCountByQuote($usageId);
-                        if (($totalUsageCountByOrder + $totalUsageCountByQuote) < $maxUsage) {
-                            return $proceed();
-                        } else {
-                            $this->messageInterface->addErrorMessage(
-                                __('You cannot add this item to your cart because this 
+                $customerLicensedUsage = $this->usageRepository->getById($usageId[$this->getCustomLicenseId()]);
+                if ($customerLicensedUsage) {
+                    $maxUsage = $customerLicensedUsage->getMaxUsage();
+                    $totalUsageCountByOrder = $this->getUsageCountByOrders($usageId);
+                    $totalUsageCountByQuote = $this->getUsageCountByQuote($usageId);
+                    if (($totalUsageCountByOrder + $totalUsageCountByQuote) < $maxUsage) {
+                        return $proceed();
+                    } else {
+                        $this->messageInterface->addErrorMessage(
+                            __('You cannot add this item to your cart because this 
                                 custom license can only be used %1 times', $maxUsage)
-                            );
-                            return $this->resultRedirectFactory->create()->setPath('*/*/');
-                        }
+                        );
+                        return $this->resultRedirectFactory->create()->setPath('*/*/');
                     }
                 }
             }
