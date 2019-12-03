@@ -100,6 +100,9 @@ class Add
                 $customerLicensedUsage = $this->usageRepository->getById($usageId[$this->getCustomLicenseId()]);
                 if ($customerLicensedUsage) {
                     $maxUsage = $customerLicensedUsage->getMaxUsage();
+                    if (!isset($maxUsage)|| !($maxUsage > 0)) {
+                        return $proceed();
+                    }
                     $totalUsageCountByOrder = $this->getUsageCountByOrders($usageId);
                     $totalUsageCountByQuote = $this->getUsageCountByQuote($usageId);
                     if (($totalUsageCountByOrder + $totalUsageCountByQuote) < $maxUsage) {
@@ -135,8 +138,8 @@ class Add
         foreach ($ordersCollection as $order) {
             $items = $order->getAllVisibleItems();
             foreach ($items as $item) {
-                $id = $item->getProductOptions()['usage_id'];
-                if ($usageId == $id) {
+                $productOptions = $item->getProductOptions();
+                if (isset($productOptions['usage_id']) && $usageId === $productOptions['usage_id']) {
                     $totalUsageCount++;
                 }
             }
