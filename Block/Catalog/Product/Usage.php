@@ -37,12 +37,12 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     protected $searchCriteriaBuilder;
 
     /**
-     * @var UsageRepositoryInterface
+     * @var \DevStone\UsageCalculator\Api\UsageRepositoryInterface
      */
     protected $usageRepository;
 
     /**
-     * @var CategoryRepositoryInterface
+     * @var \DevStone\UsageCalculator\Api\CategoryRepositoryInterface
      */
     protected $categoryRepository;
 
@@ -74,6 +74,21 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     protected $session;
 
     /**
+     * @var \Magento\Checkout\Model\Session
+     */
+    protected $checkoutSession;
+
+    /**
+     * @var \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory
+     */
+    protected $usageOptionCollectionFactory;
+
+    /**
+     * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
+     */
+    protected $orderCollectionFactory;
+
+    /**
      * Usage constructor.
      * @param \Magento\Catalog\Block\Product\Context $context
      * @param \Magento\Framework\Pricing\Helper\Data $pricingHelper
@@ -84,6 +99,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param \DevStone\UsageCalculator\Model\Usage\Option $option
      * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $usageCustomerCollectionFactory
      * @param \Magento\Customer\Model\Session $session
+     * @param \Magento\Checkout\Model\Session $checkoutSession
+     * @param \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory $usageOptionCollection
+     * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory
      * @param array $data
      */
     public function __construct(
@@ -96,6 +114,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         \DevStone\UsageCalculator\Model\Usage\Option $option,
         \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $usageCustomerCollectionFactory,
         \Magento\Customer\Model\Session $session,
+        \Magento\Checkout\Model\Session $checkoutSession,
+        \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory $usageOptionCollection,
+        \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory,
         array $data = []
     ) {
         $this->pricingHelper = $pricingHelper;
@@ -106,6 +127,9 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $this->optionModel = $option;
         $this->usageCustomerCollectionFactory = $usageCustomerCollectionFactory;
         $this->session = $session;
+        $this->checkoutSession = $checkoutSession;
+        $this->usageOptionCollectionFactory = $usageOptionCollection;
+        $this->orderCollectionFactory = $orderCollectionFactory;
         parent::__construct($context, $data);
     }
 
@@ -311,6 +335,12 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                 $category->getName()
             );
         }
+        if (count($this->getPreviousCategories())) {
+            $select->addOption(
+                'previous',
+                'Previous Usages'
+            );
+        }
         $extraParams .= ' data-selector="' . $select->getName() . '"';
         $select->setExtraParams($extraParams);
 
@@ -452,7 +482,6 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         return $this->getProduct()->getPriceInfo()->getPrice(LinkPrice::PRICE_CODE);
     }
 
-
     /**
      * Get option html block
      *
@@ -489,5 +518,151 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
             'usage_cal/general/category_id',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
+    }
+
+    /**
+     * @return mixed
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getPreviousSelectHtml()
+    {
+        $extraParams = '';
+        $select = $this->getLayout()->createBlock(
+            \Magento\Framework\View\Element\Html\Select::class
+        )->setData(
+            [
+                'id' => 'usage_previous_usages',
+                'class' => 'required product-custom-option admin__control-select usage-select-box'
+            ]
+        );
+
+        $select->setName('previous_category')->addOption('', __('-- Please Select --'));
+
+        foreach ($this->getPreviousCategories() as $category) {
+
+            $select->addOption(
+                $category['id'],
+                $category['name']
+            );
+        }
+        $extraParams .= ' data-selector="' . $select->getName() . '"';
+        $select->setExtraParams($extraParams);
+
+        return $select->getHtml();
+    }
+
+    /**
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function getPreviousCategories()
+    {
+        $previousCategories = [];
+        $items = $this->checkoutSession->getQuote()->getAllVisibleItems();
+        foreach ($items as $item) {
+            /**
+             * @var \Magento\Quote\Model\Quote\Item $item
+             */
+            $getBuyRequest = $item->getBuyRequest();
+            $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
+            if (count($previousCategoriesByItems) && !in_array($previousCategoriesByItems, $previousCategories)) {
+                $previousCategories[] = $previousCategoriesByItems;
+            }
+            if (count($previousCategories) >= 10) {
+                break;
+            }
+        }
+        if ($this->isCustomerLoggedIn() && count($previousCategories) <= 10) {
+            $ordersCollection = $this->orderCollectionFactory->create()
+                ->addFieldToSelect('*')
+                ->addFieldToFilter('customer_id', $this->getCustomerId())
+                ->setPageSize(20 - count($previousCategories))
+                ->setOrder('created_at', 'desc');
+            /**
+             * @var \Magento\Sales\Model\Order $order
+             * @var \Magento\Sales\Api\Data\OrderItemInterface $item
+             */
+            foreach ($ordersCollection as $order) {
+                $items = $order->getAllVisibleItems();
+                foreach ($items as $item) {
+                    /**
+                     * @var \Magento\Quote\Model\Quote\Item $item
+                     */
+                    $getBuyRequest = $item->getProductOptions()['info_buyRequest'];
+                    $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
+                    if (count($previousCategoriesByItems) && !in_array($previousCategoriesByItems, $previousCategories)) {
+                        $previousCategories[] = $previousCategoriesByItems;
+                    }
+                    if (count($previousCategories) >= 10) {
+                        break;
+                    }
+                }
+            }
+        }
+        return $previousCategories;
+    }
+
+    public function getPreviousCategoriesByItemsFromBuyRequest($buyRequest)
+    {
+        $id = '';
+        $value = '';
+        $previousCategoriesByItems = [];
+        if (isset($buyRequest['usage_category'])) {
+            $id .= $buyRequest['usage_category'] . ' - ';
+            $value .= $this->getCategoryName($buyRequest['usage_category']) . ' - ';
+            $id .= $buyRequest['usage_id'][$buyRequest['usage_category']] . ' - ';
+            $value .= $this->getUsageName($buyRequest['usage_id'][$buyRequest['usage_category']]) . ' - ';
+            if (isset($buyRequest['options'])) {
+                foreach ($buyRequest['options'] as $key => $option) {
+                    $id .= $key . ':' . $option . ' - ';
+                    $value .= $this->getOptionName($option) . ' - ';
+                }
+            }
+            $previousCategoriesByItems['id'] = trim($id, ' - ');
+            $previousCategoriesByItems['name'] = trim($value, ' - ');
+        }
+        return $previousCategoriesByItems;
+    }
+
+    /**
+     * @param $categoryId
+     * @return string|null
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getCategoryName($categoryId)
+    {
+        $searchCriteria = $this->searchCriteriaBuilder
+            ->addFilter('entity_id', $categoryId, 'eq')
+            ->create();
+        $list = $this->categoryRepository->getList($searchCriteria)->getItems();
+        return $list[$categoryId]->getName();
+    }
+
+    /**
+     * @param $usageId
+     * @return mixed
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getUsageName($usageId)
+    {
+        $searchCriteria = $this->searchCriteriaBuilder
+            ->addFilter('entity_id', $usageId, 'eq')
+            ->create();
+        $list = $this->usageRepository->getList($searchCriteria)->getItems();
+        return $list[$usageId]->getName();
+    }
+
+    /**
+     * @param $optionId
+     * @return mixed
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function getOptionName($optionId)
+    {
+        $usageOptionCollection = $this->usageOptionCollectionFactory->create();
+        $usageOptionCollection->addTitlesToResult($this->_storeManager->getStore()->getId());
+        $usageOptionCollection->addFieldToFilter('main_table.option_type_id', $optionId);
+        return $usageOptionCollection->count() ? $usageOptionCollection->getFirstItem()->getTitle() : $optionId;
     }
 }

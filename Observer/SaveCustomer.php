@@ -2,6 +2,7 @@
 
 namespace DevStone\UsageCalculator\Observer;
 
+use Magento\Framework\App\Config;
 use Magento\Framework\Event\Observer;
 
 /**
@@ -22,16 +23,24 @@ class SaveCustomer implements \Magento\Framework\Event\ObserverInterface
     protected $usageCustomerCollectionFactory;
 
     /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $scopeConfig;
+
+    /**
      * SaveCustomer constructor.
+     * @param Config\ScopeConfigInterface $config
      * @param \DevStone\UsageCalculator\Model\UsageCustomerFactory $usageCustomerFactory
      * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
      */
     public function __construct(
+        \Magento\Framework\App\Config\ScopeConfigInterface $config,
         \DevStone\UsageCalculator\Model\UsageCustomerFactory $usageCustomerFactory,
         \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
     ) {
         $this->usageCustomerFactory = $usageCustomerFactory;
         $this->usageCustomerCollectionFactory = $collectionFactory;
+        $this->scopeConfig = $config;
     }
 
     /**
@@ -40,9 +49,17 @@ class SaveCustomer implements \Magento\Framework\Event\ObserverInterface
      */
     public function execute(Observer $observer)
     {
+        /**
+         * @var \Magento\Framework\App\RequestInterface $request
+         */
         $request = $observer->getData('request');
         $customers = $request->getParam('usage_customers');
-        $usageId = $observer->getData('usage')->getId();
+        /**
+         * @var \DevStone\UsageCalculator\Model\Usage $usage
+         */
+        $usage = $observer->getData('usage');
+        $usageId = $usage->getEntityId();
+
         if (isset($customers)) {
             $customersArray = json_decode($customers);
             foreach ($customersArray as $customerId) {
@@ -62,5 +79,16 @@ class SaveCustomer implements \Magento\Framework\Event\ObserverInterface
                 $usageCustomer->save();
             }
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomLicenseId()
+    {
+        return $this->scopeConfig->getValue(
+            'usage_cal/general/category_id',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }
 }

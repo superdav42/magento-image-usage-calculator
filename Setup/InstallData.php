@@ -23,7 +23,6 @@ class InstallData implements InstallDataInterface
      * @var UsageSetupFactory
      */
     protected $usageSetupFactory;
-    
 
     /**
      * Init

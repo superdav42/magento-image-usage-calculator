@@ -26,19 +26,18 @@ class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface
             if (!$installer->tableExists(UsageSetup::ENTITY_TYPE_CODE . '_customer')) {
                 $table = $installer->getConnection()->newTable(
                     $installer->getTable(UsageSetup::ENTITY_TYPE_CODE . '_customer')
+                )->addColumn(
+                    'entity_id',
+                    \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                    null,
+                    [
+                        'identity' => true,
+                        'nullable' => false,
+                        'primary' => true,
+                        'unsigned' => true,
+                    ],
+                    'ID'
                 )
-                    ->addColumn(
-                        'entity_id',
-                        \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                        null,
-                        [
-                            'identity' => true,
-                            'nullable' => false,
-                            'primary' => true,
-                            'unsigned' => true,
-                        ],
-                        'ID'
-                    )
                     ->addColumn(
                         'usage_id',
                         \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
@@ -71,7 +70,7 @@ class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface
                         null,
                         ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT_UPDATE],
                         'Updated At'
-                    )->setComment('Post Table');
+                    )->setComment('Devstone Custom License Customer Table');
                 $installer->getConnection()->createTable($table);
             }
         }
