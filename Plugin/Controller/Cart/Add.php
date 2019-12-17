@@ -93,7 +93,9 @@ class Add
     public function aroundExecute(\Magento\Checkout\Controller\Cart\Add $subject, callable $proceed)
     {
         $usageId = $this->request->getParam('usage_id');
-        if ($this->request->getParam('usage_category') != $this->getCustomLicenseId()) {
+        $usageCategory = $this->request->getParam('usage_category');
+        if ($usageCategory != $this->getCustomLicenseId() &&
+            !isset($usageCategory)) {
             return $proceed();
         } elseif (array_key_exists($this->getCustomLicenseId(), $usageId)) {
             if ($this->customerSession->isLoggedIn()) {
