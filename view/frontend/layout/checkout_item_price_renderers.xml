@@ -24,11 +24,6 @@
 <!--            </arguments>-->
 <!--        </block>-->
 
-        <block class="DevStone\UsageCalculator\Block\Credits\Item\Price\Renderer" name="checkout.item.price.unit" template="DevStone_UsageCalculator::credits/item/price/unit.phtml">
-            <arguments>
-                <argument name="zone" xsi:type="string">cart</argument>
-            </arguments>
-        </block>
 
 
 <!--        <block class="Magento\Weee\Block\Item\Price\Renderer" name="checkout.item.price.row" template="Magento_Weee::item/price/row.phtml">-->

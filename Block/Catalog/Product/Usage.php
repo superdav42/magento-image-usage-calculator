@@ -299,7 +299,6 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                 [
                     'price' => $this->pricingHelper->currencyByStore($usage->getPrice(), $store, false),
                     'data-terms' => $usage->getTerms(),
-                    'credits' => $usage->getCredits(),
                 ]
             );
 

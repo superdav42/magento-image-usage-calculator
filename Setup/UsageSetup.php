@@ -66,15 +66,6 @@ class UsageSetup extends EavSetup
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                 'group' => 'General',
             ],
-            'credits' => [
-                'type' => 'decimal',
-                'label' => 'Credits',
-                'input' => 'credits',
-                'backend' => \Magento\Catalog\Model\Product\Attribute\Backend\Price::class,
-                'sort_order' => 2,
-                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
-                'group' => 'General',
-            ],
             'max_usage' => [
                 'type' => 'int',
                 'label' => 'Max Usage',
