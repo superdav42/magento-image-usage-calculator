@@ -300,7 +300,9 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                                 'sortOrder' => 20,
                                 'actions' => [
                                     [
-                                        'targetName' => 'ns = ${ $.ns }, index = ' . static::GRID_OPTIONS_NAME,
+                                        'targetName' => '${ $.ns }.${ $.ns }.' . static::GROUP_CUSTOM_OPTIONS_NAME
+                                            . '.' . static::GRID_OPTIONS_NAME,
+                                        '__disableTmpl' => ['targetName' => false],
                                         'actionName' => 'processingAddChild',
                                     ]
                                 ]
