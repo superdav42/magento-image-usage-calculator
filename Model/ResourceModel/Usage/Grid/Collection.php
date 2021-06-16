@@ -8,6 +8,7 @@
 
 namespace DevStone\UsageCalculator\Model\ResourceModel\Usage\Grid;
 
+use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use DevStone\UsageCalculator\Model\ResourceModel\Usage\Collection as UsageCollection;
@@ -174,5 +175,13 @@ class Collection extends UsageCollection implements SearchResultInterface
     public function setItems(array $items = null)
     {
         return $this;
+    }
+
+    public function setOrder($attribute, $dir = self::SORT_ORDER_ASC)
+    {
+        if ( 'price' === $attribute ) {
+            return; // broken for now since price is ambiguous. 
+        }
+        return parent::setOrder($attribute, $dir);
     }
 }
