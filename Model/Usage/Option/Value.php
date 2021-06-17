@@ -182,6 +182,8 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
     public function saveValues()
     {
         foreach ($this->getValues() as $value) {
+            $this->isDeleted(false);
+
             $this->setData(
                 $value
             )->setData(
