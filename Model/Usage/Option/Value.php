@@ -189,7 +189,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
                 $this->getOption()->getId()
             )->setData(
                 'store_id',
-                $this->getOption()->getStoreId()
+                0,  //$this->getOption()->getStoreId() for some reason this is always null so it don't work. TODO fix if we want contry specific prices.
             );
 
             if ($this->getData('is_delete') == '1') {

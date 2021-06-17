@@ -368,6 +368,9 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
                 } else {
                     $data = $value;
                 }
+
+                $data['default_price'] = $data['price'];
+                $data['default_price_type'] = $data['price_type'];
                 $this->getValueInstance()->addValue($data);
             }
 

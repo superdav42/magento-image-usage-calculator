@@ -180,7 +180,7 @@ class Collection extends UsageCollection implements SearchResultInterface
     public function setOrder($attribute, $dir = self::SORT_ORDER_ASC)
     {
         if ( 'price' === $attribute ) {
-            return; // broken for now since price is ambiguous. 
+            return; // broken for now since price is ambiguous.
         }
         return parent::setOrder($attribute, $dir);
     }
