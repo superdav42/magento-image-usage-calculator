@@ -89,6 +89,11 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     protected $orderCollectionFactory;
 
     /**
+     * @var \Magento\Framework\Api\SortOrderBuilder
+     */
+    protected $sortOrderBuilder;
+
+    /**
      * Usage constructor.
      * @param \Magento\Catalog\Block\Product\Context $context
      * @param \Magento\Framework\Pricing\Helper\Data $pricingHelper
@@ -102,6 +107,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param \Magento\Checkout\Model\Session $checkoutSession
      * @param \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory $usageOptionCollection
      * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory
+     * @param \Magento\Framework\Api\SortOrderBuilder $sortOrderBuilder
      * @param array $data
      */
     public function __construct(
@@ -117,6 +123,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         \Magento\Checkout\Model\Session $checkoutSession,
         \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory $usageOptionCollection,
         \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory,
+        \Magento\Framework\Api\SortOrderBuilder $sortOrderBuilder,
         array $data = []
     ) {
         $this->pricingHelper = $pricingHelper;
@@ -130,6 +137,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $this->checkoutSession = $checkoutSession;
         $this->usageOptionCollectionFactory = $usageOptionCollection;
         $this->orderCollectionFactory = $orderCollectionFactory;
+        $this->sortOrderBuilder = $sortOrderBuilder;
         parent::__construct($context, $data);
     }
 
@@ -173,7 +181,15 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     {
         if (empty($this->usages)) {
             $customLicenseId = $this->getCustomLicenseId();
-            $searchCriteria = $this->searchCriteriaBuilder->addFilter('category_id', $customLicenseId, 'neq')->create();
+
+            $sortOrder = $this->sortOrderBuilder
+                ->setField('name')
+                ->setDirection(\Magento\Framework\Api\SortOrder::SORT_ASC)
+                ->create();
+            $searchCriteria = $this->searchCriteriaBuilder
+                ->addFilter('category_id', $customLicenseId, 'neq')
+                ->addSortOrder($sortOrder)
+                ->create();
             $items = $this->usageRepository->getList($searchCriteria)->getItems();
 
             if ($this->isCustomerLoggedIn()) {
