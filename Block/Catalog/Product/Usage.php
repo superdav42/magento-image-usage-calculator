@@ -601,14 +601,23 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
             foreach ($ordersCollection as $order) {
                 $items = $order->getAllVisibleItems();
                 foreach ($items as $item) {
-                    /**
-                     * @var \Magento\Quote\Model\Quote\Item $item
-                     */
-                    $getBuyRequest = $item->getProductOptions()['info_buyRequest'];
-                    $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
-                    if (count($previousCategoriesByItems) && !in_array($previousCategoriesByItems, $previousCategories)) {
-                        $previousCategories[] = $previousCategoriesByItems;
+                    try {
+                        /**
+                         * @var \Magento\Quote\Model\Quote\Item $item
+                         */
+                        $getBuyRequest = $item->getProductOptions()['info_buyRequest'];
+                        $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
+                        if (count($previousCategoriesByItems) && !in_array(
+                                $previousCategoriesByItems,
+                                $previousCategories
+                            )) {
+                            $previousCategories[] = $previousCategoriesByItems;
+                        }
+                    } catch (\Exception $e){
+                        // Probably usage was deleted, skip.
+                        continue;
                     }
+
                     if (count($previousCategories) >= 10) {
                         break;
                     }
