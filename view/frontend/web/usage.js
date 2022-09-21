@@ -72,7 +72,7 @@ define([
                 e.preventDefault();
                 $('#maincontent .product.info.detailed').toggle();
                 $('#maincontent .product-info-main .product-info-main > div:not(.product-add-form)').toggle();
-                $('#product-options-wrapper > div > :not(.product-info-price):not(.usages-container)').toggle();
+                $('#product-options-wrapper > div > div:not(.product-info-price):not(.usages-container)').toggle();
                 $('.usages-container-inner').toggle();
                 $('#usage-button').toggle();
                 if (self.hidden) {
