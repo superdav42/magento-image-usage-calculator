@@ -2,6 +2,8 @@
 
 namespace DevStone\UsageCalculator\Model\Usage;
 
+use DevStone\UsageCalculator\Helper\Data;
+
 /**
  * Class CatagoriesOptionsProvider
  * @package DevStone\UsageCalculator\Model\Usage
@@ -27,6 +29,7 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $scopeConfig;
+    protected Data $config;
 
     /**
      * CatagoriesOptionsProvider constructor.
@@ -39,12 +42,14 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
         \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
         \Magento\Framework\Convert\DataObject $objectConverter,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository
+        \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository,
+        Data $config
     ) {
         $this->categoryRepository = $categoryRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->objectConverter = $objectConverter;
         $this->scopeConfig = $scopeConfig;
+        $this->config = $config;
     }
 
     /**
@@ -54,7 +59,7 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
     public function allOptionsExcludingCustomLicense()
     {
         $searchCriteria = $this->searchCriteriaBuilder
-            ->addFilter('entity_id', $this->getCustomLicenseId(), 'neq')
+            ->addFilter('entity_id', $this->config->getCustomLicenseId(), 'neq')
             ->create();
         $catagories = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
@@ -67,7 +72,7 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
     public function customLicenseOption()
     {
         $searchCriteria = $this->searchCriteriaBuilder
-            ->addFilter('entity_id', $this->getCustomLicenseId(), 'eq')
+            ->addFilter('entity_id', $this->config->getCustomLicenseId(), 'eq')
             ->create();
         $catagories = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
@@ -82,16 +87,5 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $catagories = $this->categoryRepository->getList($searchCriteria)->getItems();
         return $this->objectConverter->toOptionArray($catagories, 'entity_id', 'name');
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCustomLicenseId()
-    {
-        return $this->scopeConfig->getValue(
-            'usage_cal/general/category_id',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
     }
 }

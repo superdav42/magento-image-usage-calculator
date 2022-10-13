@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection PhpPossiblePolymorphicInvocationInspection */
+/** @noinspection PhpUndefinedMethodInspection */
+
 /**
  * Usage
  *
@@ -8,10 +10,35 @@
 
 namespace DevStone\UsageCalculator\Block\Catalog\Product;
 
+use DevStone\UsageCalculator\Api\CategoryRepositoryInterface;
+use DevStone\UsageCalculator\Api\UsageRepositoryInterface;
+use DevStone\UsageCalculator\Helper\Data as DataHelper;
+use DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory as UsageOptionCollectionFactory;
+use DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\Collection;
+use DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory as UsageCustomerCollectionFactory;
+use DevStone\UsageCalculator\Model\Usage\Option;
+use Exception;
+use Magento\Catalog\Block\Product\AbstractProduct;
+use Magento\Catalog\Block\Product\Context;
 use Magento\Catalog\Pricing\Price\FinalPrice;
+use Magento\Checkout\Model\Session;
 use Magento\Downloadable\Model\Link;
 use Magento\Downloadable\Pricing\Price\LinkPrice;
-use Magento\Framework\Json\EncoderInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Api\SortOrder;
+use Magento\Framework\Api\SortOrderBuilder;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Pricing\Amount\AmountInterface;
+use Magento\Framework\Pricing\Helper\Data;
+use Magento\Framework\Pricing\Price\PriceInterface;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\View\Element\Html\Select;
+use Magento\Quote\Model\Quote\Item;
+use Magento\Sales\Api\Data\OrderItemInterface;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Downloadable Product Links part block
@@ -19,115 +46,42 @@ use Magento\Framework\Json\EncoderInterface;
  * @api
  * @since 100.0.2
  */
-class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
+class Usage extends AbstractProduct
 {
-    /**
-     * @var \Magento\Framework\Pricing\Helper\Data
-     */
-    protected $pricingHelper;
+    protected Data $pricingHelper;
+    protected SerializerInterface $serializer;
+    protected SearchCriteriaBuilder $searchCriteriaBuilder;
+    protected UsageRepositoryInterface $usageRepository;
+    protected CategoryRepositoryInterface $categoryRepository;
+    private array $usages;
+    protected UsageCustomerCollectionFactory $usageCustomerCollectionFactory;
+    protected Option $optionModel;
+    protected \Magento\Customer\Model\Session $session;
+    protected Session $checkoutSession;
+    protected UsageOptionCollectionFactory $usageOptionCollectionFactory;
+    protected CollectionFactory $orderCollectionFactory;
+    protected SortOrderBuilder $sortOrderBuilder;
+    private DataHelper $config;
 
-    /**
-     * @var EncoderInterface
-     */
-    protected $encoder;
-
-    /**
-     * @var \Magento\Framework\Api\SearchCriteriaBuilder
-     */
-    protected $searchCriteriaBuilder;
-
-    /**
-     * @var \DevStone\UsageCalculator\Api\UsageRepositoryInterface
-     */
-    protected $usageRepository;
-
-    /**
-     * @var \DevStone\UsageCalculator\Api\CategoryRepositoryInterface
-     */
-    protected $categoryRepository;
-
-    /**
-     *
-     * @var \DevStone\UsageCalculator\Model\Category[]
-     */
-    private $categories;
-
-    /**
-     *
-     * @var \DevStone\UsageCalculator\Model\Usage[]
-     */
-    private $usages;
-
-    /**
-     * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory
-     */
-    protected $usageCustomerCollectionFactory;
-
-    /**
-     * @var \DevStone\UsageCalculator\Model\Usage\Option
-     */
-    protected $optionModel;
-
-    /**
-     * @var \Magento\Customer\Model\Session
-     */
-    protected $session;
-
-    /**
-     * @var \Magento\Checkout\Model\Session
-     */
-    protected $checkoutSession;
-
-    /**
-     * @var \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory
-     */
-    protected $usageOptionCollectionFactory;
-
-    /**
-     * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
-     */
-    protected $orderCollectionFactory;
-
-    /**
-     * @var \Magento\Framework\Api\SortOrderBuilder
-     */
-    protected $sortOrderBuilder;
-
-    /**
-     * Usage constructor.
-     * @param \Magento\Catalog\Block\Product\Context $context
-     * @param \Magento\Framework\Pricing\Helper\Data $pricingHelper
-     * @param EncoderInterface $encoder
-     * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository
-     * @param \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository
-     * @param \DevStone\UsageCalculator\Model\Usage\Option $option
-     * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $usageCustomerCollectionFactory
-     * @param \Magento\Customer\Model\Session $session
-     * @param \Magento\Checkout\Model\Session $checkoutSession
-     * @param \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory $usageOptionCollection
-     * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory
-     * @param \Magento\Framework\Api\SortOrderBuilder $sortOrderBuilder
-     * @param array $data
-     */
     public function __construct(
-        \Magento\Catalog\Block\Product\Context $context,
-        \Magento\Framework\Pricing\Helper\Data $pricingHelper,
-        EncoderInterface $encoder,
-        \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
-        \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository,
-        \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository,
-        \DevStone\UsageCalculator\Model\Usage\Option $option,
-        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $usageCustomerCollectionFactory,
+        Context                         $context,
+        Data                            $pricingHelper,
+        SerializerInterface             $serializer,
+        SearchCriteriaBuilder           $searchCriteriaBuilder,
+        UsageRepositoryInterface        $usageRepository,
+        CategoryRepositoryInterface     $categoryRepository,
+        Option                          $option,
+        UsageCustomerCollectionFactory  $usageCustomerCollectionFactory,
         \Magento\Customer\Model\Session $session,
-        \Magento\Checkout\Model\Session $checkoutSession,
-        \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory $usageOptionCollection,
-        \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory,
-        \Magento\Framework\Api\SortOrderBuilder $sortOrderBuilder,
-        array $data = []
+        Session                         $checkoutSession,
+        UsageOptionCollectionFactory    $usageOptionCollection,
+        CollectionFactory               $orderCollectionFactory,
+        SortOrderBuilder                $sortOrderBuilder,
+        DataHelper                      $config,
+        array                           $data = []
     ) {
         $this->pricingHelper = $pricingHelper;
-        $this->encoder = $encoder;
+        $this->serializer = $serializer;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->usageRepository = $usageRepository;
         $this->categoryRepository = $categoryRepository;
@@ -139,52 +93,37 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $this->orderCollectionFactory = $orderCollectionFactory;
         $this->sortOrderBuilder = $sortOrderBuilder;
         parent::__construct($context, $data);
+        $this->config = $config;
     }
 
-    /**
-     *
-     * @return boolean
-     */
-    public function getLinksPurchasedSeparately()
+    public function getLinksPurchasedSeparately(): bool
     {
         return $this->getProduct()->getLinksPurchasedSeparately();
     }
 
-    /**
-     * @return boolean
-     */
-    public function getLinkSelectionRequired()
+    public function getLinkSelectionRequired(): bool
     {
         return $this->getProduct()->getTypeInstance()->getLinkSelectionRequired($this->getProduct());
     }
 
-    /**
-     * @return boolean
-     */
-    public function hasLinks()
+    public function hasLinks(): bool
     {
         return $this->getProduct()->getTypeInstance()->hasLinks($this->getProduct());
     }
 
-    /**
-     * @return array
-     */
-    public function getLinks()
+    public function getLinks(): array
     {
         return $this->getProduct()->getTypeInstance()->getLinks($this->getProduct());
     }
 
-    /**
-     * @return array
-     */
-    public function getUsages($category = null)
+    public function getUsages($category = null): array
     {
         if (empty($this->usages)) {
-            $customLicenseId = $this->getCustomLicenseId();
+            $customLicenseId = $this->config->getCustomLicenseId();
 
             $sortOrder = $this->sortOrderBuilder
                 ->setField('name')
-                ->setDirection(\Magento\Framework\Api\SortOrder::SORT_ASC)
+                ->setDirection(SortOrder::SORT_ASC)
                 ->create();
             $searchCriteria = $this->searchCriteriaBuilder
                 ->addFilter('category_id', $customLicenseId, 'neq')
@@ -202,8 +141,11 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                         $customerUsage[] = $usage->getUsageId();
                     }
 
-                    $searchCriteria = $this->searchCriteriaBuilder->addFilter('entity_id', $customerUsage,
-                        'in')->create();
+                    $searchCriteria = $this->searchCriteriaBuilder->addFilter(
+                        'entity_id',
+                        $customerUsage,
+                        'in'
+                    )->create();
                     $customerUsageItems = $this->usageRepository->getList($searchCriteria)->getItems();
                     $items = array_merge_recursive($items, $customerUsageItems);
                 }
@@ -229,75 +171,54 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function isCustomerLoggedIn()
+    public function isCustomerLoggedIn(): bool
     {
         return $this->session->isLoggedIn();
     }
 
-    /**
-     * @return int|null
-     */
-    public function getCustomerId()
+    public function getCustomerId(): ?int
     {
         return $this->session->getCustomerId();
     }
 
-    /**
-     * @param $customerId
-     * @return \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\Collection
-     */
-    public function getUsageListAccordingToCustomer($customerId)
+    public function getUsageListAccordingToCustomer($customerId): Collection
     {
-        /**
-         * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\Collection $usageCustomerCollection
-         */
         $usageCustomerCollection = $this->usageCustomerCollectionFactory->create();
         $usageCustomerCollection->addFieldToFilter('customer_id', $customerId);
         return $usageCustomerCollection;
     }
 
     /**
-     * @return array|\DevStone\UsageCalculator\Api\Data\CategoryInterface[]
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function getCategories()
+    public function getCategories(): array
     {
-        $list = [];
         if ($this->isCustomerLoggedIn()) {
             $customerId = $this->getCustomerId();
             $usageCollection = $this->getUsageListAccordingToCustomer($customerId);
             if ($usageCollection->getSize() > 0) {
                 $searchCriteria = $this->searchCriteriaBuilder->create();
-                $list = $this->categoryRepository->getList($searchCriteria)->getItems();
-                return $list;
-
+                return $this->categoryRepository->getList($searchCriteria)->getItems();
             }
         }
         $searchCriteria = $this->searchCriteriaBuilder
-            ->addFilter('entity_id', $this->getCustomLicenseId(), 'neq')
+            ->addFilter('entity_id', $this->config->getCustomLicenseId(), 'neq')
             ->create();
-        $list = $this->categoryRepository->getList($searchCriteria)->getItems();
-        return $list;
+        return $this->categoryRepository->getList($searchCriteria)->getItems();
     }
 
     /**
-     * @param $usages
-     * @param $category
-     * @return mixed
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function getUsagesSelectHtml(
         $usages,
         $category
-    ) {
+    ): string {
         $store = $this->getProduct()->getStore();
 
         $extraParams = '';
         $select = $this->getLayout()->createBlock(
-            \Magento\Framework\View\Element\Html\Select::class
+            Select::class
         )->setData(
             [
                 'id' => 'usage_' . $category->getId() . '_usages',
@@ -308,7 +229,6 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $select->setName('usage_id[' . $category->getId() . ']')->addOption('', __('-- Please Select --'));
 
         foreach ($usages as $usage) {
-
             $select->addOption(
                 $usage->getId(),
                 $usage->getName(),
@@ -317,7 +237,6 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                     'data-terms' => $usage->getTerms(),
                 ]
             );
-
         }
         $extraParams .= ' data-selector="' . $select->getName() . '"';
         $select->setExtraParams($extraParams);
@@ -326,14 +245,13 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     }
 
     /**
-     * @return mixed
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function getCategoriesSelectHtml()
+    public function getCategoriesSelectHtml(): string
     {
         $extraParams = '';
         $select = $this->getLayout()->createBlock(
-            \Magento\Framework\View\Element\Html\Select::class
+            Select::class
         )->setData(
             [
                 'id' => 'usage_category',
@@ -344,7 +262,6 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $select->setName('usage_category')->addOption('', __('-- Please Select --'));
 
         foreach ($this->getCategories() as $category) {
-
             $select->addOption(
                 $category->getId(),
                 $category->getName()
@@ -364,28 +281,21 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
 
     /**
      * Returns price converted to current currency rate
-     *
-     * @param float $price
-     * @return float
      */
     public function getCurrencyPrice(
-        $price
-    ) {
+        float $price
+    ): float {
         $store = $this->getProduct()->getStore();
         return $this->pricingHelper->currencyByStore($price, $store, false);
     }
 
-    /**
-     * @return string
-     */
-    public function getJsonConfig()
+    public function getJsonConfig(): string
     {
         $finalPrice = $this->getProduct()->getPriceInfo()
             ->getPrice(FinalPrice::PRICE_CODE);
 
         $linksConfig = [];
         foreach ($this->getUsages() as $usage) {
-
             $amount = $finalPrice->getCustomAmount($usage->getPrice());
             $linksConfig[$usage->getId()] = [
                 'finalPrice' => $amount->getValue(),
@@ -393,92 +303,74 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
             ];
         }
 
-        return $this->encoder->encode(['links' => $linksConfig]);
+        return $this->serializer->serialize(['links' => $linksConfig]);
     }
 
     /**
-     * @param Link $link
-     * @return string
+     * @throws NoSuchEntityException
      */
-    public function getLinkSampleUrl(
-        $link
-    ) {
+    protected function getLinkSampleUrl(
+        Link $link
+    ): string {
         $store = $this->getProduct()->getStore();
         return $store->getUrl('downloadable/download/linkSample', ['link_id' => $link->getId()]);
     }
 
     /**
      * Return title of links section
-     *
-     * @return string
      */
-    public function getLinksTitle()
+    public function getLinksTitle(): string
     {
         if ($this->getProduct()->getLinksTitle()) {
             return $this->getProduct()->getLinksTitle();
         }
         return $this->_scopeConfig->getValue(
-            \Magento\Downloadable\Model\Link::XML_PATH_LINKS_TITLE,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            Link::XML_PATH_LINKS_TITLE,
+            ScopeInterface::SCOPE_STORE
         );
     }
 
     /**
      * Return true if target of link new window
-     *
-     * @return bool
-     * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getIsOpenInNewWindow()
+    public function getIsOpenInNewWindow(): bool
     {
         return $this->_scopeConfig->isSetFlag(
-            \Magento\Downloadable\Model\Link::XML_PATH_TARGET_NEW_WINDOW,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            Link::XML_PATH_TARGET_NEW_WINDOW,
+            ScopeInterface::SCOPE_STORE
         );
     }
 
     /**
      * Returns whether link checked by default or not
-     *
-     * @param Link $link
-     * @return bool
-     * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getIsLinkChecked($link)
+    public function getIsLinkChecked(Link $link): bool
     {
         $configValue = $this->getProduct()->getPreconfiguredValues()->getLinks();
         if (!$configValue || !is_array($configValue)) {
             return false;
         }
 
-        return $configValue && in_array($link->getId(), $configValue);
+        return in_array($link->getId(), $configValue);
     }
 
     /**
      * Returns value for link's input checkbox - either 'checked' or ''
-     *
-     * @param Link $link
-     * @return string
      */
-    public function getLinkCheckedValue($link)
+    public function getLinkCheckedValue(Link $link): string
     {
         return $this->getIsLinkChecked($link) ? 'checked' : '';
     }
 
-    /**
-     * @param Link $link
-     * @return \Magento\Framework\Pricing\Amount\AmountInterface
-     */
-    protected function getLinkAmount($link)
+    protected function getLinkAmount(Link $link): AmountInterface
     {
         return $this->getPriceType()->getLinkAmount($link);
     }
 
     /**
-     * @param Link $link
-     * @return string
+     * @throws LocalizedException
      */
-    public function getLinkPrice(Link $link)
+    public function getLinkPrice(Link $link): string
     {
         return $this->getLayout()->getBlock('product.price.render.default')->renderAmount(
             $this->getLinkAmount($link),
@@ -489,21 +381,16 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
 
     /**
      * Get LinkPrice Type
-     *
-     * @return \Magento\Framework\Pricing\Price\PriceInterface
      */
-    protected function getPriceType()
+    protected function getPriceType(): PriceInterface
     {
         return $this->getProduct()->getPriceInfo()->getPrice(LinkPrice::PRICE_CODE);
     }
 
     /**
      * Get option html block
-     *
-     * @param \DevStone\UsageCalculator\Model\Usage\Option $option
-     * @return string
      */
-    public function getOptionHtml(\DevStone\UsageCalculator\Model\Usage\Option $option)
+    public function getOptionHtml(Option $option): string
     {
         $type = $this->getGroupOfOption($option->getType());
         $renderer = $this->getChildBlock($type);
@@ -513,11 +400,7 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         return $this->getChildHtml($type, false);
     }
 
-    /**
-     * @param string $type
-     * @return string
-     */
-    public function getGroupOfOption($type)
+    public function getGroupOfOption(string $type): string
     {
         $group = $this->optionModel->getGroupByType($type);
 
@@ -525,25 +408,13 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     }
 
     /**
-     * @return mixed
+     * @throws LocalizedException
      */
-    public function getCustomLicenseId()
-    {
-        return $this->_scopeConfig->getValue(
-            'usage_cal/general/category_id',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
-    }
-
-    /**
-     * @return mixed
-     * @throws \Magento\Framework\Exception\LocalizedException
-     */
-    public function getPreviousSelectHtml()
+    public function getPreviousSelectHtml(): string
     {
         $extraParams = '';
         $select = $this->getLayout()->createBlock(
-            \Magento\Framework\View\Element\Html\Select::class
+            Select::class
         )->setData(
             [
                 'id' => 'usage_previous_usages',
@@ -554,7 +425,6 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         $select->setName('previous_category')->addOption('', __('-- Please Select --'));
 
         foreach ($this->getPreviousCategories() as $category) {
-
             $select->addOption(
                 $category['id'],
                 $category['name']
@@ -567,18 +437,14 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     }
 
     /**
-     * @return array
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
      */
-    public function getPreviousCategories()
+    public function getPreviousCategories(): array
     {
         $previousCategories = [];
         $items = $this->checkoutSession->getQuote()->getAllVisibleItems();
         foreach ($items as $item) {
-            /**
-             * @var \Magento\Quote\Model\Quote\Item $item
-             */
             $getBuyRequest = $item->getBuyRequest();
             $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
             if (count($previousCategoriesByItems) && !in_array($previousCategoriesByItems, $previousCategories)) {
@@ -595,25 +461,25 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
                 ->setPageSize(20 - count($previousCategories))
                 ->setOrder('created_at', 'desc');
             /**
-             * @var \Magento\Sales\Model\Order $order
-             * @var \Magento\Sales\Api\Data\OrderItemInterface $item
+             * @var Order $order
+             * @var OrderItemInterface $item
              */
             foreach ($ordersCollection as $order) {
                 $items = $order->getAllVisibleItems();
                 foreach ($items as $item) {
                     try {
                         /**
-                         * @var \Magento\Quote\Model\Quote\Item $item
+                         * @var Item $item
                          */
                         $getBuyRequest = $item->getProductOptions()['info_buyRequest'];
                         $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
                         if (count($previousCategoriesByItems) && !in_array(
-                                $previousCategoriesByItems,
-                                $previousCategories
-                            )) {
+                            $previousCategoriesByItems,
+                            $previousCategories
+                        )) {
                             $previousCategories[] = $previousCategoriesByItems;
                         }
-                    } catch (\Exception $e){
+                    } catch (Exception $e) {
                         // Probably usage was deleted, skip.
                         continue;
                     }
@@ -627,7 +493,11 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
         return $previousCategories;
     }
 
-    public function getPreviousCategoriesByItemsFromBuyRequest($buyRequest)
+    /**
+     * @throws NoSuchEntityException
+     * @throws LocalizedException
+     */
+    public function getPreviousCategoriesByItemsFromBuyRequest($buyRequest): array
     {
         $id = '';
         $value = '';
@@ -650,43 +520,31 @@ class Usage extends \Magento\Catalog\Block\Product\AbstractProduct
     }
 
     /**
-     * @param $categoryId
-     * @return string|null
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function getCategoryName($categoryId)
+    public function getCategoryName($categoryId): ?string
     {
-        $searchCriteria = $this->searchCriteriaBuilder
-            ->addFilter('entity_id', $categoryId, 'eq')
-            ->create();
-        $list = $this->categoryRepository->getList($searchCriteria)->getItems();
-        return $list[$categoryId]->getName();
+        $category = $this->categoryRepository->getById($categoryId);
+        return $category->getName();
     }
 
     /**
-     * @param $usageId
-     * @return mixed
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function getUsageName($usageId)
+    public function getUsageName($usageId): string
     {
-        $searchCriteria = $this->searchCriteriaBuilder
-            ->addFilter('entity_id', $usageId, 'eq')
-            ->create();
-        $list = $this->usageRepository->getList($searchCriteria)->getItems();
-        return $list[$usageId]->getName();
+        $usage = $this->usageRepository->getById($usageId);
+        return $usage->getName();
     }
 
     /**
-     * @param $optionId
-     * @return mixed
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      */
-    public function getOptionName($optionId)
+    public function getOptionName($optionId): string
     {
         $usageOptionCollection = $this->usageOptionCollectionFactory->create();
         $usageOptionCollection->addTitlesToResult($this->_storeManager->getStore()->getId());
         $usageOptionCollection->addFieldToFilter('main_table.option_type_id', $optionId);
-        return $usageOptionCollection->count() ? $usageOptionCollection->getFirstItem()->getTitle() : $optionId;
+        return $usageOptionCollection->count() ? $usageOptionCollection->getFirstItem()->getTitle() : "";
     }
 }

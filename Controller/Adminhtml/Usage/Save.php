@@ -8,9 +8,13 @@
 
 namespace DevStone\UsageCalculator\Controller\Adminhtml\Usage;
 
+use DevStone\UsageCalculator\Helper\Data;
+use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use DevStone\UsageCalculator\Model\UsageFactory;
+use Magento\Backend\Model\View\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Class Save
@@ -18,13 +22,9 @@ use DevStone\UsageCalculator\Model\UsageFactory;
  */
 class Save extends Action
 {
-    /** @var UsageFactory $objectFactory */
-    protected $objectFactory;
-
-    /**
-     * @var Initialization\Helper $helper
-     */
-    protected $helper;
+    protected UsageFactory $objectFactory;
+    protected Initialization\Helper $helper;
+    protected Data $data;
 
     /**
      * @param Context $context
@@ -33,35 +33,34 @@ class Save extends Action
     public function __construct(
         Context $context,
         UsageFactory $objectFactory,
-        Initialization\Helper $helper
+        Initialization\Helper $helper,
+        Data $data
     ) {
         $this->objectFactory = $objectFactory;
         $this->helper = $helper;
+        $this->data = $data;
         parent::__construct($context);
+
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function _isAllowed()
+    protected function _isAllowed(): bool
     {
         return $this->_authorization->isAllowed('DevStone_UsageCalculator::usage');
     }
 
-    /**
-     * Save action
-     *
-     * @return \Magento\Framework\Controller\ResultInterface
-     */
-    public function execute()
+    public function execute(): ResultInterface
     {
         $storeId = (int)$this->getRequest()->getParam('store_id');
         $data = $this->getRequest()->getParams();
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        /** @var Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {
             $params = [];
             $objectInstance = $this->objectFactory->create();
+
             $objectInstance->setStoreId($storeId);
             $params['store'] = $storeId;
             if (empty($data['entity_id'])) {
@@ -85,10 +84,14 @@ class Save extends Action
                 if ($this->getRequest()->getParam('back')) {
                     $params['entity_id'] = $objectInstance->getId();
                     $params['_current'] = true;
+                    $customLicenseId = $this->data->getCustomLicenseId();
+                    if ($objectInstance->getCategoryId() == $customLicenseId) {
+                        $params['custom_license'] = true;
+                    }
                     return $resultRedirect->setPath('*/*/edit', $params);
                 }
                 return $resultRedirect->setPath('*/*/');
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the record.'));
             }

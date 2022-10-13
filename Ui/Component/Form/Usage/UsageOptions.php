@@ -2,23 +2,27 @@
 
 namespace DevStone\UsageCalculator\Ui\Component\Form\Usage;
 
-use Magento\Catalog\Model\Locator\LocatorInterface;
-use Magento\Store\Model\StoreManagerInterface;
+use DevStone\UsageCalculator\Api\UsageCustomOptionRepositoryInterface;
+use DevStone\UsageCalculator\Model\Usage\SizesOptionsProvider;
 use Magento\Catalog\Model\Config\Source\Product\Options\Price as ProductOptionsPrice;
-use Magento\Framework\UrlInterface;
+use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Model\Product\Option;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Currency;
+use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\Stdlib\ArrayManager;
-use Magento\Ui\Component\Modal;
+use Magento\Framework\UrlInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Container;
 use Magento\Ui\Component\DynamicRows;
-use Magento\Ui\Component\Form\Fieldset;
-use Magento\Ui\Component\Form\Field;
+use Magento\Ui\Component\Form\Element\ActionDelete;
+use Magento\Ui\Component\Form\Element\Checkbox;
+use Magento\Ui\Component\Form\Element\DataType\Number;
+use Magento\Ui\Component\Form\Element\DataType\Text;
 use Magento\Ui\Component\Form\Element\Input;
 use Magento\Ui\Component\Form\Element\Select;
-use Magento\Ui\Component\Form\Element\Checkbox;
-use Magento\Ui\Component\Form\Element\ActionDelete;
-use Magento\Ui\Component\Form\Element\DataType\Text;
-use Magento\Ui\Component\Form\Element\DataType\Number;
-use Magento\Framework\Locale\CurrencyInterface;
+use Magento\Ui\Component\Form\Field;
+use Magento\Ui\Component\Form\Fieldset;
 
 /**
  * Data provider for "Usage Options" panel
@@ -69,7 +73,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
     const FIELD_ENABLE = 'affect_usage_custom_options';
     const FIELD_OPTION_ID = 'option_id';
     const FIELD_TITLE_NAME = 'title';
-	const FIELD_HELP_NAME = 'help';
+    const FIELD_HELP_NAME = 'help';
     const FIELD_STORE_TITLE_NAME = 'store_title';
     const FIELD_TYPE_NAME = 'type';
     const FIELD_IS_REQUIRE_NAME = 'is_require';
@@ -88,67 +92,24 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
     const CUSTOM_OPTIONS_LISTING = 'product_custom_options_listing';
     /**#@-*/
 
-    /**
-     * @var LocatorInterface
-     */
-    protected $locator;
+    protected LocatorInterface $locator;
+    protected StoreManagerInterface $storeManager;
+    protected ProductOptionsPrice $productOptionsPrice;
+    protected UrlInterface $urlBuilder;
+    protected ArrayManager $arrayManager;
+    protected array $meta = [];
+    private CurrencyInterface $localeCurrency;
+    protected UsageCustomOptionRepositoryInterface $optionRepository;
+    protected SizesOptionsProvider $sizesOptionsProvider;
 
-    /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    protected $storeManager;
-
-    /**
-     * @var \Magento\Catalog\Model\Config\Source\Product\Options\Price
-     */
-    protected $productOptionsPrice;
-
-    /**
-     * @var UrlInterface
-     */
-    protected $urlBuilder;
-
-    /**
-     * @var ArrayManager
-     */
-    protected $arrayManager;
-
-    /**
-     * @var array
-     */
-    protected $meta = [];
-
-    /**
-     * @var CurrencyInterface
-     */
-    private $localeCurrency;
-
-
-    /**
-     * @var \DevStone\UsageCalculator\Api\UsageCustomOptionRepositoryInterface
-     */
-    protected $optionRepository;
-
-	/**
-	 * @var \DevStone\UsageCalculator\Model\Usage\SizesOptionsProvider
-	 */
-	protected $sizesOptionsProvider;
-
-	/**
-     * @param LocatorInterface $locator
-     * @param StoreManagerInterface $storeManager
-     * @param ProductOptionsPrice $productOptionsPrice
-     * @param UrlInterface $urlBuilder
-     * @param ArrayManager $arrayManager
-     */
     public function __construct(
         LocatorInterface $locator,
         StoreManagerInterface $storeManager,
         ProductOptionsPrice $productOptionsPrice,
         UrlInterface $urlBuilder,
         ArrayManager $arrayManager,
-        \DevStone\UsageCalculator\Api\UsageCustomOptionRepositoryInterface $optionRepo,
-		\DevStone\UsageCalculator\Model\Usage\SizesOptionsProvider $sizesOptionsProvider
+        UsageCustomOptionRepositoryInterface $optionRepo,
+        SizesOptionsProvider $sizesOptionsProvider
     ) {
         $this->locator = $locator;
         $this->storeManager = $storeManager;
@@ -156,7 +117,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
         $this->urlBuilder = $urlBuilder;
         $this->arrayManager = $arrayManager;
         $this->optionRepository = $optionRepo;
-		$this->sizesOptionsProvider = $sizesOptionsProvider;
+        $this->sizesOptionsProvider = $sizesOptionsProvider;
     }
 
     /**
@@ -164,7 +125,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
      */
     public function modifyData(array $data)
     {
-        foreach($data as $id => &$usage) {
+        foreach ($data as $id => &$usage) {
             $options = [];
             $productOptions = $this->optionRepository->getList($id);
             /** @var \DevStone\UsageCalculator\Model\Usage\Option $option */
@@ -177,7 +138,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                 foreach ($values as $value) {
                     $value->setData(static::FIELD_IS_USE_DEFAULT, !$value->getData(static::FIELD_STORE_TITLE_NAME));
                 }
-                /** @var \Magento\Catalog\Model\Product\Option $value */
+                /** @var Option $value */
                 foreach ($values as $value) {
                     $options[$index][static::GRID_TYPE_SELECT_NAME][] = $this->formatPriceByPath(
                         static::FIELD_PRICE_NAME,
@@ -261,7 +222,6 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                 ]
             ]
         );
-
 
         return $this;
     }
@@ -452,28 +412,28 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                         ],
                     ]
                 ),
-				static::FIELD_HELP_NAME => [
-					'arguments' => [
-						'data' => [
-							'config' => [
-								'label' => __('Help Text'),
-								'component' => 'Magento_Catalog/component/static-type-input',
-								'componentType' => Field::NAME,
-								'formElement' => Input::NAME,
-								'dataScope' => static::FIELD_HELP_NAME,
-								'dataType' => Text::NAME,
-								'sortOrder' => 21,
-								'validation' => [
-									'required-entry' => true
-								],
-								'imports' => [
-									'optionId' => '${ $.provider }:${ $.parentScope }.option_id',
-									'isUseDefault' => '${ $.provider }:${ $.parentScope }.is_use_default'
-								]
-							],
-						],
-					],
-				],
+                static::FIELD_HELP_NAME => [
+                    'arguments' => [
+                        'data' => [
+                            'config' => [
+                                'label' => __('Help Text'),
+                                'component' => 'Magento_Catalog/component/static-type-input',
+                                'componentType' => Field::NAME,
+                                'formElement' => Input::NAME,
+                                'dataScope' => static::FIELD_HELP_NAME,
+                                'dataType' => Text::NAME,
+                                'sortOrder' => 21,
+                                'validation' => [
+                                    'required-entry' => true
+                                ],
+                                'imports' => [
+                                    'optionId' => '${ $.provider }:${ $.parentScope }.option_id',
+                                    'isUseDefault' => '${ $.provider }:${ $.parentScope }.is_use_default'
+                                ]
+                            ],
+                        ],
+                    ],
+                ],
                 static::FIELD_TYPE_NAME => $this->getTypeFieldConfig(30),
                 static::FIELD_IS_REQUIRE_NAME => $this->getIsRequireFieldConfig(40)
             ]
@@ -575,7 +535,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                         ),
                         static::FIELD_PRICE_NAME => $this->getPriceFieldConfigForSelectType(20),
                         static::FIELD_PRICE_TYPE_NAME => $this->getPriceTypeFieldConfig(30, ['fit' => true]),
-						static::FIELD_IMAGE_SIZE => $this->getImageSizeFieldConfig(40),
+                        static::FIELD_IMAGE_SIZE => $this->getImageSizeFieldConfig(40),
                         static::FIELD_SORT_ORDER_NAME => $this->getPositionFieldConfig(50),
                         static::FIELD_IS_DELETE => $this->getIsDeleteFieldConfig(60)
                     ]
@@ -849,9 +809,9 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
         );
     }
 
-	protected function getImageSizeFieldConfig($sortOrder)
-	{
-		return [
+    protected function getImageSizeFieldConfig($sortOrder)
+    {
+        return [
             'arguments' => [
                 'data' => [
                     'config' => [
@@ -866,7 +826,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                 ],
             ],
         ];
-	}
+    }
 
     /**
      * Get options for drop-down control with product option types
@@ -876,48 +836,45 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
      */
     protected function getProductOptionTypes()
     {
-
-        return  array(
-                    array(
+        return  [
+                    [
                         'value' => 0,
                         'label' => 'Text',
-                        'optgroup' =>
-                        array(
-                            array(
+                        'optgroup' => [
+                            [
                                 'label' => 'Field',
                                 'value' => 'field',
-                            ),
-                            array(
+                            ],
+                            [
                                 'label' => 'Area',
                                 'value' => 'area',
-                            ),
-                        ),
-                    ),
-                    array(
+                            ],
+                        ],
+                    ],
+                    [
                         'value' => 2,
                         'label' => 'Select',
-                        'optgroup' =>
-                        array(
-                            array(
+                        'optgroup' => [
+                            [
                                 'label' => 'Drop-down',
                                 'value' => 'drop_down',
-                            ),
-                            array(
+                            ],
+                            [
                                 'label' => 'Radio Buttons',
                                 'value' => 'radio',
-                            ),
-                            array(
+                            ],
+                            [
                                 'label' => 'Checkbox',
                                 'value' => 'checkbox',
-                            ),
-                            array(
+                            ],
+                            [
                                 'label' => 'Multiple Select',
                                 'value' => 'multiple',
-                            ),
-                        ),
-                    ),
+                            ],
+                        ],
+                    ],
 
-        );
+        ];
     }
 
     /**
@@ -934,14 +891,14 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
     /**
      * The getter function to get the locale currency for real application code
      *
-     * @return \Magento\Framework\Locale\CurrencyInterface
+     * @return CurrencyInterface
      *
      * @deprecated 101.0.0
      */
     private function getLocaleCurrency()
     {
         if ($this->localeCurrency === null) {
-            $this->localeCurrency = \Magento\Framework\App\ObjectManager::getInstance()->get(CurrencyInterface::class);
+            $this->localeCurrency = ObjectManager::getInstance()->get(CurrencyInterface::class);
         }
         return $this->localeCurrency;
     }
@@ -961,7 +918,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
 
         $store = $this->storeManager->getStore();
         $currency = $this->getLocaleCurrency()->getCurrency($store->getBaseCurrencyCode());
-        $value = $currency->toCurrency($value, ['display' => \Magento\Framework\Currency::NO_SYMBOL]);
+        $value = $currency->toCurrency($value, ['display' => Currency::NO_SYMBOL]);
 
         return $value;
     }

@@ -1,21 +1,22 @@
 <?php
 
+declare(strict_types=1);
 
 namespace DevStone\UsageCalculator\Model;
 
-use Magento\Framework\Exception\CouldNotDeleteException;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Exception\CouldNotSaveException;
+use DevStone\UsageCalculator\Api\CategoryRepositoryInterface;
+use DevStone\UsageCalculator\Api\Data\CategoryInterface;
+use DevStone\UsageCalculator\Api\Data\CategoryInterfaceFactory;
 use DevStone\UsageCalculator\Api\Data\CategorySearchResultsInterfaceFactory;
-use Magento\Framework\Reflection\DataObjectProcessor;
 use DevStone\UsageCalculator\Model\ResourceModel\Category as ResourceCategory;
 use DevStone\UsageCalculator\Model\ResourceModel\Category\CollectionFactory as CategoryCollectionFactory;
-use Magento\Framework\Api\SortOrder;
-use DevStone\UsageCalculator\Api\CategoryRepositoryInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Api\DataObjectHelper;
-use DevStone\UsageCalculator\Api\Data\CategoryInterfaceFactory;
-use DevStone\UsageCalculator\Api\Data\CategoryInterface;
+use Magento\Framework\Api\SortOrder;
+use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Reflection\DataObjectProcessor;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class CategoryRepository
@@ -159,7 +160,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         $searchResults->setItems($collection->getItems());
         return $searchResults;
 
-//        
+//
 //        $searchResults = $this->searchResultsFactory->create();
 //        $searchResults->setSearchCriteria($searchCriteria);
 //        /** @var \Magento\Customer\Model\ResourceModel\Customer\Collection $collection */
@@ -193,7 +194,6 @@ class CategoryRepository implements CategoryRepositoryInterface
 //        }
 //        $searchResults->setItems($customers);
 //        return $searchResults;
-
     }
 
     /**

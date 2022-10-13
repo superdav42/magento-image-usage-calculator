@@ -2,83 +2,104 @@
 
 namespace DevStone\UsageCalculator\Observer;
 
-use Magento\Framework\App\Config;
+use DevStone\UsageCalculator\Api\UsageCustomerRepositoryInterface;
+use DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory;
+use DevStone\UsageCalculator\Model\Usage;
+use DevStone\UsageCalculator\Model\UsageCustomerFactory;
+use Exception;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\Event\ObserverInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class SaveCustomer
  * @package DevStone\UsageCalculator\Observer
  */
-class SaveCustomer implements \Magento\Framework\Event\ObserverInterface
+class SaveCustomer implements ObserverInterface
 {
+    protected UsageCustomerFactory $usageCustomerFactory;
+    protected CollectionFactory $usageCustomerCollectionFactory;
+    protected ScopeConfigInterface $scopeConfig;
+    protected UsageCustomerRepositoryInterface $usageCustomerRepository;
+    protected SearchCriteriaBuilder $searchCriteriaBuilder;
 
-    /**
-     * @var \DevStone\UsageCalculator\Model\UsageCustomerFactory
-     */
-    protected $usageCustomerFactory;
-
-    /**
-     * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory
-     */
-    protected $usageCustomerCollectionFactory;
-
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $scopeConfig;
-
-    /**
-     * SaveCustomer constructor.
-     * @param Config\ScopeConfigInterface $config
-     * @param \DevStone\UsageCalculator\Model\UsageCustomerFactory $usageCustomerFactory
-     * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
-     */
     public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $config,
-        \DevStone\UsageCalculator\Model\UsageCustomerFactory $usageCustomerFactory,
-        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
+        ScopeConfigInterface $config,
+        UsageCustomerFactory $usageCustomerFactory,
+        CollectionFactory $collectionFactory,
+        UsageCustomerRepositoryInterface $usageCustomerRepository,
+        SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->usageCustomerFactory = $usageCustomerFactory;
         $this->usageCustomerCollectionFactory = $collectionFactory;
         $this->scopeConfig = $config;
+        $this->usageCustomerRepository = $usageCustomerRepository;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**
      * @param Observer $observer
-     * @throws \Exception
+     * @throws Exception
      */
     public function execute(Observer $observer)
     {
         /**
-         * @var \Magento\Framework\App\RequestInterface $request
+         * @var RequestInterface $request
          */
         $request = $observer->getData('request');
         $customers = $request->getParam('usage_customers');
+        $pendingCustomers = $request->getParam('pending_customer_emails');
         /**
-         * @var \DevStone\UsageCalculator\Model\Usage $usage
+         * @var Usage $usage
          */
         $usage = $observer->getData('usage');
         $usageId = $usage->getEntityId();
-
+        $savedIds = [];
+        $searchCriteria = $this->searchCriteriaBuilder
+            ->addFilter('usage_id', $usage->getId())
+            ->addFilter('customer_id', 0, 'neq');
         if (isset($customers)) {
+
             $customersArray = json_decode($customers);
             foreach ($customersArray as $customerId) {
                 $usageCustomer = $this->usageCustomerFactory->create();
 
-                $usageCustomers = $this->usageCustomerCollectionFactory->create()
-                    ->addFieldToFilter('usage_id', ['eq' => $usageId])
-                    ->addFieldToFilter('customer_id', ['eq' => $customerId]);
+                $usageCustomer = $this->usageCustomerRepository->getByUsageAndCustomer($usageId, $customerId) ?? $usageCustomer;
 
-                //If usage already exsist then override its value
-                if ($usageCustomers->getSize()) {
-                    $usageCustomer->setEntityId($usageCustomers->getFirstItem()->getEntityId());
-                }
-
-                $usageCustomer->setUsageId($observer->getData('usage')->getId());
+                $usageCustomer->setUsageId($usage->getId());
                 $usageCustomer->setCustomerId($customerId);
-                $usageCustomer->save();
+                $usageCustomer = $this->usageCustomerRepository->save($usageCustomer);
+                $savedIds[] = $usageCustomer->getId();
             }
+            $searchCriteria->addFilter('entity_id', $savedIds, 'nin');
         }
+        $this->usageCustomerRepository->deleteList($searchCriteria->create());
+
+        $savedIds = [];
+
+        $searchCriteria = $this->searchCriteriaBuilder
+            ->addFilter('usage_id', $usage->getId())
+            ->addFilter('customer_id', 0);
+        if (isset($pendingCustomers)) {
+            foreach ($pendingCustomers as $pendingCustomer) {
+                if (!isset($pendingCustomer['email']) || $pendingCustomer['email'] === "") {
+                    continue;
+                }
+                $usageCustomer = $this->usageCustomerFactory->create();
+
+                $usageCustomer = $this->usageCustomerRepository->getByUsageAndEmail($usageId, $pendingCustomer['email']) ?? $usageCustomer;
+
+                $usageCustomer->setUsageId($usage->getId());
+                $usageCustomer->setPendingCustomerEmail($pendingCustomer['email']);
+                $usageCustomer = $this->usageCustomerRepository->save($usageCustomer);
+                $savedIds[] = $usageCustomer->getId();
+            }
+            $searchCriteria->addFilter('entity_id', $savedIds, 'nin');
+        }
+        $this->usageCustomerRepository->deleteList($searchCriteria->create());
     }
 
     /**
@@ -88,7 +109,7 @@ class SaveCustomer implements \Magento\Framework\Event\ObserverInterface
     {
         return $this->scopeConfig->getValue(
             'usage_cal/general/category_id',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            ScopeInterface::SCOPE_STORE
         );
     }
 }

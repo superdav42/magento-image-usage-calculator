@@ -8,11 +8,21 @@
 
 namespace DevStone\UsageCalculator\Block\Adminhtml\Customer;
 
+use DevStone\UsageCalculator\Block\Adminhtml\Customer\Tab\Customer;
+use DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory;
+use Magento\Backend\Block\Template;
+use Magento\Backend\Block\Template\Context;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Registry;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\View\Element\BlockInterface;
+
 /**
  * Class AssignCustomers
  * @package DevStone\UsageCalculator\Block\Adminhtml\Customer
  */
-class AssignCustomers extends \Magento\Backend\Block\Template
+class AssignCustomers extends Template
 {
     /**
      * @var string
@@ -24,59 +34,34 @@ class AssignCustomers extends \Magento\Backend\Block\Template
      */
     protected $blockGrid;
 
-    /**
-     * @var \Magento\Framework\Registry
-     */
-    protected $registry;
+    protected Registry $registry;
+    protected SerializerInterface $serializer;
+    protected RequestInterface $request;
+    protected CollectionFactory $collectionFactory;
 
-    /**
-     * @var \Magento\Framework\Json\EncoderInterface
-     */
-    protected $jsonEncoder;
-
-    /**
-     * @var \Magento\Framework\App\RequestInterface
-     */
-    protected $request;
-
-    /**
-     * @var \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory
-     */
-    protected $collectionFactory;
-
-    /**
-     * AssignCustomers constructor.
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @param \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory
-     * @param array $data
-     */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-        \Magento\Framework\App\RequestInterface $request,
-        \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory,
+        Context $context,
+        Registry $registry,
+        SerializerInterface $serializer,
+        RequestInterface $request,
+        CollectionFactory $collectionFactory,
         array $data = []
     ) {
         $this->registry = $registry;
-        $this->jsonEncoder = $jsonEncoder;
+        $this->serializer = $serializer;
         $this->request = $request;
         $this->collectionFactory = $collectionFactory;
         parent::__construct($context, $data);
     }
 
     /**
-     * @return \Magento\Framework\View\Element\BlockInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function getBlockGrid()
+    public function getBlockGrid(): BlockInterface
     {
         if (null === $this->blockGrid) {
             $this->blockGrid = $this->getLayout()->createBlock(
-                \DevStone\UsageCalculator\Block\Adminhtml\Customer\Tab\Customer::class,
+                Customer::class,
                 'usage.customer.grid'
             );
         }
@@ -84,31 +69,24 @@ class AssignCustomers extends \Magento\Backend\Block\Template
     }
 
     /**
-     * @return string
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function getGridHtml()
+    public function getGridHtml(): string
     {
         return $this->getBlockGrid()->toHtml();
     }
 
-    /**
-     * @return string
-     */
-    public function getProductsJson()
+    public function getProductsJson(): string
     {
         $customer = $this->getUsageCustomer();
 
         if (!empty($customer)) {
-            return $this->jsonEncoder->encode($customer);
+            return $this->serializer->serialize($customer);
         }
         return '{}';
     }
 
-    /**
-     * @return array
-     */
-    public function getUsageCustomer()
+    public function getUsageCustomer(): array
     {
         $id = $this->getRequest()->getParam('entity_id');
         $customerArray = [];
@@ -122,14 +100,11 @@ class AssignCustomers extends \Magento\Backend\Block\Template
         return $customerArray;
     }
 
-    /**
-     * @return bool|mixed
-     */
-    public function showGrid()
+    public function showGrid(): bool
     {
         $customLicense = $this->request->getParam('custom_license');
         if (isset($customLicense)) {
-            return $customLicense;
+            return true;
         }
         return false;
     }

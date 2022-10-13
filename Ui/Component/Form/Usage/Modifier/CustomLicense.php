@@ -2,35 +2,40 @@
 
 namespace DevStone\UsageCalculator\Ui\Component\Form\Usage\Modifier;
 
+use DevStone\UsageCalculator\Api\Data\UsageCustomerInterface;
+use DevStone\UsageCalculator\Api\UsageRepositoryInterface;
+use DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory;
+use DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Ui\Component\Form\Element\DataType\Number;
+use Magento\Ui\Component\Form\Element\Input;
+use Magento\Ui\Component\Form\Field;
+use Magento\Ui\DataProvider\Modifier\ModifierInterface;
+
 /**
  * Class CustomLicense
  * @package DevStone\UsageCalculator\Ui\Component\Form\Usage\Modifier
  */
-class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterface
+class CustomLicense implements ModifierInterface
 {
     const FIELD_NAME = 'max_usage';
 
-    /**
-     * @var \Magento\Framework\App\RequestInterface
-     */
-    protected $request;
+    protected RequestInterface $request;
+    protected CatagoriesOptionsProvider $categoriesOptionsProvider;
+    protected UsageRepositoryInterface $usageRepository;
+    protected CollectionFactory $usageCustomerCollectionFactory;
 
-    /**
-     * @var \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider
-     */
-    protected $catagoriesOptionsProvider;
-
-    /**
-     * CustomLicense constructor.
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @param \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider $catagoriesOptionsProvider
-     */
     public function __construct(
-        \Magento\Framework\App\RequestInterface $request,
-        \DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider $catagoriesOptionsProvider
+        RequestInterface $request,
+        CatagoriesOptionsProvider $categoriesOptionsProvider,
+        UsageRepositoryInterface $usageRepository,
+        CollectionFactory $usageCustomerCollectionFactory
     ) {
         $this->request = $request;
-        $this->catagoriesOptionsProvider = $catagoriesOptionsProvider;
+        $this->categoriesOptionsProvider = $categoriesOptionsProvider;
+        $this->usageRepository = $usageRepository;
+        $this->usageCustomerCollectionFactory = $usageCustomerCollectionFactory;
     }
 
     /**
@@ -40,6 +45,30 @@ class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterfa
      */
     public function modifyData(array $data)
     {
+        foreach ($data as &$item) {
+            $customLicense = $this->request->getParam('custom_license');
+            if (isset($item['entity_id']) && isset($customLicense) && $customLicense) {
+                try {
+                    $usage = $this->usageRepository->getById($item['entity_id']);
+                    if ($usage->getId()) {
+                        $usageCustomers = $this->usageCustomerCollectionFactory->create()
+                            ->addFieldToFilter('usage_id', ['eq' => $usage->getId()]);
+                        if ($usageCustomers->getSize()) {
+                            /** @var UsageCustomerInterface $usageCustomer */
+                            foreach ($usageCustomers->getItems() as $usageCustomer) {
+                                if ($usageCustomer->getPendingCustomerEmail() !== "" && !$usageCustomer->getCustomerId()) {
+                                    $item['pending_customer_emails'][] = [
+                                        'email' => $usageCustomer->getPendingCustomerEmail()
+                                    ];
+                                }
+                            }
+                        }
+                    }
+                } catch (LocalizedException $e) {
+
+                }
+            }
+        }
         return $data;
     }
 
@@ -62,7 +91,7 @@ class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterfa
                                 'arguments' => [
                                     'data' => [
                                         'config' => [
-                                            'options' => $this->catagoriesOptionsProvider->customLicenseOption()
+                                            'options' => $this->categoriesOptionsProvider->customLicenseOption()
                                         ]
                                     ]
                                 ]
@@ -83,7 +112,7 @@ class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterfa
                                 'arguments' => [
                                     'data' => [
                                         'config' => [
-                                            'options' => $this->catagoriesOptionsProvider->allOptionsExcludingCustomLicense()
+                                            'options' => $this->categoriesOptionsProvider->allOptionsExcludingCustomLicense()
                                         ]
                                     ]
                                 ]
@@ -106,10 +135,10 @@ class CustomLicense implements \Magento\Ui\DataProvider\Modifier\ModifierInterfa
                 'data' => [
                     'config' => [
                         'label' => __('Max Usage'),
-                        'formElement' => \Magento\Ui\Component\Form\Field::NAME,
-                        'componentType' => \Magento\Ui\Component\Form\Element\Input::NAME,
+                        'formElement' => Field::NAME,
+                        'componentType' => Input::NAME,
                         'dataScope' => static::FIELD_NAME,
-                        'dataType' => \Magento\Ui\Component\Form\Element\DataType\Number::NAME,
+                        'dataType' => Number::NAME,
                         'sortOrder' => 50,
                     ],
                 ],

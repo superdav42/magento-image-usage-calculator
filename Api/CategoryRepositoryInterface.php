@@ -20,11 +20,11 @@ interface CategoryRepositoryInterface
 
     /**
      * Retrieve Category
-     * @param string $usageId
+     * @param string $categoryId
      * @return \DevStone\UsageCalculator\Api\Data\CategoryInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getById($usageId);
+    public function getById($categoryId);
 
     /**
      * Retrieve Category matching the specified criteria.

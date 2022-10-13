@@ -8,72 +8,46 @@
 
 namespace DevStone\UsageCalculator\Plugin\Controller\Cart;
 
+use DevStone\UsageCalculator\Api\UsageRepositoryInterface;
+use DevStone\UsageCalculator\Helper\Data;
+use Magento\Checkout\Controller\Cart\Add as AddSubject;
+use Magento\Checkout\Model\Session;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Controller\Result\RedirectFactory;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Message\ManagerInterface;
+use Magento\Sales\Api\Data\OrderItemInterface;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
+
 /**
  * Class Add
  * @package DevStone\UsageCalculator\Plugin\Controller\Cart
  */
 class Add
 {
-    /**
-     * @var \Magento\Customer\Model\Session
-     */
-    private $customerSession;
+    protected CustomerSession $customerSession;
+    protected RequestInterface $request;
+    protected UsageRepositoryInterface $usageRepository;
+    protected CollectionFactory $orderCollectionFactory;
+    protected Session $checkoutSession;
+    protected ScopeConfigInterface $scopeConfig;
+    protected ManagerInterface $messageInterface;
+    protected RedirectFactory $resultRedirectFactory;
+    private Data $data;
 
-    /**
-     * @var \Magento\Framework\App\RequestInterface
-     */
-    private $request;
-
-    /**
-     * @var \DevStone\UsageCalculator\Api\UsageRepositoryInterface
-     */
-    private $usageRepository;
-
-    /**
-     * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
-     */
-    private $orderCollectionFactory;
-
-    /**
-     * @var \Magento\Checkout\Model\Session
-     */
-    private $checkoutSession;
-
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    private $scopeConfig;
-
-    /**
-     * @var \Magento\Framework\Message\ManagerInterface
-     */
-    private $messageInterface;
-
-    /**
-     * @var \Magento\Framework\Controller\Result\RedirectFactory
-     */
-    private $resultRedirectFactory;
-
-    /**
-     * Add constructor.
-     * @param \Magento\Customer\Model\Session $session
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory
-     * @param \Magento\Checkout\Model\Session $checkoutSession
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $config
-     * @param \Magento\Framework\Message\ManagerInterface $messageInterface
-     * @param \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory
-     * @param \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository
-     */
     public function __construct(
-        \Magento\Customer\Model\Session $session,
-        \Magento\Framework\App\RequestInterface $request,
-        \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $orderCollectionFactory,
-        \Magento\Checkout\Model\Session $checkoutSession,
-        \Magento\Framework\App\Config\ScopeConfigInterface $config,
-        \Magento\Framework\Message\ManagerInterface $messageInterface,
-        \Magento\Framework\Controller\Result\RedirectFactory $redirectFactory,
-        \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository
+        CustomerSession          $session,
+        RequestInterface         $request,
+        CollectionFactory        $orderCollectionFactory,
+        Session                  $checkoutSession,
+        ScopeConfigInterface     $config,
+        ManagerInterface         $messageInterface,
+        RedirectFactory          $redirectFactory,
+        UsageRepositoryInterface $usageRepository,
+        Data                     $data
     ) {
         $this->request = $request;
         $this->customerSession = $session;
@@ -83,48 +57,45 @@ class Add
         $this->scopeConfig = $config;
         $this->messageInterface = $messageInterface;
         $this->resultRedirectFactory = $redirectFactory;
+        $this->data = $data;
     }
 
-    /**
-     * @param \Magento\Checkout\Controller\Cart\Add $subject
-     * @param callable $proceed
-     * @return mixed
-     */
-    public function aroundExecute(\Magento\Checkout\Controller\Cart\Add $subject, callable $proceed)
+    public function aroundExecute(AddSubject $subject, callable $proceed): mixed
     {
         $usageId = $this->request->getParam('usage_id');
-        if ($this->request->getParam('usage_category') != $this->getCustomLicenseId()) {
+        if ($this->request->getParam('usage_category') != $this->data->getCustomLicenseId()) {
             return $proceed();
-        } elseif (array_key_exists($this->getCustomLicenseId(), $usageId)) {
+        } elseif (array_key_exists($this->data->getCustomLicenseId(), $usageId)) {
             if ($this->customerSession->isLoggedIn()) {
-                $customerLicensedUsage = $this->usageRepository->getById($usageId[$this->getCustomLicenseId()]);
-                if ($customerLicensedUsage) {
-                    $maxUsage = $customerLicensedUsage->getMaxUsage();
-                    if (!isset($maxUsage)|| !($maxUsage > 0)) {
-                        return $proceed();
+                try {
+                    $customerLicensedUsage = $this->usageRepository->getById($usageId[$this->data->getCustomLicenseId()]);
+                    if ($customerLicensedUsage) {
+                        $maxUsage = $customerLicensedUsage->getMaxUsage();
+                        if (!isset($maxUsage) || !($maxUsage > 0)) {
+                            return $proceed();
+                        }
+                        $totalUsageCountByOrder = $this->getUsageCountByOrders($usageId);
+                        $totalUsageCountByQuote = $this->getUsageCountByQuote($usageId);
+
+                        if (($totalUsageCountByOrder + $totalUsageCountByQuote) < $maxUsage) {
+                            return $proceed();
+                        } else {
+                            $this->messageInterface->addErrorMessage(
+                                __('You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)', $maxUsage)
+                            );
+                            return $this->resultRedirectFactory->create()->setPath('*/*/');
+                        }
                     }
-                    $totalUsageCountByOrder = $this->getUsageCountByOrders($usageId);
-                    $totalUsageCountByQuote = $this->getUsageCountByQuote($usageId);
-                    if (($totalUsageCountByOrder + $totalUsageCountByQuote) < $maxUsage) {
-                        return $proceed();
-                    } else {
-                        $this->messageInterface->addErrorMessage(
-                            __('You cannot add this item to your cart because this 
-                                custom license can only be used %1 times', $maxUsage)
-                        );
-                        return $this->resultRedirectFactory->create()->setPath('*/*/');
-                    }
+                } catch (LocalizedException $e) {
+
                 }
             }
         }
         return $proceed();
     }
 
-    /**
-     * @param $usageId
-     * @return int
-     */
-    public function getUsageCountByOrders($usageId)
+    public function getUsageCountByOrders($usageId): int
     {
         $totalUsageCount = 0;
         $ordersCollection = $this->orderCollectionFactory->create()
@@ -133,14 +104,14 @@ class Add
             ->setPageSize(20)
             ->setOrder('created_at', 'desc');
         /**
-         * @var \Magento\Sales\Model\Order $order
-         * @var \Magento\Sales\Api\Data\OrderItemInterface $item
+         * @var Order $order
+         * @var OrderItemInterface $item
          */
         foreach ($ordersCollection as $order) {
             $items = $order->getAllVisibleItems();
             foreach ($items as $item) {
                 $productOptions = $item->getProductOptions();
-                if (isset($productOptions['usage_id']) && $usageId === $productOptions['usage_id']) {
+                if (isset($productOptions['usage_id']) && $usageId[$this->data->getCustomLicenseId()] === $productOptions['usage_id']) {
                     $totalUsageCount++;
                 }
             }
@@ -149,40 +120,28 @@ class Add
         return $totalUsageCount;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCustomLicenseId()
-    {
-        return $this->scopeConfig->getValue(
-            'usage_cal/general/category_id',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
-    }
-
-    /**
-     * @param $usageId
-     * @return int
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
-     */
-    public function getUsageCountByQuote($usageId)
+    public function getUsageCountByQuote($usageId): int
     {
         $totalUsageCount = 0;
-        $items = $this->checkoutSession->getQuote()->getAllVisibleItems();
-        foreach ($items as $item) {
-            $buyRequest = $item->getBuyRequest();
-            $categoryId = $buyRequest->getUsageCategory();
-            if ($categoryId == $this->getCustomLicenseId()) {
-                $usageIds = $buyRequest->getUsageId();
-                if (array_key_exists($this->getCustomLicenseId(), $usageIds)) {
-                    if ($usageIds[$this->getCustomLicenseId()] == $usageId[$this->getCustomLicenseId()]) {
-                        $totalUsageCount++;
+        try {
+            $items = $this->checkoutSession->getQuote()->getAllVisibleItems();
+            foreach ($items as $item) {
+                $buyRequest = $item->getBuyRequest();
+                $categoryId = $buyRequest->getUsageCategory();
+                if ($categoryId == $this->data->getCustomLicenseId()) {
+                    $usageIds = $buyRequest->getUsageId();
+                    if (array_key_exists($this->data->getCustomLicenseId(), $usageIds)) {
+                        if ($usageIds[$this->data->getCustomLicenseId()] == $usageId[$this->data->getCustomLicenseId()]) {
+                            $totalUsageCount++;
+                        }
                     }
                 }
             }
-        }
 
+            return $totalUsageCount;
+        } catch (LocalizedException $e) {
+
+        }
         return $totalUsageCount;
     }
 }

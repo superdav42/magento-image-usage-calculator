@@ -3,6 +3,7 @@
 
 namespace DevStone\UsageCalculator\Model;
 
+use DevStone\UsageCalculator\Api\Data\UsageInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\CouldNotSaveException;
@@ -116,7 +117,7 @@ class UsageRepository implements UsageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getById($usageId)
+    public function getById(int $usageId): UsageInterface
     {
 //        $usage = $this->usageFactory->create();
 //        $usage->setData('store_id', 5);

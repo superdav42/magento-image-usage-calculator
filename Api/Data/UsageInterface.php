@@ -1,8 +1,13 @@
 <?php
 
+declare(strict_types=1);
 
 namespace DevStone\UsageCalculator\Api\Data;
 
+/**
+ * @method getName()
+ * @method getMaxUsage()
+ */
 interface UsageInterface
 {
     const NAME = 'name';
@@ -19,7 +24,7 @@ interface UsageInterface
      * @return \DevStone\UsageCalculator\Api\Data\UsageInterface
      */
     public function setId($usageId);
-    
+
     /**
      * Get list of product options
      *

@@ -4,54 +4,61 @@
 namespace DevStone\UsageCalculator\Api;
 
 
+use DevStone\UsageCalculator\Api\Data\UsageInterface;
+use DevStone\UsageCalculator\Api\Data\UsageSearchResultsInterface;
+use DevStone\UsageCalculator\Model\Usage;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
+
 interface UsageRepositoryInterface
 {
 
 
     /**
      * Save Usage
-     * @param \DevStone\UsageCalculator\Api\Data\UsageInterface $usage
-     * @return \DevStone\UsageCalculator\Api\Data\UsageInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param UsageInterface $usage
+     * @return UsageInterface
+     * @throws LocalizedException
      */
     public function save(
-        \DevStone\UsageCalculator\Api\Data\UsageInterface $usage
+        UsageInterface $usage
     );
 
     /**
      * Retrieve Usage
-     * @param string $usageId
-     * @return \DevStone\UsageCalculator\Api\Data\UsageInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param int $usageId
+     * @return UsageInterface
+     * @throws LocalizedException
      */
-    public function getById($usageId);
+    public function getById(int $usageId): UsageInterface;
 
     /**
      * Retrieve Usage matching the specified criteria.
-     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \DevStone\UsageCalculator\Api\Data\UsageSearchResultsInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return UsageSearchResultsInterface
+     * @throws LocalizedException
      */
     public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+        SearchCriteriaInterface $searchCriteria
     );
 
     /**
      * Delete Usage
-     * @param \DevStone\UsageCalculator\Api\Data\UsageInterface $usage
+     * @param UsageInterface $usage
      * @return bool true on success
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function delete(
-        \DevStone\UsageCalculator\Api\Data\UsageInterface $usage
+        UsageInterface $usage
     );
 
     /**
      * Delete Usage by ID
      * @param string $usageId
      * @return bool true on success
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws NoSuchEntityException
+     * @throws LocalizedException
      */
     public function deleteById($usageId);
 }

@@ -34,7 +34,6 @@ define([
                 // Setting first two values (category and its usage)
                 $('#usage_category').val(values[0]);
                 $('[name="usage_id\\[' + values[0] + '\\]"]').val(values[1]).show().prop('disabled', false).closest('.category-container').show();
-
                 // removing first two values from the array
                 values.splice(0, 2);
 

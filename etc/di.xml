@@ -58,7 +58,7 @@
             </argument>
         </arguments>
     </virtualType>
-    
+
     <virtualType name="DevStoneCategoryGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
         <arguments>
             <argument name="collection" xsi:type="object" shared="false">DevStone\UsageCalculator\Model\ResourceModel\Category\Collection</argument>
@@ -73,7 +73,7 @@
             </argument>
         </arguments>
     </virtualType>
-    
+
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -90,7 +90,7 @@
             <argument name="resourceModel" xsi:type="string">DevStone\UsageCalculator\Model\ResourceModel\Size</argument>
         </arguments>
     </type>
-    
+
     <type name="DevStone\UsageCalculator\Model\ResourceModel\Category\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">devstone_usage_category</argument>
@@ -99,19 +99,19 @@
             <argument name="resourceModel" xsi:type="string">DevStone\UsageCalculator\Model\ResourceModel\Category</argument>
         </arguments>
     </type>
-    
+
     <preference for="DevStone\UsageCalculator\Api\UsageRepositoryInterface" type="DevStone\UsageCalculator\Model\UsageRepository"/>
 	<preference for="DevStone\UsageCalculator\Api\Data\UsageInterface" type="DevStone\UsageCalculator\Model\Usage"/>
 	<preference for="DevStone\UsageCalculator\Api\Data\UsageSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-    
+
     <preference for="DevStone\UsageCalculator\Api\SizeRepositoryInterface" type="DevStone\UsageCalculator\Model\SizeRepository"/>
 	<preference for="DevStone\UsageCalculator\Api\Data\SizeInterface" type="DevStone\UsageCalculator\Model\Size"/>
 	<preference for="DevStone\UsageCalculator\Api\Data\SizeSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-    
+
     <preference for="DevStone\UsageCalculator\Api\CategoryRepositoryInterface" type="DevStone\UsageCalculator\Model\CategoryRepository"/>
 	<preference for="DevStone\UsageCalculator\Api\Data\CategoryInterface" type="DevStone\UsageCalculator\Model\Category"/>
 	<preference for="DevStone\UsageCalculator\Api\Data\CategorySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-    
+
     <type name="DevStone\UsageCalculator\Model\Usage\Option\Validator\Pool">
         <arguments>
             <argument name="validators" xsi:type="array">
@@ -135,13 +135,13 @@
     <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomOptionInterface" type="DevStone\UsageCalculator\Model\Usage\Option" />
     <preference for="DevStone\UsageCalculator\Api\UsageCustomOptionRepositoryInterface" type="DevStone\UsageCalculator\Model\Usage\Option\Repository" />
     <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomOptionTypeInterface" type="DevStone\UsageCalculator\Model\Usage\Option\Type" />
-    
+
     <preference for="DevStone\UsageCalculator\Api\UsageCustomOptionTypeListInterface" type="DevStone\UsageCalculator\Model\UsageOptions\TypeList" />
     <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomOptionValuesInterface" type="DevStone\UsageCalculator\Model\Usage\Option\Value" />
     <preference for="DevStone\UsageCalculator\Api\Data\CustomOptionInterface" type="DevStone\UsageCalculator\Model\CustomOptions\CustomOption" />
-    <preference for="DevStone\UsageCalculator\Api\Data\UsageOptionInterface" type="DevStone\UsageCalculator\Model\UsageOption" />    
-    
-<!--    
+    <preference for="DevStone\UsageCalculator\Api\Data\UsageOptionInterface" type="DevStone\UsageCalculator\Model\UsageOption" />
+
+<!--
     <type name="Magento\Quote\Model\Quote\Item\Repository">
         <arguments>
             <argument name="cartItemProcessors" xsi:type="array">
@@ -174,7 +174,7 @@
             </argument>
         </arguments>
     </type>-->
-    
+
     <type name="Magento\Catalog\Block\Product\ListProduct">
         <plugin name="devstone_calculate_price" type="DevStone\UsageCalculator\Plugin\Block\Product\ListProduct" sortOrder="1"/>
     </type>
@@ -198,4 +198,8 @@
     <type name="\Magento\Checkout\Controller\Cart\Add">
         <plugin name="check_max_usage" type="DevStone\UsageCalculator\Plugin\Controller\Cart\Add" sortOrder="10" disabled="false" />
     </type>
+
+    <preference for="DevStone\UsageCalculator\Api\UsageCustomerRepositoryInterface" type="DevStone\UsageCalculator\Model\UsageCustomerRepository"/>
+    <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomerInterface" type="DevStone\UsageCalculator\Model\UsageCustomer"/>
+    <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
 </config>

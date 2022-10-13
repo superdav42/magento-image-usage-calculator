@@ -9,9 +9,13 @@
 
 namespace DevStone\UsageCalculator\Ui\Component\Listing\Column;
 
+use DevStone\UsageCalculator\Helper\Data;
+use DevStone\UsageCalculator\Model\ResourceModel\Category\CollectionFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
 
 class UsageActions extends Column
@@ -20,29 +24,18 @@ class UsageActions extends Column
      * Url path
      */
     const URL_PATH_EDIT = 'devstone_usagecalculator/usage/edit';
-
-    /**
-     * @var UrlInterface
-     */
-    protected $urlBuilder;
-
-    /**
-     * @var \DevStone\UsageCalculator\Model\ResourceModel\Category\CollectionFactory
-     */
-    protected $collectionFactory;
-
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $scopeConfig;
+    protected UrlInterface $urlBuilder;
+    protected CollectionFactory $collectionFactory;
+    protected ScopeConfigInterface $scopeConfig;
+    private Data $config;
 
     /**
      * UsageActions constructor.
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \DevStone\UsageCalculator\Model\ResourceModel\Category\CollectionFactory $collectionFactory
+     * @param ScopeConfigInterface $scopeConfig
+     * @param CollectionFactory $collectionFactory
      * @param array $components
      * @param array $data
      */
@@ -50,8 +43,9 @@ class UsageActions extends Column
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
         UrlInterface $urlBuilder,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \DevStone\UsageCalculator\Model\ResourceModel\Category\CollectionFactory $collectionFactory,
+        ScopeConfigInterface $scopeConfig,
+        CollectionFactory $collectionFactory,
+        Data $config,
         array $components = [],
         array $data = []
     ) {
@@ -59,6 +53,7 @@ class UsageActions extends Column
         $this->collectionFactory = $collectionFactory;
         $this->scopeConfig = $scopeConfig;
         parent::__construct($context, $uiComponentFactory, $components, $data);
+        $this->config = $config;
     }
 
     /**
@@ -74,7 +69,7 @@ class UsageActions extends Column
 
             foreach ($dataSource['data']['items'] as &$item) {
                 if (isset($item['entity_id'])) {
-                    if ($item['category_id'] == $this->getCustomLicenseId()) {
+                    if ($item['category_id'] == $this->config->getCustomLicenseId()) {
                         $item[$this->getData('name')]['edit'] = [
                             'href' => $this->urlBuilder->getUrl(
                                 self::URL_PATH_EDIT,
@@ -98,16 +93,5 @@ class UsageActions extends Column
         }
 
         return $dataSource;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCustomLicenseId()
-    {
-        return $this->scopeConfig->getValue(
-            'usage_cal/general/category_id',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
     }
 }

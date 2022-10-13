@@ -90,6 +90,7 @@ class DataProvider extends AbstractDataProvider
      * Get data
      *
      * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getData()
     {
@@ -107,6 +108,9 @@ class DataProvider extends AbstractDataProvider
             }
 
             $this->loadedData = $this->usageOptions->modifydata($this->loadedData);
+            foreach ($this->pool->getModifiersInstances() as $modifier) {
+                $this->loadedData = $modifier->modifyData($this->loadedData);
+            }
         }
         return $this->loadedData;
     }

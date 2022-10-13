@@ -3,4 +3,7 @@
     <event name="devstone_usagecalculator_usage_prepare_save">
         <observer name="myObserverName" instance="DevStone\UsageCalculator\Observer\SaveCustomer" />
     </event>
+    <event name="customer_register_success">
+        <observer name="check_new_customer_custom_licenses" instance="DevStone\UsageCalculator\Observer\CheckNewCustomerLicenses" />
+    </event>
 </config>

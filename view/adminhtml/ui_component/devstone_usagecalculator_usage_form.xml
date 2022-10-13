@@ -6,11 +6,16 @@
  * @author    david@nnucomputerwhiz.com
  */
 -->
-<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">devstone_usagecalculator_usage_form.devstone_usagecalculator_usage_form_data_source</item>
-            <item name="deps" xsi:type="string">devstone_usagecalculator_usage_form.devstone_usagecalculator_usage_form_data_source</item>
+            <item name="provider" xsi:type="string">
+                devstone_usagecalculator_usage_form.devstone_usagecalculator_usage_form_data_source
+            </item>
+            <item name="deps" xsi:type="string">
+                devstone_usagecalculator_usage_form.devstone_usagecalculator_usage_form_data_source
+            </item>
         </item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
@@ -19,9 +24,12 @@
         <item name="label" xsi:type="string" translate="true">Usage Form</item>
         <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="string">DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit\BackButton</item>
-            <item name="delete" xsi:type="string">DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit\DeleteButton</item>
+            <item name="delete" xsi:type="string">DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit\DeleteButton
+            </item>
             <item name="save" xsi:type="string">DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit\SaveButton</item>
-            <item name="save_and_continue" xsi:type="string">DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit\SaveAndContinueButton</item>
+            <item name="save_and_continue" xsi:type="string">
+                DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit\SaveAndContinueButton
+            </item>
         </item>
     </argument>
     <settings>
@@ -29,7 +37,8 @@
     </settings>
     <dataSource name="devstone_usagecalculator_usage_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">DevStone\UsageCalculator\Ui\Component\Form\Usage\DataProvider</argument>
+            <argument name="class" xsi:type="string">DevStone\UsageCalculator\Ui\Component\Form\Usage\DataProvider
+            </argument>
             <argument name="name" xsi:type="string">devstone_usagecalculator_usage_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
             <argument name="requestFieldName" xsi:type="string">entity_id</argument>
@@ -190,6 +199,50 @@
                     <item name="visible" xsi:type="boolean">false</item>
                 </item>
             </argument>
+            <dynamicRows name="pending_customer_emails">
+                <settings>
+                    <label translate="true">Add future customer email</label>
+                    <addButtonLabel translate="true">Add Email</addButtonLabel>
+                    <componentType>dynamicRows</componentType>
+                </settings>
+                <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="isTemplate" xsi:type="boolean">true</item>
+                            <item name="is_collection" xsi:type="boolean">true</item>
+                            <item name="componentType" xsi:type="string">container</item>
+                        </item>
+                    </argument>
+                    <field name="email" formElement="input">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="fit" xsi:type="boolean">false</item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <validation>
+                                <rule name="required-entry" xsi:type="boolean">false</rule>
+                            </validation>
+                            <dataType>text</dataType>
+                            <label>Email</label>
+                        </settings>
+                    </field>
+                    <actionDelete name="action_delete">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="fit" xsi:type="boolean">true</item>
+                                <item name="prefixElementName" xsi:type="string">option_</item>
+                                <item name="prefixName" xsi:type="string">source_data_export.delete</item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <elementTmpl>Magento_Catalog/form/element/action-delete</elementTmpl>
+                            <dataType>text</dataType>
+                            <componentType>actionDelete</componentType>
+                        </settings>
+                    </actionDelete>
+                </container>
+            </dynamicRows>
             <htmlContent name="html_content">
                 <block name="gallery" class="DevStone\UsageCalculator\Block\Adminhtml\Customer\AssignCustomers"/>
             </htmlContent>
