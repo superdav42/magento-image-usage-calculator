@@ -134,6 +134,9 @@ class UsageRepository implements UsageRepositoryInterface
 
         $items = $collection->getItems();
         $usage = current($items);
+        if (!$usage) {
+            throw new NoSuchEntityException(__('Usage with id "%1" does not exist.', $usageId));
+        }
         $usage->afterLoad();
         if (!$usage->getId()) {
             throw new NoSuchEntityException(__('Usage with id "%1" does not exist.', $usageId));

@@ -443,52 +443,57 @@ class Usage extends AbstractProduct
     public function getPreviousCategories(): array
     {
         $previousCategories = [];
-        $items = $this->checkoutSession->getQuote()->getAllVisibleItems();
-        foreach ($items as $item) {
-            $getBuyRequest = $item->getBuyRequest();
-            $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
-            if (count($previousCategoriesByItems) && !in_array($previousCategoriesByItems, $previousCategories)) {
-                $previousCategories[] = $previousCategoriesByItems;
+        try {
+            $items = $this->checkoutSession->getQuote()->getAllVisibleItems();
+            foreach ($items as $item) {
+                $getBuyRequest = $item->getBuyRequest();
+                $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
+                if (count($previousCategoriesByItems) && !in_array($previousCategoriesByItems, $previousCategories)) {
+                    $previousCategories[] = $previousCategoriesByItems;
+                }
+                if (count($previousCategories) >= 10) {
+                    break;
+                }
             }
-            if (count($previousCategories) >= 10) {
-                break;
-            }
-        }
-        if ($this->isCustomerLoggedIn() && count($previousCategories) <= 10) {
-            $ordersCollection = $this->orderCollectionFactory->create()
-                ->addFieldToSelect('*')
-                ->addFieldToFilter('customer_id', $this->getCustomerId())
-                ->setPageSize(20 - count($previousCategories))
-                ->setOrder('created_at', 'desc');
-            /**
-             * @var Order $order
-             * @var OrderItemInterface $item
-             */
-            foreach ($ordersCollection as $order) {
-                $items = $order->getAllVisibleItems();
-                foreach ($items as $item) {
-                    try {
-                        /**
-                         * @var Item $item
-                         */
-                        $getBuyRequest = $item->getProductOptions()['info_buyRequest'];
-                        $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
-                        if (count($previousCategoriesByItems) && !in_array(
-                            $previousCategoriesByItems,
-                            $previousCategories
-                        )) {
-                            $previousCategories[] = $previousCategoriesByItems;
+            if ($this->isCustomerLoggedIn() && count($previousCategories) <= 10) {
+                $ordersCollection = $this->orderCollectionFactory->create()
+                    ->addFieldToSelect('*')
+                    ->addFieldToFilter('customer_id', $this->getCustomerId())
+                    ->setPageSize(20 - count($previousCategories))
+                    ->setOrder('created_at', 'desc');
+                /**
+                 * @var Order $order
+                 * @var OrderItemInterface $item
+                 */
+                foreach ($ordersCollection as $order) {
+                    $items = $order->getAllVisibleItems();
+                    foreach ($items as $item) {
+                        try {
+                            /**
+                             * @var Item $item
+                             */
+                            $getBuyRequest = $item->getProductOptions()['info_buyRequest'];
+                            $previousCategoriesByItems = $this->getPreviousCategoriesByItemsFromBuyRequest($getBuyRequest);
+                            if (count($previousCategoriesByItems) && !in_array(
+                                $previousCategoriesByItems,
+                                $previousCategories
+                            )) {
+                                $previousCategories[] = $previousCategoriesByItems;
+                            }
+                        } catch (Exception $e) {
+                            // Probably usage was deleted, skip.
+                            continue;
                         }
-                    } catch (Exception $e) {
-                        // Probably usage was deleted, skip.
-                        continue;
-                    }
 
-                    if (count($previousCategories) >= 10) {
-                        break;
+                        if (count($previousCategories) >= 10) {
+                            break;
+                        }
                     }
                 }
             }
+        } catch (Exception $e) {
+            $this->_logger->error(__('Unable to fetch previous categories.'));
+            $this->_logger->error($e->getMessage());
         }
         return $previousCategories;
     }
