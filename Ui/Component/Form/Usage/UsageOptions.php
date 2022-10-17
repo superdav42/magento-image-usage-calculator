@@ -98,7 +98,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
     protected UrlInterface $urlBuilder;
     protected ArrayManager $arrayManager;
     protected array $meta = [];
-    private CurrencyInterface $localeCurrency;
+    protected CurrencyInterface $localeCurrency;
     protected UsageCustomOptionRepositoryInterface $optionRepository;
     protected SizesOptionsProvider $sizesOptionsProvider;
 
@@ -109,7 +109,8 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
         UrlInterface $urlBuilder,
         ArrayManager $arrayManager,
         UsageCustomOptionRepositoryInterface $optionRepo,
-        SizesOptionsProvider $sizesOptionsProvider
+        SizesOptionsProvider $sizesOptionsProvider,
+        CurrencyInterface $localeCurrency
     ) {
         $this->locator = $locator;
         $this->storeManager = $storeManager;
@@ -118,6 +119,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
         $this->arrayManager = $arrayManager;
         $this->optionRepository = $optionRepo;
         $this->sizesOptionsProvider = $sizesOptionsProvider;
+        $this->localeCurrency = $localeCurrency;
     }
 
     /**
@@ -837,42 +839,42 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
     protected function getProductOptionTypes()
     {
         return  [
+            [
+                'value' => 0,
+                'label' => 'Text',
+                'optgroup' => [
                     [
-                        'value' => 0,
-                        'label' => 'Text',
-                        'optgroup' => [
-                            [
-                                'label' => 'Field',
-                                'value' => 'field',
-                            ],
-                            [
-                                'label' => 'Area',
-                                'value' => 'area',
-                            ],
-                        ],
+                        'label' => 'Field',
+                        'value' => 'field',
                     ],
                     [
-                        'value' => 2,
-                        'label' => 'Select',
-                        'optgroup' => [
-                            [
-                                'label' => 'Drop-down',
-                                'value' => 'drop_down',
-                            ],
-                            [
-                                'label' => 'Radio Buttons',
-                                'value' => 'radio',
-                            ],
-                            [
-                                'label' => 'Checkbox',
-                                'value' => 'checkbox',
-                            ],
-                            [
-                                'label' => 'Multiple Select',
-                                'value' => 'multiple',
-                            ],
-                        ],
+                        'label' => 'Area',
+                        'value' => 'area',
                     ],
+                ],
+            ],
+            [
+                'value' => 2,
+                'label' => 'Select',
+                'optgroup' => [
+                    [
+                        'label' => 'Drop-down',
+                        'value' => 'drop_down',
+                    ],
+                    [
+                        'label' => 'Radio Buttons',
+                        'value' => 'radio',
+                    ],
+                    [
+                        'label' => 'Checkbox',
+                        'value' => 'checkbox',
+                    ],
+                    [
+                        'label' => 'Multiple Select',
+                        'value' => 'multiple',
+                    ],
+                ],
+            ],
 
         ];
     }
@@ -888,20 +890,6 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
         return $this->storeManager->getStore()->getBaseCurrency()->getCurrencySymbol();
     }
 
-    /**
-     * The getter function to get the locale currency for real application code
-     *
-     * @return CurrencyInterface
-     *
-     * @deprecated 101.0.0
-     */
-    private function getLocaleCurrency()
-    {
-        if ($this->localeCurrency === null) {
-            $this->localeCurrency = ObjectManager::getInstance()->get(CurrencyInterface::class);
-        }
-        return $this->localeCurrency;
-    }
 
     /**
      * Format price according to the locale of the currency
@@ -915,10 +903,13 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
         if (!is_numeric($value)) {
             return null;
         }
-
-        $store = $this->storeManager->getStore();
-        $currency = $this->getLocaleCurrency()->getCurrency($store->getBaseCurrencyCode());
-        $value = $currency->toCurrency($value, ['display' => Currency::NO_SYMBOL]);
+        try {
+            $store = $this->storeManager->getStore();
+            $currency = $this->localeCurrency->getCurrency($store->getBaseCurrencyCode());
+            $value = $currency->toCurrency($value, ['display' => Currency::NO_SYMBOL]);
+        } catch (\Exception $e) {
+            return parent::formatPrice($value);
+        }
 
         return $value;
     }
