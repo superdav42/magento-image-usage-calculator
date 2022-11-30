@@ -552,4 +552,10 @@ class Usage extends AbstractProduct
         $usageOptionCollection->addFieldToFilter('main_table.option_type_id', $optionId);
         return $usageOptionCollection->count() ? $usageOptionCollection->getFirstItem()->getTitle() : "";
     }
+
+    /** Used for plugins to hide button */
+    public function showButton(): bool
+    {
+        return true;
+    }
 }

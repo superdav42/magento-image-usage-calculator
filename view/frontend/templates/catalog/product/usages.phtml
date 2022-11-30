@@ -1,6 +1,7 @@
 <?php /* @var $block \DevStone\UsageCalculator\Block\Catalog\Product\Usage */ ?>
 <?php if ($block->getProduct()->isSaleable() ):?>
-<div id="usages-container" class="usages-container field">
+<div id="usages-container" class="usages-container field" <?php if (!$block->showButton()): ?>style="margin-bottom: 0;" <?php endif; ?>>
+    <?php if ($block->showButton()): ?>
     <button id="usage-button" class="cta-button" title="<?= __('License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.') ?>">
         <span class="calc-icon">&nbsp;</span>
         <span class="button-main">
@@ -8,6 +9,7 @@
             <span class="button-small"> <?= __('Download - price based on use.') ?></span>
         </span>
     </button>
+    <?php endif; ?>
     <div class="usages-container-inner">
     <button id="usage-button-close">
         <?= __('Close') ?>
