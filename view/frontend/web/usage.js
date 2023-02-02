@@ -87,24 +87,21 @@ define([
                 self.hidden = !self.hidden;
             });
 
-            try {
-                $(self.options.priceHolderSelector).priceBox('setDefault', {
-                    'basePrice': {
-                        'amount': 0.0,
-                        'adjustments': []
-                    },
-                    'finalPrice': {
-                        'amount': 0.0,
-                        'adjustments': []
-                    },
-                    'oldPrice': {
-                        'amount': 0.0,
-                        'adjustments': []
-                    }
-                });
-            } catch (err) {
+            $(self.options.priceHolderSelector).priceBox('setDefault', {
+                'basePrice': {
+                    'amount': 0.0,
+                    'adjustments': []
+                },
+                'finalPrice': {
+                    'amount': 0.0,
+                    'adjustments': []
+                },
+                'oldPrice': {
+                    'amount': 0.0,
+                    'adjustments': []
+                }
+            });
 
-            }
             $(self.options.priceHolderSelector + ', .product-options-bottom').hide();
 
             $('.usage-container select').on('change', function () {
