@@ -230,14 +230,20 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $connection = $this->getConnection();
         $titleTableName = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_title');
-        foreach ([\Magento\Store\Model\Store::DEFAULT_STORE_ID, $object->getStoreId()] as $storeId) {
-            $existInCurrentStore = $this->getColFromOptionTable($titleTableName, (int)$object->getId(), (int)$storeId);
+        $storesToCheck = [\Magento\Store\Model\Store::DEFAULT_STORE_ID];
+        $currrentStore = $object->getStoreId();
+        if ( $currrentStore !== null && ! in_array($currrentStore, $storesToCheck) ) {
+            $storesToCheck[] = $currrentStore;
+        }
+        foreach ($storesToCheck as $storeId) {
+            $existInCurrentStore = $this->getColFromOptionTable($titleTableName, (int)$object->getId(), (int)$storeId, $object->getIdFieldName());
             $existInDefaultStore = (int)$storeId == \Magento\Store\Model\Store::DEFAULT_STORE_ID ?
                 $existInCurrentStore :
                 $this->getColFromOptionTable(
                     $titleTableName,
                     (int)$object->getId(),
-                    \Magento\Store\Model\Store::DEFAULT_STORE_ID
+                    \Magento\Store\Model\Store::DEFAULT_STORE_ID,
+                    $object->getIdFieldName()
                 );
 
             if ($object->getTitle()) {
@@ -307,29 +313,35 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected function _saveValueHelps(\Magento\Framework\Model\AbstractModel $object)
     {
         $connection = $this->getConnection();
-        $titleTableName = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_help');
-        foreach ([\Magento\Store\Model\Store::DEFAULT_STORE_ID, $object->getStoreId()] as $storeId) {
-            $existInCurrentStore = $this->getColFromOptionTable($titleTableName, (int)$object->getId(), (int)$storeId);
+        $helpTableName = $this->getTable(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_help');
+        $storesToCheck = [\Magento\Store\Model\Store::DEFAULT_STORE_ID];
+        $currrentStore = $object->getStoreId();
+        if ( $currrentStore !== null && ! in_array($currrentStore, $storesToCheck) ) {
+            $storesToCheck[] = $currrentStore;
+        }
+        foreach ($storesToCheck as $storeId) {
+            $existInCurrentStore = $this->getColFromOptionTable($helpTableName, (int)$object->getId(), (int)$storeId, $object->getIdFieldName());
             $existInDefaultStore = (int)$storeId == \Magento\Store\Model\Store::DEFAULT_STORE_ID ?
                 $existInCurrentStore :
                 $this->getColFromOptionTable(
-                    $titleTableName,
+                    $helpTableName,
                     (int)$object->getId(),
-                    \Magento\Store\Model\Store::DEFAULT_STORE_ID
+                    \Magento\Store\Model\Store::DEFAULT_STORE_ID,
+                    $object->getIdFieldName()
                 );
 
-            if ($object->getTitle()) {
+            if ($object->getHelp()) {
                 $isDeleteStoreTitle = (bool)$object->getData('is_delete_store_help');
                 if ($existInCurrentStore) {
                     if ($isDeleteStoreTitle && (int)$storeId != \Magento\Store\Model\Store::DEFAULT_STORE_ID) {
-                        $connection->delete($titleTableName, ['option_help_id = ?' => $existInCurrentStore]);
+                        $connection->delete($helpTableName, ['option_help_id = ?' => $existInCurrentStore]);
                     } elseif ($object->getStoreId() == $storeId) {
                         $data = $this->_prepareDataForTable(
                             new \Magento\Framework\DataObject(['help' => $object->getHelp()]),
-                            $titleTableName
+                            $helpTableName
                         );
                         $connection->update(
-                            $titleTableName,
+                            $helpTableName,
                             $data,
                             [
                                 'option_id = ?' => $object->getId(),
@@ -354,9 +366,9 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                                     'help' => $object->getHelp(),
                                 ]
                             ),
-                            $titleTableName
+                            $helpTableName
                         );
-                        $connection->insert($titleTableName, $data);
+                        $connection->insert($helpTableName, $data);
                     }
                 }
             } else {
@@ -364,7 +376,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                     && $storeId
                 ) {
                     $connection->delete(
-                        $titleTableName,
+                        $helpTableName,
                         [
                             'option_id = ?' => $object->getId(),
                             'store_id  = ?' => $object->getStoreId(),
@@ -383,11 +395,12 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * @param int $storeId
      * @return string
      */
-    protected function getColFromOptionTable($tableName, $optionId, $storeId)
+    protected function getColFromOptionTable($tableName, $optionId, $storeId, $columnName)
     {
         $connection = $this->getConnection();
         $statement = $connection->select()->from(
-            $tableName
+            $tableName,
+            [$columnName]
         )->where(
             'option_id = ?',
             $optionId

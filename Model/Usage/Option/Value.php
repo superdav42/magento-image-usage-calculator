@@ -183,7 +183,9 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
     {
         foreach ($this->getValues() as $value) {
             $this->isDeleted(false);
-
+            if (empty($value['size_id'])) {
+                $value['size_id'] = null;
+            }
             $this->setData(
                 $value
             )->setData(
