@@ -245,7 +245,15 @@
                 </item>
             </argument>
         </column>
-        <!-- Add your columns here -->
+        <column name="category_id" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Category</label>
+                <visible>true</visible>
+                <options class="DevStone\UsageCalculator\Model\Usage\CatagoriesOptionsProvider"/>
+            </settings>
+        </column>
         <actionsColumn name="actions" class="DevStone\UsageCalculator\Ui\Component\Listing\Column\UsageActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

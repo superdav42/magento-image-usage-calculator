@@ -24,7 +24,7 @@ class DataProvider extends UiDataProvider
     protected function searchResultToOutput(SearchResultInterface $searchResult)
     {
         $searchResult->setStoreId($this->request->getParam('store', 0))
-            ->addAttributeToSelect(['price', 'name', 'terms']);
+            ->addAttributeToSelect(['price', 'name', 'terms','category_id']);
 
         return parent::searchResultToOutput($searchResult);
     }
