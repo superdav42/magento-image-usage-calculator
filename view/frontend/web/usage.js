@@ -4,7 +4,8 @@
 define([
     'jquery',
     'priceBox',
-    'jquery/ui'
+    'jquery/ui',
+    'domReady!'
 ], function ($, priceBox) {
     'use strict';
     var self;
@@ -66,6 +67,8 @@ define([
                 self.__addHashToURL();
             });
 
+            $('#maincontent .product-info-main .usages-more-info-call').hide();
+
             $('.usages-container-inner').hide().find('select, input, textarea').prop('disabled', true);
             $('#usage-button, #usage-button-close').on('click', function (e) {
                 e.preventDefault();
@@ -74,6 +77,7 @@ define([
                 $('#product-options-wrapper > div > div:not(.product-info-price):not(.usages-container)').toggle();
                 $('.usages-container-inner').toggle();
                 $('#usage-button').toggle();
+                $('#maincontent .product-info-main .usages-more-info-call').toggle();
                 if (self.hidden) {
                     self.element.find(self.options.categorySelectElement).prop('disabled', false).val('').trigger('change');
                     $('#previously_usage_category').prop('disabled', false);
@@ -86,23 +90,26 @@ define([
 
                 self.hidden = !self.hidden;
             });
+            try {
+                $(self.options.priceHolderSelector).priceBox('setDefault', {
+                    'basePrice': {
+                        'amount': 0.0,
+                        'adjustments': []
+                    },
+                    'finalPrice': {
+                        'amount': 0.0,
+                        'adjustments': []
+                    },
+                    'oldPrice': {
+                        'amount': 0.0,
+                        'adjustments': []
+                    }
+                });
+                $(self.options.priceHolderSelector + ', .product-options-bottom').hide();
+            } catch (err) {
 
-            $(self.options.priceHolderSelector).priceBox('setDefault', {
-                'basePrice': {
-                    'amount': 0.0,
-                    'adjustments': []
-                },
-                'finalPrice': {
-                    'amount': 0.0,
-                    'adjustments': []
-                },
-                'oldPrice': {
-                    'amount': 0.0,
-                    'adjustments': []
-                }
-            });
+            }
 
-            $(self.options.priceHolderSelector + ', .product-options-bottom').hide();
 
             $('.usage-container select').on('change', function () {
                 self.__addHashToURL();

@@ -29,6 +29,10 @@
         <referenceBlock name="head.components">
             <block class="Magento\Framework\View\Element\Js\Components" name="usage_page_head_components" template="DevStone_UsageCalculator::js/components.phtml"/>
         </referenceBlock>
+        <referenceBlock name="product.info.form.options">
+            <block class="DevStone\UsageCalculator\Block\Catalog\Product\Info" name="usage.info.more" template="DevStone_UsageCalculator::catalog/product/moreinfo.phtml" after="product.info.options.wrapper.bottom" />
+        </referenceBlock>
+
 <!--            <referenceContainer name="product.info.options.wrapper.bottom">
             <block class="Magento\Catalog\Pricing\Render" name="product.price.final.copy" before="-">
                 <arguments>
