@@ -1,0 +1,33 @@
+
+<div class="admin__field-complex" style="margin: 0" css="$data.additionalClasses" attr="'data-index': index">
+
+    <div class="admin__field-complex-title" if="allData.price">
+        Preview
+    </div>
+    <div class="admin__field-complex-title" if="allData.price">
+        Base Price $<span text="allData.price"></span>
+    </div>
+
+    <div class=""
+         each="data: allData.usage.options, as: 'option'"
+         >
+        <div class="admin__field" style="margin:0" if="option.type === 'drop_down'">
+            <div class="admin__field-label" style="text-align: left">
+                <label>
+                    <span text="option.title"></span>
+                </label>
+            </div>
+            <div class="admin__field-control">
+                <select class="admin__control-select" data-bind="options: option.values, optionsCaption:'-- Please Select --',value: $parent.selectedUsageOptions[$index()], optionsText: function(item) {return item.title + ' (price * ' + item.price + '%)'}">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="admin__field-complex-title" if="calculatedPrice">
+        <br />
+        Calculated Price <span style="color:#DD6666;font-weight: bold;font-size:1.3em;" text="calculatedPrice"></span>
+        <br />
+        Calculated Size <span style="color:#726866;font-weight: bold;font-size:1.1em;" text="calculatedSize"></span>
+    </div>
+    <br />
+</div>

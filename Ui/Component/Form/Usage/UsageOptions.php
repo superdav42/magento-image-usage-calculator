@@ -14,6 +14,7 @@ use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Container;
+use Magento\Ui\Component\HtmlContent;
 use Magento\Ui\Component\DynamicRows;
 use Magento\Ui\Component\Form\Element\ActionDelete;
 use Magento\Ui\Component\Form\Element\Checkbox;
@@ -217,15 +218,49 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                         ],
                     ],
                     'children' => [
+                        'preview' => $this->getPreviewPane(5),
                         static::CONTAINER_HEADER_NAME => $this->getHeaderContainerConfig(10),
+
                         static::FIELD_ENABLE => $this->getEnableFieldConfig(20),
-                        static::GRID_OPTIONS_NAME => $this->getOptionsGridConfig(30)
+                        static::GRID_OPTIONS_NAME => $this->getOptionsGridConfig(30),
+
                     ]
                 ]
             ]
         );
 
         return $this;
+    }
+
+    protected function getPreviewPane($sortOrder)
+    {
+        return [
+            'arguments' => [
+                'data' => [
+                    'config' => [
+                        'label' => 'leel',
+                        'formElement' => Container::NAME,
+                        'componentType' => Container::NAME,
+
+                        'component' => 'DevStone_UsageCalculator/js/components/preview',
+                        'template' => 'DevStone_UsageCalculator/form/components/preview',
+                        'sortOrder' => $sortOrder,
+                        'content' => __('Preview.'),
+                    ],
+                ],
+            ],
+//            'children' => [
+//                'body' => [
+//                    'arguments' => [
+//                        'data' => [
+//                            'config' => [
+//
+//                            ]
+//                        ]
+//                    ]
+//                ]
+//            ]
+        ];
     }
 
     /**
@@ -272,6 +307,20 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
                         ],
                     ],
                 ],
+//                'preview' => [
+//                    'arguments' => [
+//                        'data' => [
+//                            'config' => [
+//                                'label' => 'leel',
+//                                'formElement' => Container::NAME,
+//                                'componentType' => Container::NAME,
+//                                'template' => 'ui/form/components/complex',
+//                                'sortOrder' => $sortOrder,
+//                                'content' => __('Preview.'),
+//                            ],
+//                        ],
+//                    ],
+//                ],
             ],
         ];
     }
