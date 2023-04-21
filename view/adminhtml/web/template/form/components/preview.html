@@ -1,15 +1,15 @@
 
 <div class="admin__field-complex" style="margin: 0" css="$data.additionalClasses" attr="'data-index': index">
 
-    <div class="admin__field-complex-title" if="allData.price">
+    <div class="admin__field-complex-title" if="basePrice">
         Preview
     </div>
-    <div class="admin__field-complex-title" if="allData.price">
-        Base Price $<span text="allData.price"></span>
+    <div class="admin__field-complex-title" if="basePrice">
+        Base Price $<span text="basePrice"></span>
     </div>
 
     <div class=""
-         each="data: allData.usage.options, as: 'option'"
+         each="data: options, as: 'option'"
          >
         <div class="admin__field" style="margin:0" if="option.type === 'drop_down'">
             <div class="admin__field-label" style="text-align: left">

@@ -20,6 +20,8 @@ define([
                 allData: '${ $.provider }:data'
             }
         },
+        basePrice: ko.observable(),
+        options: ko.observableArray(),
         calculatedPrice: ko.observable(),
         calculatedSize: ko.observable(),
 
@@ -35,10 +37,10 @@ define([
         },
 
         selectedUsageOptionsChanged: function(changed) {
-            var price = this.allData.price;
+            var price = this.basePrice();
             var size_id = this.allData.size_id;
-            for( var index in this.allData.usage.options ) {
-                if (this.allData.usage.options[index].type !== 'drop_down') {
+            for( var index in this.options() ) {
+                if (this.options()[index].type !== 'drop_down') {
                     continue
                 }
                 var selectedOption = this.selectedUsageOptions[index]()
@@ -60,13 +62,25 @@ define([
         },
 
         dataChanged: function( data ) {
-            if ( ! this.selectedUsageOptions || ! data.usage || ! data.usage.options ) {
+            if ( ! this.selectedUsageOptions || ! data || ! data.usage || ! data.usage.options ) {
                 return;
             }
             for( var i = this.selectedUsageOptions.length; i < data.usage.options.length; i++ ) {
                 var ob = ko.observable();
                 ob.subscribe(this.selectedUsageOptionsChanged.bind(this));
                 this.selectedUsageOptions.push(ob)
+            }
+            this.basePrice(data.price);
+            var currentOptions = this.options();
+            for (var i = 0; i < data.usage.options.length; i++) {
+                if ( currentOptions[i] ) {
+                    if ( _(currentOptions[i]).isEqual(data.usage.options[i])) {
+                        continue;
+                    }
+                    this.options.splice(i, 1, data.usage.options[i]);
+                } else {
+                    this.options.push(data.usage.options[i]);
+                }
             }
         },
 
