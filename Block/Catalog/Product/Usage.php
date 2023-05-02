@@ -235,6 +235,7 @@ class Usage extends AbstractProduct
                 [
                     'price' => $this->pricingHelper->currencyByStore($usage->getPrice(), $store, false),
                     'data-terms' => $usage->getTerms(),
+                    'data-is-free' => $usage->getIsFree(),
                 ]
             );
         }

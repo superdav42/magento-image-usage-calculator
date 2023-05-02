@@ -57,6 +57,23 @@ class UpgradeData implements UpgradeDataInterface
                 ->save();
         }
 
+
+        if (version_compare($context->getVersion(), '1.0.6') < 0) {
+            $usageSetup->addAttribute(
+                'devstone_usage',
+                'is_free',
+                [
+                    'type' => 'int',
+                    'label' => 'Can be free',
+                    'input' => 'select',
+                    'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class,
+                    'sort_order' => 25,
+                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                    'group' => 'General Information',
+                ]
+            );
+        }
+
         $usageSetup->installEntities();
         $entities = $usageSetup->getDefaultEntities();
         foreach ($entities as $entityName => $entity) {

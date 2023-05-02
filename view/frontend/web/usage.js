@@ -191,6 +191,7 @@ define([
 
             if (isNaN(finalPrice)) {
                 finalPrice = 0;
+                terms = "";
             }
 
             if (95 !== ((finalPrice * 100) % 100)) {
@@ -208,7 +209,7 @@ define([
                 }
             });
 
-            if (finalPrice <= 0) {
+            if (finalPrice <= 0 && !$usage.data('is-free')) {
                 $(self.options.priceHolderSelector + ', .product-options-bottom').hide();
                 $('#usages-advice-container').html('');
             } else {
