@@ -70,7 +70,7 @@ class SaveCustomer implements ObserverInterface
                 $usageCustomer = $this->usageCustomerRepository->getByUsageAndCustomer($usageId, $customerId) ?? $usageCustomer;
 
                 $usageCustomer->setUsageId($usage->getId());
-                $usageCustomer->setCustomerId($customerId);
+                $usageCustomer->setCustomerId((int)$customerId);
                 $usageCustomer = $this->usageCustomerRepository->save($usageCustomer);
                 $savedIds[] = $usageCustomer->getId();
             }
