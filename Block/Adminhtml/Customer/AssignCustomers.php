@@ -8,10 +8,12 @@
 
 namespace DevStone\UsageCalculator\Block\Adminhtml\Customer;
 
+use DevStone\UsageCalculator\Api\UsageCustomerRepositoryInterface;
 use DevStone\UsageCalculator\Block\Adminhtml\Customer\Tab\Customer;
 use DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory;
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
@@ -38,6 +40,8 @@ class AssignCustomers extends Template
     protected SerializerInterface $serializer;
     protected RequestInterface $request;
     protected CollectionFactory $collectionFactory;
+    protected UsageCustomerRepositoryInterface $usageCustomerRepository;
+    protected SearchCriteriaBuilder $searchCriteriaBuilder;
 
     public function __construct(
         Context $context,
@@ -45,6 +49,8 @@ class AssignCustomers extends Template
         SerializerInterface $serializer,
         RequestInterface $request,
         CollectionFactory $collectionFactory,
+        UsageCustomerRepositoryInterface $usageCustomerRepository,
+        SearchCriteriaBuilder $searchCriteriaBuilder,
         array $data = []
     ) {
         $this->registry = $registry;
@@ -52,6 +58,8 @@ class AssignCustomers extends Template
         $this->request = $request;
         $this->collectionFactory = $collectionFactory;
         parent::__construct($context, $data);
+        $this->usageCustomerRepository = $usageCustomerRepository;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**
@@ -92,8 +100,9 @@ class AssignCustomers extends Template
         $customerArray = [];
 
         if (isset($id)) {
-            $collection = $this->collectionFactory->create();
-            foreach ($collection as $item) {
+            $search = $this->searchCriteriaBuilder->addFilter('usage_id', $id)->create();
+            $usages = $this->usageCustomerRepository->getList($search)->getItems();
+            foreach ($usages as $item) {
                 $customerArray[$item->getCustomerId()] = $item->getCustomerId();
             }
         }
