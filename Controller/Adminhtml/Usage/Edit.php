@@ -67,24 +67,33 @@ class Edit extends Action
     {
         // 1. Get ID
         $id = $this->getRequest()->getParam('entity_id');
-        $objectInstance = $this->objectFactory->create();
+        $model = $this->objectFactory->create();
+
+        $this->_coreRegistry->register(\Magento\SalesRule\Model\RegistryConstants::CURRENT_SALES_RULE, $model);
+
 
         // 2. Initial checking
         if ($id) {
-            $objectInstance->load($id);
-            if (!$objectInstance->getId()) {
+            $model->load($id);
+            if (!$model->getId()) {
                 $this->messageManager->addErrorMessage(__('This record no longer exists.'));
                 /** \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
 
                 return $resultRedirect->setPath('*/*/');
             }
+            $model->getConditions()->setFormName('devstone_usagecalculator_usage_form');
+            $model->getConditions()->getConditions()[0]['form_name'] = 'devstone_usagecalculator_usage_form';
+            $form = $model->getConditionsFieldSetId($model->getConditions()->getFormName());
+            $model->getConditions()->setJsFormObject(
+                $model->getConditionsFieldSetId($model->getConditions()->getFormName())
+            );
         }
-
+        $conditions = $model->getConditions();
         // 3. Set entered data if was error when we do save
         $data = $this->_session->getFormData(true);
         if (!empty($data)) {
-            $objectInstance->addData($data);
+            $model->addData($data);
         }
 
         // 4. Register model to use later in blocks

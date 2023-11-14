@@ -69,6 +69,13 @@ class Save extends Action
                 $objectInstance->load($data['entity_id']);
                 $params['entity_id'] = $data['entity_id'];
             }
+
+            if (isset($data['rule']['conditions'])) {
+                $data['conditions'] = $data['rule']['conditions'];
+            }
+            unset($data['conditions_serialized']);
+
+            $objectInstance->loadPost($data);
             $objectInstance->addData($data);
             $objectInstance = $this->helper->initialize($objectInstance);
 
@@ -101,4 +108,5 @@ class Save extends Action
         }
         return $resultRedirect->setPath('*/*/');
     }
+
 }

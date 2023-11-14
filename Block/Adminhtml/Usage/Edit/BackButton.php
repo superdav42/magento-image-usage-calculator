@@ -9,6 +9,7 @@
 namespace DevStone\UsageCalculator\Block\Adminhtml\Usage\Edit;
 
 use Magento\Backend\Block\Widget\Context;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
@@ -19,9 +20,9 @@ class BackButton implements ButtonProviderInterface
     /**
      * Url Builder
      *
-     * @var \Magento\Framework\UrlInterface
+     * @var UrlInterface
      */
-    protected $urlBuilder;
+    protected UrlInterface $urlBuilder;
 
     /**
      * Constructor
@@ -36,7 +37,7 @@ class BackButton implements ButtonProviderInterface
     /**
      * @return array
      */
-    public function getButtonData()
+    public function getButtonData(): array
     {
         return [
             'label' => __('Back'),
@@ -51,7 +52,7 @@ class BackButton implements ButtonProviderInterface
      *
      * @return string
      */
-    public function getBackUrl()
+    public function getBackUrl(): string
     {
         return $this->urlBuilder->getUrl('*/*/');
     }

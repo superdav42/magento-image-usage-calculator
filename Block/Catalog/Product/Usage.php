@@ -147,6 +147,12 @@ class Usage extends AbstractProduct
                         'in'
                     )->create();
                     $customerUsageItems = $this->usageRepository->getList($searchCriteria)->getItems();
+                    /** @var \DevStone\UsageCalculator\Model\Usage $customerUsageItem */
+                    foreach ($customerUsageItems as $key => $customerUsageItem) {
+                        if(!$customerUsageItem->getConditions()->validate($this->getProduct())) {
+                            unset($customerUsageItems[$key]);
+                        }
+                    }
                     $items = array_merge_recursive($items, $customerUsageItems);
                 }
             }
