@@ -7,7 +7,7 @@
     ],
     "require": {
         "devstone/module-imageproducts": "*",
-        "php": "~8.0.0"
+        "php": "~8.0"
     },
     "autoload": {
         "files": [
