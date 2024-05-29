@@ -1,0 +1,174 @@
+Back,Back
+Delete,Delete
+"Are you sure you want to do this?","Are you sure you want to do this?"
+"Save and Continue Edit","Save and Continue Edit"
+Save,Save
+ID,ID
+Email,Email
+Name,Name
+Company,Company
+Conditions,Conditions
+"Apply the rule only if the following conditions are met (leave blank for all products).","Apply the rule only if the following conditions are met (leave blank for all products)."
+"Add Custom License","Add Custom License"
+"-- Please Select --","-- Please Select --"
+"Unable to fetch previous categories.","Unable to fetch previous categories."
+AM,AM
+PM,PM
+None,None
+"You deleted the record.","You deleted the record."
+"Record does not exist.","Record does not exist."
+"This record no longer exists.","This record no longer exists."
+"Category Edit","Category Edit"
+Category,Category
+"Please correct the data sent.","Please correct the data sent."
+"There was an error saving the data: ","There was an error saving the data: "
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"You saved this record.","You saved this record."
+"Something went wrong while saving the record.","Something went wrong while saving the record."
+"Category Identifier","Category Identifier"
+"To apply changes you should fill in required ""%1"" field","To apply changes you should fill in required ""%1"" field"
+"Size Edit","Size Edit"
+Size,Size
+"Size Identifier","Size Identifier"
+"Usage Edit","Usage Edit"
+Usage,Usage
+"Usage Identifier","Usage Identifier"
+"Could not save the category: %1","Could not save the category: %1"
+"Category with id ""%1"" does not exist.","Category with id ""%1"" does not exist."
+"Could not delete the Category: %1","Could not delete the Category: %1"
+"Could not save the size: %1","Could not save the size: %1"
+"Size with id ""%1"" does not exist.","Size with id ""%1"" does not exist."
+"Could not delete the Size: %1","Could not delete the Size: %1"
+"The option type to get group instance is incorrect.","The option type to get group instance is incorrect."
+"Select type options required values rows.","Select type options required values rows."
+"usage_id should be specified","usage_id should be specified"
+"Could not remove custom option","Could not remove custom option"
+"Please specify date required option(s).","Please specify date required option(s)."
+"Please specify time required option(s).","Please specify time required option(s)."
+"Please specify product's required option(s).","Please specify product's required option(s)."
+"The option instance type in options group is incorrect.","The option instance type in options group is incorrect."
+"The product instance type in options group is incorrect.","The product instance type in options group is incorrect."
+"The configuration item option instance in options group is incorrect.","The configuration item option instance in options group is incorrect."
+"The configuration item instance in options group is incorrect.","The configuration item instance in options group is incorrect."
+"The BuyRequest instance in options group is incorrect.","The BuyRequest instance in options group is incorrect."
+"We can't add the product to the cart because of an option validation issue.","We can't add the product to the cart because of an option validation issue."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","The file options format is not valid."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","The file '%1' for '%2' has an invalid extension."
+"The maximum allowed image size for '%1' is %2x%3 px.","The maximum allowed image size for '%1' is %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","The file '%1' you uploaded is larger than the %2 megabytes allowed by our server."
+"The file '%1' is empty. Please choose another one","The file '%1' is empty. Please choose another one"
+"The file '%1' is invalid. Please choose another one","The file '%1' is invalid. Please choose another one"
+"File '%1' is not an image.","File '%1' is not an image."
+"Validation failed. Required options were not filled or the file was not uploaded.","Validation failed. Required options were not filled or the file was not uploaded."
+"The file you uploaded is larger than %1 Megabytes allowed by server","The file you uploaded is larger than %1 Megabytes allowed by server"
+"Option required.","Option required."
+"The file is empty. Please choose another one","The file is empty. Please choose another one"
+"Some of the selected item options are not currently available.","Some of the selected item options are not currently available."
+"Could not save the usageCustomer: %1","Could not save the usageCustomer: %1"
+"UsageCustomer with id ""%1"" does not exist.","UsageCustomer with id ""%1"" does not exist."
+"Could not delete the UsageCustomer: %1","Could not delete the UsageCustomer: %1"
+"Could not save the usage: %1","Could not save the usage: %1"
+"Usage with id ""%1"" does not exist.","Usage with id ""%1"" does not exist."
+"Could not delete the Usage: %1","Could not delete the Usage: %1"
+"Unable to attach licenses to customer %s","Unable to attach licenses to customer %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)"
+"Max Usage","Max Usage"
+"Usage Options","Usage Options"
+Preview.,Preview.
+"Usage options provide more details about how an image will be used.","Usage options provide more details about how an image will be used."
+"Add Option","Add Option"
+"New Option","New Option"
+"Option Title","Option Title"
+"Help Text","Help Text"
+"Add Value","Add Value"
+Title,Title
+"Option Type","Option Type"
+"-- Please select --","-- Please select --"
+Required,Required
+Price,Price
+"Price Type","Price Type"
+"Image Size","Image Size"
+Edit,Edit
+"Need volume licensing discount? Confused?","Need volume licensing discount? Confused?"
+"Call %1 and ask for custom quote.","Call %1 and ask for custom quote."
+Availability,Availability
+"In stock","In stock"
+"Out of stock","Out of stock"
+Change,Change
+"Compatible file extensions to upload","Compatible file extensions to upload"
+"Maximum image width","Maximum image width"
+"Maximum image height","Maximum image height"
+"less info","less info"
+"more info","more info"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill."
+"License Image","License Image"
+"Download - price based on use.","Download - price based on use."
+Close,Close
+"License Pricing Calculator","License Pricing Calculator"
+"Select options from the drop down menu to calculate a price to use this image.","Select options from the drop down menu to calculate a price to use this image."
+"Choose Category","Choose Category"
+"Choose a category to see the specific usages available.","Choose a category to see the specific usages available."
+"Previous Usage","Previous Usage"
+"Choose a previous calculation from your order history.","Choose a previous calculation from your order history."
+"Specific Usage","Specific Usage"
+"Choose the usage which best describes how you intend to use the image.","Choose the usage which best describes how you intend to use the image."
+"Go to <a href=""%1"">My Downloadable Products</a>","Go to <a href=""%1"">My Downloadable Products</a>"
+"Incl. Tax","Incl. Tax"
+"Total Incl. Tax","Total Incl. Tax"
+"Excl. Tax","Excl. Tax"
+Total,Total
+"Downloadable Products","Downloadable Products"
+"Order #","Order #"
+Date,Date
+Status,Status
+"Remaining Downloads","Remaining Downloads"
+"View Order","View Order"
+"Start Download","Start Download"
+"You have not purchased any downloadable products yet.","You have not purchased any downloadable products yet."
+SKU,SKU
+download,download
+"Gift Message","Gift Message"
+From:,From:
+To:,To:
+Message:,Message:
+"Product Name","Product Name"
+Qty,Qty
+Subtotal,Subtotal
+"Discount Amount","Discount Amount"
+"Row Total","Row Total"
+"Qty Invoiced","Qty Invoiced"
+Ordered,Ordered
+Shipped,Shipped
+Canceled,Canceled
+Refunded,Refunded
+Calculator,Calculator
+"DevStone Extensions","DevStone Extensions"
+"Usage Calculator","Usage Calculator"
+General,General
+"Custom Category","Custom Category"
+"select the custom category","select the custom category"
+"This field is going to be used for Custom License","This field is going to be used for Custom License"
+"Category Form","Category Form"
+"Main Information","Main Information"
+"Add New Category","Add New Category"
+"Delete items","Delete items"
+"Are you sure you wan't to delete selected items?","Are you sure you wan't to delete selected items?"
+Terms,Terms
+"Size Form","Size Form"
+Active,Active
+Inactive,Inactive
+"Add New Size","Add New Size"
+Code,Code
+"Max Width","Max Width"
+"Max Height","Max Height"
+"Usage Form","Usage Form"
+"Can be free","Can be free"
+No,No
+Yes,Yes
+"Add future customer email","Add future customer email"
+"Add Email","Add Email"
+"Add New Usage","Add New Usage"

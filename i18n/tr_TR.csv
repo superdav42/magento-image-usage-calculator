@@ -1,0 +1,174 @@
+Back,Geri
+Delete,Silme
+"Are you sure you want to do this?","Bunu yapmak istediğine emin misin?"
+"Save and Continue Edit","Kaydet ve Düzenlemeye Devam Et"
+Save,Kaydet
+ID,KIMLIK
+Email,E-posta
+Name,İsim
+Company,Şirket
+Conditions,Koşullar
+"Apply the rule only if the following conditions are met (leave blank for all products).","Kuralı yalnızca aşağıdaki koşullar karşılandığında uygulayın (tüm ürünler için boş bırakın)."
+"Add Custom License","Özel Lisans Ekleme"
+"-- Please Select --","-- Lütfen Seçiniz --"
+"Unable to fetch previous categories.","Önceki kategoriler getirilemiyor."
+AM,AM
+PM,BAŞBAKAN
+None,Hiçbiri
+"You deleted the record.","Kaydı sildiniz."
+"Record does not exist.","Kayıt mevcut değil."
+"This record no longer exists.","Bu kayıt artık mevcut değildir."
+"Category Edit","Kategori Düzenleme"
+Category,Kategori
+"Please correct the data sent.","Lütfen gönderilen verileri düzeltin."
+"There was an error saving the data: ","Verilerin kaydedilmesinde bir hata oluştu: "
+"A total of %1 record(s) have been deleted.","Toplam %1 kayıt(lar) silindi."
+"You saved this record.","Bu kaydı kaydetmişsiniz."
+"Something went wrong while saving the record.","Kayıt kaydedilirken bir şeyler ters gitti."
+"Category Identifier","Kategori Tanımlayıcı"
+"To apply changes you should fill in required ""%1"" field","Değişiklikleri uygulamak için gerekli ""%1"" alanını doldurmalısınız"
+"Size Edit","Boyut Düzenleme"
+Size,Boyut
+"Size Identifier","Boyut Tanımlayıcı"
+"Usage Edit","Kullanım Düzenlemesi"
+Usage,Kullanım
+"Usage Identifier","Kullanım Tanımlayıcısı"
+"Could not save the category: %1","Kategori kaydedilemedi: %1"
+"Category with id ""%1"" does not exist.","""%1"" kimliğine sahip kategori mevcut değil."
+"Could not delete the Category: %1","Kategori silinemedi: %1"
+"Could not save the size: %1","Boyut kaydedilemedi: %1"
+"Size with id ""%1"" does not exist.","""%1"" kimliğine sahip boyut mevcut değil."
+"Could not delete the Size: %1","Boyut: %1 silinemedi"
+"The option type to get group instance is incorrect.","Grup örneğini almak için seçenek türü yanlış."
+"Select type options required values rows.","Tür seçeneklerini seçin gerekli değerler satırlar."
+"usage_id should be specified","usage_id belirtilmelidir"
+"Could not remove custom option","Özel seçenek kaldırılamadı"
+"Please specify date required option(s).","Lütfen gerekli tarih seçenek(ler)ini belirtiniz."
+"Please specify time required option(s).","Lütfen gerekli zaman seçenek(ler)ini belirtiniz."
+"Please specify product's required option(s).","Lütfen ürünün gerekli seçenek(ler)ini belirtiniz."
+"The option instance type in options group is incorrect.","Seçenekler grubundaki seçenek örneği türü yanlış."
+"The product instance type in options group is incorrect.","Seçenekler grubundaki ürün örneği türü yanlış."
+"The configuration item option instance in options group is incorrect.","Seçenekler grubundaki yapılandırma öğesi seçeneği örneği hatalı."
+"The configuration item instance in options group is incorrect.","Seçenekler grubundaki yapılandırma öğesi örneği yanlış."
+"The BuyRequest instance in options group is incorrect.","Seçenekler grubundaki BuyRequest örneği hatalı."
+"We can't add the product to the cart because of an option validation issue.","Bir seçenek doğrulama sorunu nedeniyle ürünü sepete ekleyemiyoruz."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","1, \Magento\Catalog\Model\Product\Option\Type\DefaultType öğesini genişletmiyor"
+"The file options format is not valid.","Dosya seçenekleri biçimi geçerli değil."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","'%2' için '%1' dosyası geçersiz bir uzantıya sahip."
+"The maximum allowed image size for '%1' is %2x%3 px.","'%1' için izin verilen maksimum görüntü boyutu %2x%3 pikseldir."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Yüklediğiniz '%1' dosyası sunucumuzun izin verdiği %2 megabayttan daha büyük."
+"The file '%1' is empty. Please choose another one","'%1' dosyası boş. Lütfen başka bir tane seçin"
+"The file '%1' is invalid. Please choose another one","'%1' dosyası geçersiz. Lütfen başka bir tane seçin"
+"File '%1' is not an image.","Dosya '%1' bir resim değil."
+"Validation failed. Required options were not filled or the file was not uploaded.","Doğrulama başarısız oldu. Gerekli seçenekler doldurulmadı veya dosya yüklenmedi."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Yüklediğiniz dosya, sunucu tarafından izin verilen %1 Megabayttan daha büyük"
+"Option required.","Seçenek gerekli."
+"The file is empty. Please choose another one","Dosya boş. Lütfen başka bir tane seçin"
+"Some of the selected item options are not currently available.","Seçilen öğe seçeneklerinden bazıları şu anda mevcut değildir."
+"Could not save the usageCustomer: %1","UsageCustomer: %1 kaydedilemedi"
+"UsageCustomer with id ""%1"" does not exist.","Kullanım""%1"" kimliğine sahip müşteri mevcut değil."
+"Could not delete the UsageCustomer: %1","UsageCustomer: %1 silinemedi"
+"Could not save the usage: %1","Kullanım kaydedilemedi: %1"
+"Usage with id ""%1"" does not exist.","""%1"" kimliğine sahip kullanım mevcut değil."
+"Could not delete the Usage: %1","Kullanım silinemedi: %1"
+"Unable to attach licenses to customer %s","Lisanslar müşteri %s'ye eklenemiyor"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Bu ürünü sepetinize ekleyemezsiniz çünkü bu
+                                özel lisans yalnızca %1 kez kullanılabilir"
+"Max Usage","Maksimum Kullanım"
+"Usage Options","Kullanım Seçenekleri"
+Preview.,Önizleme.
+"Usage options provide more details about how an image will be used.","Kullanım seçenekleri bir görüntünün nasıl kullanılacağı hakkında daha fazla ayrıntı sağlar."
+"Add Option","Seçenek Ekle"
+"New Option","Yeni Seçenek"
+"Option Title","Seçenek Başlığı"
+"Help Text","Yardım Metni"
+"Add Value","Değer Katın"
+Title,Başlık
+"Option Type","Seçenek Türü"
+"-- Please select --","-- Lütfen seçin --"
+Required,Gerekli
+Price,Fiyat
+"Price Type","Fiyat Türü"
+"Image Size","Resim Boyutu"
+Edit,Düzenle
+"Need volume licensing discount? Confused?","Toplu lisans indirimine mi ihtiyacınız var? Kafanız mı karıştı?"
+"Call %1 and ask for custom quote.","1'i arayın ve özel fiyat teklifi isteyin."
+Availability,Kullanılabilirlik
+"In stock","Stokta var"
+"Out of stock","Stokta yok"
+Change,Değişim
+"Compatible file extensions to upload","Yüklemek için uyumlu dosya uzantıları"
+"Maximum image width","Maksimum görüntü genişliği"
+"Maximum image height","Maksimum görüntü yüksekliği"
+"less info","daha az bilgi"
+"more info","daha fazla bilgi"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Lisanslı Görsel, belirli bir kullanım için bir görselin ""kiralanması"" türüdür; bir kitabın kapağı için bir görselin lisanslanması, bir dergi makalesi için bir illüstrasyon veya müjdeci bir el ilanında bir görselin kullanılması örnek olarak verilebilir."
+"License Image","Lisans Görüntüsü"
+"Download - price based on use.","İndirme - kullanıma göre fiyat."
+Close,Kapat
+"License Pricing Calculator","Lisans Fiyatlandırma Hesaplayıcısı"
+"Select options from the drop down menu to calculate a price to use this image.","Bu görseli kullanmak üzere bir fiyat hesaplamak için açılır menüden seçenekleri belirleyin."
+"Choose Category","Kategori Seçiniz"
+"Choose a category to see the specific usages available.","Mevcut özel kullanımları görmek için bir kategori seçin."
+"Previous Usage","Önceki Kullanım"
+"Choose a previous calculation from your order history.","Sipariş geçmişinizden önceki bir hesaplamayı seçin."
+"Specific Usage","Özel Kullanım"
+"Choose the usage which best describes how you intend to use the image.","Resmi nasıl kullanmayı düşündüğünüzü en iyi anlatan kullanımı seçin."
+"Go to <a href=""%1"">My Downloadable Products</a>","<a href=""%1"">İndirilebilir Ürünlerime</a> Git"
+"Incl. Tax","Vergi dahil"
+"Total Incl. Tax","Toplam Vergi Dahil"
+"Excl. Tax","Vergi Hariç"
+Total,Toplam
+"Downloadable Products","İndirilebilir Ürünler"
+"Order #","Sipariş #"
+Date,Tarih
+Status,Durum
+"Remaining Downloads","Kalan İndirmeler"
+"View Order","Sipariş Görüntüle"
+"Start Download","İndirmeye Başla"
+"You have not purchased any downloadable products yet.","Henüz herhangi bir indirilebilir ürün satın almadınız."
+SKU,SKU
+download,i̇ndir
+"Gift Message","Hediye Mesajı"
+From:,Kimden?
+To:,Kime?
+Message:,Mesaj:
+"Product Name","Ürün Adı"
+Qty,Miktar
+Subtotal,"Ara Toplam"
+"Discount Amount","İskonto Tutarı"
+"Row Total","Satır Toplamı"
+"Qty Invoiced","Faturalanan Miktar"
+Ordered,"Sipariş verildi"
+Shipped,Sevkiyat
+Canceled,"İptal edildi"
+Refunded,"İade Edildi"
+Calculator,"Hesap Makinesi"
+"DevStone Extensions","DevStone Uzantıları"
+"Usage Calculator","Kullanım Hesaplayıcı"
+General,Genel
+"Custom Category","Özel Kategori"
+"select the custom category","özel kategoriyi seçin"
+"This field is going to be used for Custom License","Bu alan Özel Lisans için kullanılacaktır"
+"Category Form","Kategori Formu"
+"Main Information","Ana Bilgiler"
+"Add New Category","Yeni Kategori Ekle"
+"Delete items","Öğeleri sil"
+"Are you sure you wan't to delete selected items?","Seçili öğeleri silmek istemediğinizden emin misiniz?"
+Terms,Şartlar
+"Size Form","Boyut Formu"
+Active,Aktif
+Inactive,"Aktif değil"
+"Add New Size","Yeni Boyut Ekle"
+Code,Kod
+"Max Width","Maksimum Genişlik"
+"Max Height","Maksimum Yükseklik"
+"Usage Form","Kullanım Formu"
+"Can be free","Özgür olabilir"
+No,Hayır
+Yes,Evet
+"Add future customer email","Gelecekteki müşteri e-postasını ekleyin"
+"Add Email","E-posta Ekle"
+"Add New Usage","Yeni Kullanım Ekle"

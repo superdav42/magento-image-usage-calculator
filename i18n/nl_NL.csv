@@ -1,0 +1,174 @@
+Back,Terug
+Delete,Verwijder
+"Are you sure you want to do this?","Weet je zeker dat je dit wilt doen?"
+"Save and Continue Edit","Opslaan en doorgaan met bewerken"
+Save,Sla
+ID,ID
+Email,E-mail
+Name,Naam
+Company,Bedrijf
+Conditions,Voorwaarden
+"Apply the rule only if the following conditions are met (leave blank for all products).","Pas de regel alleen toe als aan de volgende voorwaarden wordt voldaan (laat leeg voor alle producten)."
+"Add Custom License","Aangepaste licentie toevoegen"
+"-- Please Select --","-- Selecteer --"
+"Unable to fetch previous categories.","Kan vorige categorieën niet ophalen."
+AM,AM
+PM,PM
+None,Geen
+"You deleted the record.","Je hebt het record verwijderd."
+"Record does not exist.","Record bestaat niet."
+"This record no longer exists.","Dit record bestaat niet meer."
+"Category Edit","Categorie Bewerken"
+Category,Categorie
+"Please correct the data sent.","Corrigeer de verzonden gegevens."
+"There was an error saving the data: ","Er is een fout opgetreden bij het opslaan van de gegevens: "
+"A total of %1 record(s) have been deleted.","Er zijn in totaal %1 record(s) verwijderd."
+"You saved this record.","Je hebt dit record opgeslagen."
+"Something went wrong while saving the record.","Er is iets misgegaan tijdens het opslaan van het record."
+"Category Identifier",Categorie-aanduiding
+"To apply changes you should fill in required ""%1"" field","Om wijzigingen toe te passen, moet u het verplichte veld ""%1"" invullen"
+"Size Edit","Grootte bewerken"
+Size,Maat
+"Size Identifier",Maataanduiding
+"Usage Edit","Gebruik Bewerken"
+Usage,Gebruik
+"Usage Identifier","Identificatiecode voor gebruik"
+"Could not save the category: %1","Kon de categorie niet opslaan: %1"
+"Category with id ""%1"" does not exist.","Categorie met id ""%1"" bestaat niet."
+"Could not delete the Category: %1","Kon de categorie niet verwijderen: %1"
+"Could not save the size: %1","Kon de grootte niet opslaan: %1"
+"Size with id ""%1"" does not exist.","Grootte met id ""%1"" bestaat niet."
+"Could not delete the Size: %1","Kon de grootte niet verwijderen: %1"
+"The option type to get group instance is incorrect.","Het optietype om een groepsinstantie te krijgen is onjuist."
+"Select type options required values rows.","Selecteer typeopties vereiste waarden rijen."
+"usage_id should be specified","usage_id moet worden opgegeven"
+"Could not remove custom option","Kon aangepaste optie niet verwijderen"
+"Please specify date required option(s).","Geef de gewenste optie(s) op."
+"Please specify time required option(s).","Geef de gewenste optie(s) op."
+"Please specify product's required option(s).","Geef de gewenste optie(s) voor het product op."
+"The option instance type in options group is incorrect.","Het type instantie van de optie in de optiegroep is onjuist."
+"The product instance type in options group is incorrect.","Het type productinstantie in de optiegroep is onjuist."
+"The configuration item option instance in options group is incorrect.","De instantie van de configuratieoptie in de optiegroep is onjuist."
+"The configuration item instance in options group is incorrect.","De instantie van het configuratie-item in de optiegroep is onjuist."
+"The BuyRequest instance in options group is incorrect.","De BuyRequest-instantie in de optiegroep is onjuist."
+"We can't add the product to the cart because of an option validation issue.","We kunnen het product niet toevoegen aan de winkelwagen vanwege een probleem met de validatie van een optie."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 komt niet overeen met \Magento\Catalog\Model\ProductProductopties\Type\DefaultType"
+"The file options format is not valid.","Het formaat van de bestandsopties is ongeldig."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Het bestand '%1' voor '%2' heeft een ongeldige extensie."
+"The maximum allowed image size for '%1' is %2x%3 px.","De maximaal toegestane afbeeldingsgrootte voor '%1' is %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Het bestand '%1' dat u hebt geüpload is groter dan de toegestane %2 megabytes van onze server."
+"The file '%1' is empty. Please choose another one","Het bestand '%1' is leeg. Kies een ander"
+"The file '%1' is invalid. Please choose another one","Het bestand '%1' is ongeldig. Kies een ander"
+"File '%1' is not an image.","Bestand '%1' is geen afbeelding."
+"Validation failed. Required options were not filled or the file was not uploaded.","Validatie mislukt. De verplichte opties zijn niet ingevuld of het bestand is niet geüpload."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Het bestand dat u heeft geüpload is groter dan %1 Megabytes toegestaan door de server"
+"Option required.","Optie vereist."
+"The file is empty. Please choose another one","Het bestand is leeg. Kies een ander"
+"Some of the selected item options are not currently available.","Sommige van de geselecteerde itemopties zijn momenteel niet beschikbaar."
+"Could not save the usageCustomer: %1","Kon de gebruiksklant niet opslaan: %1"
+"UsageCustomer with id ""%1"" does not exist.","UsageKlant met id ""%1"" bestaat niet."
+"Could not delete the UsageCustomer: %1","Kon de UsageCustomer niet verwijderen: %1"
+"Could not save the usage: %1","Kon het gebruik niet opslaan: %1"
+"Usage with id ""%1"" does not exist.","Gebruik met id ""%1"" bestaat niet."
+"Could not delete the Usage: %1","Kon de Usage niet verwijderen: %1"
+"Unable to attach licenses to customer %s","Kan geen licenties koppelen aan klant %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","U kunt dit item niet toevoegen aan uw winkelwagen omdat deze
+                                aangepaste licentie alleen kan worden gebruikt %1 tijd(en)"
+"Max Usage","Maximaal gebruik"
+"Usage Options","Opties voor gebruik"
+Preview.,Voorbeeld.
+"Usage options provide more details about how an image will be used.","Gebruiksopties geven meer details over hoe een afbeelding zal worden gebruikt."
+"Add Option","Optie toevoegen"
+"New Option","Nieuwe optie"
+"Option Title","Optie Titel"
+"Help Text",Helptekst
+"Add Value","Waarde toevoegen"
+Title,Titel
+"Option Type","Optie Type"
+"-- Please select --","-- Selecteer --"
+Required,Vereist
+Price,Prijs
+"Price Type","Prijs Type"
+"Image Size","Grootte afbeelding"
+Edit,Bewerk
+"Need volume licensing discount? Confused?","Korting op volumelicenties nodig? In de war?"
+"Call %1 and ask for custom quote.","Bel %1 en vraag om een offerte op maat."
+Availability,Beschikbaarheid
+"In stock","Op voorraad"
+"Out of stock","Niet op voorraad"
+Change,Verander
+"Compatible file extensions to upload","Compatibele bestandsextensies om te uploaden"
+"Maximum image width","Maximale beeldbreedte"
+"Maximum image height","Maximale afbeeldingshoogte"
+"less info","minder info"
+"more info","meer info"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","License Image is een soort ""huren"" van een afbeelding voor een specifiek gebruik; voorbeelden zijn het licenseren van een afbeelding voor de cover van een boek, een illustratie voor een tijdschriftartikel of het gebruik van een afbeelding in een evangelische handbill."
+"License Image",Licentie-afbeelding
+"Download - price based on use.","Downloaden - prijs gebaseerd op gebruik."
+Close,Sluit
+"License Pricing Calculator","Prijscalculator licentie"
+"Select options from the drop down menu to calculate a price to use this image.","Selecteer opties in het vervolgkeuzemenu om een prijs te berekenen voor het gebruik van deze afbeelding."
+"Choose Category","Kies categorie"
+"Choose a category to see the specific usages available.","Kies een categorie om de beschikbare specifieke toepassingen te zien."
+"Previous Usage","Vorig gebruik"
+"Choose a previous calculation from your order history.","Kies een eerdere berekening uit je bestelgeschiedenis."
+"Specific Usage","Specifiek gebruik"
+"Choose the usage which best describes how you intend to use the image.","Kies het gebruik dat het beste beschrijft hoe je de afbeelding wilt gebruiken."
+"Go to <a href=""%1"">My Downloadable Products</a>","Ga naar <a href=""%1"">Mijn downloadbare producten</a>"
+"Incl. Tax","Incl. btw"
+"Total Incl. Tax","Totaal Incl. belasting"
+"Excl. Tax","Excl. btw"
+Total,Totaal
+"Downloadable Products","Downloadbare producten"
+"Order #","Bestel #"
+Date,Datum
+Status,Status
+"Remaining Downloads","Resterende downloads"
+"View Order","Bestelling bekijken"
+"Start Download","Begin download"
+"You have not purchased any downloadable products yet.","Je hebt nog geen downloadbare producten gekocht."
+SKU,SKU
+download,downloaden
+"Gift Message",Cadeaubericht
+From:,Van:
+To:,Aan:
+Message:,Bericht:
+"Product Name",Productnaam
+Qty,Qty
+Subtotal,Subtotaal
+"Discount Amount","Korting Bedrag"
+"Row Total","Rij Totaal"
+"Qty Invoiced","Gefactureerd aantal"
+Ordered,Besteld
+Shipped,Verzonden
+Canceled,Geannuleerd
+Refunded,Terugbetaald
+Calculator,Rekenmachine
+"DevStone Extensions",DevStone-uitbreidingen
+"Usage Calculator","Rekenmachine voor gebruik"
+General,Algemeen
+"Custom Category","Aangepaste categorie"
+"select the custom category","selecteer de aangepaste categorie"
+"This field is going to be used for Custom License","Dit veld wordt gebruikt voor Aangepaste licentie"
+"Category Form","Categorie Vorm"
+"Main Information","Belangrijkste informatie"
+"Add New Category","Nieuwe categorie toevoegen"
+"Delete items","Items verwijderen"
+"Are you sure you wan't to delete selected items?","Weet je zeker dat je de geselecteerde items niet wilt verwijderen?"
+Terms,Voorwaarden
+"Size Form",Formaat
+Active,Actief
+Inactive,Inactief
+"Add New Size","Nieuwe maat toevoegen"
+Code,Code
+"Max Width","Max Breedte"
+"Max Height","Max. hoogte"
+"Usage Form",Gebruiksformulier
+"Can be free","Kan vrij zijn"
+No,Geen
+Yes,Ja
+"Add future customer email","Toekomstige e-mail van klanten toevoegen"
+"Add Email","E-mail toevoegen"
+"Add New Usage","Nieuw gebruik toevoegen"

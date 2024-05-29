@@ -1,0 +1,174 @@
+Back,뒤로
+Delete,삭제
+"Are you sure you want to do this?","정말 이 작업을 수행하시겠습니까?"
+"Save and Continue Edit","저장하고 편집 계속하기"
+Save,저장
+ID,ID
+Email,이메일
+Name,이름
+Company,회사
+Conditions,조건
+"Apply the rule only if the following conditions are met (leave blank for all products).","다음 조건이 충족되는 경우에만 규칙을 적용합니다(모든 제품에 대해 비워 둡니다)."
+"Add Custom License","사용자 지정 라이선스 추가"
+"-- Please Select --","-- 선택해 주세요 -- --"
+"Unable to fetch previous categories.","이전 카테고리를 가져올 수 없습니다."
+AM,AM
+PM,PM
+None,없음
+"You deleted the record.","레코드를 삭제했습니다."
+"Record does not exist.","레코드가 존재하지 않습니다."
+"This record no longer exists.","이 기록은 더 이상 존재하지 않습니다."
+"Category Edit","카테고리 편집"
+Category,카테고리
+"Please correct the data sent.","전송된 데이터를 수정해 주세요."
+"There was an error saving the data: ","데이터를 저장하는 동안 오류가 발생했습니다: "
+"A total of %1 record(s) have been deleted.","총 %1개의 레코드가 삭제되었습니다."
+"You saved this record.","이 레코드를 저장했습니다."
+"Something went wrong while saving the record.","기록을 저장하는 동안 문제가 발생했습니다."
+"Category Identifier","카테고리 식별자"
+"To apply changes you should fill in required ""%1"" field","변경 사항을 적용하려면 필수 ""%1"" 필드를 채워야 합니다"
+"Size Edit","크기 편집"
+Size,크기
+"Size Identifier","크기 식별자"
+"Usage Edit","사용법 편집"
+Usage,사용법
+"Usage Identifier","사용 식별자"
+"Could not save the category: %1","범주를 저장할 수 없습니다: %1"
+"Category with id ""%1"" does not exist.","ID가 ""%1""인 카테고리가 없습니다."
+"Could not delete the Category: %1","범주를 삭제할 수 없습니다: %1"
+"Could not save the size: %1","크기를 저장할 수 없습니다: %1"
+"Size with id ""%1"" does not exist.","ID가 ""%1""인 크기가 없습니다."
+"Could not delete the Size: %1","크기: %1을(를) 삭제할 수 없습니다"
+"The option type to get group instance is incorrect.","그룹 인스턴스를 가져오는 옵션 유형이 올바르지 않습니다."
+"Select type options required values rows.","유형 옵션 필수 값 행을 선택합니다."
+"usage_id should be specified","usage_id를 지정해야 합니다"
+"Could not remove custom option","사용자 지정 옵션을 제거할 수 없습니다"
+"Please specify date required option(s).","날짜 필수 옵션을 지정하세요."
+"Please specify time required option(s).","필요한 시간 옵션을 지정하세요."
+"Please specify product's required option(s).","제품의 필수 옵션을 지정해 주세요."
+"The option instance type in options group is incorrect.","옵션 그룹의 옵션 인스턴스 유형이 올바르지 않습니다."
+"The product instance type in options group is incorrect.","옵션 그룹의 제품 인스턴스 유형이 올바르지 않습니다."
+"The configuration item option instance in options group is incorrect.","옵션 그룹의 구성 항목 옵션 인스턴스가 올바르지 않습니다."
+"The configuration item instance in options group is incorrect.","옵션 그룹의 구성 항목 인스턴스가 올바르지 않습니다."
+"The BuyRequest instance in options group is incorrect.","옵션 그룹의 BuyRequest 인스턴스가 올바르지 않습니다."
+"We can't add the product to the cart because of an option validation issue.","옵션 유효성 검사 문제로 인해 제품을 카트에 추가할 수 없습니다."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","1이(가) \마젠토\카탈로그\모델\제품\옵션\유형\기본 유형을 확장하지 않습니다"
+"The file options format is not valid.","파일 옵션 형식이 유효하지 않습니다."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","'%2'의 '%1' 파일 확장명이 잘못되었습니다."
+"The maximum allowed image size for '%1' is %2x%3 px.","'%1'에 허용되는 최대 이미지 크기는 %2x%3픽셀입니다."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","업로드한 '%1' 파일이 서버에서 허용하는 %2메가바이트보다 큽니다."
+"The file '%1' is empty. Please choose another one","'%1' 파일이 비어 있습니다. 다른 파일을 선택하세요"
+"The file '%1' is invalid. Please choose another one","'%1' 파일이 잘못되었습니다. 다른 파일을 선택하세요"
+"File '%1' is not an image.","파일 '%1'은(는) 이미지가 아닙니다."
+"Validation failed. Required options were not filled or the file was not uploaded.","유효성 검사에 실패했습니다. 필수 옵션이 채워지지 않았거나 파일이 업로드되지 않았습니다."
+"The file you uploaded is larger than %1 Megabytes allowed by server","업로드한 파일이 서버에서 허용한 %1메가바이트보다 큽니다"
+"Option required.","옵션이 필요합니다."
+"The file is empty. Please choose another one","파일이 비어 있습니다. 다른 파일을 선택하세요"
+"Some of the selected item options are not currently available.","선택한 항목 옵션 중 일부는 현재 사용할 수 없습니다."
+"Could not save the usageCustomer: %1","사용량을 저장할 수 없습니다고객: %1"
+"UsageCustomer with id ""%1"" does not exist.","ID가 ""%1""인 UsageCustomer가 없습니다."
+"Could not delete the UsageCustomer: %1","UsageCustomer: %1을(를) 삭제할 수 없습니다"
+"Could not save the usage: %1","사용량을 저장할 수 없습니다: %1"
+"Usage with id ""%1"" does not exist.","ID ""%1""의 사용이 존재하지 않습니다."
+"Could not delete the Usage: %1","사용량을 삭제할 수 없습니다: %1"
+"Unable to attach licenses to customer %s","고객 %S에 라이선스를 연결할 수 없습니다"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","이 항목은 다음과 같으므로 장바구니에 추가할 수 없습니다
+                                사용자 지정 라이선스는 %1번만 사용할 수 있습니다"
+"Max Usage","최대 사용량"
+"Usage Options","사용 옵션"
+Preview.,"미리 보기."
+"Usage options provide more details about how an image will be used.","사용 옵션은 이미지 사용 방법에 대한 자세한 내용을 제공합니다."
+"Add Option","옵션 추가"
+"New Option","새 옵션"
+"Option Title","옵션 제목"
+"Help Text","도움말 텍스트"
+"Add Value","가치 추가"
+Title,제목
+"Option Type","옵션 유형"
+"-- Please select --","-- 선택해 주세요 --"
+Required,필수
+Price,가격
+"Price Type","가격 유형"
+"Image Size","이미지 크기"
+Edit,편집
+"Need volume licensing discount? Confused?","볼륨 라이선스 할인이 필요하신가요? 혼란스러우신가요?"
+"Call %1 and ask for custom quote.","1에 전화하여 사용자 지정 견적을 요청하세요."
+Availability,가용성
+"In stock","재고 있음"
+"Out of stock","재고 없음"
+Change,변경
+"Compatible file extensions to upload","업로드할 수 있는 호환 파일 확장자"
+"Maximum image width","최대 이미지 너비"
+"Maximum image height","최대 이미지 높이"
+"less info","더 적은 정보"
+"more info","자세한 정보"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","이미지 라이선스는 특정 용도로 이미지를 ""대여""하는 유형으로, 책 표지, 잡지 기사 삽화, 전도지 이미지 사용 등의 용도로 이미지를 라이선스하는 것을 예로 들 수 있습니다."
+"License Image","라이선스 이미지"
+"Download - price based on use.","다운로드 - 사용량에 따른 가격입니다."
+Close,닫기
+"License Pricing Calculator","라이선스 가격 계산기"
+"Select options from the drop down menu to calculate a price to use this image.","드롭다운 메뉴에서 옵션을 선택하여 이 이미지를 사용할 가격을 계산합니다."
+"Choose Category","카테고리 선택"
+"Choose a category to see the specific usages available.","카테고리를 선택하면 사용 가능한 구체적인 사용법을 확인할 수 있습니다."
+"Previous Usage","이전 사용"
+"Choose a previous calculation from your order history.","주문 내역에서 이전 계산을 선택합니다."
+"Specific Usage","구체적인 사용법"
+"Choose the usage which best describes how you intend to use the image.","이미지 사용 방법을 가장 잘 설명하는 사용법을 선택합니다."
+"Go to <a href=""%1"">My Downloadable Products</a>","<a href=""%1"">내 다운로드 가능한 제품으로</a> 이동"
+"Incl. Tax","세금 포함"
+"Total Incl. Tax","세금 포함 총액"
+"Excl. Tax","세금 별도"
+Total,합계
+"Downloadable Products","다운로드 가능한 제품"
+"Order #","주문 번호"
+Date,날짜
+Status,상태
+"Remaining Downloads","남은 다운로드"
+"View Order","주문 보기"
+"Start Download","다운로드 시작"
+"You have not purchased any downloadable products yet.","아직 다운로드 가능한 제품을 구매하지 않았습니다."
+SKU,SKU
+download,다운로드
+"Gift Message","선물 메시지"
+From:,에서:
+To:,To:
+Message:,메시지:
+"Product Name","제품 이름"
+Qty,수량
+Subtotal,소계
+"Discount Amount","할인 금액"
+"Row Total","행 합계"
+"Qty Invoiced","청구된 수량"
+Ordered,주문됨
+Shipped,배송됨
+Canceled,취소됨
+Refunded,환불
+Calculator,계산기
+"DevStone Extensions","DevStone 확장 기능"
+"Usage Calculator","사용량 계산기"
+General,일반
+"Custom Category","사용자 지정 카테고리"
+"select the custom category","사용자 지정 카테고리를 선택합니다"
+"This field is going to be used for Custom License","이 필드는 사용자 지정 라이선스에 사용됩니다"
+"Category Form","카테고리 양식"
+"Main Information","주요 정보"
+"Add New Category","새 카테고리 추가"
+"Delete items","항목 삭제"
+"Are you sure you wan't to delete selected items?","선택한 항목을 삭제하지 않으시겠습니까?"
+Terms,약관
+"Size Form","크기 양식"
+Active,활성
+Inactive,비활성
+"Add New Size","새 크기 추가"
+Code,코드
+"Max Width","최대 너비"
+"Max Height","최대 높이"
+"Usage Form","사용 양식"
+"Can be free","무료일 수 있습니다"
+No,아니요
+Yes,예
+"Add future customer email","향후 고객 이메일 추가"
+"Add Email","이메일 추가"
+"Add New Usage","새 사용법 추가"

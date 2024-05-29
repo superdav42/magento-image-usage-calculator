@@ -1,0 +1,174 @@
+Back,バック
+Delete,削除
+"Are you sure you want to do this?",本当にやりたいのか？
+"Save and Continue Edit",保存して編集を続ける
+Save,セーブ
+ID,身分証明書
+Email,電子メール
+Name,名称
+Company,会社概要
+Conditions,条件
+"Apply the rule only if the following conditions are met (leave blank for all products).",以下の条件を満たす場合のみルールを適用する（全製品に適用する場合は空欄にする）。
+"Add Custom License",カスタムライセンスの追加
+"-- Please Select --","-- 選択してください"
+"Unable to fetch previous categories.",以前のカテゴリーを取得できません。
+AM,午前
+PM,PM
+None,なし
+"You deleted the record.",あなたは記録を削除した。
+"Record does not exist.",レコードが存在しない。
+"This record no longer exists.",この記録はもう存在しない。
+"Category Edit",カテゴリー編集
+Category,カテゴリー
+"Please correct the data sent.",送信されたデータを修正してください。
+"There was an error saving the data: ","データの保存にエラーが発生しました： "
+"A total of %1 record(s) have been deleted.","合計 %1 レコードが削除されました。"
+"You saved this record.",あなたはこの記録を保存した。
+"Something went wrong while saving the record.",レコードの保存中に何か問題が起きた。
+"Category Identifier",カテゴリー識別子
+"To apply changes you should fill in required ""%1"" field","変更を適用するには、必須の ""%1"" フィールドに入力する必要があります。"
+"Size Edit",サイズ編集
+Size,サイズ
+"Size Identifier",サイズ識別子
+"Usage Edit",使用法の編集
+Usage,使用方法
+"Usage Identifier",使用識別子
+"Could not save the category: %1","カテゴリを保存できませんでした: %1"
+"Category with id ""%1"" does not exist.","id ""%1"" を持つカテゴリが存在しません。"
+"Could not delete the Category: %1","カテゴリを削除できませんでした: %1"
+"Could not save the size: %1","サイズを保存できませんでした: %1"
+"Size with id ""%1"" does not exist.","id ""%1"" を持つサイズが存在しません。"
+"Could not delete the Size: %1","サイズを削除できませんでした: %1"
+"The option type to get group instance is incorrect.",グループインスタンスを取得するオプションタイプが正しくありません。
+"Select type options required values rows.",タイプオプションの必要な値の行を選択します。
+"usage_id should be specified",usage_idを指定する必要がある。
+"Could not remove custom option",カスタムオプションを削除できませんでした
+"Please specify date required option(s).",必要なオプションをご指定ください。
+"Please specify time required option(s).",必要なオプションをご指定ください。
+"Please specify product's required option(s).",必要なオプションをご指定ください。
+"The option instance type in options group is incorrect.",オプショングループのオプションインスタンスタイプが正しくありません。
+"The product instance type in options group is incorrect.",オプショングループの製品インスタンスタイプが正しくありません。
+"The configuration item option instance in options group is incorrect.",オプショングループの構成項目オプションインスタンスが正しくありません。
+"The configuration item instance in options group is incorrect.",オプショングループの設定項目のインスタンスが正しくありません。
+"The BuyRequest instance in options group is incorrect.","オプショングループの BuyRequest インスタンスが正しくありません。"
+"We can't add the product to the cart because of an option validation issue.",オプションのバリデーションに問題があるため、商品をカートに追加できません。
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","1 doesn't extends \MagentoCatalog"
+"The file options format is not valid.",ファイルオプションの形式が無効です。
+px.,px。
+"The file '%1' for '%2' has an invalid extension.","2' のファイル '%1' の拡張子が無効です。"
+"The maximum allowed image size for '%1' is %2x%3 px.","1' で許可される最大画像サイズは %2x%3 px です。"
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","あなたがアップロードしたファイル '%1' は、サーバで許可されている %2 MB よりも大きいです。"
+"The file '%1' is empty. Please choose another one","ファイル '%1' は空です。別のものを選択してください。"
+"The file '%1' is invalid. Please choose another one","ファイル '%1' は無効です。別のものを選択してください。"
+"File '%1' is not an image.","ファイル '%1' は画像ではありません。"
+"Validation failed. Required options were not filled or the file was not uploaded.",検証に失敗しました。必須オプションが入力されていないか、ファイルがアップロードされていません。
+"The file you uploaded is larger than %1 Megabytes allowed by server","アップロードされたファイルは、サーバーで許可されている %1 MB よりも大きいです。"
+"Option required.",オプションが必要。
+"The file is empty. Please choose another one",ファイルは空です。他のファイルを選択してください。
+"Some of the selected item options are not currently available.",選択されたアイテムのオプションの一部は、現在ご利用いただけません。
+"Could not save the usageCustomer: %1","usageCustomer: %1 を保存できませんでした。"
+"UsageCustomer with id ""%1"" does not exist.","使用法ID ""%1"" を持つ顧客が存在しません。"
+"Could not delete the UsageCustomer: %1","UsageCustomer: %1 を削除できませんでした。"
+"Could not save the usage: %1",使用法を保存できませんでした：%1
+"Usage with id ""%1"" does not exist.","id ""%1"" を持つ使用法は存在しません。"
+"Could not delete the Usage: %1",使用法を削除できませんでした：%1
+"Unable to attach licenses to customer %s","顧客 %s にライセンスをアタッチできません。"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","この商品をカートに入れることはできません。
+                                カスタムライセンスは %1 回しか使用できません。"
+"Max Usage",最大使用量
+"Usage Options",使用オプション
+Preview.,プレビュー
+"Usage options provide more details about how an image will be used.",使用オプションは、画像がどのように使用されるかについての詳細を提供します。
+"Add Option",オプション追加
+"New Option",新オプション
+"Option Title",オプションタイトル
+"Help Text",ヘルプテキスト
+"Add Value",付加価値
+Title,タイトル
+"Option Type",オプション・タイプ
+"-- Please select --","-- 選択してください"
+Required,必須
+Price,価格
+"Price Type",価格タイプ
+"Image Size",画像サイズ
+Edit,編集
+"Need volume licensing discount? Confused?",ボリュームライセンス割引が必要ですか？混乱していますか？
+"Call %1 and ask for custom quote.",1に電話し、カスタム見積りを依頼する。
+Availability,空室状況
+"In stock",在庫あり
+"Out of stock",在庫切れ
+Change,変更
+"Compatible file extensions to upload",アップロード可能なファイル拡張子
+"Maximum image width",最大画像幅
+"Maximum image height",最大画像の高さ
+"less info",詳細はこちら
+"more info",詳細情報
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.",ライセンスイメージとは、特定の用途のために画像を「レンタル」することです。例えば、書籍の表紙に使用する画像のライセンス、雑誌記事の挿絵のライセンス、伝道用ハンドビラに画像を使用するライセンスなどがあります。
+"License Image",ライセンス画像
+"Download - price based on use.","ダウンロード - 使用量に応じた価格。"
+Close,閉じる
+"License Pricing Calculator",ライセンス価格計算機
+"Select options from the drop down menu to calculate a price to use this image.",ドロップダウンメニューからオプションを選択し、この画像を使用するための価格を計算します。
+"Choose Category",カテゴリーを選択
+"Choose a category to see the specific usages available.",カテゴリーを選択すると、具体的な使用方法が表示されます。
+"Previous Usage",以前の使用
+"Choose a previous calculation from your order history.",注文履歴から過去の計算を選択します。
+"Specific Usage",具体的な使用方法
+"Choose the usage which best describes how you intend to use the image.",画像をどのように使用するか、最も適切な使い方を選んでください。
+"Go to <a href=""%1"">My Downloadable Products</a>","<a href=""%1"">ダウンロード商品へ</a>"
+"Incl. Tax",税込み
+"Total Incl. Tax",税込み合計
+"Excl. Tax",税抜
+Total,合計
+"Downloadable Products",ダウンロード製品
+"Order #",注文番号
+Date,日付
+Status,ステータス
+"Remaining Downloads",残りのダウンロード数
+"View Order",注文を見る
+"Start Download",ダウンロード開始
+"You have not purchased any downloadable products yet.",まだダウンロード製品を購入していません。
+SKU,SKU
+download,ダウンロード
+"Gift Message",ギフトメッセージ
+From:,からだ：
+To:,へ：
+Message:,メッセージ
+"Product Name",製品名
+Qty,数量
+Subtotal,小計
+"Discount Amount",割引額
+"Row Total","行 合計"
+"Qty Invoiced",請求数量
+Ordered,注文済み
+Shipped,出荷済み
+Canceled,キャンセル
+Refunded,払い戻し
+Calculator,電卓
+"DevStone Extensions",DevStoneエクステンション
+"Usage Calculator",利用計算機
+General,一般
+"Custom Category",カスタム・カテゴリー
+"select the custom category",カスタムカテゴリーを選択する
+"This field is going to be used for Custom License",このフィールドはカスタムライセンスに使用されます。
+"Category Form",カテゴリー
+"Main Information",主要情報
+"Add New Category",新しいカテゴリーの追加
+"Delete items",アイテムの削除
+"Are you sure you wan't to delete selected items?",本当に選択した項目を削除したいのですか？
+Terms,条件
+"Size Form",サイズフォーム
+Active,アクティブ
+Inactive,活動休止中
+"Add New Size",新しいサイズを追加
+Code,コード
+"Max Width",最大幅
+"Max Height",最大高さ
+"Usage Form",利用フォーム
+"Can be free",自由にできる
+No,いいえ
+Yes,はい
+"Add future customer email",将来の顧客Eメールを追加
+"Add Email",電子メールの追加
+"Add New Usage",新しい使用法の追加
