@@ -194,19 +194,41 @@ class Usage extends AbstractProduct
         return $usageCustomerCollection;
     }
 
+	public function getAllCategories() {
+
+		if ($this->isCustomerLoggedIn()) {
+			$customerId = $this->getCustomerId();
+			$usageCollection = $this->getUsageListAccordingToCustomer($customerId);
+			if ($usageCollection->getSize() > 0) {
+				$searchCriteria = $this->searchCriteriaBuilder->create();
+				return $this->categoryRepository->getList($searchCriteria)->getItems();
+			}
+		}
+
+		$searchCriteria = $this->searchCriteriaBuilder
+			->addFilter('entity_id', $this->config->getCustomLicenseId(), 'neq')
+			->create();
+		return $this->categoryRepository->getList($searchCriteria)->getItems();
+	}
     /**
      * @throws LocalizedException
      */
     public function getCategories(): array
     {
-        if ($this->isCustomerLoggedIn()) {
-            $customerId = $this->getCustomerId();
-            $usageCollection = $this->getUsageListAccordingToCustomer($customerId);
-            if ($usageCollection->getSize() > 0) {
-                $searchCriteria = $this->searchCriteriaBuilder->create();
-                return $this->categoryRepository->getList($searchCriteria)->getItems();
-            }
-        }
+		if ( $this->hasData('customer_specific') && $this->getdata('customer_specific') ) {
+			if ($this->isCustomerLoggedIn()) {
+				$customerId = $this->getCustomerId();
+				$usageCollection = $this->getUsageListAccordingToCustomer($customerId);
+				if ($usageCollection->getSize() > 0) {
+					$searchCriteria = $this->searchCriteriaBuilder
+						->addFilter('entity_id', $this->config->getCustomLicenseId(), 'eq')
+						->create();
+					return $this->categoryRepository->getList($searchCriteria)->getItems();
+				}
+			}
+			return [];
+		}
+
         $searchCriteria = $this->searchCriteriaBuilder
             ->addFilter('entity_id', $this->config->getCustomLicenseId(), 'neq')
             ->create();
@@ -268,7 +290,7 @@ class Usage extends AbstractProduct
 
         $select->setName('usage_category')->addOption('', __('-- Please Select --'));
 
-        foreach ($this->getCategories() as $category) {
+        foreach ($this->getAllCategories() as $category) {
             $select->addOption(
                 $category->getId(),
                 $category->getName()

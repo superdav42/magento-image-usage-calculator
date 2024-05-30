@@ -9,22 +9,29 @@
     <body>
         <attribute name="class" value="page-product-image"/>
         <referenceBlock name="product.info.options.wrapper">
-            <block class="DevStone\UsageCalculator\Block\Catalog\Product\Usage" name="usage.info" as="type_image_usage" before="-" template="DevStone_UsageCalculator::catalog/product/usages.phtml">
-                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\DefaultType" name="usage.info.options.default" as="default" template="DevStone_UsageCalculator::catalog/product/type/default.phtml"/>
-                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Text" name="usage.info.options.text" as="text" template="DevStone_UsageCalculator::catalog/product/type/text.phtml"/>
-                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\File" name="usage.info.options.file" as="file" template="DevStone_UsageCalculator::catalog/product/type/file.phtml"/>
-                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Select" name="usage.info.options.select" as="select" template="DevStone_UsageCalculator::catalog/product/type/select.phtml"/>
-                <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Date" name="usage.info.options.date" as="date" template="DevStone_UsageCalculator::catalog/product/type/date.phtml"/>
-<!--                <block class="Magento\Catalog\Pricing\Render" name="product.price.link" after="product.info.usage.options">
+            <block class="DevStone\UsageCalculator\Block\Catalog\Product\Usage" name="usage.info" as="type_image_usage" before="-" template="DevStone_UsageCalculator::catalog/product/usages-container.phtml">
+                <block class="DevStone\UsageCalculator\Block\Catalog\Product\Usage" name="all.usages" template="DevStone_UsageCalculator::catalog/product/usages.phtml">
                     <arguments>
-                        <argument name="price_render" xsi:type="string">product.price.render.default</argument>
-                        <argument name="price_type_code" xsi:type="string">link_price</argument>
+                        <argument name="cache_lifetime" xsi:type="number">360</argument>
                     </arguments>
-                </block>-->
-            </block>
-<!--            <block class="DevStone\UsageCalculator\Block\Usage\View\Options" name="usage.info.options" as="type_image_usage_options" after="usage.info" template="Magento_Catalog::product/view/options.phtml">-->
 
-<!--            </block>-->
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\DefaultType" name="usage.info.options.default" as="default" template="DevStone_UsageCalculator::catalog/product/type/default.phtml"/>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Text" name="usage.info.options.text" as="text" template="DevStone_UsageCalculator::catalog/product/type/text.phtml"/>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\File" name="usage.info.options.file" as="file" template="DevStone_UsageCalculator::catalog/product/type/file.phtml"/>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Select" name="usage.info.options.select" as="select" template="DevStone_UsageCalculator::catalog/product/type/select.phtml"/>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Date" name="usage.info.options.date" as="date" template="DevStone_UsageCalculator::catalog/product/type/date.phtml"/>
+                </block>
+                <block class="DevStone\UsageCalculator\Block\Catalog\Product\Usage" name="custom.usages" template="DevStone_UsageCalculator::catalog/product/usages.phtml">
+                    <arguments>
+                        <argument name="customer_specific" xsi:type="boolean">true</argument>
+                    </arguments>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\DefaultType" name="custom.usage.info.options.default" as="default" template="DevStone_UsageCalculator::catalog/product/type/default.phtml"/>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Text" name="custom.usage.info.options.text" as="text" template="DevStone_UsageCalculator::catalog/product/type/text.phtml"/>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\File" name="custom.usage.info.options.file" as="file" template="DevStone_UsageCalculator::catalog/product/type/file.phtml"/>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Select" name="custom.usage.info.options.select" as="select" template="DevStone_UsageCalculator::catalog/product/type/select.phtml"/>
+                    <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Date" name="custom.usage.info.options.date" as="date" template="DevStone_UsageCalculator::catalog/product/type/date.phtml"/>
+                </block>
+            </block>
         </referenceBlock>
         <referenceBlock name="head.components">
             <block class="Magento\Framework\View\Element\Js\Components" name="usage_page_head_components" template="DevStone_UsageCalculator::js/components.phtml"/>
@@ -32,20 +39,5 @@
         <referenceBlock name="product.info.form.options">
             <block class="DevStone\UsageCalculator\Block\Catalog\Product\Info" name="usage.info.more" template="DevStone_UsageCalculator::catalog/product/moreinfo.phtml" after="product.info.options.wrapper.bottom" />
         </referenceBlock>
-
-<!--            <referenceContainer name="product.info.options.wrapper.bottom">
-            <block class="Magento\Catalog\Pricing\Render" name="product.price.final.copy" before="-">
-                <arguments>
-                    <argument name="price_render" xsi:type="string">product.price.render.default</argument>
-                    <argument name="price_type_code" xsi:type="string">final_price</argument>
-                    <argument name="display_msrp_help_message" xsi:type="string">1</argument>
-                    <argument name="zone" xsi:type="string">item_view</argument>
-                    <argument name="id_suffix" xsi:type="string">copy-</argument>
-                </arguments>
-            </block>
-        </referenceContainer>
-
-        <move element="product.info" destination="content" after="product.info.media" />
-        <move element="product.info.social" destination="product.info.options.wrapper.bottom" after="-" />-->
     </body>
 </page>
