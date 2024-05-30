@@ -35,8 +35,10 @@ class Collection extends UsageCollection implements SearchResultInterface
      * @var AggregationInterface
      */
     protected $aggregations;
+	private $_eventPrefix;
+	private $_eventObject;
 
-    /**
+	/**
      * Collection constructor.
      * @param EntityFactory $entityFactory
      * @param LoggerInterface $logger
