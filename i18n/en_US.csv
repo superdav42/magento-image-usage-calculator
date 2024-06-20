@@ -93,8 +93,9 @@ Price,Price
 "Price Type","Price Type"
 "Image Size","Image Size"
 Edit,Edit
-"Need volume licensing discount? Confused?","Need volume licensing discount? Confused?"
-"Call %1 and ask for custom quote.","Call %1 and ask for custom quote."
+"We offer important volume <b>licensing discounts</b>.","We offer important volume <b>licensing discounts</b>."
+"Have questions? Call %1 and ask for custom quote.","Have questions? Call %1 and ask for custom quote."
+"We will work with your budget.","We will work with your budget."
 Availability,Availability
 "In stock","In stock"
 "Out of stock","Out of stock"

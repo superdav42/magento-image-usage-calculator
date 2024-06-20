@@ -93,8 +93,9 @@ Price,価格
 "Price Type",価格タイプ
 "Image Size",画像サイズ
 Edit,編集
-"Need volume licensing discount? Confused?",ボリュームライセンス割引が必要ですか？混乱していますか？
-"Call %1 and ask for custom quote.",1に電話し、カスタム見積りを依頼する。
+"We offer important volume <b>licensing discounts</b>.",当社は、重要なボリューム<b>ライセンス割引を</b>提供しています。
+"Have questions? Call %1 and ask for custom quote.",ご質問がありますか？1までお電話ください。
+"We will work with your budget.",ご予算に応じて対応いたします。
 Availability,空室状況
 "In stock",在庫あり
 "Out of stock",在庫切れ

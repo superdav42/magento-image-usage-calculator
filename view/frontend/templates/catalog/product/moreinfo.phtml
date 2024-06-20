@@ -1,8 +1,9 @@
 <p class="usages-more-info-call">
-    <?= __('Need volume licensing discount? Confused?') ?>
+    <?= __('We offer important volume <b>licensing discounts</b>.', '<strong>', '</strong>') ?>
     <br />
     <?= __(
-        'Call %1 and ask for custom quote.',
-        '<a href="tel:'.$block->getPhone().'">'.$block->getPhone().'</a>'
+        'Have questions? Call %1 and ask for custom quote.',
+        '<strong><a href="tel:'.$block->getPhone().'">'.$block->getPhone().'</a></strong>'
     ) ?>
+    <em><?= __('We will work with your budget.') ?></em>
 </p>

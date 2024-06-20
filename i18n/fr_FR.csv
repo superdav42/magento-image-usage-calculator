@@ -93,8 +93,9 @@ Price,Prix
 "Price Type","Type de prix"
 "Image Size","Taille de l'image"
 Edit,Editer
-"Need volume licensing discount? Confused?","Besoin d'une remise sur les licences en volume ? Vous n'êtes pas sûr de vous ?"
-"Call %1 and ask for custom quote.","Appelez %1 et demandez un devis personnalisé."
+"We offer important volume <b>licensing discounts</b>.","Nous offrons d'importantes <b>remises sur les licences en</b> volume."
+"Have questions? Call %1 and ask for custom quote.","Vous avez des questions ? Appelez %1 et demandez un devis personnalisé."
+"We will work with your budget.","Nous nous adaptons à votre budget."
 Availability,Disponibilité
 "In stock","En stock"
 "Out of stock","En rupture de stock"

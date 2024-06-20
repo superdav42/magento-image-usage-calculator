@@ -93,8 +93,9 @@ Price,Fiyat
 "Price Type","Fiyat Türü"
 "Image Size","Resim Boyutu"
 Edit,Düzenle
-"Need volume licensing discount? Confused?","Toplu lisans indirimine mi ihtiyacınız var? Kafanız mı karıştı?"
-"Call %1 and ask for custom quote.","1'i arayın ve özel fiyat teklifi isteyin."
+"We offer important volume <b>licensing discounts</b>.","Önemli toplu <b>lisanslama indirimleri</b> sunuyoruz."
+"Have questions? Call %1 and ask for custom quote.","Sorularınız mı var? 1'i arayın ve özel fiyat teklifi isteyin."
+"We will work with your budget.","Bütçenize göre çalışacağız."
 Availability,Kullanılabilirlik
 "In stock","Stokta var"
 "Out of stock","Stokta yok"
