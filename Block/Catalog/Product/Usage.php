@@ -115,6 +115,32 @@ class Usage extends AbstractProduct
     {
         return $this->getProduct()->getTypeInstance()->getLinks($this->getProduct());
     }
+    public function getAllCustomUsages()
+    {
+        $usageCollection = $this->usageCustomerCollectionFactory->create();
+
+        if ($usageCollection->getSize() > 0) {
+            $customerUsage = [];
+            foreach ($usageCollection as $usage) {
+                $customerUsage[] = $usage->getUsageId();
+            }
+
+            $searchCriteria     = $this->searchCriteriaBuilder->addFilter(
+                'entity_id',
+                $customerUsage,
+                'in'
+            )->create();
+            $customerUsageItems = $this->usageRepository->getList($searchCriteria)->getItems();
+            /** @var \DevStone\UsageCalculator\Model\Usage $customerUsageItem */
+            foreach ($customerUsageItems as $key => $customerUsageItem) {
+                if ( ! $customerUsageItem->getConditions()->validate($this->getProduct())) {
+                    unset($customerUsageItems[$key]);
+                }
+            }
+
+            return $customerUsageItems;
+        }
+    }
 
     public function getUsages($category = null): array
     {
@@ -210,6 +236,14 @@ class Usage extends AbstractProduct
 			->create();
 		return $this->categoryRepository->getList($searchCriteria)->getItems();
 	}
+    public function getCustomLicenseCategory()
+    {
+        $searchCriteria = $this->searchCriteriaBuilder
+			->addFilter('entity_id', $this->config->getCustomLicenseId(), 'eq')
+			->create();
+		$items = $this->categoryRepository->getList($searchCriteria)->getItems();
+        return array_pop($items);
+    }
     /**
      * @throws LocalizedException
      */
@@ -250,7 +284,7 @@ class Usage extends AbstractProduct
         )->setData(
             [
                 'id' => 'usage_' . $category->getId() . '_usages',
-                'class' => 'required product-custom-option admin__control-select usage-select-box'
+                'class' => 'required product-custom-option admin__control-select usage-select-box',
             ]
         );
 
@@ -284,7 +318,7 @@ class Usage extends AbstractProduct
         )->setData(
             [
                 'id' => 'usage_category',
-                'class' => 'required product-custom-option admin__control-select'
+                'class' => 'required product-custom-option admin__control-select',
             ]
         );
 
@@ -328,7 +362,7 @@ class Usage extends AbstractProduct
             $amount = $finalPrice->getCustomAmount($usage->getPrice());
             $linksConfig[$usage->getId()] = [
                 'finalPrice' => $amount->getValue(),
-                'basePrice' => $amount->getBaseAmount()
+                'basePrice' => $amount->getBaseAmount(),
             ];
         }
 
@@ -447,7 +481,7 @@ class Usage extends AbstractProduct
         )->setData(
             [
                 'id' => 'usage_previous_usages',
-                'class' => 'required product-custom-option admin__control-select usage-select-box'
+                'class' => 'required product-custom-option admin__control-select usage-select-box',
             ]
         );
 

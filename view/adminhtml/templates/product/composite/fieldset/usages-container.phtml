@@ -1,0 +1,37 @@
+<?php
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+// @deprecated
+?>
+<?php /* @var $block \DevStone\UsageCalculator\Block\Catalog\Product\Usage */ ?>
+<?php $_skipSaleableCheck = $this->helper(Magento\Catalog\Helper\Product::class)->getSkipSaleableCheck(); ?>
+<?php if (($block->getProduct()->isSaleable() || $_skipSaleableCheck) && $block->hasLinks()) :?>
+
+    <fieldset id="catalog_product_composite_configure_fields_usage"
+              class="fieldset admin__fieldset usage information<?= $block->getIsLastFieldset() ? ' last-fieldset' : '' ?>">
+        <legend class="legend admin__legend">
+            <span>Configure Usage</span>
+        </legend><br />
+        <div id="usages-container" class="usages-container field">
+            <div class="usages-container-inner">
+                <div>
+                    <?php
+                    $usages = $block->getAllCustomUsages();
+                    $category = $block->getCustomLicenseCategory();
+                    ?>
+                    <input type="hidden" name="usage_category" value="<?= $category->getId() ?>" />
+                    <div class="category-container field"  id="category_container_">
+                        <div class="help-text">
+                            <?= __('Only Custom Usages are supported') ?>
+                        </div>
+                        <div class="control">
+                            <?= $block->getUsagesSelectHtml($usages, $category); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+
+<?php endif;?>
+

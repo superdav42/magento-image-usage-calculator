@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+@deprecated Adminhtml Blocks extending for Downloadable products have neen moved to UI components
+@see \Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\Composite
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.composite.fieldset">
+            <block class="DevStone\UsageCalculator\Block\Catalog\Product\Usage" name="usage.info" as="type_image_usage" before="-" template="DevStone_UsageCalculator::product/composite/fieldset/usages-container.phtml">
+            </block>
+        </referenceBlock>
+    </body>
+</page>

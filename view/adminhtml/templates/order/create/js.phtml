@@ -1,0 +1,38 @@
+<?php
+
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+
+<?php $scriptString = <<<script
+
+require([
+    'DevStone_UsageCalculator/order/create/bulk',
+"Magento_Catalog/catalog/product/composite/configure"
+], function(){
+
+    function addBulkCompositeListType() {
+        productConfigure.addListType('product_bulk_add', {
+            urlFetch: '{$block->escapeJs($block->getUrl('devstone_usagecalculator/order/configureProductToAdd'))}',
+            skusToIds: '{$block->escapeJs($block->getUrl('devstone_usagecalculator/order/skusToIds'))}'
+        });
+    }
+
+    if (typeof(bulkListTypeWorkedOn) == 'undefined') {
+        bulkListTypeWorkedOn = false;
+    }
+    if (!bulkListTypeWorkedOn) {
+        if (typeof(productConfigure) == 'undefined') {
+            Event.observe(window, 'load',  function(){
+                setTimeout(addBulkCompositeListType, 10);
+            })
+        } else {
+            addBulkCompositeListType();
+        }
+        bulkListTypeWorkedOn = true;
+    }
+
+    window.addBulkCompositeListType = addBulkCompositeListType;
+});
+script;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
