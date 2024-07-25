@@ -133,7 +133,7 @@ class Usage extends AbstractProduct
             $customerUsageItems = $this->usageRepository->getList($searchCriteria)->getItems();
             /** @var \DevStone\UsageCalculator\Model\Usage $customerUsageItem */
             foreach ($customerUsageItems as $key => $customerUsageItem) {
-                if ( ! $customerUsageItem->getConditions()->validate($this->getProduct())) {
+                if (! $customerUsageItem->getConditions()->validate($this->getProduct())) {
                     unset($customerUsageItems[$key]);
                 }
             }
@@ -175,7 +175,7 @@ class Usage extends AbstractProduct
                     $customerUsageItems = $this->usageRepository->getList($searchCriteria)->getItems();
                     /** @var \DevStone\UsageCalculator\Model\Usage $customerUsageItem */
                     foreach ($customerUsageItems as $key => $customerUsageItem) {
-                        if(!$customerUsageItem->getConditions()->validate($this->getProduct())) {
+                        if (!$customerUsageItem->getConditions()->validate($this->getProduct())) {
                             unset($customerUsageItems[$key]);
                         }
                     }
@@ -220,28 +220,29 @@ class Usage extends AbstractProduct
         return $usageCustomerCollection;
     }
 
-	public function getAllCategories() {
+    public function getAllCategories()
+    {
 
-		if ($this->isCustomerLoggedIn()) {
-			$customerId = $this->getCustomerId();
-			$usageCollection = $this->getUsageListAccordingToCustomer($customerId);
-			if ($usageCollection->getSize() > 0) {
-				$searchCriteria = $this->searchCriteriaBuilder->create();
-				return $this->categoryRepository->getList($searchCriteria)->getItems();
-			}
-		}
+        if ($this->isCustomerLoggedIn()) {
+            $customerId = $this->getCustomerId();
+            $usageCollection = $this->getUsageListAccordingToCustomer($customerId);
+            if ($usageCollection->getSize() > 0) {
+                $searchCriteria = $this->searchCriteriaBuilder->create();
+                return $this->categoryRepository->getList($searchCriteria)->getItems();
+            }
+        }
 
-		$searchCriteria = $this->searchCriteriaBuilder
-			->addFilter('entity_id', $this->config->getCustomLicenseId(), 'neq')
-			->create();
-		return $this->categoryRepository->getList($searchCriteria)->getItems();
-	}
+        $searchCriteria = $this->searchCriteriaBuilder
+            ->addFilter('entity_id', $this->config->getCustomLicenseId(), 'neq')
+            ->create();
+        return $this->categoryRepository->getList($searchCriteria)->getItems();
+    }
     public function getCustomLicenseCategory()
     {
         $searchCriteria = $this->searchCriteriaBuilder
-			->addFilter('entity_id', $this->config->getCustomLicenseId(), 'eq')
-			->create();
-		$items = $this->categoryRepository->getList($searchCriteria)->getItems();
+            ->addFilter('entity_id', $this->config->getCustomLicenseId(), 'eq')
+            ->create();
+        $items = $this->categoryRepository->getList($searchCriteria)->getItems();
         return array_pop($items);
     }
     /**
@@ -249,19 +250,19 @@ class Usage extends AbstractProduct
      */
     public function getCategories(): array
     {
-		if ( $this->hasData('customer_specific') && $this->getdata('customer_specific') ) {
-			if ($this->isCustomerLoggedIn()) {
-				$customerId = $this->getCustomerId();
-				$usageCollection = $this->getUsageListAccordingToCustomer($customerId);
-				if ($usageCollection->getSize() > 0) {
-					$searchCriteria = $this->searchCriteriaBuilder
-						->addFilter('entity_id', $this->config->getCustomLicenseId(), 'eq')
-						->create();
-					return $this->categoryRepository->getList($searchCriteria)->getItems();
-				}
-			}
-			return [];
-		}
+        if ($this->hasData('customer_specific') && $this->getdata('customer_specific')) {
+            if ($this->isCustomerLoggedIn()) {
+                $customerId = $this->getCustomerId();
+                $usageCollection = $this->getUsageListAccordingToCustomer($customerId);
+                if ($usageCollection->getSize() > 0) {
+                    $searchCriteria = $this->searchCriteriaBuilder
+                        ->addFilter('entity_id', $this->config->getCustomLicenseId(), 'eq')
+                        ->create();
+                    return $this->categoryRepository->getList($searchCriteria)->getItems();
+                }
+            }
+            return [];
+        }
 
         $searchCriteria = $this->searchCriteriaBuilder
             ->addFilter('entity_id', $this->config->getCustomLicenseId(), 'neq')
