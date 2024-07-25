@@ -137,4 +137,51 @@ class Usage extends AbstractEntity
 
         return $this;
     }
+
+    /**
+     * Retrieve select object for loading entity attributes values
+     *
+     * Join attribute store value
+     *
+     * @param \Magento\Framework\DataObject $object
+     * @param string $table
+     * @return \Magento\Framework\DB\Select
+     */
+    protected function _getLoadAttributesSelect($object, $table)
+    {
+
+        /**
+         * This condition is applicable for all cases when we was work in not single
+         * store mode, customize some value per specific store view and than back
+         * to single store mode. We should load correct values
+         */
+        if ($this->_storeManager->hasSingleStore()) {
+            $storeId = (int) $this->_storeManager->getStore(true)->getId();
+        } else {
+            $storeId = (int) $object->getStoreId();
+        }
+
+        $storeIds = [$this->getDefaultStoreId()];
+        if ($storeId != $this->getDefaultStoreId()) {
+            $storeIds[] = $storeId;
+        }
+
+        $select = $this->getConnection()
+            ->select()
+            ->from(['attr_table' => $table], [])
+            ->where("attr_table.{$this->getLinkField()} = ?", $object->getData($this->getLinkField()))
+            ->where('attr_table.store_id IN (?)', $storeIds, \Zend_Db::INT_TYPE);
+
+        return $select;
+    }
+
+    /**
+     * Returns default Store ID
+     *
+     * @return int
+     */
+    public function getDefaultStoreId()
+    {
+        return \Magento\Store\Model\Store::DEFAULT_STORE_ID;
+    }
 }
