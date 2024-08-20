@@ -1,0 +1,177 @@
+Back,返回
+Delete,删除
+"Are you sure you want to do this?",你确定要这么做吗？
+"Save and Continue Edit",保存并继续编辑
+Save,节省
+ID,身份证
+Email,电子邮件
+Name,名称
+Company,公司名称
+Conditions,条件
+"Apply the rule only if the following conditions are met (leave blank for all products).",仅在满足以下条件时应用该规则（所有产品留空）。
+"Add Custom License",添加自定义许可证
+"-- Please Select --","-- 请选择 --"
+"Unable to fetch previous categories.",无法获取以前的类别。
+AM,上午
+PM,下午
+None,无
+"You deleted the record.",你删除了记录。
+"Record does not exist.",记录不存在。
+"This record no longer exists.",该记录已不复存在。
+"Category Edit",类别编辑
+Category,类别
+"Please correct the data sent.",请更正发送的数据。
+"There was an error saving the data: ","保存数据时出现错误： "
+"A total of %1 record(s) have been deleted.","共删除了 %1 条记录。"
+"You saved this record.",您保存了此记录。
+"Something went wrong while saving the record.",保存记录时出了问题。
+"Category Identifier",类别标识符
+"To apply changes you should fill in required ""%1"" field","要应用更改，应填写必填的""%1 ""字段"
+"Size Edit",尺寸编辑
+Size,尺寸
+"Size Identifier",尺寸标识符
+"Usage Edit",使用编辑
+Usage,使用方法
+"Usage Identifier",使用标识符
+"Could not save the category: %1",无法保存类别：%1
+"Category with id ""%1"" does not exist.","ID 为""%1 ""的类别不存在。"
+"Could not delete the Category: %1",无法删除类别：%1
+"Could not save the size: %1","无法保存大小： %1"
+"Size with id ""%1"" does not exist.","ID 为""%1 ""的大小不存在。"
+"Could not delete the Size: %1",无法删除大小：%1
+"The option type to get group instance is incorrect.",获取组实例的选项类型不正确。
+"Select type options required values rows.",选择类型选项所需数值行。
+"usage_id should be specified","应指定 usage_id"
+"Could not remove custom option",无法删除自定义选项
+"Please specify date required option(s).",请注明所需选项的日期。
+"Please specify time required option(s).",请注明所需时间。
+"Please specify product's required option(s).",请注明产品所需的选项。
+"The option instance type in options group is incorrect.",选项组中的选项实例类型不正确。
+"The product instance type in options group is incorrect.",选项组中的产品实例类型不正确。
+"The configuration item option instance in options group is incorrect.",选项组中的配置项选项实例不正确。
+"The configuration item instance in options group is incorrect.",选项组中的配置项实例不正确。
+"The BuyRequest instance in options group is incorrect.","选项组中的 BuyRequest 实例不正确。"
+"We can't add the product to the cart because of an option validation issue.",由于选项验证问题，我们无法将产品添加到购物车。
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 doesn't extends\Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.",文件选项格式无效。
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","%2 ""的文件""%1 ""扩展名无效。"
+"The maximum allowed image size for '%1' is %2x%3 px.","%1 ""允许的最大图像尺寸是 %2x%3 px。"
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","您上传的文件""%1 ""大于我们服务器允许的 %2 兆字节。"
+"The file '%1' is empty. Please choose another one",文件'%1'为空。请选择另一个
+"The file '%1' is invalid. Please choose another one",文件'%1'无效。请选择另一个
+"File '%1' is not an image.",文件'%1'不是图像。
+"Validation failed. Required options were not filled or the file was not uploaded.",验证失败。所需选项未填写或文件未上传。
+"The file you uploaded is larger than %1 Megabytes allowed by server","您上传的文件大于服务器允许的 %1 兆字节"
+"Option required.",需要选项。
+"The file is empty. Please choose another one",文件为空。请选择另一个
+"Some of the selected item options are not currently available.",某些所选项目选项目前不可用。
+"Could not save the usageCustomer: %1",无法保存使用情况客户：%1
+"UsageCustomer with id ""%1"" does not exist.","使用说明id 为""%1 ""的客户不存在。"
+"Could not delete the UsageCustomer: %1",无法删除使用客户：%1
+"Could not save the usage: %1",无法保存使用情况：%1
+"Usage with id ""%1"" does not exist.","ID 为""%1 ""的用法不存在。"
+"Could not delete the Usage: %1","无法删除 ""使用情况""：%1"
+"Unable to attach licenses to customer %s","无法将许可证附加到客户 %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","您无法将此项目添加到购物车，因为此
+                                自定义许可证只能使用 %1 次"
+"Max Usage",最大使用量
+"Usage Options",使用选项
+Preview.,预览。
+"Usage options provide more details about how an image will be used.",使用选项提供了有关如何使用图像的更多详细信息。
+"Add Option",添加选项
+"New Option",新选项
+"Option Title",选项名称
+"Help Text",帮助文本
+"Add Value",增加价值
+Title,标题
+"Option Type",选项类型
+"-- Please select --","-- 请选择 --"
+Required,需要
+Price,价格
+"Price Type",价格类型
+"Image Size",图像大小
+Edit,编辑
+"Only Custom Usages are supported",仅支持自定义用途
+"We offer important volume <b>licensing discounts</b>.",我们提供重要的批量<b>许可折扣</b>。
+"Have questions? Call %1 and ask for custom quote.","有问题？致电 %1，咨询定制报价。"
+"We will work with your budget.",我们将根据您的预算开展工作。
+Availability,可用性
+"In stock",有库存
+"Out of stock",缺货
+Change,改变
+"Compatible file extensions to upload",可上传的兼容文件扩展名
+"Maximum image width",最大图像宽度
+"Maximum image height",最大图像高度
+"less info",更少信息
+"more info",更多信息
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","许可图像是一种 ""租用 ""图像用于特定用途的方式；例如，许可图像用于书籍封面、杂志文章插图或在传福音传单中使用图像。"
+"License Image",许可图片
+"Download - price based on use.","下载 - 根据使用情况定价。"
+Close,关闭
+"License Pricing Calculator",许可证定价计算器
+"Select options from the drop down menu to calculate a price to use this image.",从下拉菜单中选择选项，计算使用该图片的价格。
+"Choose Category",选择类别
+"Choose a category to see the specific usages available.",选择一个类别，查看可用的具体用途。
+"Previous Usage",以前的用途
+"Choose a previous calculation from your order history.",从订单历史记录中选择之前的计算。
+"Specific Usage",具体用途
+"Choose the usage which best describes how you intend to use the image.",选择最能说明您打算如何使用图片的用法。
+"Go to <a href=""%1"">My Downloadable Products</a>","前往<a href=""%1"">我的可下载产品</a>"
+"Incl. Tax",含税
+"Total Incl. Tax",含税总计
+"Excl. Tax",不含税
+Total,总计
+"Downloadable Products",可下载产品
+"Order #",订单号
+Date,日期
+Status,现状
+"Remaining Downloads",剩余下载
+"View Order",查看订单
+"Start Download",开始下载
+"You have not purchased any downloadable products yet.",您尚未购买任何可下载产品。
+SKU,商品编号
+download,下载
+"Gift Message",礼品信息
+From:,来自
+To:,致
+Message:,留言：
+"Product Name",产品名称
+Qty,数量
+Subtotal,小计
+"Discount Amount",折扣金额
+"Row Total",行总数
+"Qty Invoiced",发票数量
+Ordered,已订购
+Shipped,已发货
+Canceled,已取消
+Refunded,退款
+"Add Bulk Products",添加大宗产品
+Calculator,计算器
+"DevStone Extensions","DevStone 扩展"
+"Usage Calculator",使用计算器
+General,一般情况
+"Custom Category",自定义类别
+"select the custom category",选择自定义类别
+"This field is going to be used for Custom License",此字段将用于自定义许可证
+"Category Form",类别形式
+"Main Information",主要信息
+"Add New Category",添加新类别
+"Delete items",删除项目
+"Are you sure you wan't to delete selected items?",您确定不删除所选项目吗？
+Terms,条款
+"Size Form",尺寸表格
+Active,活跃
+Inactive,不活动
+"Add New Size",添加新尺寸
+Code,代码
+"Max Width",最大宽度
+"Max Height",最大高度
+"Usage Form",使用表格
+"Can be free",可以免费
+No,没有
+Yes,是
+"Add future customer email",添加未来客户的电子邮件
+"Add Email",添加电子邮件
+"Add New Usage",添加新用途

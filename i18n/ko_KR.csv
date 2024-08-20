@@ -93,6 +93,7 @@ Price,가격
 "Price Type","가격 유형"
 "Image Size","이미지 크기"
 Edit,편집
+"Only Custom Usages are supported","사용자 지정 사용만 지원됩니다"
 "We offer important volume <b>licensing discounts</b>.","중요한 볼륨 <b>라이선스 할인을</b> 제공합니다."
 "Have questions? Call %1 and ask for custom quote.","질문이 있으신가요? 1에 전화하여 맞춤 견적을 요청하세요."
 "We will work with your budget.","고객의 예산에 맞춰 작업합니다."
@@ -146,6 +147,7 @@ Ordered,주문됨
 Shipped,배송됨
 Canceled,취소됨
 Refunded,환불
+"Add Bulk Products","대량 제품 추가"
 Calculator,계산기
 "DevStone Extensions","DevStone 확장 기능"
 "Usage Calculator","사용량 계산기"

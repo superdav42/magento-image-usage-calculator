@@ -1,0 +1,177 @@
+Back,Mbrapa
+Delete,Fshije
+"Are you sure you want to do this?","Je i sigurt që do ta bësh këtë?"
+"Save and Continue Edit","Ruaj dhe vazhdo editimin"
+Save,Ruaj
+ID,ID
+Email,E-mail
+Name,Emri
+Company,Ndërmarrja
+Conditions,Kushtet
+"Apply the rule only if the following conditions are met (leave blank for all products).","Aplikoni rregullin vetëm nëse plotësohen kushtet e mëposhtme (lini bosh për të gjitha produktet)."
+"Add Custom License","Shto licencën e personalizuar"
+"-- Please Select --","- Ju lutem zgjidhni --"
+"Unable to fetch previous categories.","Në pamundësi për të marrë kategoritë e mëparshme."
+AM,AM
+PM,PM
+None,Asnjë
+"You deleted the record.","E fshive rekordin."
+"Record does not exist.","Regjistrimi nuk ekziston."
+"This record no longer exists.","Ky rekord nuk ekziston më."
+"Category Edit","Ndrysho kategorinë"
+Category,Kategoritë
+"Please correct the data sent.","Ju lutem korrigjoni të dhënat e dërguara."
+"There was an error saving the data: ","Ka pasur një gabim duke ruajtur të dhënat: "
+"A total of %1 record(s) have been deleted.","Një total prej %1 rekord(s) janë fshirë."
+"You saved this record.","Ti e ruajte këtë rekord."
+"Something went wrong while saving the record.","Diçka nuk shkoi mirë duke ruajtur rekordin."
+"Category Identifier","Identifikuesi i kategorisë"
+"To apply changes you should fill in required ""%1"" field","Për të aplikuar ndryshimet duhet të plotësoni fushën e kërkuar ""%1"""
+"Size Edit","Ndrysho madhësinë"
+Size,Madhësia
+"Size Identifier","Identifikuesi i madhësisë"
+"Usage Edit","Ndrysho përdorimin"
+Usage,Përdorimi
+"Usage Identifier","Identifikuesi i përdorimit"
+"Could not save the category: %1","E pamundur ruajtja e kategorisë: %1"
+"Category with id ""%1"" does not exist.","Kategoria me id ""%1"" nuk ekziston."
+"Could not delete the Category: %1","I pamundur fshirja e kategorisë: %1"
+"Could not save the size: %1","E pamundur ruajtja e madhësisë: %1"
+"Size with id ""%1"" does not exist.","Madhësia me id ""%1"" nuk ekziston."
+"Could not delete the Size: %1","E pamundur fshirja e madhësisë: %1"
+"The option type to get group instance is incorrect.","Lloji i opsionit për të marrë instancën e grupit është i pasaktë."
+"Select type options required values rows.","Zgjidh opsionet e tipit të kërkuara rreshtat e vlerave."
+"usage_id should be specified","usage_id duhet të specifikohet"
+"Could not remove custom option","I pamundur heqja e opsionit të personalizuar"
+"Please specify date required option(s).","Ju lutemi specifikoni datën e kërkuar opsion(s)."
+"Please specify time required option(s).","Ju lutemi specifikoni kohën e kërkuar opsion(s)."
+"Please specify product's required option(s).","Ju lutemi specifikoni opsionin(s) e kërkuar të produktit."
+"The option instance type in options group is incorrect.","Lloji i instances së opsionit në grupin e opsioneve është i pasaktë."
+"The product instance type in options group is incorrect.","Lloji i shembullit të produktit në grupin e opsioneve është i pasaktë."
+"The configuration item option instance in options group is incorrect.","Shembulli i opsionit të elementit të konfigurimit në grupin e opsioneve është i pasaktë."
+"The configuration item instance in options group is incorrect.","Shembulli i elementit të konfigurimit në grupin e opsioneve është i pasaktë."
+"The BuyRequest instance in options group is incorrect.","Shembulli BuyRequest në grupin e opsioneve është i pasaktë."
+"We can't add the product to the cart because of an option validation issue.","Ne nuk mund të shtojmë produktin në karrocë për shkak të një problemi të validimit të opsionit."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 nuk zgjat \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","Formati i opsioneve të file nuk është i vlefshëm."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Dosja '%1' për '%2' ka një zgjatje të pavlefshme."
+"The maximum allowed image size for '%1' is %2x%3 px.","Madhësia maksimale e lejuar e imazhit për '%1' është %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Skedari '%1' që keni ngarkuar është më i madh se %2 megabajt i lejuar nga serveri ynë."
+"The file '%1' is empty. Please choose another one","Dosja '%1' është bosh. Ju lutem zgjidhni një tjetër"
+"The file '%1' is invalid. Please choose another one","Dosja '%1' është e pavlefshme. Ju lutem zgjidhni një tjetër"
+"File '%1' is not an image.","File '%1' nuk është një imazh."
+"Validation failed. Required options were not filled or the file was not uploaded.","Validimi dështoi. Opsionet e kërkuara nuk u mbushën ose dosja nuk u ngarkua."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Skedari që keni ngarkuar është më i madh se %1 Megabytes i lejuar nga serveri"
+"Option required.","Opsioni i kërkuar."
+"The file is empty. Please choose another one","Dosja është bosh. Ju lutem zgjidhni një tjetër"
+"Some of the selected item options are not currently available.","Disa nga opsionet e zgjedhura të artikujve nuk janë aktualisht në dispozicion."
+"Could not save the usageCustomer: %1","I pamundur ruajtja e përdorimitCustomer: %1"
+"UsageCustomer with id ""%1"" does not exist.","UsageCustomer me id ""%1"" nuk ekziston."
+"Could not delete the UsageCustomer: %1","I pamundur fshirja e PërdorimitCustomer: %1"
+"Could not save the usage: %1","I pamundur ruajtja e përdorimit: %1"
+"Usage with id ""%1"" does not exist.","Përdorimi me id ""%1"" nuk ekziston."
+"Could not delete the Usage: %1","I pamundur fshirja e Përdorimit: %1"
+"Unable to attach licenses to customer %s","I pamundur bashkëngjitja e licencave tek %s e klientit"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Ju nuk mund të shtoni këtë artikull në karrocën tuaj sepse kjo
+                                Licenca e personalizuar mund të përdoret vetëm %1 kohë(s)"
+"Max Usage","Përdorimi Max"
+"Usage Options","Opsionet e përdorimit"
+Preview.,"Pamje paraprake."
+"Usage options provide more details about how an image will be used.","Opsionet e përdorimit japin më shumë detaje rreth mënyrës se si do të përdoret një imazh."
+"Add Option","Shto opsionin"
+"New Option","Opsioni i ri"
+"Option Title","Titulli i opsionit"
+"Help Text","Teksti i ndihmës"
+"Add Value","Shto vlerën"
+Title,Titulli
+"Option Type","Lloji i opsionit"
+"-- Please select --","- Ju lutem zgjidhni --"
+Required,Kërkohet
+Price,Çmimi
+"Price Type","Lloji i çmimit"
+"Image Size","Madhësia e figurës"
+Edit,Ndrysho
+"Only Custom Usages are supported","Vetëm përdorimet e personalizuara janë të mbështetura"
+"We offer important volume <b>licensing discounts</b>.","Ne ofrojmë <b>zbritje të rëndësishme të licencimit të volumit</b>."
+"Have questions? Call %1 and ask for custom quote.","Ke pyetje? Telefononi %1 dhe kërkoni citim të personalizuar."
+"We will work with your budget.","Ne do të punojmë me buxhetin tuaj."
+Availability,Disponueshmëria
+"In stock","Në magazinë"
+"Out of stock","Jashtë aksioneve"
+Change,Ndrysho
+"Compatible file extensions to upload","Extensions file compatible për të ngarkuar"
+"Maximum image width","Gjerësia maksimale e figurës"
+"Maximum image height","Lartësia maksimale e figurës"
+"less info","Më pak info"
+"more info","Më shumë info"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","License Image është një lloj ""qiraje"" e një imazhi për një përdorim të caktuar; Shembujt përfshijnë licensimin e një imazhi për kopertinën e një libri, një ilustrim për një artikull revistash ose përdorimin e një imazhi në një broshurë evangjeliste."
+"License Image","Figura e liçensës"
+"Download - price based on use.","Shkarko - çmimi në bazë të përdorimit."
+Close,Afër
+"License Pricing Calculator","Llogaritësi i çmimit të licencës"
+"Select options from the drop down menu to calculate a price to use this image.","Zgjidh opsionet nga menuja drop down për të llogaritur një çmim për të përdorur këtë imazh."
+"Choose Category","Zgjidh kategorinë"
+"Choose a category to see the specific usages available.","Zgjidhni një kategori për të parë përdorimet specifike në dispozicion."
+"Previous Usage","Përdorimi i mëparshëm"
+"Choose a previous calculation from your order history.","Zgjidhni një llogaritje të mëparshme nga historia e porosisë suaj."
+"Specific Usage","Përdorimi specifik"
+"Choose the usage which best describes how you intend to use the image.","Zgjidhni përdorimin i cili përshkruan më së miri se si keni ndërmend të përdorni imazhin."
+"Go to <a href=""%1"">My Downloadable Products</a>","Shko tek <a href=""%1"">Produktet e mia të shkarkuara</a>"
+"Incl. Tax","Incl. Taksa"
+"Total Incl. Tax","Total Incl. Tax"
+"Excl. Tax","Excl. Tax"
+Total,Totali
+"Downloadable Products","Produkte të shkarkuara"
+"Order #","Porosia #"
+Date,Data
+Status,Gjendja
+"Remaining Downloads","Shkarkimet e mbetura"
+"View Order","Shfaq porosinë"
+"Start Download","Fillo shkarkimin"
+"You have not purchased any downloadable products yet.","Ju nuk keni blerë asnjë produkt të shkarkuar ende."
+SKU,SKU
+download,Shkarko
+"Gift Message","Mesazhi i dhuratës"
+From:,Nga:
+To:,Për:
+Message:,Mesazhi:
+"Product Name","Emri i produktit"
+Qty,Qty
+Subtotal,Subtotal
+"Discount Amount","Shuma e zbritjes"
+"Row Total","Totali i rreshtit"
+"Qty Invoiced","Fatura Qty"
+Ordered,Porositur
+Shipped,Dërguar
+Canceled,Anulluar
+Refunded,"Të rimbursuara"
+"Add Bulk Products","Shto produkte me shumicë"
+Calculator,Llogaritësi
+"DevStone Extensions","DevStone Extensions"
+"Usage Calculator","Llogaritësi i përdorimit"
+General,Gjeneral
+"Custom Category","Kategoria e personalizuar"
+"select the custom category","Zgjidh kategorinë e personalizuar"
+"This field is going to be used for Custom License","Kjo fushë do të përdoret për licencën e personalizuar"
+"Category Form","Forma e kategorisë"
+"Main Information","Informacioni kryesor"
+"Add New Category","Shto kategorinë e re"
+"Delete items","Fshij artikujt"
+"Are you sure you wan't to delete selected items?","Je i sigurt që nuk do të fshish artikujt e zgjedhur?"
+Terms,Termat
+"Size Form","Forma e madhësisë"
+Active,Aktiv
+Inactive,Joaktiv
+"Add New Size","Shto madhësinë e re"
+Code,Kodi
+"Max Width","Gjerësia maksimale"
+"Max Height","Lartësia maksimale"
+"Usage Form","Forma e përdorimit"
+"Can be free","Mund të jetë i lirë"
+No,Jo
+Yes,Po
+"Add future customer email","Shto emailin e ardhshëm të klientit"
+"Add Email","Shto Email"
+"Add New Usage","Shto përdorimin e ri"

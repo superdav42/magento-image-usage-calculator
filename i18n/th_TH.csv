@@ -1,0 +1,177 @@
+Back,ย้อนกลับ
+Delete,ลบ
+"Are you sure you want to do this?",คุณแน่ใจหรือไม่ว่าต้องการทําเช่นนี้?
+"Save and Continue Edit",บันทึกและแก้ไขต่อ
+Save,ประหยัด
+ID,รหัส
+Email,อีเมล
+Name,ชื่อ
+Company,บริษัท
+Conditions,เงื่อนไข
+"Apply the rule only if the following conditions are met (leave blank for all products).","ใช้กฎเฉพาะเมื่อตรงตามเงื่อนไขต่อไปนี้ (เว้นว่างไว้สําหรับผลิตภัณฑ์ทั้งหมด)"
+"Add Custom License",เพิ่มสิทธิ์การใช้งานแบบกําหนดเอง
+"-- Please Select --","-- กรุณาเลือก --"
+"Unable to fetch previous categories.",ไม่สามารถดึงข้อมูลหมวดหมู่ก่อนหน้าได้
+AM,AM
+PM,นายกรัฐมนตรี
+None,ไม่มีใคร
+"You deleted the record.",คุณลบระเบียน
+"Record does not exist.",ไม่มีบันทึก
+"This record no longer exists.",บันทึกนี้ไม่มีอยู่อีกต่อไป
+"Category Edit",แก้ไขหมวดหมู่
+Category,ประเภท
+"Please correct the data sent.",โปรดแก้ไขข้อมูลที่ส่ง
+"There was an error saving the data: ","มีข้อผิดพลาดในการบันทึกข้อมูล: "
+"A total of %1 record(s) have been deleted.","ระเบียนทั้งหมด %1 ถูกลบ"
+"You saved this record.",คุณบันทึกบันทึกนี้
+"Something went wrong while saving the record.",มีบางอย่างผิดพลาดขณะบันทึกบันทึก
+"Category Identifier",ตัวระบุหมวดหมู่
+"To apply changes you should fill in required ""%1"" field","หากต้องการใช้การเปลี่ยนแปลง คุณควรกรอกข้อมูลในช่อง ""%1"" ที่จําเป็น"
+"Size Edit","ขนาด แก้ไข"
+Size,ขนาด
+"Size Identifier",ตัวระบุขนาด
+"Usage Edit","การใช้งาน แก้ไข"
+Usage,การใช้
+"Usage Identifier",ตัวระบุการใช้งาน
+"Could not save the category: %1","ไม่สามารถบันทึกหมวดหมู่: %1"
+"Category with id ""%1"" does not exist.","ไม่มีหมวดหมู่ที่มีรหัส ""%1"""
+"Could not delete the Category: %1","ไม่สามารถลบหมวดหมู่: %1"
+"Could not save the size: %1","ไม่สามารถบันทึกขนาด: %1"
+"Size with id ""%1"" does not exist.","ขนาดที่มีรหัส ""%1"" ไม่มีอยู่"
+"Could not delete the Size: %1","ไม่สามารถลบขนาด: %1"
+"The option type to get group instance is incorrect.",ประเภทตัวเลือกในการรับอินสแตนซ์กลุ่มไม่ถูกต้อง
+"Select type options required values rows.","เลือกประเภทตัวเลือก ลําดับ ค่าที่จําเป็น แถว"
+"usage_id should be specified","ควรระบุ usage_id"
+"Could not remove custom option",ไม่สามารถลบตัวเลือกที่กําหนดเองได้
+"Please specify date required option(s).",โปรดระบุตัวเลือกวันที่ที่ต้องการ
+"Please specify time required option(s).",โปรดระบุตัวเลือกเวลาที่ต้องการ
+"Please specify product's required option(s).",โปรดระบุตัวเลือกที่ต้องการของผลิตภัณฑ์
+"The option instance type in options group is incorrect.",ชนิดอินสแตนซ์ตัวเลือกในกลุ่มตัวเลือกไม่ถูกต้อง
+"The product instance type in options group is incorrect.",ชนิดอินสแตนซ์ของผลิตภัณฑ์ในกลุ่มตัวเลือกไม่ถูกต้อง
+"The configuration item option instance in options group is incorrect.",อินสแตนซ์ตัวเลือกรายการการตั้งค่าคอนฟิกในกลุ่มตัวเลือกไม่ถูกต้อง
+"The configuration item instance in options group is incorrect.",อินสแตนซ์รายการการตั้งค่าคอนฟิกในกลุ่มตัวเลือกไม่ถูกต้อง
+"The BuyRequest instance in options group is incorrect.","อินสแตนซ์ BuyRequest ในกลุ่มตัวเลือกไม่ถูกต้อง"
+"We can't add the product to the cart because of an option validation issue.",เราไม่สามารถเพิ่มสินค้าลงในตะกร้าสินค้าได้เนื่องจากปัญหาการตรวจสอบตัวเลือก
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 ไม่ขยาย \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.",รูปแบบตัวเลือกไฟล์ไม่ถูกต้อง
+px.,พิกเซล
+"The file '%1' for '%2' has an invalid extension.","ไฟล์ '%1' สําหรับ '%2' มีนามสกุลไม่ถูกต้อง"
+"The maximum allowed image size for '%1' is %2x%3 px.","ขนาดรูปภาพสูงสุดที่อนุญาตสําหรับ '%1' คือ %2x%3 px"
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","ไฟล์ '%1' ที่คุณอัปโหลดมีขนาดใหญ่กว่า %2 เมกะไบต์ที่เซิร์ฟเวอร์ของเราอนุญาต"
+"The file '%1' is empty. Please choose another one","แฟ้ม '%1' ว่างเปล่า โปรดเลือกอันอื่น"
+"The file '%1' is invalid. Please choose another one","ไฟล์ '%1' ไม่ถูกต้อง โปรดเลือกอันอื่น"
+"File '%1' is not an image.","ไฟล์ '%1' ไม่ใช่รูป"
+"Validation failed. Required options were not filled or the file was not uploaded.","การตรวจสอบความถูกต้องล้มเหลว ไม่ได้กรอกตัวเลือกที่จําเป็นหรือไม่ได้อัปโหลดไฟล์"
+"The file you uploaded is larger than %1 Megabytes allowed by server","ไฟล์ที่คุณอัปโหลดมีขนาดใหญ่กว่า %1 เมกะไบต์ที่เซิร์ฟเวอร์อนุญาต"
+"Option required.",จําเป็นต้องใช้ตัวเลือก
+"The file is empty. Please choose another one","ไฟล์ว่างเปล่า โปรดเลือกอันอื่น"
+"Some of the selected item options are not currently available.",ตัวเลือกรายการที่เลือกบางรายการยังไม่พร้อมใช้งานในขณะนี้
+"Could not save the usageCustomer: %1","ไม่สามารถบันทึกการใช้งานได้ลูกค้า: %1"
+"UsageCustomer with id ""%1"" does not exist.","ไม่มีการใช้งานลูกค้าที่มีรหัส ""%1"""
+"Could not delete the UsageCustomer: %1","ไม่สามารถลบ UsageCustomer: %1"
+"Could not save the usage: %1","ไม่สามารถบันทึกการใช้งาน: %1"
+"Usage with id ""%1"" does not exist.","ไม่มีการใช้งานที่มีรหัส ""%1"""
+"Could not delete the Usage: %1","ไม่สามารถลบการใช้งาน: %1"
+"Unable to attach licenses to customer %s","ไม่สามารถแนบใบอนุญาตกับลูกค้า %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","คุณไม่สามารถเพิ่มรายการนี้ลงในรถเข็นของคุณได้เนื่องจากสิ่งนี้
+                                สิทธิ์การใช้งานแบบกําหนดเองสามารถใช้ได้ %1 ครั้งเท่านั้น"
+"Max Usage",การใช้งานสูงสุด
+"Usage Options",ตัวเลือกการใช้งาน
+Preview.,"ดูตัวอย่าง "
+"Usage options provide more details about how an image will be used.",ตัวเลือกการใช้งานให้รายละเอียดเพิ่มเติมเกี่ยวกับวิธีการใช้รูปภาพ
+"Add Option",เพิ่มตัวเลือก
+"New Option",ตัวเลือกใหม่
+"Option Title",ชื่อตัวเลือก
+"Help Text",ข้อความความช่วยเหลือ
+"Add Value",เพิ่มมูลค่า
+Title,ชื่อเรื่อง
+"Option Type",ประเภทตัวเลือก
+"-- Please select --","-- กรุณาเลือก --"
+Required,ต้องระบุ
+Price,ราคา
+"Price Type",ประเภทราคา
+"Image Size",ขนาดภาพ
+Edit,แก้ไข
+"Only Custom Usages are supported",รองรับการใช้งานแบบกําหนดเองเท่านั้น
+"We offer important volume <b>licensing discounts</b>.","เราเสนอ<b>ส่วนลด Volume Licensing</b> ที่สําคัญ"
+"Have questions? Call %1 and ask for custom quote.","มีคําถาม? โทร %1 และขอใบเสนอราคาที่กําหนดเอง"
+"We will work with your budget.",เราจะทํางานกับงบประมาณของคุณ
+Availability,ความสะดวก
+"In stock",มีสินค้า
+"Out of stock",สินค้าหมด
+Change,เปลี่ยน
+"Compatible file extensions to upload",นามสกุลไฟล์ที่เข้ากันได้เพื่ออัปโหลด
+"Maximum image width",ความกว้างของภาพสูงสุด
+"Maximum image height",ความสูงของภาพสูงสุด
+"less info",ข้อมูลน้อยลง
+"more info",ข้อมูลเพิ่มเติม
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","ภาพลิขสิทธิ์เป็นประเภทของ ""การเช่า"" ของภาพสําหรับการใช้งานเฉพาะ ตัวอย่าง เช่น การ ให้ สิทธิ์ ใช้ ภาพ สําหรับ ปก หนังสือ, ภาพประกอบ สําหรับ บทความ นิตยสาร, หรือ การ ใช้ ภาพ ใน ใบ ปลิว ประกาศ."
+"License Image",ภาพใบอนุญาต
+"Download - price based on use.","ดาวน์โหลด - ราคาขึ้นอยู่กับการใช้งาน"
+Close,ปิด
+"License Pricing Calculator",เครื่องคํานวณราคาใบอนุญาต
+"Select options from the drop down menu to calculate a price to use this image.",เลือกตัวเลือกจากเมนูแบบเลื่อนลงเพื่อคํานวณราคาเพื่อใช้รูปภาพนี้
+"Choose Category",เลือกหมวดหมู่
+"Choose a category to see the specific usages available.",เลือกหมวดหมู่เพื่อดูการใช้งานเฉพาะที่มี
+"Previous Usage",การใช้งานก่อนหน้า
+"Choose a previous calculation from your order history.",เลือกการคํานวณก่อนหน้านี้จากประวัติการสั่งซื้อของคุณ
+"Specific Usage",การใช้งานเฉพาะ
+"Choose the usage which best describes how you intend to use the image.",เลือกการใช้งานที่อธิบายได้ดีที่สุดว่าคุณตั้งใจจะใช้รูปภาพอย่างไร
+"Go to <a href=""%1"">My Downloadable Products</a>","ไปที่ <a href=""%1"">ผลิตภัณฑ์ที่ดาวน์โหลดได้ของฉัน</a>"
+"Incl. Tax",รวมภาษี
+"Total Incl. Tax",รวมภาษี
+"Excl. Tax",ไม่รวมภาษี
+Total,ทั้งหมด
+"Downloadable Products",ผลิตภัณฑ์ที่ดาวน์โหลดได้
+"Order #","สั่ง #"
+Date,วันที่
+Status,สถานะ
+"Remaining Downloads",ดาวน์โหลดที่เหลือ
+"View Order",ดูคําสั่งซื้อ
+"Start Download",เริ่มดาวน์โหลด
+"You have not purchased any downloadable products yet.",คุณยังไม่ได้ซื้อผลิตภัณฑ์ที่ดาวน์โหลดได้
+SKU,รหัสสินค้า
+download,ดาวน์โหลด
+"Gift Message",ข้อความของขวัญ
+From:,จาก:
+To:,ถึง:
+Message:,ข้อความ:
+"Product Name",ชื่อผลิตภัณฑ์
+Qty,ปริมาณ
+Subtotal,ผลรวมย่อย
+"Discount Amount",จํานวนส่วนลด
+"Row Total",ผลรวมแถว
+"Qty Invoiced",จํานวนออกใบแจ้งหนี้
+Ordered,สั่ง
+Shipped,"จัด ส่ง"
+Canceled,"ยก เลิก"
+Refunded,คืนเงิน
+"Add Bulk Products",เพิ่มสินค้าจํานวนมาก
+Calculator,เครื่องคิดเลข
+"DevStone Extensions","ส่วนขยาย DevStone"
+"Usage Calculator",เครื่องคํานวณการใช้งาน
+General,ทั่วไป
+"Custom Category",หมวดหมู่ที่กําหนดเอง
+"select the custom category",เลือกหมวดหมู่ที่กําหนดเอง
+"This field is going to be used for Custom License",ฟิลด์นี้จะใช้สําหรับสิทธิ์การใช้งานแบบกําหนดเอง
+"Category Form",แบบฟอร์มหมวดหมู่
+"Main Information",ข้อมูลหลัก
+"Add New Category",เพิ่มหมวดหมู่ใหม่
+"Delete items",ลบรายการ
+"Are you sure you wan't to delete selected items?",คุณแน่ใจหรือไม่ว่าไม่ต้องการลบรายการที่เลือก?
+Terms,เงื่อนไข
+"Size Form",แบบฟอร์มขนาด
+Active,กระปรี้กระเปร่า
+Inactive,เกียจคร้าน
+"Add New Size",เพิ่มขนาดใหม่
+Code,รหัส
+"Max Width",ความกว้างสูงสุด
+"Max Height",ความสูงสูงสุด
+"Usage Form",แบบฟอร์มการใช้งาน
+"Can be free",สามารถฟรี
+No,ไม่ใช่
+Yes,ใช่
+"Add future customer email",เพิ่มอีเมลของลูกค้าในอนาคต
+"Add Email",เพิ่มอีเมล
+"Add New Usage",เพิ่มการใช้งานใหม่

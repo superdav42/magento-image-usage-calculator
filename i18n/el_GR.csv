@@ -1,0 +1,177 @@
+Back,Πίσω
+Delete,Διαγραφή
+"Are you sure you want to do this?","Είσαι σίγουρος ότι θέλεις να το κάνεις αυτό"
+"Save and Continue Edit","Αποθήκευση και συνέχιση Επεξεργασία"
+Save,Αποθήκευση
+ID,ID
+Email,"Ηλεκτρονικό ταχυδρομείο"
+Name,Όνομα
+Company,Εταιρεία
+Conditions,Συνθήκες
+"Apply the rule only if the following conditions are met (leave blank for all products).","Εφαρμόστε τον κανόνα μόνο εάν πληρούνται οι ακόλουθες προϋποθέσεις (αφήστε το κενό για όλα τα προϊόντα)."
+"Add Custom License","Προσθήκη προσαρμοσμένης άδειας"
+"-- Please Select --","-- Παρακαλώ επιλέξτε --"
+"Unable to fetch previous categories.","Αδυναμία ανάκτησης προηγούμενων κατηγοριών."
+AM,AM
+PM,PM
+None,Κανένα
+"You deleted the record.","Διαγράψατε το αρχείο."
+"Record does not exist.","Η εγγραφή δεν υπάρχει."
+"This record no longer exists.","Αυτό το αρχείο δεν υπάρχει πλέον."
+"Category Edit","Κατηγορία Επεξεργασία"
+Category,Κατηγορία
+"Please correct the data sent.","Παρακαλούμε διορθώστε τα δεδομένα που εστάλησαν."
+"There was an error saving the data: ","Υπήρξε σφάλμα κατά την αποθήκευση των δεδομένων: "
+"A total of %1 record(s) have been deleted.","Έχουν διαγραφεί συνολικά %1 εγγραφές."
+"You saved this record.","Έχετε αποθηκεύσει αυτό το αρχείο."
+"Something went wrong while saving the record.","Κάτι πήγε στραβά κατά την αποθήκευση της εγγραφής."
+"Category Identifier","Αναγνωριστικό κατηγορίας"
+"To apply changes you should fill in required ""%1"" field","Για να εφαρμόσετε τις αλλαγές θα πρέπει να συμπληρώσετε το υποχρεωτικό πεδίο ""%1"""
+"Size Edit","Μέγεθος Επεξεργασία"
+Size,Μέγεθος
+"Size Identifier","Αναγνωριστικό μεγέθους"
+"Usage Edit","Χρήση Επεξεργασία"
+Usage,Χρήση
+"Usage Identifier","Αναγνωριστικό χρήσης"
+"Could not save the category: %1","Δεν ήταν δυνατή η αποθήκευση της κατηγορίας: %1"
+"Category with id ""%1"" does not exist.","Η κατηγορία με αναγνωριστικό ""%1"" δεν υπάρχει."
+"Could not delete the Category: %1","Δεν ήταν δυνατή η διαγραφή της κατηγορίας: %1"
+"Could not save the size: %1","Δεν ήταν δυνατή η αποθήκευση του μεγέθους: %1"
+"Size with id ""%1"" does not exist.","Το μέγεθος με αναγνωριστικό ""%1"" δεν υπάρχει."
+"Could not delete the Size: %1","Δεν ήταν δυνατή η διαγραφή του μεγέθους: %1"
+"The option type to get group instance is incorrect.","Ο τύπος της επιλογής για τη λήψη της περίπτωσης ομάδας είναι λανθασμένος."
+"Select type options required values rows.","Επιλέξτε τις επιλογές τύπου που απαιτούνται γραμμές τιμών."
+"usage_id should be specified","θα πρέπει να καθοριστεί το usage_id"
+"Could not remove custom option","Δεν μπόρεσε να αφαιρέσει την προσαρμοσμένη επιλογή"
+"Please specify date required option(s).","Παρακαλείστε να προσδιορίσετε την ημερομηνία που επιθυμείτε."
+"Please specify time required option(s).","Παρακαλείστε να προσδιορίσετε την απαιτούμενη(-ες) επιλογή(-ες) χρόνου."
+"Please specify product's required option(s).","Προσδιορίστε την απαιτούμενη επιλογή(ες) του προϊόντος."
+"The option instance type in options group is incorrect.","Ο τύπος της περίπτωσης επιλογής στην ομάδα επιλογών είναι εσφαλμένος."
+"The product instance type in options group is incorrect.","Ο τύπος της περίπτωσης προϊόντος στην ομάδα επιλογών είναι εσφαλμένος."
+"The configuration item option instance in options group is incorrect.","Η περίπτωση επιλογής στοιχείου διαμόρφωσης στην ομάδα επιλογών είναι λανθασμένη."
+"The configuration item instance in options group is incorrect.","Η περίπτωση στοιχείου διαμόρφωσης στην ομάδα επιλογών είναι λανθασμένη."
+"The BuyRequest instance in options group is incorrect.","Η περίπτωση BuyRequest στην ομάδα επιλογών είναι λανθασμένη."
+"We can't add the product to the cart because of an option validation issue.","Δεν μπορούμε να προσθέσουμε το προϊόν στο καλάθι λόγω προβλήματος επικύρωσης επιλογής."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","το %1 δεν επεκτείνει το \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","Η μορφή των επιλογών του αρχείου δεν είναι έγκυρη."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Το αρχείο '%1' για το '%2' έχει άκυρη επέκταση."
+"The maximum allowed image size for '%1' is %2x%3 px.","Το μέγιστο επιτρεπόμενο μέγεθος εικόνας για το '%1' είναι %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Το αρχείο ""%1"" που ανεβάσατε είναι μεγαλύτερο από τα %2 megabytes που επιτρέπει ο διακομιστής μας."
+"The file '%1' is empty. Please choose another one","Το αρχείο '%1' είναι κενό. Παρακαλώ επιλέξτε ένα άλλο"
+"The file '%1' is invalid. Please choose another one","Το αρχείο '%1' είναι άκυρο. Παρακαλώ επιλέξτε ένα άλλο"
+"File '%1' is not an image.","Το αρχείο '%1' δεν είναι εικόνα."
+"Validation failed. Required options were not filled or the file was not uploaded.","Η επικύρωση απέτυχε. Οι απαιτούμενες επιλογές δεν συμπληρώθηκαν ή το αρχείο δεν μεταφορτώθηκε."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Το αρχείο που ανεβάσατε είναι μεγαλύτερο από %1 Megabytes που επιτρέπει ο διακομιστής"
+"Option required.","Απαιτείται επιλογή."
+"The file is empty. Please choose another one","Το αρχείο είναι άδειο. Παρακαλώ επιλέξτε ένα άλλο"
+"Some of the selected item options are not currently available.","Ορισμένες από τις επιλεγμένες επιλογές στοιχείων δεν είναι διαθέσιμες επί του παρόντος."
+"Could not save the usageCustomer: %1","Δεν μπόρεσε να αποθηκευτεί η χρήσηΠελάτης: %1"
+"UsageCustomer with id ""%1"" does not exist.","ΧρήσηΟ πελάτης με αναγνωριστικό ""%1"" δεν υπάρχει."
+"Could not delete the UsageCustomer: %1","Δεν ήταν δυνατή η διαγραφή του UsageCustomer: %1"
+"Could not save the usage: %1","Δεν ήταν δυνατή η αποθήκευση της χρήσης: %1"
+"Usage with id ""%1"" does not exist.","Χρήση με αναγνωριστικό ""%1"" δεν υπάρχει."
+"Could not delete the Usage: %1","Δεν μπόρεσε να διαγράψει τη Χρήση: %1"
+"Unable to attach licenses to customer %s","Δεν είναι δυνατή η επισύναψη αδειών στον πελάτη %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Δεν μπορείτε να προσθέσετε αυτό το προϊόν στο καλάθι σας επειδή αυτό το
+                                προσαρμοσμένη άδεια μπορεί να χρησιμοποιηθεί μόνο %1 φορά(ες)"
+"Max Usage","Μέγιστη χρήση"
+"Usage Options","Επιλογές χρήσης"
+Preview.,Προεπισκόπηση.
+"Usage options provide more details about how an image will be used.","Οι επιλογές χρήσης παρέχουν περισσότερες λεπτομέρειες σχετικά με τον τρόπο χρήσης μιας εικόνας."
+"Add Option","Προσθήκη επιλογής"
+"New Option","Νέα επιλογή"
+"Option Title","Τίτλος επιλογής"
+"Help Text","Κείμενο βοήθειας"
+"Add Value","Προσθέστε αξία"
+Title,Τίτλος
+"Option Type","Τύπος επιλογής"
+"-- Please select --","-- Παρακαλώ επιλέξτε --"
+Required,Απαιτούμενο
+Price,Τιμή
+"Price Type","Τύπος τιμής"
+"Image Size","Μέγεθος εικόνας"
+Edit,Επεξεργασία
+"Only Custom Usages are supported","Υποστηρίζονται μόνο προσαρμοσμένες χρήσεις"
+"We offer important volume <b>licensing discounts</b>.","Προσφέρουμε σημαντικές <b>εκπτώσεις για την αδειοδότηση</b> όγκου."
+"Have questions? Call %1 and ask for custom quote.","Έχετε ερωτήσεις Καλέστε το %1 και ζητήστε προσαρμοσμένη προσφορά."
+"We will work with your budget.","Θα συνεργαστούμε με τον προϋπολογισμό σας."
+Availability,Διαθεσιμότητα
+"In stock","Σε απόθεμα"
+"Out of stock","Εκτός αποθέματος"
+Change,Αλλαγή
+"Compatible file extensions to upload","Συμβατές επεκτάσεις αρχείων για μεταφόρτωση"
+"Maximum image width","Μέγιστο πλάτος εικόνας"
+"Maximum image height","Μέγιστο ύψος εικόνας"
+"less info","λιγότερες πληροφορίες"
+"more info","περισσότερες πληροφορίες"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Η άδεια χρήσης εικόνας είναι ένα είδος ""ενοικίασης"" μιας εικόνας για μια συγκεκριμένη χρήση.Παραδείγματα περιλαμβάνουν την αδειοδότηση μιας εικόνας για το εξώφυλλο ενός βιβλίου, μια εικονογράφηση για ένα άρθρο σε περιοδικό ή τη χρήση μιας εικόνας σε ένα ευαγγελιστικό φυλλάδιο."
+"License Image","Άδεια χρήσης εικόνας"
+"Download - price based on use.","Λήψη - τιμή ανάλογα με τη χρήση."
+Close,"Κλείστε το"
+"License Pricing Calculator","Υπολογιστής τιμολόγησης αδειών"
+"Select options from the drop down menu to calculate a price to use this image.","Επιλέξτε επιλογές από το αναπτυσσόμενο μενού για να υπολογίσετε την τιμή χρήσης αυτής της εικόνας."
+"Choose Category","Επιλέξτε κατηγορία"
+"Choose a category to see the specific usages available.","Επιλέξτε μια κατηγορία για να δείτε τις συγκεκριμένες διαθέσιμες χρήσεις."
+"Previous Usage","Προηγούμενη Χρήση"
+"Choose a previous calculation from your order history.","Επιλέξτε έναν προηγούμενο υπολογισμό από το ιστορικό των παραγγελιών σας."
+"Specific Usage","Ειδική χρήση"
+"Choose the usage which best describes how you intend to use the image.","Επιλέξτε τη χρήση που περιγράφει καλύτερα τον τρόπο με τον οποίο σκοπεύετε να χρησιμοποιήσετε την εικόνα."
+"Go to <a href=""%1"">My Downloadable Products</a>","Πηγαίνετε <a href=""%1"">στα προϊόντα που μπορώ να κατεβάσω</a>"
+"Incl. Tax","Συμπεριλαμβανομένου του φόρου"
+"Total Incl. Tax","Σύνολο συμπεριλαμβανομένου του φόρου"
+"Excl. Tax","Χωρίς Φ.Π.Α"
+Total,Σύνολο
+"Downloadable Products","Προϊόντα με δυνατότητα λήψης"
+"Order #","Παραγγελία #"
+Date,Ημερομηνία
+Status,Κατάσταση
+"Remaining Downloads","Υπολειπόμενες λήψεις"
+"View Order","Προβολή παραγγελίας"
+"Start Download","Έναρξη λήψης"
+"You have not purchased any downloadable products yet.","Δεν έχετε αγοράσει ακόμα προϊόντα που μπορείτε να κατεβάσετε."
+SKU,SKU
+download,λήψη
+"Gift Message","Μήνυμα δώρου"
+From:,Από:
+To:,Προς:
+Message:,Μήνυμα:
+"Product Name","Όνομα προϊόντος"
+Qty,Ποσότητα
+Subtotal,Υποσύνολο
+"Discount Amount","Ποσό έκπτωσης"
+"Row Total","Σειρά Σύνολο"
+"Qty Invoiced","Ποσότητα Τιμολογείται"
+Ordered,Παραγγελία
+Shipped,Αποστολή
+Canceled,Ακυρώθηκε
+Refunded,Refunded
+"Add Bulk Products","Προσθήκη προϊόντων μαζικής παραγωγής"
+Calculator,Αριθμομηχανή
+"DevStone Extensions","Επεκτάσεις DevStone"
+"Usage Calculator","Υπολογιστής χρήσης"
+General,Γενικά
+"Custom Category","Προσαρμοσμένη κατηγορία"
+"select the custom category","επιλέξτε την προσαρμοσμένη κατηγορία"
+"This field is going to be used for Custom License","Αυτό το πεδίο θα χρησιμοποιηθεί για την Προσαρμοσμένη Άδεια"
+"Category Form","Φόρμα κατηγορίας"
+"Main Information","Κύριες πληροφορίες"
+"Add New Category","Προσθήκη νέας κατηγορίας"
+"Delete items","Διαγραφή στοιχείων"
+"Are you sure you wan't to delete selected items?","Είστε σίγουροι ότι δεν θέλετε να διαγράψετε επιλεγμένα στοιχεία"
+Terms,Όροι
+"Size Form","Μορφή μεγέθους"
+Active,Ενεργό
+Inactive,Ανενεργό
+"Add New Size","Προσθήκη νέου μεγέθους"
+Code,Κωδικός
+"Max Width","Μέγιστο πλάτος"
+"Max Height","Μέγιστο ύψος"
+"Usage Form","Έντυπο χρήσης"
+"Can be free","Μπορεί να είναι δωρεάν"
+No,Όχι
+Yes,Ναι
+"Add future customer email","Προσθέστε μελλοντικό email πελάτη"
+"Add Email","Προσθήκη email"
+"Add New Usage","Προσθήκη νέας χρήσης"

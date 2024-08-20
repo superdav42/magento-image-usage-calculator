@@ -1,0 +1,177 @@
+Back,Powrót
+Delete,Usuń
+"Are you sure you want to do this?","Czy na pewno chcesz to zrobić?"
+"Save and Continue Edit","Zapisz i kontynuuj edycję"
+Save,Zapisz
+ID,ID
+Email,E-mail
+Name,Nazwa
+Company,Firma
+Conditions,Warunki
+"Apply the rule only if the following conditions are met (leave blank for all products).","Zastosuj regułę tylko wtedy, gdy spełnione są następujące warunki (pozostaw puste dla wszystkich produktów)."
+"Add Custom License","Dodaj licencję niestandardową"
+"-- Please Select --","-- Wybierz --"
+"Unable to fetch previous categories.","Nie można pobrać poprzednich kategorii."
+AM,AM
+PM,PM
+None,Brak
+"You deleted the record.","Usunąłeś rekord."
+"Record does not exist.","Rekord nie istnieje."
+"This record no longer exists.","Ten rekord już nie istnieje."
+"Category Edit","Edycja kategorii"
+Category,Kategoria
+"Please correct the data sent.","Prosimy o poprawienie przesłanych danych."
+"There was an error saving the data: ","Wystąpił błąd podczas zapisywania danych: "
+"A total of %1 record(s) have been deleted.","Łącznie usunięto %1 rekordów."
+"You saved this record.","Zapisałeś ten rekord."
+"Something went wrong while saving the record.","Coś poszło nie tak podczas zapisywania rekordu."
+"Category Identifier","Identyfikator kategorii"
+"To apply changes you should fill in required ""%1"" field","Aby zastosować zmiany należy wypełnić wymagane pole ""%1"""
+"Size Edit","Edycja rozmiaru"
+Size,Rozmiar
+"Size Identifier","Identyfikator rozmiaru"
+"Usage Edit","Edycja użycia"
+Usage,Użycie
+"Usage Identifier","Identyfikator użycia"
+"Could not save the category: %1","Nie można zapisać kategorii: %1"
+"Category with id ""%1"" does not exist.","Kategoria o id ""%1"" nie istnieje."
+"Could not delete the Category: %1","Nie można usunąć kategorii: %1"
+"Could not save the size: %1","Nie można zapisać rozmiaru: %1"
+"Size with id ""%1"" does not exist.","Rozmiar o id ""%1"" nie istnieje."
+"Could not delete the Size: %1","Nie można usunąć rozmiaru: %1"
+"The option type to get group instance is incorrect.","Typ opcji pobierania instancji grupy jest nieprawidłowy."
+"Select type options required values rows.","Wybierz opcje typu wymaganych wartości wierszy."
+"usage_id should be specified","należy określić usage_id"
+"Could not remove custom option","Nie można usunąć opcji niestandardowej"
+"Please specify date required option(s).","Prosimy o określenie daty wymaganych opcji."
+"Please specify time required option(s).","Określ wymagane opcje czasowe."
+"Please specify product's required option(s).","Określ wymagane opcje produktu."
+"The option instance type in options group is incorrect.","Typ instancji opcji w grupie opcji jest nieprawidłowy."
+"The product instance type in options group is incorrect.","Typ wystąpienia produktu w grupie opcji jest nieprawidłowy."
+"The configuration item option instance in options group is incorrect.","Wystąpienie opcji elementu konfiguracji w grupie opcji jest nieprawidłowe."
+"The configuration item instance in options group is incorrect.","Wystąpienie elementu konfiguracji w grupie opcji jest nieprawidłowe."
+"The BuyRequest instance in options group is incorrect.","Instancja BuyRequest w grupie opcji jest nieprawidłowa."
+"We can't add the product to the cart because of an option validation issue.","Nie możemy dodać produktu do koszyka z powodu błędu sprawdzania poprawności opcji."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 nie rozszerza \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","Format opcji pliku jest nieprawidłowy."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Plik '%1' dla '%2' ma nieprawidłowe rozszerzenie."
+"The maximum allowed image size for '%1' is %2x%3 px.","Maksymalny dozwolony rozmiar obrazu dla '%1' to %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Przesłany plik ""%1"" jest większy niż %2 megabajty dozwolone przez nasz serwer."
+"The file '%1' is empty. Please choose another one","Plik '%1' jest pusty. Wybierz inny plik"
+"The file '%1' is invalid. Please choose another one","Plik '%1' jest nieprawidłowy. Wybierz inny plik"
+"File '%1' is not an image.","Plik '%1' nie jest obrazem."
+"Validation failed. Required options were not filled or the file was not uploaded.","Walidacja nie powiodła się. Wymagane opcje nie zostały wypełnione lub plik nie został przesłany."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Przesłany plik jest większy niż %1 megabajtów dozwolonych przez serwer"
+"Option required.","Wymagana opcja."
+"The file is empty. Please choose another one","Plik jest pusty. Wybierz inny plik"
+"Some of the selected item options are not currently available.","Niektóre z wybranych opcji pozycji nie są obecnie dostępne."
+"Could not save the usageCustomer: %1","Nie można zapisać usageCustomer: %1"
+"UsageCustomer with id ""%1"" does not exist.","UsageKlient o identyfikatorze ""%1"" nie istnieje."
+"Could not delete the UsageCustomer: %1","Nie można usunąć UsageCustomer: %1"
+"Could not save the usage: %1","Nie można zapisać użycia: %1"
+"Usage with id ""%1"" does not exist.","Użycie o id ""%1"" nie istnieje."
+"Could not delete the Usage: %1","Nie można usunąć Usage: %1"
+"Unable to attach licenses to customer %s","Nie można dołączyć licencji do klienta %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Nie możesz dodać tej pozycji do koszyka, ponieważ ta
+                                licencja niestandardowa może być użyta tylko %1 raz(y)"
+"Max Usage","Maksymalne użycie"
+"Usage Options","Opcje użytkowania"
+Preview.,Podgląd.
+"Usage options provide more details about how an image will be used.","Opcje użycia zapewniają więcej szczegółów na temat sposobu użycia obrazu."
+"Add Option","Dodaj opcję"
+"New Option","Nowa opcja"
+"Option Title","Tytuł opcji"
+"Help Text","Tekst pomocy"
+"Add Value","Wartość dodana"
+Title,Tytuł
+"Option Type","Typ opcji"
+"-- Please select --","-- Wybierz --"
+Required,Wymagane
+Price,Cena
+"Price Type","Rodzaj ceny"
+"Image Size","Rozmiar obrazu"
+Edit,Edytuj
+"Only Custom Usages are supported","Obsługiwane są tylko niestandardowe zastosowania"
+"We offer important volume <b>licensing discounts</b>.","Oferujemy ważne <b>rabaty na licencje</b> zbiorcze."
+"Have questions? Call %1 and ask for custom quote.","Masz pytania? Zadzwoń do %1 i poproś o indywidualną wycenę."
+"We will work with your budget.","Będziemy pracować z Twoim budżetem."
+Availability,Dostępność
+"In stock","W magazynie"
+"Out of stock","Brak w magazynie"
+Change,Zmiana
+"Compatible file extensions to upload","Zgodne rozszerzenia plików do przesłania"
+"Maximum image width","Maksymalna szerokość obrazu"
+"Maximum image height","Maksymalna wysokość obrazu"
+"less info","mniej informacji"
+"more info","więcej informacji"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Licencja na obraz to rodzaj ""wypożyczenia"" obrazu do określonego użytku; przykłady obejmują licencjonowanie obrazu na okładkę książki, ilustrację do artykułu w czasopiśmie lub wykorzystanie obrazu w ewangelizacyjnym handbillu."
+"License Image","Obraz licencyjny"
+"Download - price based on use.","Pobieranie - cena zależy od użycia."
+Close,Zamknij
+"License Pricing Calculator","Kalkulator cen licencji"
+"Select options from the drop down menu to calculate a price to use this image.","Wybierz opcje z rozwijanego menu, aby obliczyć cenę za użycie tego obrazu."
+"Choose Category","Wybierz kategorię"
+"Choose a category to see the specific usages available.","Wybierz kategorię, aby zobaczyć dostępne zastosowania."
+"Previous Usage","Poprzednie użycie"
+"Choose a previous calculation from your order history.","Wybierz poprzednią kalkulację z historii zamówień."
+"Specific Usage","Szczególne zastosowanie"
+"Choose the usage which best describes how you intend to use the image.","Wybierz zastosowanie, które najlepiej opisuje sposób, w jaki zamierzasz korzystać z obrazu."
+"Go to <a href=""%1"">My Downloadable Products</a>","Przejdź do sekcji <a href=""%1"">Moje produkty do pobrania</a>"
+"Incl. Tax","Łącznie z podatkiem"
+"Total Incl. Tax","Razem z podatkiem"
+"Excl. Tax","Bez podatku"
+Total,Łącznie
+"Downloadable Products","Produkty do pobrania"
+"Order #","Zamówienie #"
+Date,Data
+Status,Status
+"Remaining Downloads","Pozostałe pliki do pobrania"
+"View Order","Wyświetl zamówienie"
+"Start Download","Rozpocznij pobieranie"
+"You have not purchased any downloadable products yet.","Nie zakupiono jeszcze żadnych produktów do pobrania."
+SKU,SKU
+download,pobieranie
+"Gift Message","Wiadomość prezentowa"
+From:,Od:
+To:,Do:
+Message:,Wiadomość:
+"Product Name","Nazwa produktu"
+Qty,Ilość
+Subtotal,"Suma częściowa"
+"Discount Amount","Kwota rabatu"
+"Row Total","Wiersz Razem"
+"Qty Invoiced","Ilość zafakturowana"
+Ordered,Zamówione
+Shipped,Wysłane
+Canceled,Anulowane
+Refunded,Zwrócone
+"Add Bulk Products","Dodaj produkty luzem"
+Calculator,Kalkulator
+"DevStone Extensions","Rozszerzenia DevStone"
+"Usage Calculator","Kalkulator użytkowania"
+General,Ogólne
+"Custom Category","Kategoria niestandardowa"
+"select the custom category","wybierz kategorię niestandardową"
+"This field is going to be used for Custom License","To pole będzie używane dla licencji niestandardowej"
+"Category Form","Formularz kategorii"
+"Main Information","Główne informacje"
+"Add New Category","Dodaj nową kategorię"
+"Delete items","Usuń elementy"
+"Are you sure you wan't to delete selected items?","Czy na pewno chcesz usunąć wybrane elementy?"
+Terms,Warunki
+"Size Form","Rozmiar formularza"
+Active,Aktywny
+Inactive,Nieaktywny
+"Add New Size","Dodaj nowy rozmiar"
+Code,Kod
+"Max Width","Maksymalna szerokość"
+"Max Height","Maksymalna wysokość"
+"Usage Form","Formularz użytkowania"
+"Can be free","Może być darmowy"
+No,Nie
+Yes,Tak
+"Add future customer email","Dodaj adres e-mail przyszłego klienta"
+"Add Email","Dodaj e-mail"
+"Add New Usage","Dodaj nowe użycie"

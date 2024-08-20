@@ -1,0 +1,177 @@
+Back,גב
+Delete,למחוק
+"Are you sure you want to do this?","האם אתה בטוח שאתה רוצה לעשות את זה?"
+"Save and Continue Edit","שמור והמשך עריכה"
+Save,שמר
+ID,מזהה
+Email,"דואר אלקטרוני"
+Name,שם
+Company,חברה
+Conditions,תנאים
+"Apply the rule only if the following conditions are met (leave blank for all products).","החל את הכלל רק אם מתקיימים התנאים הבאים (השאר ריק עבור כל המוצרים)."
+"Add Custom License","הוספת רישיון מותאם אישית"
+"-- Please Select --","-- נא לבחור --"
+"Unable to fetch previous categories.","לא ניתן להביא קטגוריות קודמות."
+AM,AM
+PM,"אחה""צ"
+None,ללא
+"You deleted the record.","מחקת את הרשומה."
+"Record does not exist.","הרשומה אינה קיימת."
+"This record no longer exists.","התקליט הזה כבר לא קיים."
+"Category Edit","עריכת קטגוריה"
+Category,קטגוריה
+"Please correct the data sent.","אנא תקן את הנתונים שנשלחו."
+"There was an error saving the data: ","אירעה שגיאה בשמירת הנתונים: "
+"A total of %1 record(s) have been deleted.","סך של %1 רשומות נמחקו."
+"You saved this record.","שמרת רשומה זו."
+"Something went wrong while saving the record.","משהו השתבש בעת שמירת הרשומה."
+"Category Identifier","מזהה קטגוריה"
+"To apply changes you should fill in required ""%1"" field","כדי להחיל שינויים, עליך למלא שדה ""%1"" נדרש"
+"Size Edit","עריכת גודל"
+Size,גודל
+"Size Identifier","מזהה גודל"
+"Usage Edit","עריכת שימוש"
+Usage,שימוש
+"Usage Identifier","מזהה שימוש"
+"Could not save the category: %1","לא היתה אפשרות לשמור את הקטגוריה: %1"
+"Category with id ""%1"" does not exist.","קטגוריה עם מזהה ""%1"" אינה קיימת."
+"Could not delete the Category: %1","לא היתה אפשרות למחוק את הקטגוריה: %1"
+"Could not save the size: %1","לא היתה אפשרות לשמור את הגודל: %1"
+"Size with id ""%1"" does not exist.","גודל עם מזהה ""%1"" אינו קיים."
+"Could not delete the Size: %1","לא היתה אפשרות למחוק את הגודל: %1"
+"The option type to get group instance is incorrect.","סוג האפשרות לקבלת מופע קבוצה שגוי."
+"Select type options required values rows.","בחר שורות ערכים דרושות לאפשרויות כתב."
+"usage_id should be specified","usage_id יש לציין"
+"Could not remove custom option","לא היתה אפשרות להסיר אפשרות מותאמת אישית"
+"Please specify date required option(s).","אנא ציין תאריך האפשרויות/ות הנדרשות."
+"Please specify time required option(s).","אנא ציין את הזמן הדרוש לאפשרות."
+"Please specify product's required option(s).","ציין את האפשרויות הנדרשות של המוצר."
+"The option instance type in options group is incorrect.","סוג מופע האפשרות בקבוצת האפשרויות שגוי."
+"The product instance type in options group is incorrect.","סוג מופע המוצר בקבוצת האפשרויות שגוי."
+"The configuration item option instance in options group is incorrect.","מופע האפשרות של פריט תצורה בקבוצה אפשרויות שגוי."
+"The configuration item instance in options group is incorrect.","מופע פריט התצורה בקבוצת האפשרויות שגוי."
+"The BuyRequest instance in options group is incorrect.","המופע BuyRequest בקבוצת האפשרויות שגוי."
+"We can't add the product to the cart because of an option validation issue.","אין לנו אפשרות להוסיף את המוצר לעגלה בגלל בעיה באימות אופציות."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 אינו מרחיב את \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","תבנית אפשרויות הקובץ אינה חוקית."
+px.,יח.
+"The file '%1' for '%2' has an invalid extension.","לקובץ '%1' עבור '%2' יש סיומת לא חוקית."
+"The maximum allowed image size for '%1' is %2x%3 px.","גודל התמונה המרבי המותר עבור '%1' הוא %2x%3 פיקסלים."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","הקובץ '%1' שהעלית גדול יותר מ- %2 מגה-בתים המותרים על ידי השרת שלנו."
+"The file '%1' is empty. Please choose another one","הקובץ '%1' ריק. אנא בחר אחד אחר"
+"The file '%1' is invalid. Please choose another one","הקובץ '%1' אינו חוקי. אנא בחר אחד אחר"
+"File '%1' is not an image.","קובץ '%1' אינו תמונה."
+"Validation failed. Required options were not filled or the file was not uploaded.","האימות נכשל. האפשרויות הנדרשות לא מולאו או שהקובץ לא הועלה."
+"The file you uploaded is larger than %1 Megabytes allowed by server","הקובץ שהעלית גדול מ- %1 מגה-בתים המותרים על-ידי השרת"
+"Option required.","נדרשת אפשרות."
+"The file is empty. Please choose another one","הקובץ ריק. אנא בחר אחד אחר"
+"Some of the selected item options are not currently available.","חלק מאפשרויות הפריט שנבחרו אינן זמינות כעת."
+"Could not save the usageCustomer: %1","לא היתה אפשרות להציל את השימושלקוח: %1"
+"UsageCustomer with id ""%1"" does not exist.","UsageCustomer עם מזהה ""%1"" אינו קיים."
+"Could not delete the UsageCustomer: %1","לא היתה אפשרות למחוק את UsageCustomer: %1"
+"Could not save the usage: %1","לא ניתן היה לשמור את השימוש: %1"
+"Usage with id ""%1"" does not exist.","שימוש עם מזהה ""%1"" אינו קיים."
+"Could not delete the Usage: %1","לא היתה אפשרות למחוק את השימוש: %1"
+"Unable to attach licenses to customer %s","אין אפשרות לצרף רשיונות ל- %s של לקוחות"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","אינך יכול להוסיף פריט זה לעגלת הקניות שלך מכיוון שהדבר הזה
+                                ניתן להשתמש ברישיון מותאם אישית רק %1 פעמים"
+"Max Usage","שימוש מרבי"
+"Usage Options","אפשרויות שימוש"
+Preview.,"תצוגה מקדימה."
+"Usage options provide more details about how an image will be used.","אפשרויות השימוש מספקות פרטים נוספים על אופן השימוש בתמונה."
+"Add Option","הוסף אפשרות"
+"New Option","אפשרות חדשה"
+"Option Title","כותרת האופציה"
+"Help Text","טקסט עזרה"
+"Add Value","ערך מוסף"
+Title,כותר
+"Option Type","סוג אפשרות"
+"-- Please select --","-- נא לבחור --"
+Required,חובה
+Price,מחיר
+"Price Type","סוג מחיר"
+"Image Size","גודל תמונה"
+Edit,עריכה
+"Only Custom Usages are supported","רק שימושים מותאמים אישית נתמכים"
+"We offer important volume <b>licensing discounts</b>.","אנו מציעים הנחות חשובות <b>על רישוי</b> רב משתמשים."
+"Have questions? Call %1 and ask for custom quote.","יש לכם שאלות? התקשרו %1 ובקשו הצעת מחיר מותאמת אישית."
+"We will work with your budget.","אנחנו נעבוד עם התקציב שלך."
+Availability,זמינות
+"In stock",במלאי
+"Out of stock","אזל מהמלאי"
+Change,שינוי
+"Compatible file extensions to upload","סיומות קבצים תואמות להעלאה"
+"Maximum image width","רוחב תמונה מרבי"
+"Maximum image height","גובה תמונה מרבי"
+"less info","פחות מידע"
+"more info","מידע נוסף"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","תמונת רישיון היא סוג של ""השכרה"" של תמונה לשימוש מסוים; דוגמאות כוללות רישוי תמונה לכריכת ספר, איור למאמר במגזין או שימוש בתמונה בכרוז אוונגליסטי."
+"License Image","תמונת רישיון"
+"Download - price based on use.","הורד - המחיר מבוסס על שימוש."
+Close,קרוב
+"License Pricing Calculator","מחשבון תמחור רישיונות"
+"Select options from the drop down menu to calculate a price to use this image.","בחר אפשרויות מהתפריט הנפתח כדי לחשב מחיר לשימוש בתמונה זו."
+"Choose Category","בחר קטגוריה"
+"Choose a category to see the specific usages available.","בחר קטגוריה כדי לראות את השימושים הספציפיים הזמינים."
+"Previous Usage","שימוש קודם"
+"Choose a previous calculation from your order history.","בחר חישוב קודם מהיסטוריית ההזמנות שלך."
+"Specific Usage","שימוש ספציפי"
+"Choose the usage which best describes how you intend to use the image.","בחר את השימוש המתאר בצורה הטובה ביותר את האופן שבו בכוונתך להשתמש בתמונה."
+"Go to <a href=""%1"">My Downloadable Products</a>","עבור אל <a href=""%1"">המוצרים להורדה שלי</a>"
+"Incl. Tax","כולל מס"
+"Total Incl. Tax","סה""כ כולל מס"
+"Excl. Tax","ללא מס"
+Total,סך
+"Downloadable Products","מוצרים להורדה"
+"Order #","הזמנה #"
+Date,תמר
+Status,מצב
+"Remaining Downloads","הורדות שנותרו"
+"View Order","הצג הזמנה"
+"Start Download","התחל להוריד"
+"You have not purchased any downloadable products yet.","עדיין לא רכשת מוצרים להורדה."
+SKU,"מק""ט:"
+download,הורדה
+"Gift Message","הודעת מתנה"
+From:,מ:
+To:,ל:
+Message:,הודעה:
+"Product Name","שם המוצר"
+Qty,כמות
+Subtotal,"סכום ביניים"
+"Discount Amount","סכום הנחה"
+"Row Total","סה""כ שורה"
+"Qty Invoiced","חשבונית כמות"
+Ordered,הורה
+Shipped,נשלח
+Canceled,בוטלה
+Refunded,הוחזר
+"Add Bulk Products","הוספת מוצרים בתפזורת"
+Calculator,מחשבון
+"DevStone Extensions","הרחבות DevStone"
+"Usage Calculator","מחשבון שימוש"
+General,כללי
+"Custom Category","קטגוריה מותאמת אישית"
+"select the custom category","בחר את הקטגוריה מותאם אישית"
+"This field is going to be used for Custom License","שדה זה ישמש עבור רישיון מותאם אישית"
+"Category Form","טופס קטגוריה"
+"Main Information","מידע עיקרי"
+"Add New Category","הוסף קטגוריה חדשה"
+"Delete items","מחיקת פריטים"
+"Are you sure you wan't to delete selected items?","האם אתה בטוח שלא תרצה למחוק פריטים נבחרים?"
+Terms,תנאי
+"Size Form","טופס גודל"
+Active,פעיל
+Inactive,"אינו פעיל"
+"Add New Size","הוספת גודל חדש"
+Code,קוד
+"Max Width","רוחב מקסימלי"
+"Max Height","גובה מקסימלי"
+"Usage Form","טופס שימוש"
+"Can be free","יכול להיות בחינם"
+No,לא
+Yes,כן
+"Add future customer email","הוספת דואר אלקטרוני של לקוחות עתידיים"
+"Add Email","הוסף דוא""ל"
+"Add New Usage","הוספת שימוש חדש"

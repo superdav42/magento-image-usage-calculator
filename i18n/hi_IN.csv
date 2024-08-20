@@ -1,0 +1,177 @@
+Back,"शर्त लगाना"
+Delete,मिटाना
+"Are you sure you want to do this?","क्या आप निश्चयपूर्वक ऐसा करना चाहते हैं?"
+"Save and Continue Edit","सहेजें और संपादित करें जारी रखें"
+Save,"रक्षा कर"
+ID,परिचय
+Email,ईमेल
+Name,नाम
+Company,अतिथि
+Conditions,शर्तों
+"Apply the rule only if the following conditions are met (leave blank for all products).","नियम केवल तभी लागू करें जब निम्न शर्तें पूरी हों (सभी उत्पादों के लिए रिक्त छोड़ दें)."
+"Add Custom License","कस्टम लायसेंस जोड़ें"
+"-- Please Select --","-- कृपया चुनें --"
+"Unable to fetch previous categories.","पिछली श्रेणियाँ लाने में असमर्थ."
+AM,हूँ
+PM,पीएम
+None,"कोई नहीं"
+"You deleted the record.","आपने रिकॉर्ड हटा दिया है."
+"Record does not exist.","रिकॉर्ड मौजूद नहीं है."
+"This record no longer exists.","यह रिकॉर्ड अब मौजूद नहीं है."
+"Category Edit","श्रेणी संपादित करें"
+Category,कोटि
+"Please correct the data sent.","कृपया भेजे गए डेटा को सही करें।"
+"There was an error saving the data: ","डेटा सहेजने में कोई त्रुटि आई: "
+"A total of %1 record(s) have been deleted.","कुल %1 रिकॉर्ड(रिकॉर्ड्स) हटा दिए गए हैं."
+"You saved this record.","आपने यह रिकॉर्ड सहेजा है."
+"Something went wrong while saving the record.","रिकॉर्ड सेव करते समय कुछ गलत हो गया।"
+"Category Identifier","श्रेणी पहचानकर्ता"
+"To apply changes you should fill in required ""%1"" field","परिवर्तन लागू करने के लिए आपको आवश्यक ""%1"" फ़ील्ड भरनी चाहिए"
+"Size Edit","आकार संपादित करें"
+Size,"आकार वाला"
+"Size Identifier","आकार पहचानकर्ता"
+"Usage Edit","उपयोग संपादित करें"
+Usage,उपयोग
+"Usage Identifier","उपयोग पहचानकर्ता"
+"Could not save the category: %1","श्रेणी नहीं सकी : %1"
+"Category with id ""%1"" does not exist.","id ""%1"" वाली श्रेणी मौजूद नहीं है."
+"Could not delete the Category: %1","श्रेणी को हटाया नहीं जा सका: %1"
+"Could not save the size: %1","आकार नहीं सहेज सका: %1"
+"Size with id ""%1"" does not exist.","id ""%1"" वाला आकार मौजूद नहीं है."
+"Could not delete the Size: %1","आकार नहीं हटाया जा सका: %1"
+"The option type to get group instance is incorrect.","समूह आवृत्ति प्राप्त करने के लिए विकल्प प्रकार गलत है."
+"Select type options required values rows.","प्रकार विकल्प, आवश्यक मान, पंक्तियाँ चुनें."
+"usage_id should be specified","usage_id निर्दिष्ट किया जाना चाहिए"
+"Could not remove custom option","कस्टम विकल्प नहीं निकाल सका"
+"Please specify date required option(s).","कृपया दिनांक आवश्यक विकल्प निर्दिष्ट करें।"
+"Please specify time required option(s).","कृपया समय की आवश्यकता विकल्प निर्दिष्ट करें।"
+"Please specify product's required option(s).","कृपया उत्पाद के आवश्यक विकल्प निर्दिष्ट करें।"
+"The option instance type in options group is incorrect.","विकल्प समूह में विकल्प आवृत्ति प्रकार ग़लत है."
+"The product instance type in options group is incorrect.","विकल्प समूह में उत्पाद आवृत्ति प्रकार ग़लत है."
+"The configuration item option instance in options group is incorrect.","विकल्प समूह में कॉन्फ़िगरेशन आइटम विकल्प आवृत्ति ग़लत है."
+"The configuration item instance in options group is incorrect.","विकल्प समूह में कॉन्फ़िगरेशन आइटम आवृत्ति ग़लत है."
+"The BuyRequest instance in options group is incorrect.","विकल्प समूह में BuyRequest आवृत्ति ग़लत है।"
+"We can't add the product to the cart because of an option validation issue.","हम विकल्प सत्यापन समस्या के कारण उत्पाद को कार्ट में नहीं जोड़ सकते।"
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 \Magento\Catalog\Model\Product\Option\Type\DefaultType को विस्तृत नहीं करता है"
+"The file options format is not valid.","फ़ाइल विकल्प स्वरूप मान्य नहीं है."
+px.,"पीएक्स का उपयोग करें।"
+"The file '%1' for '%2' has an invalid extension.","फ़ाइल '%1' के लिए '%2' में कोई अमान्य एक्सटेंशन है."
+"The maximum allowed image size for '%1' is %2x%3 px.","'%1' के लिए अधिकतम अनुमत छवि आकार %2x%3 पिक्सेल है."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","आपके द्वारा अपलोड की गई फ़ाइल '%1' हमारे सर्वर द्वारा अनुमत %2 मेगाबाइट से बड़ी है."
+"The file '%1' is empty. Please choose another one","फ़ाइल '%1' रिक्त है. कृपया कोई अन्य चुनें"
+"The file '%1' is invalid. Please choose another one","फ़ाइल '%1' अमान्य है. कृपया कोई अन्य चुनें"
+"File '%1' is not an image.","फ़ाइल '%1' कोई छवि नहीं है."
+"Validation failed. Required options were not filled or the file was not uploaded.","सत्यापन विफल रहा. आवश्यक विकल्प भरे नहीं गए थे या फ़ाइल अपलोड नहीं की गई थी."
+"The file you uploaded is larger than %1 Megabytes allowed by server","आपके द्वारा अपलोड की गई फ़ाइल सर्वर द्वारा अनुमत %1 मेगाबाइट से बड़ी है"
+"Option required.","विकल्प की आवश्यकता है।"
+"The file is empty. Please choose another one","फ़ाइल रिक्त है. कृपया कोई अन्य चुनें"
+"Some of the selected item options are not currently available.","कुछ चयनित आइटम विकल्प वर्तमान में उपलब्ध नहीं हैं."
+"Could not save the usageCustomer: %1","उपयोग नहीं सहेज सकाग्राहक: %1"
+"UsageCustomer with id ""%1"" does not exist.","UsageCustomer जिसका id ""%1"" मौजूद नहीं है."
+"Could not delete the UsageCustomer: %1","UsageCustomer को हटाया नहीं जा सका: %1"
+"Could not save the usage: %1","उपयोग नहीं सहेजा जा सका: %1"
+"Usage with id ""%1"" does not exist.","id ""%1"" के साथ उपयोग मौजूद नहीं है."
+"Could not delete the Usage: %1","उपयोग को हटाया नहीं जा सका: %1"
+"Unable to attach licenses to customer %s","ग्राहक %s को लायसेंस अनुलग्न करने में असमर्थ"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","आप इस आइटम को अपनी कार्ट में नहीं जोड़ सकते क्योंकि यह
+                                कस्टम लायसेंस का उपयोग केवल %1 बार किया जा सकता है"
+"Max Usage","अधिकतम उपयोग"
+"Usage Options","उपयोग विकल्प"
+Preview.,पूर्वसमीक्षा।
+"Usage options provide more details about how an image will be used.","उपयोग विकल्प इस बारे में अधिक विवरण प्रदान करते हैं कि छवि का उपयोग कैसे किया जाएगा।"
+"Add Option","विकल्प जोड़ें"
+"New Option","नया विकल्प"
+"Option Title","विकल्प शीर्षक"
+"Help Text","मदद पाठ"
+"Add Value","मूल्य जोड़ें"
+Title,उपाधि
+"Option Type","विकल्प प्रकार"
+"-- Please select --","-- कृपया चुनें --"
+Required,आवश्यक
+Price,दाम
+"Price Type","मूल्य प्रकार"
+"Image Size","छवि का आकार"
+Edit,"संपादन करना"
+"Only Custom Usages are supported","केवल कस्टम उपयोग समर्थित हैं"
+"We offer important volume <b>licensing discounts</b>.","हम महत्वपूर्ण वॉल्यूम <b>लाइसेंसिंग छूट प्रदान करते हैं</b>।"
+"Have questions? Call %1 and ask for custom quote.","कोई सवाल? %1 पर कॉल करें और कस्टम कोट के लिए पूछें."
+"We will work with your budget.","हम आपके बजट के साथ काम करेंगे।"
+Availability,प्राप्‍यता
+"In stock","स्टॉक में"
+"Out of stock","आउट ऑफ़ स्टॉक"
+Change,"छोटे सिक्‍के"
+"Compatible file extensions to upload","अपलोड करने के लिए संगत फ़ाइल एक्सटेंशन"
+"Maximum image width","अधिकतम छवि चौड़ाई"
+"Maximum image height","अधिकतम छवि ऊंचाई"
+"less info","कम जानकारी"
+"more info","और जानकारी"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","लाइसेंस छवि एक विशिष्ट उपयोग के लिए एक छवि के ""किराए पर लेने"" का एक प्रकार है; उदाहरणों में एक पुस्तक के कवर के लिए एक छवि को लाइसेंस देना, एक पत्रिका लेख के लिए एक चित्रण, या एक इंजीलवादी हैंडबिल में एक छवि का उपयोग शामिल है।"
+"License Image","लाइसेंस छवि"
+"Download - price based on use.","डाउनलोड - उपयोग के आधार पर कीमत।"
+Close,"बंद करना"
+"License Pricing Calculator","लाइसेंस मूल्य निर्धारण कैलकुलेटर"
+"Select options from the drop down menu to calculate a price to use this image.","इस छवि का उपयोग करने के लिए मूल्य की गणना करने के लिए ड्रॉप डाउन मेनू से विकल्प चुनें।"
+"Choose Category","श्रेणी चुनें"
+"Choose a category to see the specific usages available.","उपलब्ध विशिष्ट उपयोगों को देखने के लिए एक श्रेणी चुनें।"
+"Previous Usage","पिछला उपयोग"
+"Choose a previous calculation from your order history.","अपने ऑर्डर इतिहास से पिछली गणना चुनें।"
+"Specific Usage","विशिष्ट उपयोग"
+"Choose the usage which best describes how you intend to use the image.","वह उपयोग चुनें जो सबसे अच्छा वर्णन करता है कि आप छवि का उपयोग कैसे करना चाहते हैं।"
+"Go to <a href=""%1"">My Downloadable Products</a>","<a href=""%1"">मेरे डाउनलोड करने योग्य उत्पाद पर जाएँ</a>"
+"Incl. Tax","कर सहित"
+"Total Incl. Tax","कुल कर सहित"
+"Excl. Tax","कर सहित"
+Total,कुल
+"Downloadable Products","डाउनलोड करने योग्य उत्पाद"
+"Order #","आदेश #"
+Date,खजूर
+Status,ओहदा
+"Remaining Downloads","शेष डाउनलोड"
+"View Order","क्रम देखें"
+"Start Download","डाउनलोड शुरू करें"
+"You have not purchased any downloadable products yet.","आपने अभी तक कोई डाउनलोड करने योग्य उत्पाद नहीं खरीदा है।"
+SKU,एसकेयू
+download,डाउनलोड
+"Gift Message","उपहार संदेश"
+From:,से:
+To:,तक:
+Message:,संदेश:
+"Product Name","प्रोडक्ट का नाम"
+Qty,मात्रा
+Subtotal,उपयोग
+"Discount Amount","छूट की राशि"
+"Row Total","पंक्ति कुल"
+"Qty Invoiced","मात्रा चालान"
+Ordered,आदेश
+Shipped,"भेज दिया"
+Canceled,रद्द
+Refunded,वापस
+"Add Bulk Products","बल्क उत्पाद जोड़ें"
+Calculator,कैलकुलेटर
+"DevStone Extensions","देवस्टोन एक्सटेंशन"
+"Usage Calculator","उपयोग कैलकुलेटर"
+General,सामान्य
+"Custom Category","कस्टम श्रेणी"
+"select the custom category","कस्टम श्रेणी का चयन करें"
+"This field is going to be used for Custom License","इस फ़ील्ड का उपयोग कस्टम लाइसेंस के लिए किया जा रहा है"
+"Category Form","श्रेणी प्रपत्र"
+"Main Information","मुख्य जानकारी"
+"Add New Category","नई श्रेणी जोड़ें"
+"Delete items","आइटम हटाएँ"
+"Are you sure you wan't to delete selected items?","क्या आप वाकई चयनित आइटम्स को हटाना नहीं चाहते हैं?"
+Terms,लिहाज
+"Size Form","आकार प्रपत्र"
+Active,सक्रिय
+Inactive,निष्क्रिय
+"Add New Size","नया आकार जोड़ें"
+Code,कोड
+"Max Width","अधिकतम चौड़ाई"
+"Max Height","अधिकतम ऊंचाई"
+"Usage Form","उपयोग प्रपत्र"
+"Can be free","मुक्त हो सकता है"
+No,नहीं
+Yes,हाँ
+"Add future customer email","भावी ग्राहक ईमेल जोड़ें"
+"Add Email","ईमेल जोड़ें"
+"Add New Usage","नया उपयोग जोड़ें"

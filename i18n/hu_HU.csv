@@ -1,0 +1,177 @@
+Back,Vissza
+Delete,"Törölje a  címet"
+"Are you sure you want to do this?","Biztos vagy benne, hogy ezt akarod csinálni?"
+"Save and Continue Edit","Mentés és folytatás Szerkesztés"
+Save,Mentés
+ID,ID
+Email,E-mail
+Name,Név
+Company,Cég
+Conditions,Feltételek
+"Apply the rule only if the following conditions are met (leave blank for all products).","A szabályt csak akkor alkalmazza, ha a következő feltételek teljesülnek (minden termék esetében hagyja üresen)."
+"Add Custom License","Egyéni licenc hozzáadása"
+"-- Please Select --","-- Kérjük válasszon --"
+"Unable to fetch previous categories.","Nem lehet korábbi kategóriákat lekérni."
+AM,AM
+PM,PM
+None,Nincs
+"You deleted the record.","Törölted a felvételt."
+"Record does not exist.","A rekord nem létezik."
+"This record no longer exists.","Ez a rekord már nem létezik."
+"Category Edit","Kategória Szerkesztés"
+Category,Kategória
+"Please correct the data sent.","Kérjük, javítsa ki az elküldött adatokat."
+"There was an error saving the data: ","Hiba történt az adatok mentése során: "
+"A total of %1 record(s) have been deleted.","Összesen %1 rekord(ok) került(ek) törlésre."
+"You saved this record.","Elmentette ezt a felvételt."
+"Something went wrong while saving the record.","Valami baj történt a felvétel mentése közben."
+"Category Identifier","Kategória azonosítója"
+"To apply changes you should fill in required ""%1"" field","A módosítások alkalmazásához ki kell töltenie a szükséges ""%1"" mezőt"
+"Size Edit","Méret Szerkesztés"
+Size,Méret
+"Size Identifier","Méret azonosító"
+"Usage Edit","Használat Szerkesztés"
+Usage,Használat
+"Usage Identifier","Használati azonosító"
+"Could not save the category: %1","Nem sikerült elmenteni a kategóriát: %1"
+"Category with id ""%1"" does not exist.","A ""%1"" azonosítóval rendelkező kategória nem létezik."
+"Could not delete the Category: %1","Nem sikerült törölni a kategóriát: %1"
+"Could not save the size: %1","Nem sikerült elmenteni a méretet: %1"
+"Size with id ""%1"" does not exist.","A ""%1"" azonosítóval rendelkező méret nem létezik."
+"Could not delete the Size: %1","Nem sikerült törölni a Size: %1"
+"The option type to get group instance is incorrect.","A csoportpéldány lekérdezéséhez használt beállítás típusa helytelen."
+"Select type options required values rows.","Válassza ki a szükséges értékek sorainak típusát."
+"usage_id should be specified","usage_id-t kell megadni"
+"Could not remove custom option","Nem sikerült eltávolítani az egyéni opciót"
+"Please specify date required option(s).","Kérjük, adja meg a kívánt dátumot."
+"Please specify time required option(s).","Kérjük, adja meg a kívánt időre vonatkozó opció(ka)t."
+"Please specify product's required option(s).","Kérjük, adja meg a termékhez szükséges opció(ka)t."
+"The option instance type in options group is incorrect.","Az opciók csoportjában az opció példánytípusa helytelen."
+"The product instance type in options group is incorrect.","A termékpéldány típusa az opciók csoportban helytelen."
+"The configuration item option instance in options group is incorrect.","Az opciók csoportban a konfigurációs elem beállítási példánya hibás."
+"The configuration item instance in options group is incorrect.","A konfigurációs elem példánya az opciók csoportban hibás."
+"The BuyRequest instance in options group is incorrect.","A BuyRequest példány az opciók csoportban hibás."
+"We can't add the product to the cart because of an option validation issue.","Nem tudjuk a terméket a kosárba helyezni, mert az opció érvényesítési problémája miatt."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 nem bővíti a \Magento\Catalog\Model\Product\Option\Type\DefaultType \Magento\Catalog\Model\Product\Option\Type\DefaultType típust"
+"The file options format is not valid.","A fájl opciók formátuma nem érvényes."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","A '%1' fájl '%2' számára érvénytelen kiterjesztéssel rendelkezik."
+"The maximum allowed image size for '%1' is %2x%3 px.","A ""%1"" maximálisan megengedett képmérete %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","A feltöltött '%1' fájl nagyobb, mint a szerverünk által engedélyezett %2 megabájt."
+"The file '%1' is empty. Please choose another one","A '%1' fájl üres. Kérjük, válasszon egy másikat"
+"The file '%1' is invalid. Please choose another one","A '%1' fájl érvénytelen. Kérjük, válasszon egy másikat"
+"File '%1' is not an image.","A '%1' fájl nem kép."
+"Validation failed. Required options were not filled or the file was not uploaded.","Az érvényesítés sikertelen. A szükséges opciók nem voltak kitöltve, vagy a fájl nem került feltöltésre."
+"The file you uploaded is larger than %1 Megabytes allowed by server","A feltöltött fájl nagyobb, mint a szerver által megengedett %1 megabájt"
+"Option required.","Szükséges opció."
+"The file is empty. Please choose another one","A fájl üres. Kérjük, válasszon egy másikat"
+"Some of the selected item options are not currently available.","A kiválasztott elem egyes opciói jelenleg nem állnak rendelkezésre."
+"Could not save the usageCustomer: %1","Nem sikerült elmenteni a usageCustomer-t: %1"
+"UsageCustomer with id ""%1"" does not exist.","HasználatA ""%1"" azonosítóval rendelkező ügyfél nem létezik."
+"Could not delete the UsageCustomer: %1","Nem sikerült törölni a FelhasználásVásárlót: %1"
+"Could not save the usage: %1","Nem sikerült elmenteni a használatot: %1"
+"Usage with id ""%1"" does not exist.","A ""%1"" azonosítóval rendelkező használat nem létezik."
+"Could not delete the Usage: %1","Nem sikerült törölni a Használatot: %1"
+"Unable to attach licenses to customer %s","Nem sikerült licenceket csatolni az ügyfélhez %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Ezt a terméket nem tudja a kosárba helyezni, mert ez a termék
+                                egyéni licenc csak %1 alkalommal használható(k)"
+"Max Usage","Maximális használat"
+"Usage Options","Használati lehetőségek"
+Preview.,Előzetes.
+"Usage options provide more details about how an image will be used.","A felhasználási beállítások további részleteket adnak meg a kép felhasználásának módjáról."
+"Add Option","Opció hozzáadása"
+"New Option","Új opció"
+"Option Title","Opció címe"
+"Help Text","Segítség szövege"
+"Add Value",Értékteremtés
+Title,Cím
+"Option Type","Opció típusa"
+"-- Please select --","-- Kérjük, válasszon --"
+Required,Kötelező
+Price,Ár
+"Price Type","Ár típus"
+"Image Size",Képméret
+Edit,Szerkesztés
+"Only Custom Usages are supported","Csak az egyéni felhasználások támogatottak"
+"We offer important volume <b>licensing discounts</b>.","Jelentős mennyiségi <b>licencelési kedvezményeket</b> kínálunk."
+"Have questions? Call %1 and ask for custom quote.","Kérdése van? Hívja a %1-et, és kérjen egyedi árajánlatot."
+"We will work with your budget.","Az Ön költségvetésével dolgozunk."
+Availability,Elérhetőség
+"In stock",Készleten
+"Out of stock","Nincs készleten"
+Change,Változás
+"Compatible file extensions to upload","Kompatibilis fájlkiterjesztések feltöltéséhez"
+"Maximum image width","Maximális képszélesség"
+"Maximum image height","Maximális képmagasság"
+"less info","kevesebb információ"
+"more info","további infók"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","A licenckép egyfajta ""bérlése"" egy képnek egy adott felhasználásra; példaként említhetjük egy kép licencelését egy könyv borítójához, egy magazincikk illusztrációjához, vagy egy kép használatát egy evangelizációs kéziratban."
+"License Image","Licenc kép"
+"Download - price based on use.","Letöltés - az ár a használat alapján."
+Close,"Zárja be a"
+"License Pricing Calculator","Licenc árkalkulátor"
+"Select options from the drop down menu to calculate a price to use this image.","Válassza ki a legördülő menüből az opciókat, hogy kiszámítsa a kép használatának árát."
+"Choose Category","Válasszon kategóriát"
+"Choose a category to see the specific usages available.","Válasszon ki egy kategóriát a rendelkezésre álló konkrét felhasználási módok megtekintéséhez."
+"Previous Usage","Előző használat"
+"Choose a previous calculation from your order history.","Válasszon egy korábbi számítást a rendelési előzmények közül."
+"Specific Usage","Speciális felhasználás"
+"Choose the usage which best describes how you intend to use the image.","Válassza ki azt a felhasználási módot, amelyik a legjobban leírja, hogyan kívánja használni a képet."
+"Go to <a href=""%1"">My Downloadable Products</a>","Menjen a <a href=""%1"">Letölthető termékeimhez</a>"
+"Incl. Tax","Adóval együtt"
+"Total Incl. Tax","Összesen adóval együtt"
+"Excl. Tax","Adó nélkül"
+Total,Összesen
+"Downloadable Products","Letölthető termékek"
+"Order #","Megrendelés #"
+Date,Dátum
+Status,Állapot
+"Remaining Downloads","Maradék letöltések"
+"View Order","Rendelés megtekintése"
+"Start Download","Letöltés indítása"
+"You have not purchased any downloadable products yet.","Ön még nem vásárolt letölthető terméket."
+SKU,SKU
+download,letöltés
+"Gift Message","Ajándék üzenet"
+From:,From:
+To:,To:
+Message:,Üzenet:
+"Product Name","Termék neve"
+Qty,Mennyiség
+Subtotal,Részösszeg
+"Discount Amount","Kedvezmény összege"
+"Row Total","Sor Összesen"
+"Qty Invoiced","Számlázott mennyiség"
+Ordered,Megrendelt
+Shipped,Elküldve
+Canceled,Törölt
+Refunded,Visszatérített
+"Add Bulk Products","Tömeges termékek hozzáadása"
+Calculator,Számológép
+"DevStone Extensions","DevStone bővítmények"
+"Usage Calculator","Felhasználási kalkulátor"
+General,Általános
+"Custom Category","Egyéni kategória"
+"select the custom category","válassza ki az egyéni kategóriát"
+"This field is going to be used for Custom License","Ezt a mezőt az Egyéni licenchez kell használni"
+"Category Form","Kategória űrlap"
+"Main Information","Fő információk"
+"Add New Category","Új kategória hozzáadása"
+"Delete items","Elemek törlése"
+"Are you sure you wan't to delete selected items?","Biztos, hogy nem akarja törölni a kiválasztott elemeket?"
+Terms,Feltételek
+"Size Form","Méret Form"
+Active,Aktív
+Inactive,Inaktív
+"Add New Size","Új méret hozzáadása"
+Code,Kód
+"Max Width","Maximális szélesség"
+"Max Height","Maximális magasság"
+"Usage Form","Felhasználási űrlap"
+"Can be free","Szabad lehet"
+No,Nem
+Yes,Igen
+"Add future customer email","Jövőbeli ügyfél e-mail hozzáadása"
+"Add Email","E-mail hozzáadása"
+"Add New Usage","Új felhasználás hozzáadása"

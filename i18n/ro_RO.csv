@@ -1,0 +1,177 @@
+Back,Înapoi
+Delete,Ștergeți
+"Are you sure you want to do this?","Sunteți sigur că doriți să faceți acest lucru?"
+"Save and Continue Edit","Salvare și continuare Editare"
+Save,Salvați
+ID,ID
+Email,E-mail
+Name,"Nume și prenume"
+Company,Compania
+Conditions,Condiții
+"Apply the rule only if the following conditions are met (leave blank for all products).","Aplicați regula numai dacă sunt îndeplinite următoarele condiții (lăsați gol pentru toate produsele)."
+"Add Custom License","Adăugați licență personalizată"
+"-- Please Select --","-- Vă rugăm să selectați --"
+"Unable to fetch previous categories.","Nu se pot extrage categoriile anterioare."
+AM,AM
+PM,PM
+None,Niciuna
+"You deleted the record.","Ați șters înregistrarea."
+"Record does not exist.","Înregistrarea nu există."
+"This record no longer exists.","Această înregistrare nu mai există."
+"Category Edit","Categorie Editare"
+Category,Categorie
+"Please correct the data sent.","Vă rugăm să corectați datele trimise."
+"There was an error saving the data: ","A existat o eroare la salvarea datelor: "
+"A total of %1 record(s) have been deleted.","Un total de %1 înregistrare(uri) au fost șterse."
+"You saved this record.","Ați salvat această înregistrare."
+"Something went wrong while saving the record.","Ceva nu a mers bine în timpul salvării înregistrării."
+"Category Identifier","Identificatorul categoriei"
+"To apply changes you should fill in required ""%1"" field","Pentru a aplica modificările, trebuie să completați câmpul obligatoriu ""%1"""
+"Size Edit","Dimensiune Editare"
+Size,Mărime
+"Size Identifier","Identificator de dimensiune"
+"Usage Edit","Utilizare Editare"
+Usage,Utilizare
+"Usage Identifier","Identificator de utilizare"
+"Could not save the category: %1","Nu s-a putut salva categoria: %1"
+"Category with id ""%1"" does not exist.","Categoria cu id-ul ""%1"" nu există."
+"Could not delete the Category: %1","Nu s-a putut șterge categoria: %1"
+"Could not save the size: %1","Nu s-a putut salva dimensiunea: %1"
+"Size with id ""%1"" does not exist.","Mărimea cu id ""%1"" nu există."
+"Could not delete the Size: %1","Nu s-a putut șterge dimensiunea: %1"
+"The option type to get group instance is incorrect.","Tipul de opțiune pentru a obține instanța grupului este incorect."
+"Select type options required values rows.","Selectați tipul opțiuni valori necesare rânduri."
+"usage_id should be specified","usage_id ar trebui specificat"
+"Could not remove custom option","Nu s-a putut elimina opțiunea personalizată"
+"Please specify date required option(s).","Vă rugăm să specificați data opțiunii (opțiunilor) solicitate."
+"Please specify time required option(s).","Vă rugăm să specificați opțiunea (opțiunile) de timp necesară (necesare)."
+"Please specify product's required option(s).","Vă rugăm să specificați opțiunea (opțiunile) necesară(e) pentru produs."
+"The option instance type in options group is incorrect.","Tipul instanței opțiunii din grupul de opțiuni este incorect."
+"The product instance type in options group is incorrect.","Tipul instanței produsului în grupul de opțiuni este incorect."
+"The configuration item option instance in options group is incorrect.","Instanța opțiunii elementului de configurare din grupul de opțiuni este incorectă."
+"The configuration item instance in options group is incorrect.","Instanța elementului de configurare din grupul de opțiuni este incorectă."
+"The BuyRequest instance in options group is incorrect.","Instanța BuyRequest din grupul de opțiuni este incorectă."
+"We can't add the product to the cart because of an option validation issue.","Nu putem adăuga produsul în coș din cauza unei probleme de validare a opțiunii."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 nu se extinde \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","Formatul opțiunilor de fișier nu este valid."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Fișierul ""%1"" pentru ""%2"" are o extensie invalidă."
+"The maximum allowed image size for '%1' is %2x%3 px.","Dimensiunea maximă permisă a imaginii pentru ""%1"" este %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Fișierul ""%1"" pe care l-ați încărcat este mai mare decât %2 megabytes permis de serverul nostru."
+"The file '%1' is empty. Please choose another one","Fișierul ""%1"" este gol. Vă rugăm să alegeți un alt fișier"
+"The file '%1' is invalid. Please choose another one","Fișierul ""%1"" este invalid. Vă rugăm să alegeți altul"
+"File '%1' is not an image.","Fișierul ""%1"" nu este o imagine."
+"Validation failed. Required options were not filled or the file was not uploaded.","Validarea a eșuat. Opțiunile obligatorii nu au fost completate sau fișierul nu a fost încărcat."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Fișierul încărcat este mai mare decât %1 Megabytes permis de server"
+"Option required.","Opțiune necesară."
+"The file is empty. Please choose another one","Fișierul este gol. Vă rugăm să alegeți altul"
+"Some of the selected item options are not currently available.","Unele dintre opțiunile articolului selectat nu sunt disponibile în prezent."
+"Could not save the usageCustomer: %1","Nu s-a putut salva usageCustomer: %1"
+"UsageCustomer with id ""%1"" does not exist.","UtilizareClient cu id ""%1"" nu există."
+"Could not delete the UsageCustomer: %1","Nu s-a putut șterge UsageCustomer: %1"
+"Could not save the usage: %1","Nu s-a putut salva utilizarea: %1"
+"Usage with id ""%1"" does not exist.","Utilizare cu id ""%1"" nu există."
+"Could not delete the Usage: %1","Nu s-a putut șterge Utilizare: %1"
+"Unable to attach licenses to customer %s","Imposibilitatea de a atașa licențele clientului %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Nu puteți adăuga acest articol în coș deoarece această
+                                licență personalizată poate fi utilizată numai %1 timp(e)"
+"Max Usage","Utilizare maximă"
+"Usage Options","Opțiuni de utilizare"
+Preview.,Previzualizare.
+"Usage options provide more details about how an image will be used.","Opțiunile de utilizare oferă mai multe detalii despre modul în care va fi utilizată o imagine."
+"Add Option","Adaugă opțiune"
+"New Option","Opțiune nouă"
+"Option Title","Titlul opțiunii"
+"Help Text","Text de ajutor"
+"Add Value","Adăugați valoare"
+Title,Titlu
+"Option Type","Tip opțiune"
+"-- Please select --","-- Vă rugăm să selectați --"
+Required,Necesar
+Price,Preț
+"Price Type","Tip de preț"
+"Image Size","Dimensiunea imaginii"
+Edit,Editare
+"Only Custom Usages are supported","Numai utilizările personalizate sunt acceptate"
+"We offer important volume <b>licensing discounts</b>.","Oferim <b>reduceri</b> importante <b>pentru licențe de</b> volum."
+"Have questions? Call %1 and ask for custom quote.","Aveți întrebări? Sunați la %1 și solicitați o ofertă personalizată."
+"We will work with your budget.","Vom lucra cu bugetul dumneavoastră."
+Availability,Disponibilitate
+"In stock","În stoc"
+"Out of stock","Stoc epuizat"
+Change,Schimbare
+"Compatible file extensions to upload","Extensii de fișiere compatibile pentru încărcare"
+"Maximum image width","Lățimea maximă a imaginii"
+"Maximum image height","Înălțimea maximă a imaginii"
+"less info","mai puține informații"
+"more info","mai multe informații"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Licența de imagine este un tip de ""închiriere"" a unei imagini pentru o utilizare specifică; exemplele includ licențierea unei imagini pentru coperta unei cărți, o ilustrație pentru un articol de revistă sau utilizarea unei imagini într-o broșură evanghelistică."
+"License Image","Imagine de licență"
+"Download - price based on use.","Descărcare - preț în funcție de utilizare."
+Close,Închidere
+"License Pricing Calculator","Calculator de stabilire a prețului licenței"
+"Select options from the drop down menu to calculate a price to use this image.","Selectați opțiunile din meniul derulant pentru a calcula un preț pentru utilizarea acestei imagini."
+"Choose Category","Alegeți categoria"
+"Choose a category to see the specific usages available.","Alegeți o categorie pentru a vedea utilizările specifice disponibile."
+"Previous Usage","Utilizare anterioară"
+"Choose a previous calculation from your order history.","Alegeți un calcul anterior din istoricul comenzilor."
+"Specific Usage","Utilizare specifică"
+"Choose the usage which best describes how you intend to use the image.","Alegeți utilizarea care descrie cel mai bine modul în care intenționați să utilizați imaginea."
+"Go to <a href=""%1"">My Downloadable Products</a>","Du-te la <a href=""%1"">produsele mele descărcabile</a>"
+"Incl. Tax","Taxă inclusă"
+"Total Incl. Tax","Total inclusiv taxe"
+"Excl. Tax","Fără taxe"
+Total,Total
+"Downloadable Products","Produse descărcabile"
+"Order #","Comanda #"
+Date,Data
+Status,Statut
+"Remaining Downloads","Descărcări rămase"
+"View Order","Vezi comanda"
+"Start Download","Start Descărcare"
+"You have not purchased any downloadable products yet.","Nu ați achiziționat încă niciun produs descărcabil."
+SKU,SKU
+download,descărcare
+"Gift Message","Mesaj cadou"
+From:,"De la:"
+To:,Pentru:
+Message:,Mesaj:
+"Product Name","Numele produsului"
+Qty,Cantitate
+Subtotal,Subtotal
+"Discount Amount","Suma reducerii"
+"Row Total","Rând Total"
+"Qty Invoiced","Cantitate facturată"
+Ordered,Comandat
+Shipped,Livrat
+Canceled,Anulat
+Refunded,Rambursat
+"Add Bulk Products","Adăugați produse în vrac"
+Calculator,Calculator
+"DevStone Extensions","Extensii DevStone"
+"Usage Calculator","Calculator de utilizare"
+General,Generalități
+"Custom Category","Categorie personalizată"
+"select the custom category","selectați categoria personalizată"
+"This field is going to be used for Custom License","Acest câmp va fi utilizat pentru licența personalizată"
+"Category Form","Formă de categorie"
+"Main Information","Informații principale"
+"Add New Category","Adăugați o categorie nouă"
+"Delete items","Ștergeți elemente"
+"Are you sure you wan't to delete selected items?","Sunteți sigur că nu doriți să ștergeți elementele selectate?"
+Terms,"Termeni și condiții"
+"Size Form","Dimensiune Formă"
+Active,Activ
+Inactive,Inactiv
+"Add New Size","Adaugă o dimensiune nouă"
+Code,Cod
+"Max Width","Lățime maximă"
+"Max Height","Înălțime maximă"
+"Usage Form","Formular de utilizare"
+"Can be free","Poate fi liber"
+No,Nu
+Yes,Da
+"Add future customer email","Adăugați e-mailul viitorului client"
+"Add Email","Adaugă e-mail"
+"Add New Usage","Adăugați o nouă utilizare"

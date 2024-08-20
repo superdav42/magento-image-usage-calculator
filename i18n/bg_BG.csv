@@ -1,0 +1,177 @@
+Back,Обратно
+Delete,"Изтриване на"
+"Are you sure you want to do this?","Сигурни ли сте, че искате да го направите?"
+"Save and Continue Edit","Запазване и продължаване на редактирането"
+Save,Запазете
+ID,ID
+Email,Имейл
+Name,Име
+Company,Компания
+Conditions,Условия
+"Apply the rule only if the following conditions are met (leave blank for all products).","Приложете правилото само ако са изпълнени следните условия (оставете празно за всички продукти)."
+"Add Custom License","Добавяне на потребителски лиценз"
+"-- Please Select --","-- Моля, изберете --"
+"Unable to fetch previous categories.","Не е възможно да се изтеглят предишни категории."
+AM,AM
+PM,PM
+None,Няма
+"You deleted the record.","Изтрихте записа."
+"Record does not exist.","Записът не съществува."
+"This record no longer exists.","Този запис вече не съществува."
+"Category Edit","Редактиране на категория"
+Category,Категория
+"Please correct the data sent.","Моля, коригирайте изпратените данни."
+"There was an error saving the data: ","Имаше грешка при записването на данните: "
+"A total of %1 record(s) have been deleted.","Изтрити са общо %1 записа(и)."
+"You saved this record.","Запазили сте този запис."
+"Something went wrong while saving the record.","Нещо се е объркало при записването на записа."
+"Category Identifier","Идентификатор на категорията"
+"To apply changes you should fill in required ""%1"" field","За да приложите промените, трябва да попълните задължителното поле ""%1"""
+"Size Edit","Редактиране на размера"
+Size,Размер
+"Size Identifier","Идентификатор на размера"
+"Usage Edit","Използване Редактиране"
+Usage,Употреба
+"Usage Identifier","Идентификатор на употребата"
+"Could not save the category: %1","Не можа да запази категорията: %1"
+"Category with id ""%1"" does not exist.","Категория с идентификатор ""%1"" не съществува."
+"Could not delete the Category: %1","Не може да се изтрие категорията: %1"
+"Could not save the size: %1","Не можа да запази размера: %1"
+"Size with id ""%1"" does not exist.","Размер с идентификатор ""%1"" не съществува."
+"Could not delete the Size: %1","Не може да се изтрие размерът: %1"
+"The option type to get group instance is incorrect.","Типът на опцията за получаване на инстанция на група е неправилен."
+"Select type options required values rows.","Изберете опции за тип Необходими стойности редове."
+"usage_id should be specified","трябва да се посочи usage_id"
+"Could not remove custom option","Не може да се премахне потребителската опция"
+"Please specify date required option(s).","Моля, посочете необходимата(ите) опция(и) за дата."
+"Please specify time required option(s).","Моля, посочете необходимата опция(и) за време."
+"Please specify product's required option(s).","Моля, посочете необходимата(ите) опция(и) на продукта."
+"The option instance type in options group is incorrect.","Типът на инстанцията на опцията в групата опции е неправилен."
+"The product instance type in options group is incorrect.","Типът на екземпляра на продукта в групата с опции е неправилен."
+"The configuration item option instance in options group is incorrect.","Екземплярът на опцията на елемента на конфигурацията в групата опции е неправилен."
+"The configuration item instance in options group is incorrect.","Екземплярът на елемента на конфигурацията в групата опции е неправилен."
+"The BuyRequest instance in options group is incorrect.","Екземплярът на BuyRequest в групата опции е неправилен."
+"We can't add the product to the cart because of an option validation issue.","Не можем да добавим продукта в количката поради проблем с валидирането на опцията."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 не разширява \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","Форматът на файловите опции не е валиден."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Файлът '%1' за '%2' е с невалидно разширение."
+"The maximum allowed image size for '%1' is %2x%3 px.","Максималният разрешен размер на изображението за '%1' е %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Файлът '%1', който сте качили, е по-голям от разрешените от нашия сървър %2 мегабайта."
+"The file '%1' is empty. Please choose another one","Файлът '%1' е празен. Моля, изберете друг"
+"The file '%1' is invalid. Please choose another one","Файлът '%1' е невалиден. Моля, изберете друг"
+"File '%1' is not an image.","Файлът '%1' не е изображение."
+"Validation failed. Required options were not filled or the file was not uploaded.","Валидирането е неуспешно. Не са попълнени задължителните опции или файлът не е качен."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Каченият от вас файл е по-голям от разрешените от сървъра %1 мегабайта"
+"Option required.","Изисква се опция."
+"The file is empty. Please choose another one","Файлът е празен. Моля, изберете друг"
+"Some of the selected item options are not currently available.","Някои от избраните опции за артикули не са налични в момента."
+"Could not save the usageCustomer: %1","Не можа да се запише използването на клиента: %1"
+"UsageCustomer with id ""%1"" does not exist.","УпотребаКлиент с идентификатор ""%1"" не съществува."
+"Could not delete the UsageCustomer: %1","Не може да се изтрие UsageCustomer: %1"
+"Could not save the usage: %1","Не можа да запази използването: %1"
+"Usage with id ""%1"" does not exist.","Употреба с id ""%1"" не съществува."
+"Could not delete the Usage: %1","Не можа да изтрие Употреба: %1"
+"Unable to attach licenses to customer %s","Невъзможно е да се прикачат лицензи към клиент %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Не можете да добавите този артикул в количката си, защото това
+                                потребителският лиценз може да се използва само %1 пъти(а)"
+"Max Usage","Максимална употреба"
+"Usage Options","Опции за използване"
+Preview.,Преглед.
+"Usage options provide more details about how an image will be used.","Опциите за използване предоставят повече подробности за това как ще се използва изображението."
+"Add Option","Добавяне на опция"
+"New Option","Нова опция"
+"Option Title","Заглавие на опцията"
+"Help Text","Текст за помощ"
+"Add Value","Добавяне на стойност"
+Title,Заглавие
+"Option Type","Тип на опцията"
+"-- Please select --","-- Моля, изберете --"
+Required,"Изисква се"
+Price,Цена
+"Price Type","Тип цена"
+"Image Size","Размер на изображението"
+Edit,"Редактиране на"
+"Only Custom Usages are supported","Поддържат се само потребителски употреби"
+"We offer important volume <b>licensing discounts</b>.","Предлагаме важни <b>отстъпки за лицензиране на</b> обеми."
+"Have questions? Call %1 and ask for custom quote.","Имате въпроси? Обадете се на %1 и поискайте индивидуална оферта."
+"We will work with your budget.","Ще се съобразим с вашия бюджет."
+Availability,Наличност
+"In stock","В наличност"
+"Out of stock","Няма наличност"
+Change,Промяна
+"Compatible file extensions to upload","Съвместими файлови разширения за качване"
+"Maximum image width","Максимална ширина на изображението"
+"Maximum image height","Максимална височина на изображението"
+"less info","по-малко информация"
+"more info","повече информация"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Лицензиране на изображение е вид ""наемане"" на изображение за конкретна употреба; примерите включват лицензиране на изображение за корица на книга, илюстрация за статия в списание или използване на изображение в евангелизаторска брошура."
+"License Image","Лиценз за изображение"
+"Download - price based on use.","Изтегляне - цена според употребата."
+Close,Затвори
+"License Pricing Calculator","Калкулатор за ценообразуване на лицензи"
+"Select options from the drop down menu to calculate a price to use this image.","Изберете опции от падащото меню, за да изчислите цената за използване на това изображение."
+"Choose Category","Изберете категория"
+"Choose a category to see the specific usages available.","Изберете категория, за да видите конкретните налични употреби."
+"Previous Usage","Предишна употреба"
+"Choose a previous calculation from your order history.","Изберете предишно изчисление от историята на поръчките си."
+"Specific Usage","Специфична употреба"
+"Choose the usage which best describes how you intend to use the image.","Изберете употребата, която най-добре описва начина, по който възнамерявате да използвате изображението."
+"Go to <a href=""%1"">My Downloadable Products</a>","Отидете на <a href=""%1"">Моите продукти за изтегляне</a>"
+"Incl. Tax","С включен данък"
+"Total Incl. Tax","Общо с включени данъци"
+"Excl. Tax","Без данък"
+Total,Общо
+"Downloadable Products","Продукти за изтегляне"
+"Order #","Поръчка №"
+Date,Дата
+Status,Статус
+"Remaining Downloads","Оставащи изтегляния"
+"View Order","Преглед на поръчката"
+"Start Download","Начало на изтегляне"
+"You have not purchased any downloadable products yet.","Все още не сте закупили продукти за изтегляне."
+SKU,SKU
+download,изтегляне
+"Gift Message","Съобщение за подарък"
+From:,От:
+To:,До:
+Message:,Съобщение:
+"Product Name","Име на продукта"
+Qty,Количество
+Subtotal,"Междинна сума"
+"Discount Amount","Размер на отстъпката"
+"Row Total","Ред Общо"
+"Qty Invoiced","Фактурирано количество"
+Ordered,Поръчано
+Shipped,Изпратени
+Canceled,Отменен
+Refunded,"Възстановени средства"
+"Add Bulk Products","Добавяне на продукти в насипно състояние"
+Calculator,Калкулатор
+"DevStone Extensions","DevStone разширения"
+"Usage Calculator","Калкулатор за използване"
+General,"Обща информация"
+"Custom Category","Потребителска категория"
+"select the custom category","изберете потребителската категория"
+"This field is going to be used for Custom License","Това поле ще се използва за потребителски лиценз"
+"Category Form","Формуляр за категория"
+"Main Information","Основна информация"
+"Add New Category","Добавяне на нова категория"
+"Delete items","Изтриване на елементи"
+"Are you sure you wan't to delete selected items?","Сигурни ли сте, че не искате да изтриете избраните елементи?"
+Terms,Условия
+"Size Form","Размер на формуляра"
+Active,Активен
+Inactive,Неактивен
+"Add New Size","Добавяне на нов размер"
+Code,Код
+"Max Width","Максимална широчина"
+"Max Height","Максимална височина"
+"Usage Form","Формуляр за използване"
+"Can be free","Може да бъде безплатен"
+No,Не
+Yes,Да
+"Add future customer email","Добавяне на имейл на бъдещ клиент"
+"Add Email","Добавяне на имейл"
+"Add New Usage","Добавяне на нова употреба"

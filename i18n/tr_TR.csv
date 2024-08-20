@@ -93,6 +93,7 @@ Price,Fiyat
 "Price Type","Fiyat Türü"
 "Image Size","Resim Boyutu"
 Edit,Düzenle
+"Only Custom Usages are supported","Yalnızca Özel Kullanımlar desteklenir"
 "We offer important volume <b>licensing discounts</b>.","Önemli toplu <b>lisanslama indirimleri</b> sunuyoruz."
 "Have questions? Call %1 and ask for custom quote.","Sorularınız mı var? 1'i arayın ve özel fiyat teklifi isteyin."
 "We will work with your budget.","Bütçenize göre çalışacağız."
@@ -146,6 +147,7 @@ Ordered,"Sipariş verildi"
 Shipped,Sevkiyat
 Canceled,"İptal edildi"
 Refunded,"İade Edildi"
+"Add Bulk Products","Toplu Ürün Ekleme"
 Calculator,"Hesap Makinesi"
 "DevStone Extensions","DevStone Uzantıları"
 "Usage Calculator","Kullanım Hesaplayıcı"

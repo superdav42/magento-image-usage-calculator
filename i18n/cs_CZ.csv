@@ -1,0 +1,177 @@
+Back,Zpět
+Delete,Odstranit
+"Are you sure you want to do this?","Jste si jistí, že to chcete udělat?"
+"Save and Continue Edit","Uložit a pokračovat v úpravách"
+Save,Uložit
+ID,ID
+Email,E-mail
+Name,Název
+Company,Společnost
+Conditions,Podmínky
+"Apply the rule only if the following conditions are met (leave blank for all products).","Pravidlo použijte pouze v případě, že jsou splněny následující podmínky (pro všechny produkty ponechte prázdné)."
+"Add Custom License","Přidání vlastní licence"
+"-- Please Select --","-- Vyberte prosím --"
+"Unable to fetch previous categories.","Nelze načíst předchozí kategorie."
+AM,AM
+PM,PM
+None,Žádné
+"You deleted the record.","Záznam jste smazali."
+"Record does not exist.","Záznam neexistuje."
+"This record no longer exists.","Tento záznam již neexistuje."
+"Category Edit","Úprava kategorie"
+Category,Kategorie
+"Please correct the data sent.","Prosím, opravte zaslaná data."
+"There was an error saving the data: ","Při ukládání dat došlo k chybě: "
+"A total of %1 record(s) have been deleted.","Bylo odstraněno celkem %1 záznamů."
+"You saved this record.","Tento záznam jste uložili."
+"Something went wrong while saving the record.","Při ukládání záznamu se něco pokazilo."
+"Category Identifier","Identifikátor kategorie"
+"To apply changes you should fill in required ""%1"" field","Chcete-li použít změny, měli byste vyplnit požadované pole ""%1"""
+"Size Edit","Úprava velikosti"
+Size,Velikost
+"Size Identifier","Identifikátor velikosti"
+"Usage Edit","Použití Upravit"
+Usage,Použití
+"Usage Identifier","Identifikátor použití"
+"Could not save the category: %1","Nepodařilo se uložit kategorii: %1"
+"Category with id ""%1"" does not exist.","Kategorie s id ""%1"" neexistuje."
+"Could not delete the Category: %1","Nepodařilo se odstranit kategorii: %1"
+"Could not save the size: %1","Nepodařilo se uložit velikost: %1"
+"Size with id ""%1"" does not exist.","Velikost s id ""%1"" neexistuje."
+"Could not delete the Size: %1","Nepodařilo se odstranit velikost: %1"
+"The option type to get group instance is incorrect.","Typ možnosti pro získání instance skupiny je nesprávný."
+"Select type options required values rows.","Vyberte typ možností požadované hodnoty řádků."
+"usage_id should be specified","mělo by být uvedeno usage_id"
+"Could not remove custom option","Nelze odstranit vlastní možnost"
+"Please specify date required option(s).","Uveďte prosím datum požadované možnosti."
+"Please specify time required option(s).","Uveďte prosím požadovanou(é) časovou(é) variantu(y)."
+"Please specify product's required option(s).","Uveďte prosím požadovanou(é) možnost(i) produktu."
+"The option instance type in options group is incorrect.","Typ instance možnosti ve skupině možností je nesprávný."
+"The product instance type in options group is incorrect.","Typ instance produktu ve skupině možností je nesprávný."
+"The configuration item option instance in options group is incorrect.","Instance možnosti konfigurační položky ve skupině možností je nesprávná."
+"The configuration item instance in options group is incorrect.","Instance konfigurační položky ve skupině možností je nesprávná."
+"The BuyRequest instance in options group is incorrect.","Instance BuyRequest ve skupině možností je nesprávná."
+"We can't add the product to the cart because of an option validation issue.","Produkt nemůžeme přidat do košíku kvůli problému s ověřením volby."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 nerozšiřuje \Magento\Katalog\Model\Produkt\Volba\Type\DefaultType"
+"The file options format is not valid.","Formát možností souboru není platný."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Soubor '%1' pro '%2' má neplatnou příponu."
+"The maximum allowed image size for '%1' is %2x%3 px.","Maximální povolená velikost obrázku pro '%1' je %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Soubor '%1', který jste nahráli, je větší než %2 megabajtů povolených naším serverem."
+"The file '%1' is empty. Please choose another one","Soubor '%1' je prázdný. Vyberte prosím jiný"
+"The file '%1' is invalid. Please choose another one","Soubor '%1' je neplatný. Vyberte prosím jiný"
+"File '%1' is not an image.","Soubor '%1' není obrázek."
+"Validation failed. Required options were not filled or the file was not uploaded.","Ověření se nezdařilo. Nebyly vyplněny požadované možnosti nebo soubor nebyl nahrán."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Nahraný soubor je větší než %1 Megabajtů povolených serverem"
+"Option required.","Požadovaná možnost."
+"The file is empty. Please choose another one","Soubor je prázdný. Vyberte prosím jiný"
+"Some of the selected item options are not currently available.","Některé z vybraných možností položek nejsou aktuálně k dispozici."
+"Could not save the usageCustomer: %1","Nepodařilo se uložit usageCustomer: %1"
+"UsageCustomer with id ""%1"" does not exist.","PoužitíZákazník s id ""%1"" neexistuje."
+"Could not delete the UsageCustomer: %1","Nepodařilo se odstranit UsageCustomer: %1"
+"Could not save the usage: %1","Použití se nepodařilo uložit: %1"
+"Usage with id ""%1"" does not exist.","Použití s id ""%1"" neexistuje."
+"Could not delete the Usage: %1","Nepodařilo se odstranit položku Použití: %1"
+"Unable to attach licenses to customer %s","Nelze připojit licence k zákazníkovi %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Tuto položku nemůžete přidat do košíku, protože to
+                                vlastní licence může být použita pouze %1krát(y)"
+"Max Usage","Maximální využití"
+"Usage Options","Možnosti použití"
+Preview.,Náhled.
+"Usage options provide more details about how an image will be used.","Možnosti použití poskytují další podrobnosti o tom, jak bude obrázek použit."
+"Add Option","Přidat možnost"
+"New Option","Nová možnost"
+"Option Title","Název možnosti"
+"Help Text","Text nápovědy"
+"Add Value","Přidat hodnotu"
+Title,Název
+"Option Type","Typ možnosti"
+"-- Please select --","-- Vyberte prosím --"
+Required,Požadované
+Price,Cena
+"Price Type","Typ ceny"
+"Image Size","Velikost obrázku"
+Edit,Upravit
+"Only Custom Usages are supported","Podporována jsou pouze vlastní použití"
+"We offer important volume <b>licensing discounts</b>.","Nabízíme významné množstevní <b>licenční slevy</b>."
+"Have questions? Call %1 and ask for custom quote.","Máte dotazy? Zavolejte %1 a požádejte o individuální nabídku."
+"We will work with your budget.","Budeme pracovat s vaším rozpočtem."
+Availability,Dostupnost
+"In stock",Skladem
+"Out of stock","Není skladem"
+Change,Změna
+"Compatible file extensions to upload","Kompatibilní přípony souborů pro nahrávání"
+"Maximum image width","Maximální šířka obrazu"
+"Maximum image height","Maximální výška obrazu"
+"less info","méně informací"
+"more info","více informací"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Licenční obrázek je druh ""pronájmu"" obrázku pro konkrétní použití; příkladem může být licencování obrázku pro obálku knihy, ilustrace pro článek v časopise nebo použití obrázku v evangelizačním letáku."
+"License Image","Licence Image"
+"Download - price based on use.","Ke stažení - cena podle použití."
+Close,Zavřít
+"License Pricing Calculator","Kalkulačka cen licencí"
+"Select options from the drop down menu to calculate a price to use this image.","Výběrem možností z rozevírací nabídky vypočtete cenu za použití tohoto obrázku."
+"Choose Category","Vyberte kategorii"
+"Choose a category to see the specific usages available.","Výběrem kategorie zobrazíte konkrétní dostupná použití."
+"Previous Usage","Předchozí použití"
+"Choose a previous calculation from your order history.","Vyberte předchozí výpočet z historie objednávek."
+"Specific Usage","Specifické použití"
+"Choose the usage which best describes how you intend to use the image.","Vyberte způsob použití, který nejlépe vystihuje, jak hodláte obrázek použít."
+"Go to <a href=""%1"">My Downloadable Products</a>","Přejít na <a href=""%1"">Moje produkty ke stažení</a>"
+"Incl. Tax","Včetně daně"
+"Total Incl. Tax","Celkem včetně daně"
+"Excl. Tax","Bez daně"
+Total,Celkem
+"Downloadable Products","Produkty ke stažení"
+"Order #","Objednávka #"
+Date,Datum
+Status,Stav
+"Remaining Downloads","Zbývající soubory ke stažení"
+"View Order","Zobrazit objednávku"
+"Start Download","Začít stahovat"
+"You have not purchased any downloadable products yet.","Zatím jste si nezakoupili žádné produkty ke stažení."
+SKU,SKU
+download,"ke stažení"
+"Gift Message","Dárková zpráva"
+From:,Od:
+To:,Pro:
+Message:,Zpráva:
+"Product Name","Název produktu"
+Qty,Množství
+Subtotal,Mezisoučet
+"Discount Amount","Výše slevy"
+"Row Total","Řádek Celkem"
+"Qty Invoiced","Fakturované množství"
+Ordered,Objednáno
+Shipped,Odesláno
+Canceled,Zrušeno
+Refunded,"Vrácené prostředky"
+"Add Bulk Products","Přidání hromadných produktů"
+Calculator,Kalkulačka
+"DevStone Extensions","Rozšíření DevStone"
+"Usage Calculator","Kalkulačka používání"
+General,Obecné
+"Custom Category","Vlastní kategorie"
+"select the custom category","vyberte vlastní kategorii"
+"This field is going to be used for Custom License","Toto pole bude použito pro vlastní licenci"
+"Category Form","Formulář kategorie"
+"Main Information","Hlavní informace"
+"Add New Category","Přidat novou kategorii"
+"Delete items","Odstranění položek"
+"Are you sure you wan't to delete selected items?","Jste si jisti, že nechcete odstranit vybrané položky?"
+Terms,Podmínky
+"Size Form","Formulář velikosti"
+Active,Aktivní
+Inactive,Neaktivní
+"Add New Size","Přidat novou velikost"
+Code,Kód
+"Max Width","Maximální šířka"
+"Max Height","Maximální výška"
+"Usage Form","Formulář pro použití"
+"Can be free","Může být zdarma"
+No,Ne
+Yes,Ano
+"Add future customer email","Přidání e-mailu budoucího zákazníka"
+"Add Email","Přidat e-mail"
+"Add New Usage","Přidání nového použití"

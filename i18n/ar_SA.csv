@@ -1,0 +1,177 @@
+Back,ظهر
+Delete,حذف
+"Are you sure you want to do this?","هل أنت متأكد من أنك تريد القيام بذلك؟"
+"Save and Continue Edit","حفظ ومتابعة التحرير"
+Save,أنقذ
+ID,معرف
+Email,"البريد الإلكتروني"
+Name,اسم
+Company,شركة
+Conditions,شروط
+"Apply the rule only if the following conditions are met (leave blank for all products).","قم بتطبيق القاعدة فقط في حالة استيفاء الشروط التالية (اتركها فارغة لجميع المنتجات)."
+"Add Custom License","إضافة ترخيص مخصص"
+"-- Please Select --","-- الرجاء الإختيار --"
+"Unable to fetch previous categories.","غير قادر على جلب الفئات السابقة."
+AM,ص
+PM,م
+None,اي
+"You deleted the record.","حذف السجل."
+"Record does not exist.","السجل غير موجود."
+"This record no longer exists.","هذا السجل لم يعد موجودا."
+"Category Edit","تحرير الفئة"
+Category,باب
+"Please correct the data sent.","يرجى تصحيح البيانات المرسلة."
+"There was an error saving the data: ","حدث خطأ أثناء حفظ البيانات: "
+"A total of %1 record(s) have been deleted.","تم حذف إجمالي ٪1 سجل (سجلات)."
+"You saved this record.","قمت بحفظ هذا السجل."
+"Something went wrong while saving the record.","حدث خطأ ما أثناء حفظ السجل."
+"Category Identifier","معرف الفئة"
+"To apply changes you should fill in required ""%1"" field","لتطبيق التغييرات ، يجب عليك ملء الحقل ""٪1"" المطلوب"
+"Size Edit","تحرير الحجم"
+Size,حجم
+"Size Identifier","معرف الحجم"
+"Usage Edit","تحرير الاستخدام"
+Usage,استخدام
+"Usage Identifier","معرف الاستخدام"
+"Could not save the category: %1","تعذر حفظ الفئة: ٪1"
+"Category with id ""%1"" does not exist.","الفئة ذات المعرف ""٪ 1"" غير موجودة."
+"Could not delete the Category: %1","تعذر حذف الفئة: ٪1"
+"Could not save the size: %1","تعذر حفظ الحجم: ٪1"
+"Size with id ""%1"" does not exist.","الحجم مع المعرف ""٪ 1"" غير موجود."
+"Could not delete the Size: %1","تعذر حذف الحجم: ٪1"
+"The option type to get group instance is incorrect.","نوع الخيار للحصول على مثيل المجموعة غير صحيح."
+"Select type options required values rows.","حدد خيارات النوع صفوف القيم المطلوبة."
+"usage_id should be specified","يجب تحديد usage_id"
+"Could not remove custom option","تعذر إزالة الخيار المخصص"
+"Please specify date required option(s).","يرجى تحديد الخيار (الخيارات) المطلوبة للتاريخ."
+"Please specify time required option(s).","يرجى تحديد الوقت المطلوب (الخيارات الاختيارية)."
+"Please specify product's required option(s).","يرجى تحديد الخيار (الخيارات) المطلوبة للمنتج."
+"The option instance type in options group is incorrect.","نوع مثيل الخيار في مجموعة الخيارات غير صحيح."
+"The product instance type in options group is incorrect.","نوع مثيل المنتج في مجموعة الخيارات غير صحيح."
+"The configuration item option instance in options group is incorrect.","مثيل خيار عنصر التكوين في مجموعة الخيارات غير صحيح."
+"The configuration item instance in options group is incorrect.","مثيل عنصر التكوين في مجموعة الخيارات غير صحيح."
+"The BuyRequest instance in options group is incorrect.","مثيل BuyRequest في مجموعة الخيارات غير صحيح."
+"We can't add the product to the cart because of an option validation issue.","لا يمكننا إضافة المنتج إلى سلة التسوق بسبب مشكلة التحقق من صحة الخيار."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","٪1 لا يمتد \ Magento \ كتالوج \ نموذج \ المنتج \ الخيار \ النوع \ النوع الافتراضي"
+"The file options format is not valid.","تنسيق خيارات الملف غير صالح."
+px.,مقصف.
+"The file '%1' for '%2' has an invalid extension.","يحتوي الملف '٪1' ل '٪ 2' على ملحق غير صالح."
+"The maximum allowed image size for '%1' is %2x%3 px.","الحد الأقصى المسموح به لحجم الصورة ل ""٪1"" هو ٪2x٪3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","الملف ""٪1"" الذي قمت بتحميله أكبر من ٪2 ميغابايت المسموح به بواسطة خادمنا."
+"The file '%1' is empty. Please choose another one","الملف '٪ 1' فارغ. الرجاء اختيار واحد آخر"
+"The file '%1' is invalid. Please choose another one","الملف '٪ 1' غير صالح. الرجاء اختيار واحد آخر"
+"File '%1' is not an image.","الملف '٪1' ليس صورة."
+"Validation failed. Required options were not filled or the file was not uploaded.","فشل التحقق من الصحة. لم يتم ملء الخيارات المطلوبة أو لم يتم تحميل الملف."
+"The file you uploaded is larger than %1 Megabytes allowed by server","الملف الذي قمت بتحميله أكبر من ٪1 ميغابايت المسموح به من قبل الخادم"
+"Option required.","الخيار مطلوب."
+"The file is empty. Please choose another one","الملف فارغ. الرجاء اختيار واحد آخر"
+"Some of the selected item options are not currently available.","بعض خيارات العنصر المحدد غير متوفرة حاليا."
+"Could not save the usageCustomer: %1","تعذر حفظ استخدام العميل: ٪1"
+"UsageCustomer with id ""%1"" does not exist.","UsageCustomer مع المعرف ""٪ 1"" غير موجود."
+"Could not delete the UsageCustomer: %1","تعذر حذف عميل الاستخدام: ٪ 1"
+"Could not save the usage: %1","تعذر حفظ الاستخدام: ٪1"
+"Usage with id ""%1"" does not exist.","الاستخدام مع المعرف ""٪ 1"" غير موجود."
+"Could not delete the Usage: %1","تعذر حذف الاستخدام: ٪1"
+"Unable to attach licenses to customer %s","غير قادر على إرفاق التراخيص ب ٪s العميل"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","لا يمكنك إضافة هذا العنصر إلى سلة التسوق الخاصة بك لأن هذا
+                                يمكن استخدام الترخيص المخصص فقط ٪ ١ مرة (مرات)"
+"Max Usage","ماكس الاستخدام"
+"Usage Options","خيارات الاستخدام"
+Preview.,معاينه.
+"Usage options provide more details about how an image will be used.","توفر خيارات الاستخدام مزيدا من التفاصيل حول كيفية استخدام الصورة."
+"Add Option","إضافة خيار"
+"New Option","خيار جديد"
+"Option Title","عنوان الخيار"
+"Help Text","نص المساعدة"
+"Add Value","إضافة قيمة"
+Title,عنوان
+"Option Type","نوع الخيار"
+"-- Please select --","-- الرجاء الإختيار --"
+Required,مطلوب
+Price,ثمن
+"Price Type","نوع السعر"
+"Image Size","حجم الصورة"
+Edit,حرر
+"Only Custom Usages are supported","يتم دعم الاستخدامات المخصصة فقط"
+"We offer important volume <b>licensing discounts</b>.","نحن نقدم خصومات كبيرة <b>على الترخيص</b> المجمع."
+"Have questions? Call %1 and ask for custom quote.","هل لديك أسئلة؟ اتصل ٪1 واطلب عرض أسعار مخصص."
+"We will work with your budget.","سنعمل مع ميزانيتك."
+Availability,توافر
+"In stock","متوفر في المخزون"
+"Out of stock","غير متوفر بالمخزن"
+Change,تغيير
+"Compatible file extensions to upload","امتدادات الملفات المتوافقة للتحميل"
+"Maximum image width","الحد الأقصى لعرض الصورة"
+"Maximum image height","الحد الأقصى لارتفاع الصورة"
+"less info","معلومات أقل"
+"more info","مزيد من المعلومات"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","صورة الترخيص هي نوع من ""تأجير"" صورة لاستخدام معين ؛ ومن الأمثلة على ذلك ترخيص صورة لغلاف كتاب ، أو رسم توضيحي لمقال في مجلة ، أو استخدام صورة في كتيب إنجيلي."
+"License Image","صورة الترخيص"
+"Download - price based on use.","تحميل - السعر على أساس الاستخدام."
+Close,غلق
+"License Pricing Calculator","حاسبة تسعير الترخيص"
+"Select options from the drop down menu to calculate a price to use this image.","حدد خيارات من القائمة المنسدلة لحساب سعر لاستخدام هذه الصورة."
+"Choose Category","اختر الفئة"
+"Choose a category to see the specific usages available.","اختر فئة للاطلاع على الاستخدامات المحددة المتاحة."
+"Previous Usage","الاستخدام السابق"
+"Choose a previous calculation from your order history.","اختر عملية حسابية سابقة من سجل طلباتك."
+"Specific Usage","استخدام محدد"
+"Choose the usage which best describes how you intend to use the image.","اختر الاستخدام الذي يصف بشكل أفضل كيف تنوي استخدام الصورة."
+"Go to <a href=""%1"">My Downloadable Products</a>","انتقل إلى <a href=""٪1"">منتجاتي القابلة للتنزيل</a>"
+"Incl. Tax","شامل الضريبة"
+"Total Incl. Tax","المجموع شاملا الضريبة"
+"Excl. Tax","غير شامل الضريبة"
+Total,مجموع
+"Downloadable Products","المنتجات القابلة للتنزيل"
+"Order #","ترتيب #"
+Date,تاريخ
+Status,حالة
+"Remaining Downloads","التنزيلات المتبقية"
+"View Order","عرض الطلب"
+"Start Download","ابدأ التنزيل"
+"You have not purchased any downloadable products yet.","لم تقم بشراء أي منتجات قابلة للتنزيل حتى الآن."
+SKU,سكو
+download,تحميل
+"Gift Message","رسالة هدية"
+From:,من:
+To:,ل:
+Message:,رسالة:
+"Product Name","اسم المنتج"
+Qty,الكميه
+Subtotal,"المجموع الفرعي"
+"Discount Amount","مبلغ الخصم"
+"Row Total","إجمالي الصف"
+"Qty Invoiced","الكمية المفوترة"
+Ordered,امر
+Shipped,شحنها
+Canceled,ملغي
+Refunded,ردها
+"Add Bulk Products","إضافة منتجات سائبة"
+Calculator,"آلة حاسبة"
+"DevStone Extensions","ملحقات ديفستون"
+"Usage Calculator","حاسبة الاستخدام"
+General,عام
+"Custom Category","فئة مخصصة"
+"select the custom category","حدد الفئة المخصصة"
+"This field is going to be used for Custom License","سيتم استخدام هذا الحقل للترخيص المخصص"
+"Category Form","نموذج الفئة"
+"Main Information","المعلومات الرئيسية"
+"Add New Category","إضافة فئة جديدة"
+"Delete items","حذف العناصر"
+"Are you sure you wan't to delete selected items?","هل أنت متأكد من أنك لا تريد حذف العناصر المحددة؟"
+Terms,حيث
+"Size Form","نموذج الحجم"
+Active,نشط
+Inactive,كسلان
+"Add New Size","إضافة حجم جديد"
+Code,رمز
+"Max Width","أقصى عرض"
+"Max Height","أقصى ارتفاع"
+"Usage Form","نموذج الاستخدام"
+"Can be free","يمكن أن تكون مجانية"
+No,لا
+Yes,نعم
+"Add future customer email","إضافة بريد إلكتروني للعميل المستقبلي"
+"Add Email","اضف بريد الكتروني"
+"Add New Usage","إضافة استخدام جديد"

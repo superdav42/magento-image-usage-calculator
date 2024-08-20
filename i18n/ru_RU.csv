@@ -1,0 +1,177 @@
+Back,Назад
+Delete,Удалить
+"Are you sure you want to do this?","Вы уверены, что хотите это сделать?"
+"Save and Continue Edit","Сохранить и продолжить редактирование"
+Save,Сохранить
+ID,ID
+Email,"Электронная почта"
+Name,Имя
+Company,Компания
+Conditions,Условия
+"Apply the rule only if the following conditions are met (leave blank for all products).","Применяйте правило только при выполнении следующих условий (оставьте пустым для всех продуктов)."
+"Add Custom License","Добавить пользовательскую лицензию"
+"-- Please Select --","-- Пожалуйста, выберите.."
+"Unable to fetch previous categories.","Невозможно получить предыдущие категории."
+AM,AM
+PM,PM
+None,Нет
+"You deleted the record.","Вы удалили запись."
+"Record does not exist.","Запись не существует."
+"This record no longer exists.","Эта запись больше не существует."
+"Category Edit","Категория Редактировать"
+Category,Категория
+"Please correct the data sent.","Пожалуйста, исправьте отправленные данные."
+"There was an error saving the data: ","Произошла ошибка при сохранении данных: "
+"A total of %1 record(s) have been deleted.","Всего было удалено %1 запись(и)."
+"You saved this record.","Вы сохранили эту запись."
+"Something went wrong while saving the record.","При сохранении записи что-то пошло не так."
+"Category Identifier","Идентификатор категории"
+"To apply changes you should fill in required ""%1"" field","Чтобы применить изменения, необходимо заполнить обязательное поле ""%1"""
+"Size Edit","Редактировать размер"
+Size,Размер
+"Size Identifier","Идентификатор размера"
+"Usage Edit","Использование Редактировать"
+Usage,Использование
+"Usage Identifier","Идентификатор использования"
+"Could not save the category: %1","Не удалось сохранить категорию: %1"
+"Category with id ""%1"" does not exist.","Категория с id ""%1"" не существует."
+"Could not delete the Category: %1","Не удалось удалить категорию: %1"
+"Could not save the size: %1","Не удалось сохранить размер: %1"
+"Size with id ""%1"" does not exist.","Размер с идентификатором ""%1"" не существует."
+"Could not delete the Size: %1","Не удалось удалить Размер: %1"
+"The option type to get group instance is incorrect.","Тип опции для получения экземпляра группы неверен."
+"Select type options required values rows.","Выберите тип опций, необходимые значения строк."
+"usage_id should be specified","необходимо указать идентификатор использования"
+"Could not remove custom option","Не удалось удалить пользовательскую опцию"
+"Please specify date required option(s).","Пожалуйста, укажите требуемую дату."
+"Please specify time required option(s).","Пожалуйста, укажите требуемое время."
+"Please specify product's required option(s).","Пожалуйста, укажите необходимые опции продукта."
+"The option instance type in options group is incorrect.","Тип экземпляра опции в группе опций неверен."
+"The product instance type in options group is incorrect.","Тип экземпляра продукта в группе опций указан неверно."
+"The configuration item option instance in options group is incorrect.","Неверно указан экземпляр элемента конфигурации в группе опций."
+"The configuration item instance in options group is incorrect.","Неверно указан экземпляр элемента конфигурации в группе опций."
+"The BuyRequest instance in options group is incorrect.","Экземпляр BuyRequest в группе опций неверен."
+"We can't add the product to the cart because of an option validation issue.","Мы не можем добавить товар в корзину из-за проблемы с проверкой опций."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 не расширяет \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","Формат параметров файла не соответствует действительности."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Файл '%1' для '%2' имеет недопустимое расширение."
+"The maximum allowed image size for '%1' is %2x%3 px.","Максимально допустимый размер изображения для '%1' составляет %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Размер загруженного вами файла '%1' превышает %2 мегабайта, разрешенных нашим сервером."
+"The file '%1' is empty. Please choose another one","Файл '%1' пуст. Пожалуйста, выберите другой"
+"The file '%1' is invalid. Please choose another one","Файл '%1' недействителен. Пожалуйста, выберите другой"
+"File '%1' is not an image.","Файл '%1' не является изображением."
+"Validation failed. Required options were not filled or the file was not uploaded.","Валидация не удалась. Не заполнены необходимые параметры или файл не был загружен."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Размер загруженного вами файла превышает %1 мегабайт, разрешенный сервером"
+"Option required.","Требуется опция."
+"The file is empty. Please choose another one","Файл пуст. Пожалуйста, выберите другой"
+"Some of the selected item options are not currently available.","Некоторые из выбранных вариантов элементов в настоящее время недоступны."
+"Could not save the usageCustomer: %1","Не удалось сохранить использованиеКлиент: %1"
+"UsageCustomer with id ""%1"" does not exist.","ИспользованиеКлиент с идентификатором ""%1"" не существует."
+"Could not delete the UsageCustomer: %1","Не удалось удалить UsageCustomer: %1"
+"Could not save the usage: %1","Не удалось сохранить использование: %1"
+"Usage with id ""%1"" does not exist.","Использование с идентификатором ""%1"" не существует."
+"Could not delete the Usage: %1","Не удалось удалить Использование: %1"
+"Unable to attach licenses to customer %s","Невозможно прикрепить лицензии к клиенту %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Вы не можете добавить этот товар в корзину, потому что эта
+                                пользовательская лицензия может быть использована только %1 раз(ы)"
+"Max Usage","Максимальное использование"
+"Usage Options","Варианты использования"
+Preview.,Предпросмотр.
+"Usage options provide more details about how an image will be used.","Параметры использования предоставляют более подробную информацию о том, как будет использоваться изображение."
+"Add Option","Добавить опцию"
+"New Option","Новый вариант"
+"Option Title","Название варианта"
+"Help Text","Текст помощи"
+"Add Value","Добавить ценность"
+Title,Название
+"Option Type","Тип опции"
+"-- Please select --","-- Пожалуйста, выберите.."
+Required,Требуется
+Price,Цена
+"Price Type","Тип цены"
+"Image Size","Размер изображения"
+Edit,Редактировать
+"Only Custom Usages are supported","Поддерживаются только пользовательские использования"
+"We offer important volume <b>licensing discounts</b>.","Мы предлагаем значительные <b>скидки на лицензирование</b>."
+"Have questions? Call %1 and ask for custom quote.","Есть вопросы? Позвоните по телефону %1 и запросите индивидуальное предложение."
+"We will work with your budget.","Мы будем работать с вашим бюджетом."
+Availability,Доступность
+"In stock","В наличии"
+"Out of stock","Нет в наличии"
+Change,Изменить
+"Compatible file extensions to upload","Совместимые расширения файлов для загрузки"
+"Maximum image width","Максимальная ширина изображения"
+"Maximum image height","Максимальная высота изображения"
+"less info","меньше информации"
+"more info","дополнительная информация"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Лицензия на изображение - это вид ""аренды"" изображения для определенного использования; в качестве примера можно привести лицензирование изображения для обложки книги, иллюстрации для статьи в журнале или использование изображения в евангелизационной листовке."
+"License Image","Лицензионное изображение"
+"Download - price based on use.","Загрузка - цена зависит от использования."
+Close,Закрыть
+"License Pricing Calculator","Калькулятор расчета стоимости лицензии"
+"Select options from the drop down menu to calculate a price to use this image.","Выберите параметры из выпадающего меню, чтобы рассчитать цену за использование этого изображения."
+"Choose Category","Выберите категорию"
+"Choose a category to see the specific usages available.","Выберите категорию, чтобы узнать, какие именно виды использования доступны."
+"Previous Usage","Предыдущее использование"
+"Choose a previous calculation from your order history.","Выберите предыдущий расчет из истории заказов."
+"Specific Usage","Специфическое использование"
+"Choose the usage which best describes how you intend to use the image.","Выберите вариант использования, который лучше всего описывает, как вы собираетесь использовать изображение."
+"Go to <a href=""%1"">My Downloadable Products</a>","Перейти к <a href=""%1"">моим загружаемым продуктам</a>"
+"Incl. Tax","Включая налог"
+"Total Incl. Tax","Итого, включая налог"
+"Excl. Tax","Без учета налогов"
+Total,Всего
+"Downloadable Products","Загружаемые продукты"
+"Order #","Заказ #"
+Date,Дата
+Status,Статус
+"Remaining Downloads","Оставшиеся загрузки"
+"View Order","Посмотреть заказ"
+"Start Download","Начало загрузки"
+"You have not purchased any downloadable products yet.","Вы еще не приобрели ни одного загружаемого продукта."
+SKU,SKU
+download,скачать
+"Gift Message","Подарочное послание"
+From:,От:
+To:,Для:
+Message:,Сообщение:
+"Product Name","Название продукта"
+Qty,Количество
+Subtotal,Итого
+"Discount Amount","Сумма скидки"
+"Row Total","Ряд Итого"
+"Qty Invoiced","Количество выставленных счетов"
+Ordered,Заказано
+Shipped,Отправлено
+Canceled,Отменено
+Refunded,Возмещено
+"Add Bulk Products","Добавить товары оптом"
+Calculator,Калькулятор
+"DevStone Extensions","Расширения DevStone"
+"Usage Calculator","Калькулятор использования"
+General,"Общие сведения"
+"Custom Category","Пользовательская категория"
+"select the custom category","выберите пользовательскую категорию"
+"This field is going to be used for Custom License","Это поле будет использоваться для пользовательской лицензии"
+"Category Form","Форма категории"
+"Main Information","Основная информация"
+"Add New Category","Добавить новую категорию"
+"Delete items","Удаление элементов"
+"Are you sure you wan't to delete selected items?","Вы уверены, что не хотите удалить выбранные элементы?"
+Terms,Условия
+"Size Form","Форма размера"
+Active,Активный
+Inactive,Неактивный
+"Add New Size","Добавить новый размер"
+Code,Код
+"Max Width","Максимальная ширина"
+"Max Height","Максимальная высота"
+"Usage Form","Форма использования"
+"Can be free","Можно быть свободным"
+No,Нет
+Yes,Да
+"Add future customer email","Добавить электронную почту будущего клиента"
+"Add Email","Добавить электронную почту"
+"Add New Usage","Добавить новое использование"

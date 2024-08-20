@@ -1,0 +1,177 @@
+Back,Повратак
+Delete,Избришете
+"Are you sure you want to do this?","Да ли сте сигурни да желите да урадите ово?"
+"Save and Continue Edit","Сачувај и настави уређивање"
+Save,Сачувај
+ID,ИД
+Email,Е-пошта
+Name,Име
+Company,Компанија
+Conditions,Услове
+"Apply the rule only if the following conditions are met (leave blank for all products).","Примените правило само ако су испуњени следећи услови (оставите празно за све производе)."
+"Add Custom License","Додај прилагођену лиценцу"
+"-- Please Select --","-- Молимо Вас да изаберете --"
+"Unable to fetch previous categories.","Није могуће дохватити претходне категорије."
+AM,САМ
+PM,ПРЕМИЈЕР
+None,Нико
+"You deleted the record.","Избрисали сте запис."
+"Record does not exist.","Запис не постоји."
+"This record no longer exists.","Овај запис више не постоји."
+"Category Edit","Категорија Измени"
+Category,Категорија
+"Please correct the data sent.","Молимо Вас да исправите послате податке."
+"There was an error saving the data: ","Дошло је до грешке при чувању података: "
+"A total of %1 record(s) have been deleted.","Укупно % 1 записа је избрисано."
+"You saved this record.","Сачували сте овај запис."
+"Something went wrong while saving the record.","Нешто је пошло наопако приликом чувања записа."
+"Category Identifier","Идентификатор категорије"
+"To apply changes you should fill in required ""%1"" field","Да бисте применили промене, требало би да попуните обавезно поље ""%1"""
+"Size Edit","Величина Измена"
+Size,Величину
+"Size Identifier","Идентификатор величине"
+"Usage Edit","Употреба Уреди"
+Usage,Коришћење
+"Usage Identifier","Идентификатор употребе"
+"Could not save the category: %1","Нисам могао да сачувам категорију: % 1"
+"Category with id ""%1"" does not exist.","Категорија са ид ""%1"" не постоји."
+"Could not delete the Category: %1","Није могуће избрисати категорију: % 1"
+"Could not save the size: %1","Није могао да сачувам величину: % 1"
+"Size with id ""%1"" does not exist.","Величина са ид ""%1"" не постоји."
+"Could not delete the Size: %1","Није могуће избрисати величину: % КСНУМКС"
+"The option type to get group instance is incorrect.","Тип опције за добијање инстанце групе је нетачан."
+"Select type options required values rows.","Изаберите опције типа потребне вредности редова."
+"usage_id should be specified","усаге _ид треба навести"
+"Could not remove custom option","Није могуће уклонити прилагођену опцију"
+"Please specify date required option(s).","Наведите датум потребне опције."
+"Please specify time required option(s).","Молимо наведите време потребно опцију(е)."
+"Please specify product's required option(s).","Наведите потребну опцију (е) производа."
+"The option instance type in options group is incorrect.","Тип инстанце опције у групи опција је нетачан."
+"The product instance type in options group is incorrect.","Тип инстанце производа у групи опција је нетачан."
+"The configuration item option instance in options group is incorrect.","Инстанца опције ставке конфигурације у групи опција је нетачна."
+"The configuration item instance in options group is incorrect.","Инстанца ставке конфигурације у групи опција је нетачна."
+"The BuyRequest instance in options group is incorrect.","Инстанце БуиРеqуест у групи опција је нетачна."
+"We can't add the product to the cart because of an option validation issue.","Не можемо додати производ у корпу због проблема са валидацијом опције."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","% 1 не проширује \ Магенто \ Каталог \ Модел \ Производ \ Опција \ Тип \ ДефаултТипе"
+"The file options format is not valid.","Формат опција датотеке није важећи."
+px.,ПКС.
+"The file '%1' for '%2' has an invalid extension.","Фајл '%1' за '%2' има неважећу екстензију."
+"The maximum allowed image size for '%1' is %2x%3 px.","Максимална дозвољена величина слике за '% 1' је % 2k% 3 пк."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Датотека '% 1' коју сте поставили је већа од % 2 мегабајта дозвољених од стране нашег сервера."
+"The file '%1' is empty. Please choose another one","Фајл '%1' је празан. Молимо Вас да изаберете другу"
+"The file '%1' is invalid. Please choose another one","Фајл '%1' је неважећи. Молимо Вас да изаберете другу"
+"File '%1' is not an image.","Фајл '%1' није слика."
+"Validation failed. Required options were not filled or the file was not uploaded.","Валидација није успела. Потребне опције нису попуњене или датотека није отпремљена."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Датотека коју сте поставили је већа од% 1 мегабајта дозвољених од стране сервера"
+"Option required.","Потребна опција."
+"The file is empty. Please choose another one","Фајл је празан. Молимо Вас да изаберете другу"
+"Some of the selected item options are not currently available.","Неке од изабраних опција ставки тренутно нису доступне."
+"Could not save the usageCustomer: %1","Није могао да сачува усагеЦустомер: % 1"
+"UsageCustomer with id ""%1"" does not exist.","УсагеЦустомер са ИД ""%1"" не постоји."
+"Could not delete the UsageCustomer: %1","Није могуће избрисати УсагеЦустомер: % 1"
+"Could not save the usage: %1","Није могуће сачувати употребу: % 1"
+"Usage with id ""%1"" does not exist.","Употреба са ид ""%1"" не постоји."
+"Could not delete the Usage: %1","Није могуће избрисати употребу: % 1"
+"Unable to attach licenses to customer %s","Није могуће приложити лиценце за купца%с"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Не можете да додате овај артикал у корпу, јер ово
+                                Прилагођена лиценца може да се користи само% 1 време(а)"
+"Max Usage","Максимална употреба"
+"Usage Options","Опције коришћења"
+Preview.,Преглед.
+"Usage options provide more details about how an image will be used.","Опције коришћења пружају више детаља о томе како ће се слика користити."
+"Add Option","Додај опцију"
+"New Option","Нова опција"
+"Option Title","Наслов опције"
+"Help Text","Текст помоћи"
+"Add Value","Додајте вредност"
+Title,Наслов
+"Option Type","Тип опције"
+"-- Please select --","-- Молимо изаберите --"
+Required,Потребне
+Price,Цена
+"Price Type","Врста цене"
+"Image Size","Величина слике"
+Edit,Уређивање
+"Only Custom Usages are supported","Подржане су само прилагођене употребе"
+"We offer important volume <b>licensing discounts</b>.","Нудимо важне <б> попусте за лиценцирање </б> количине."
+"Have questions? Call %1 and ask for custom quote.","Имате питања? Позовите % 1 и затражите прилагођену понуду."
+"We will work with your budget.","Ми ћемо радити са вашим буџетом."
+Availability,Расположивост
+"In stock","На располагању"
+"Out of stock","Нема на лагеру"
+Change,Промените
+"Compatible file extensions to upload","Компатибилне екстензије датотека за отпремање"
+"Maximum image width","Максимална ширина слике"
+"Maximum image height","Максимална висина слике"
+"less info","мање информација"
+"more info","Сазнајте више"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Лиценца Слика је врста""изнајмљивања"" слике за одређену употребу; Примери укључују лиценцирање слике за насловницу књиге, илустрацију за чланак у часопису или употребу слике у евангелизацијском приручнику."
+"License Image","Слика лиценце"
+"Download - price based on use.","Довнлоад - цена на основу употребе."
+Close,Затворите
+"License Pricing Calculator","Цена лиценце Калкулатор"
+"Select options from the drop down menu to calculate a price to use this image.","Изаберите опције из падајућег менија да бисте израчунали цену за коришћење ове слике."
+"Choose Category","Изаберите категорију"
+"Choose a category to see the specific usages available.","Изаберите категорију да бисте видели специфичне употребе на располагању."
+"Previous Usage","Претходна употреба"
+"Choose a previous calculation from your order history.","Изаберите претходну калкулацију из историје поруџбина."
+"Specific Usage","Специфична употреба"
+"Choose the usage which best describes how you intend to use the image.","Изаберите употребу која најбоље описује како намеравате да користите слику."
+"Go to <a href=""%1"">My Downloadable Products</a>","Иди на < а хреф =""%1""> Моји производи за преузимање </а>"
+"Incl. Tax","Са порезом"
+"Total Incl. Tax","Укупно са порезом"
+"Excl. Tax","Без пореза"
+Total,Укупно
+"Downloadable Products","Производи који се могу преузети"
+"Order #","Поруџбине #"
+Date,Датум
+Status,Статус
+"Remaining Downloads","Преосталих преузимања"
+"View Order","Погледај налог"
+"Start Download","Почетак преузимања"
+"You have not purchased any downloadable products yet.","Још увек нисте купили производе који се могу преузети."
+SKU,МЈ
+download,Преузимање
+"Gift Message","Поклон Порука"
+From:,Из:
+To:,Да:
+Message:,Поруку:
+"Product Name","Име и производ"
+Qty,Кол
+Subtotal,Подзбир
+"Discount Amount","Износ попуста"
+"Row Total","Укупно редова"
+"Qty Invoiced","Количина фактурисана"
+Ordered,Наруиио
+Shipped,Испоручена
+Canceled,Отказана
+Refunded,"Поврат новца"
+"Add Bulk Products","Додајте Булк производе"
+Calculator,Калкулатор
+"DevStone Extensions","ДевСтоне Екстензије"
+"Usage Calculator","Калкулатор употребе"
+General,Опште
+"Custom Category","Прилагођена категорија"
+"select the custom category","Изаберите прилагођену категорију"
+"This field is going to be used for Custom License","Ово поље ће се користити за прилагођену лиценцу"
+"Category Form","Образац категорије"
+"Main Information","Главне информације"
+"Add New Category","Додај нову категорију"
+"Delete items","Избриши ставке"
+"Are you sure you wan't to delete selected items?","Да ли сте сигурни да не желите да избришете изабране ставке?"
+Terms,Услове
+"Size Form","Образац за величину"
+Active,Активни
+Inactive,Неактивни
+"Add New Size","Додај нову величину"
+Code,Шифру
+"Max Width","Максимална ширина"
+"Max Height","Максимална висина"
+"Usage Form","Образац за употребу"
+"Can be free","Може бити слободан"
+No,Не
+Yes,Да
+"Add future customer email","Додајте будућу е-пошту клијента"
+"Add Email","Додај е-пошту"
+"Add New Usage","Додај нову употребу"

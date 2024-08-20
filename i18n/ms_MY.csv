@@ -1,0 +1,177 @@
+Back,Kembali
+Delete,Menghapuskan
+"Are you sure you want to do this?","Adakah anda pasti mahu melakukan ini?"
+"Save and Continue Edit","Simpan dan Teruskan Edit"
+Save,Simpan
+ID,ID
+Email,E-mel
+Name,Nama
+Company,Syarikat
+Conditions,Syarat
+"Apply the rule only if the following conditions are met (leave blank for all products).","Gunakan peraturan hanya jika syarat berikut dipenuhi (biarkan kosong untuk semua produk)."
+"Add Custom License","Tambah Lesen Tersuai"
+"-- Please Select --","-- Sila pilih --"
+"Unable to fetch previous categories.","Tidak dapat mengambil kategori sebelumnya."
+AM,AM
+PM,PM
+None,Tiada
+"You deleted the record.","Anda memadamkan rekod."
+"Record does not exist.","Rekod tidak wujud."
+"This record no longer exists.","Rekod ini tidak lagi wujud."
+"Category Edit","Sunting Kategori"
+Category,Kategori
+"Please correct the data sent.","Sila betulkan data yang dihantar."
+"There was an error saving the data: ","Terdapat ralat menyimpan data: "
+"A total of %1 record(s) have been deleted.","Sebanyak %1 rekod telah dipadamkan."
+"You saved this record.","Anda menyimpan rekod ini."
+"Something went wrong while saving the record.","Sesuatu yang tidak kena semasa menyimpan rekod."
+"Category Identifier","Pengecam Kategori"
+"To apply changes you should fill in required ""%1"" field","Untuk menggunakan perubahan, anda perlu mengisi medan ""%1"" yang diperlukan"
+"Size Edit","Saiz Edit"
+Size,Saiz
+"Size Identifier","Pengecam Saiz"
+"Usage Edit","Sunting Penggunaan"
+Usage,Penggunaan
+"Usage Identifier","Pengecam Penggunaan"
+"Could not save the category: %1","Tidak dapat menyimpan kategori: %1"
+"Category with id ""%1"" does not exist.","Kategori dengan id ""%1"" tidak wujud."
+"Could not delete the Category: %1","Tidak dapat memadamkan Kategori: %1"
+"Could not save the size: %1","Tidak dapat menyimpan saiz: %1"
+"Size with id ""%1"" does not exist.","Saiz dengan id ""%1"" tidak wujud."
+"Could not delete the Size: %1","Tidak dapat memadamkan Saiz: %1"
+"The option type to get group instance is incorrect.","Jenis pilihan untuk mendapatkan contoh kumpulan tidak betul."
+"Select type options required values rows.","Pilih pilihan jenis baris nilai yang diperlukan."
+"usage_id should be specified","usage_id perlu dinyatakan"
+"Could not remove custom option","Tidak dapat mengalih keluar pilihan tersuai"
+"Please specify date required option(s).","Sila nyatakan pilihan tarikh yang diperlukan."
+"Please specify time required option(s).","Sila nyatakan pilihan masa yang diperlukan."
+"Please specify product's required option(s).","Sila nyatakan pilihan yang diperlukan produk."
+"The option instance type in options group is incorrect.","Jenis contoh opsyen dalam kumpulan opsyen adalah tidak betul."
+"The product instance type in options group is incorrect.","Jenis contoh produk dalam kumpulan pilihan tidak betul."
+"The configuration item option instance in options group is incorrect.","Contoh pilihan item konfigurasi dalam kumpulan pilihan tidak betul."
+"The configuration item instance in options group is incorrect.","Contoh item konfigurasi dalam kumpulan pilihan tidak betul."
+"The BuyRequest instance in options group is incorrect.","Contoh BuyRequest dalam kumpulan pilihan tidak betul."
+"We can't add the product to the cart because of an option validation issue.","Kami tidak boleh menambah produk ke troli kerana isu pengesahan pilihan."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 tidak memanjangkan \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","Format pilihan fail tidak sah."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Fail '%1' untuk '%2' mempunyai sambungan yang tidak sah."
+"The maximum allowed image size for '%1' is %2x%3 px.","Saiz imej maksimum yang dibenarkan untuk '%1' ialah %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Fail '%1' yang anda muat naik adalah lebih besar daripada %2 megabait yang dibenarkan oleh pelayan kami."
+"The file '%1' is empty. Please choose another one","Fail '%1' kosong. Sila pilih yang lain"
+"The file '%1' is invalid. Please choose another one","Fail '%1' tidak sah. Sila pilih yang lain"
+"File '%1' is not an image.","Fail '%1' bukan imej."
+"Validation failed. Required options were not filled or the file was not uploaded.","Pengesahan gagal. Pilihan yang diperlukan tidak diisi atau fail tidak dimuat naik."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Fail yang anda muat naik lebih besar daripada%1 Megabait yang dibenarkan oleh pelayan"
+"Option required.","Pilihan diperlukan."
+"The file is empty. Please choose another one","Fail itu kosong. Sila pilih yang lain"
+"Some of the selected item options are not currently available.","Sesetengah pilihan item yang dipilih tidak tersedia pada masa ini."
+"Could not save the usageCustomer: %1","Tidak dapat menyimpan penggunaanPelanggan: %1"
+"UsageCustomer with id ""%1"" does not exist.","UsageCustomer dengan id ""%1"" tidak wujud."
+"Could not delete the UsageCustomer: %1","Tidak dapat memadamkan UsageCustomer: %1"
+"Could not save the usage: %1","Tidak dapat menyimpan penggunaan: %1"
+"Usage with id ""%1"" does not exist.","Penggunaan dengan id ""%1"" tidak wujud."
+"Could not delete the Usage: %1","Tidak dapat memadamkan Penggunaan: %1"
+"Unable to attach licenses to customer %s","Tidak dapat melampirkan lesen kepada %s pelanggan"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Anda tidak boleh menambah item ini ke troli anda kerana ini
+                                lesen tersuai hanya boleh digunakan%1 kali"
+"Max Usage","Penggunaan Maks"
+"Usage Options","Pilihan Penggunaan"
+Preview.,Pratonton.
+"Usage options provide more details about how an image will be used.","Pilihan penggunaan memberikan butiran lanjut tentang cara imej akan digunakan."
+"Add Option","Tambah Pilihan"
+"New Option","Pilihan Baharu"
+"Option Title","Tajuk Pilihan"
+"Help Text","Teks Bantuan"
+"Add Value","Nilai tambah"
+Title,Tajuk
+"Option Type","Jenis Pilihan"
+"-- Please select --","-- Sila pilih --"
+Required,Diperlukan
+Price,Harga
+"Price Type","Jenis Harga"
+"Image Size","Saiz Imej"
+Edit,Edit
+"Only Custom Usages are supported","Hanya Penggunaan Tersuai disokong"
+"We offer important volume <b>licensing discounts</b>.","Kami menawarkan <b>diskaun pelesenan</b> volum yang penting."
+"Have questions? Call %1 and ask for custom quote.","Ada soalan? Hubungi %1 dan minta sebut harga tersuai."
+"We will work with your budget.","Kami akan bekerja dengan belanjawan anda."
+Availability,Ketersediaan
+"In stock","Dalam stok"
+"Out of stock","Kehabisan stok"
+Change,Menukar
+"Compatible file extensions to upload","Sambungan fail yang serasi untuk dimuat naik"
+"Maximum image width","Lebar imej maksimum"
+"Maximum image height","Ketinggian imej maksimum"
+"less info","kurang maklumat"
+"more info","Maklumat lanjut"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Imej Lesen ialah sejenis ""menyewa"" imej untuk kegunaan tertentu; Contohnya termasuk melesenkan imej untuk kulit buku, ilustrasi untuk artikel majalah, atau penggunaan imej dalam selebaran penginjilan."
+"License Image","Imej Lesen"
+"Download - price based on use.","Muat turun - harga berdasarkan penggunaan."
+Close,Tutup
+"License Pricing Calculator","Kalkulator Harga Lesen"
+"Select options from the drop down menu to calculate a price to use this image.","Pilih pilihan daripada menu lungsur untuk mengira harga untuk menggunakan imej ini."
+"Choose Category","Pilih Kategori"
+"Choose a category to see the specific usages available.","Pilih kategori untuk melihat penggunaan tertentu yang tersedia."
+"Previous Usage","Penggunaan Terdahulu"
+"Choose a previous calculation from your order history.","Pilih pengiraan terdahulu daripada sejarah pesanan anda."
+"Specific Usage","Penggunaan Khusus"
+"Choose the usage which best describes how you intend to use the image.","Pilih penggunaan yang paling menggambarkan cara anda berhasrat untuk menggunakan imej tersebut."
+"Go to <a href=""%1"">My Downloadable Products</a>","Pergi ke <a href=""%1"">Produk Boleh Muat Turun Saya</a>"
+"Incl. Tax","Termasuk Cukai"
+"Total Incl. Tax","Jumlah Termasuk Cukai"
+"Excl. Tax","Tidak termasuk cukai"
+Total,Jumlah
+"Downloadable Products","Produk Boleh Dimuat Turun"
+"Order #","Perintah #"
+Date,Tarikh
+Status,Status
+"Remaining Downloads","Baki Muat Turun"
+"View Order","Lihat Pesanan"
+"Start Download","Mulakan Muat Turun"
+"You have not purchased any downloadable products yet.","Anda belum membeli sebarang produk yang boleh dimuat turun lagi."
+SKU,SKU
+download,"Muat turun"
+"Gift Message","Mesej Hadiah"
+From:,Dari:
+To:,Untuk:
+Message:,Mesej:
+"Product Name","Nama Produk"
+Qty,Kuantiti
+Subtotal,"Jumlah kecil"
+"Discount Amount","Jumlah Diskaun"
+"Row Total","Jumlah Baris"
+"Qty Invoiced","Jumlah Diinvois"
+Ordered,Dipesan
+Shipped,Dihantar
+Canceled,Dibatalkan
+Refunded,Dikembalikan
+"Add Bulk Products","Tambah Produk Pukal"
+Calculator,Kalkulator
+"DevStone Extensions","Sambungan DevStone"
+"Usage Calculator","Kalkulator Penggunaan"
+General,Umum
+"Custom Category","Kategori Tersuai"
+"select the custom category","Pilih kategori tersuai"
+"This field is going to be used for Custom License","Medan ini akan digunakan untuk Lesen Tersuai"
+"Category Form","Borang Kategori"
+"Main Information","Maklumat utama"
+"Add New Category","Tambah Kategori Baru"
+"Delete items","Padamkan item"
+"Are you sure you wan't to delete selected items?","Adakah anda pasti anda tidak mahu memadamkan item yang dipilih?"
+Terms,Terma
+"Size Form","Borang Saiz"
+Active,Aktif
+Inactive,"Tidak aktif"
+"Add New Size","Tambah Saiz Baru"
+Code,Kod
+"Max Width","Lebar Maks"
+"Max Height","Ketinggian Maks"
+"Usage Form","Borang Penggunaan"
+"Can be free","Boleh percuma"
+No,Tidak
+Yes,Ya
+"Add future customer email","Tambah e-mel pelanggan masa depan"
+"Add Email","Tambah E-mel"
+"Add New Usage","Tambah Penggunaan Baru"

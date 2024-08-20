@@ -93,6 +93,7 @@ Price,Prijs
 "Price Type","Prijs Type"
 "Image Size","Grootte afbeelding"
 Edit,Bewerk
+"Only Custom Usages are supported","Alleen aangepast gebruik wordt ondersteund"
 "We offer important volume <b>licensing discounts</b>.","We bieden belangrijke <b>kortingen voor volumelicenties</b>."
 "Have questions? Call %1 and ask for custom quote.","Heb je vragen? Bel %1 en vraag om een offerte op maat."
 "We will work with your budget.","We werken met je budget."
@@ -146,6 +147,7 @@ Ordered,Besteld
 Shipped,Verzonden
 Canceled,Geannuleerd
 Refunded,Terugbetaald
+"Add Bulk Products","Bulkproducten toevoegen"
 Calculator,Rekenmachine
 "DevStone Extensions",DevStone-uitbreidingen
 "Usage Calculator","Rekenmachine voor gebruik"

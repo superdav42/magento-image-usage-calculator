@@ -1,0 +1,177 @@
+Back,بازگشت
+Delete,حذف
+"Are you sure you want to do this?","آیا مطمئن هستید که می خواهید این کار را انجام دهید؟"
+"Save and Continue Edit","ذخیره و ادامه ویرایش"
+Save,ذخیره
+ID,شناسه
+Email,ایمیل
+Name,نام
+Company,شرکت
+Conditions,شرایط
+"Apply the rule only if the following conditions are met (leave blank for all products).","این قانون را فقط در صورت رعایت شرایط زیر اعمال کنید (برای همه محصولات خالی بگذارید)."
+"Add Custom License","افزودن مجوز سفارشی"
+"-- Please Select --","-- لطفا انتخاب کنید --"
+"Unable to fetch previous categories.","نمی توان دسته های قبلی را واکشی کرد."
+AM,در
+PM,Pm
+None,"هیچ کدام"
+"You deleted the record.","شما رکورد را حذف کردید."
+"Record does not exist.","رکورد وجود ندارد."
+"This record no longer exists.","این رکورد دیگر وجود ندارد."
+"Category Edit","ویرایش دسته بندی"
+Category,رده
+"Please correct the data sent.","لطفا داده های ارسال شده را تصحیح کنید."
+"There was an error saving the data: ","در ذخیره داده ها خطایی رخ داد: "
+"A total of %1 record(s) have been deleted.","در مجموع ٪1 رکورد(های) حذف شده است."
+"You saved this record.","شما این رکورد را ذخیره کردید."
+"Something went wrong while saving the record.","هنگام ذخیره رکورد مشکلی پیش آمد."
+"Category Identifier","شناسه دسته بندی"
+"To apply changes you should fill in required ""%1"" field","برای اعمال تغییرات باید فیلد مورد نیاز ""٪1"" را پر کنید"
+"Size Edit","ویرایش اندازه"
+Size,اندازه
+"Size Identifier","شناسه اندازه"
+"Usage Edit","ویرایش استفاده"
+Usage,استفاده
+"Usage Identifier","شناسه استفاده"
+"Could not save the category: %1","قابل ذخیره دسته بندی نشد: ٪1"
+"Category with id ""%1"" does not exist.","دسته با شناسه ""٪1"" وجود ندارد."
+"Could not delete the Category: %1","دستهٔ حذف نشد: ٪1"
+"Could not save the size: %1","اندازه را ذخیره نکرد: ٪1"
+"Size with id ""%1"" does not exist.","اندازه با شناسه ""٪1"" وجود ندارد."
+"Could not delete the Size: %1","اندازه حذف نشد: ٪1"
+"The option type to get group instance is incorrect.","نوع گزینه برای دریافت نمونه گروه نادرست است."
+"Select type options required values rows.","گزینه های نوع ردیف های مقادیر مورد نیاز را انتخاب کنید."
+"usage_id should be specified","usage_id باید مشخص شود"
+"Could not remove custom option","گزینه سفارشی حذف نشد"
+"Please specify date required option(s).","لطفا گزینه (های) تاریخ مورد نیاز را مشخص کنید."
+"Please specify time required option(s).","لطفا گزینه (های) زمان مورد نیاز را مشخص کنید."
+"Please specify product's required option(s).","لطفا گزینه(های) مورد نیاز محصول را مشخص کنید."
+"The option instance type in options group is incorrect.","نوع نمونه گزینه در گروه گزینه ها نادرست است."
+"The product instance type in options group is incorrect.","نوع نمونه محصول در گروه گزینه ها نادرست است."
+"The configuration item option instance in options group is incorrect.","نمونه گزینه آیتم پیکربندی در گروه گزینه ها نادرست است."
+"The configuration item instance in options group is incorrect.","نمونه آیتم پیکربندی در گروه گزینه ها نادرست است."
+"The BuyRequest instance in options group is incorrect.","نمونه BuyRequest در گروه گزینه ها نادرست است."
+"We can't add the product to the cart because of an option validation issue.","به دلیل مشکل اعتبارسنجی گزینه، نمی توانیم محصول را به سبد خرید اضافه کنیم."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","٪1 \Magento\Catalog\Model\Product\Option\Type\DefaultType را گسترش نمی دهد"
+"The file options format is not valid.","فرمت گزینه های فایل معتبر نیست."
+px.,پیکسل.
+"The file '%1' for '%2' has an invalid extension.","فایل '٪1' برای '٪2' پسوند نامعتبری دارد."
+"The maximum allowed image size for '%1' is %2x%3 px.","حداکثر اندازه تصویر مجاز برای '٪1' ٪2x٪3 پیکسل است."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","پرونده '٪1' که آپلود کرده اید بزرگتر از ٪2 مگابایت مجاز توسط سرور ما است."
+"The file '%1' is empty. Please choose another one","فایل '٪1' خالی است. لطفا یکی دیگر را انتخاب کنید"
+"The file '%1' is invalid. Please choose another one","فایل '٪1' نامعتبر است. لطفا یکی دیگر را انتخاب کنید"
+"File '%1' is not an image.","فایل '٪1' یک تصویر نیست."
+"Validation failed. Required options were not filled or the file was not uploaded.","اعتبارسنجی انجام نشد. گزینه های مورد نیاز پر نشدند یا فایل آپلود نشد."
+"The file you uploaded is larger than %1 Megabytes allowed by server","فایلی که آپلود کرده اید بزرگتر از ٪1 مگابایت مجاز توسط سرور است"
+"Option required.","گزینه مورد نیاز است."
+"The file is empty. Please choose another one","فایل خالی است. لطفا یکی دیگر را انتخاب کنید"
+"Some of the selected item options are not currently available.","برخی از گزینه های مورد انتخاب شده در حال حاضر در دسترس نیستند."
+"Could not save the usageCustomer: %1","نمی توان استفاده را ذخیره کردمشتری: ٪1"
+"UsageCustomer with id ""%1"" does not exist.","استفادهمشتری با شناسه ""٪1"" وجود ندارد."
+"Could not delete the UsageCustomer: %1","UsageClient حذف نشد: ٪1"
+"Could not save the usage: %1","نمی توان استفاده را ذخیره کرد: ٪1"
+"Usage with id ""%1"" does not exist.","استفاده با شناسه ""٪1"" وجود ندارد."
+"Could not delete the Usage: %1","استفاده از آن حذف نشد: ٪1"
+"Unable to attach licenses to customer %s","امکان پیوست مجوزها به مشتری ٪s وجود ندارد"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","شما نمی توانید این مورد را به سبد خرید خود اضافه کنید زیرا این
+                                مجوز سفارشی فقط می تواند ٪1 زمان استفاده شود"
+"Max Usage","حداکثر استفاده"
+"Usage Options","گزینه های استفاده"
+Preview.,پیشنمایش.
+"Usage options provide more details about how an image will be used.","گزینه های استفاده جزئیات بیشتری درباره نحوه استفاده از تصویر ارائه می دهند."
+"Add Option","افزودن گزینه"
+"New Option","گزینه جدید"
+"Option Title","عنوان گزینه"
+"Help Text","متن راهنما"
+"Add Value","ارزش افزوده"
+Title,عنوان
+"Option Type","نوع گزینه"
+"-- Please select --","-- لطفا انتخاب کنید --"
+Required,"مورد نیاز"
+Price,قيمت
+"Price Type","نوع قیمت"
+"Image Size","اندازه تصویر"
+Edit,ویرایش
+"Only Custom Usages are supported","فقط کاربردهای سفارشی پشتیبانی می شوند"
+"We offer important volume <b>licensing discounts</b>.","ما تخفیف های مهم <b>مجوز</b> حجمی را ارائه می دهیم."
+"Have questions? Call %1 and ask for custom quote.","سوالی دارید؟ با ٪1 تماس بگیرید و قیمت سفارشی بخواهید."
+"We will work with your budget.","ما با بودجه شما کار خواهیم کرد."
+Availability,"دسترس بودن"
+"In stock","در دسترس است"
+"Out of stock","فروخته شده است"
+Change,تغییر
+"Compatible file extensions to upload","پسوندهای فایل سازگار برای آپلود"
+"Maximum image width","حداکثر عرض تصویر"
+"Maximum image height","حداکثر ارتفاع تصویر"
+"less info","اطلاعات کمتر"
+"more info","اطلاعات بیشتر"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","تصویر مجوز نوعی ""اجاره"" یک تصویر برای یک استفاده خاص است. به عنوان مثال می توان به صدور مجوز برای یک تصویر برای جلد کتاب، تصویرسازی برای یک مقاله مجله، یا استفاده از یک تصویر در یک دفترچه بشارتی اشاره کرد."
+"License Image","تصویر مجوز"
+"Download - price based on use.","دانلود - قیمت بر اساس استفاده."
+Close,نزدیک
+"License Pricing Calculator","ماشین حساب قیمت گذاری مجوز"
+"Select options from the drop down menu to calculate a price to use this image.","گزینه ها را از منوی کشویی انتخاب کنید تا قیمت استفاده از این تصویر را محاسبه کنید."
+"Choose Category","دسته را انتخاب کنید"
+"Choose a category to see the specific usages available.","دسته ای را انتخاب کنید تا کاربردهای خاص موجود را ببینید."
+"Previous Usage","استفاده قبلی"
+"Choose a previous calculation from your order history.","یک محاسبه قبلی را از تاریخچه سفارش خود انتخاب کنید."
+"Specific Usage","کاربرد خاص"
+"Choose the usage which best describes how you intend to use the image.","استفاده ای را انتخاب کنید که به بهترین وجه نحوه استفاده از تصویر را توصیف می کند."
+"Go to <a href=""%1"">My Downloadable Products</a>","به <a href=""٪1"">محصولات قابل دانلود من</a> بروید"
+"Incl. Tax","شامل مالیات"
+"Total Incl. Tax","کل شامل مالیات"
+"Excl. Tax","بدون مالیات"
+Total,مجموع
+"Downloadable Products","محصولات قابل دانلود"
+"Order #","سفارش #"
+Date,تاریخ
+Status,وضعیت
+"Remaining Downloads","دانلودهای باقیمانده"
+"View Order","مشاهده سفارش"
+"Start Download","دانلود را شروع کنید"
+"You have not purchased any downloadable products yet.","شما هنوز هیچ محصول قابل دانلود خریداری نکرده اید."
+SKU,Sku
+download,دانلود
+"Gift Message","پیام هدیه"
+From:,از:
+To:,به:
+Message:,پیام:
+"Product Name","نام محصول"
+Qty,تعداد
+Subtotal,"جمع فرعی"
+"Discount Amount","مقدار تخفیف"
+"Row Total","مجموع ردیف"
+"Qty Invoiced","تعداد فاکتور"
+Ordered,دستور
+Shipped,حمل
+Canceled,لغو
+Refunded,مسترد
+"Add Bulk Products","محصولات انبوه را اضافه کنید"
+Calculator,"ماشین حساب"
+"DevStone Extensions","افزونه های DevStone"
+"Usage Calculator","ماشین حساب استفاده"
+General,عمومی
+"Custom Category","دسته بندی سفارشی"
+"select the custom category","دسته بندی سفارشی را انتخاب کنید"
+"This field is going to be used for Custom License","این فیلد قرار است برای مجوز سفارشی استفاده شود"
+"Category Form","فرم دسته بندی"
+"Main Information","اطلاعات اصلی"
+"Add New Category","افزودن دسته بندی جدید"
+"Delete items","حذف موارد"
+"Are you sure you wan't to delete selected items?","آیا مطمئن هستید که نمی خواهید موارد انتخاب شده را حذف کنید؟"
+Terms,شرایط
+"Size Form","فرم اندازه"
+Active,فعال
+Inactive,"غیر فعال"
+"Add New Size","اضافه کردن اندازه جدید"
+Code,کد
+"Max Width","حداکثر عرض"
+"Max Height","حداکثر ارتفاع"
+"Usage Form","فرم استفاده"
+"Can be free","می تواند رایگان باشد"
+No,نه
+Yes,بله
+"Add future customer email","ایمیل مشتری آینده را اضافه کنید"
+"Add Email","اضافه کردن ایمیل"
+"Add New Usage","افزودن کاربرد جدید"

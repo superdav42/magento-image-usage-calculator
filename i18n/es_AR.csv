@@ -93,6 +93,7 @@ Price,Precio
 "Price Type","Tipo de precio"
 "Image Size","Tamaño de la imagen"
 Edit,Editar
+"Only Custom Usages are supported","Sólo se admiten usos personalizados"
 "We offer important volume <b>licensing discounts</b>.","Ofrecemos importantes <b>descuentos</b> por volumen de <b>licencias</b>."
 "Have questions? Call %1 and ask for custom quote.","¿Tiene alguna duda? Llame a %1 y solicite un presupuesto personalizado."
 "We will work with your budget.","Nos ajustamos a su presupuesto."
@@ -146,6 +147,7 @@ Ordered,Encargado
 Shipped,Enviado
 Canceled,Cancelado
 Refunded,Reembolsado
+"Add Bulk Products","Añadir productos a granel"
 Calculator,Calculadora
 "DevStone Extensions","Extensiones DevStone"
 "Usage Calculator","Calculadora de uso"

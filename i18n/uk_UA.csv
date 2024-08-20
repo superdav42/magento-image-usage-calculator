@@ -1,0 +1,177 @@
+Back,Назад
+Delete,Видалити
+"Are you sure you want to do this?","Ви впевнені, що хочете це зробити?"
+"Save and Continue Edit","Зберегти та продовжити редагування"
+Save,Зберегти
+ID,ІДЕНТИФІКАТОР
+Email,"Електронна пошта"
+Name,Ім'я
+Company,Компанія
+Conditions,Умови
+"Apply the rule only if the following conditions are met (leave blank for all products).","Застосовуйте правило, тільки якщо виконуються наступні умови (залиште порожнім для всіх продуктів)."
+"Add Custom License","Додати користувацьку ліцензію"
+"-- Please Select --","-- Будь ласка, виберіть --"
+"Unable to fetch previous categories.","Не вдається отримати попередні категорії."
+AM,AM
+PM,ПРЕМ'ЄР-МІНІСТР
+None,Ні
+"You deleted the record.","Ви видалили запис."
+"Record does not exist.","Запис не існує."
+"This record no longer exists.","Цей запис більше не існує."
+"Category Edit","Редагування категорії"
+Category,Категорія
+"Please correct the data sent.","Будь ласка, виправте надіслані дані."
+"There was an error saving the data: ","Виникла помилка при збереженні даних: "
+"A total of %1 record(s) have been deleted.","Всього було видалено %1 записів."
+"You saved this record.","Ви зберегли цей запис."
+"Something went wrong while saving the record.","Під час збереження запису щось пішло не так."
+"Category Identifier","Ідентифікатор категорії"
+"To apply changes you should fill in required ""%1"" field","Для застосування змін необхідно заповнити обов'язкове поле ""%1"""
+"Size Edit","Редагування розміру"
+Size,Розмір
+"Size Identifier","Ідентифікатор розміру"
+"Usage Edit","Редагування використання"
+Usage,Використання
+"Usage Identifier","Ідентифікатор використання"
+"Could not save the category: %1","Не вдалося зберегти категорію: %1"
+"Category with id ""%1"" does not exist.","Категорія з ідентифікатором ""%1"" не існує."
+"Could not delete the Category: %1","Не вдалося видалити категорію: %1"
+"Could not save the size: %1","Не вдалося зберегти розмір: %1"
+"Size with id ""%1"" does not exist.","Розмір з ідентифікатором ""%1"" не існує."
+"Could not delete the Size: %1","Не вдалося видалити Розмір: %1"
+"The option type to get group instance is incorrect.","Тип опції для отримання екземпляра групи вказано невірно."
+"Select type options required values rows.","Виберіть опції типу необхідних рядків значень."
+"usage_id should be specified","має бути вказано usage_id"
+"Could not remove custom option","Не вдалося видалити користувацьку опцію"
+"Please specify date required option(s).","Будь ласка, вкажіть дату необхідної опції (опцій)."
+"Please specify time required option(s).","Будь ласка, вкажіть необхідний час."
+"Please specify product's required option(s).","Будь ласка, вкажіть необхідну(і) опцію(ї) товару."
+"The option instance type in options group is incorrect.","Тип екземпляра опції у групі опцій вказано невірно."
+"The product instance type in options group is incorrect.","Тип екземпляра товару в групі опцій вказано невірно."
+"The configuration item option instance in options group is incorrect.","Екземпляр опції елемента конфігурації у групі опцій вказано невірно."
+"The configuration item instance in options group is incorrect.","Екземпляр елемента конфігурації у групі параметрів вказано невірно."
+"The BuyRequest instance in options group is incorrect.","Екземпляр BuyRequest у групі опцій є некоректним."
+"We can't add the product to the cart because of an option validation issue.","Ми не можемо додати товар до кошика через проблему з валідацією опції."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 не розширює \Magento\Catalog\Model\Product\Option\Type\DefaultType"
+"The file options format is not valid.","Формат параметрів файлу не є правильним."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Файл '%1' для '%2' має невірне розширення."
+"The maximum allowed image size for '%1' is %2x%3 px.","Максимально допустимий розмір зображення для '%1' - %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Завантажений вами файл '%1' більший за %2 мегабайти, дозволених нашим сервером."
+"The file '%1' is empty. Please choose another one","Файл '%1' порожній. Будь ласка, виберіть інший"
+"The file '%1' is invalid. Please choose another one","Файл '%1' є недійсним. Будь ласка, виберіть інший"
+"File '%1' is not an image.","Файл '%1' не є зображенням."
+"Validation failed. Required options were not filled or the file was not uploaded.","Валідація не пройшла. Не заповнені необхідні опції або не завантажено файл."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Розмір завантаженого вами файлу перевищує %1 мегабайт, дозволений сервером"
+"Option required.","Потрібен вибір."
+"The file is empty. Please choose another one","Файл порожній. Будь ласка, виберіть інший"
+"Some of the selected item options are not currently available.","Деякі з вибраних опцій наразі недоступні."
+"Could not save the usageCustomer: %1","Не вдалося зберегти використанняCustomer: %1"
+"UsageCustomer with id ""%1"" does not exist.","UsageCustomer з ідентифікатором ""%1"" не існує."
+"Could not delete the UsageCustomer: %1","Не вдалося видалити UsageCustomer: %1"
+"Could not save the usage: %1","Не вдалося зберегти використання: %1"
+"Usage with id ""%1"" does not exist.","Використання з ідентифікатором ""%1"" не існує."
+"Could not delete the Usage: %1","Не вдалося видалити використання: %1"
+"Unable to attach licenses to customer %s","Не вдається прикріпити ліцензії до клієнтів %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Ви не можете додати цей товар до кошика, оскільки ця
+                                користувацька ліцензія може бути використана лише %1 раз(и)"
+"Max Usage","Максимальне використання"
+"Usage Options","Варіанти використання"
+Preview.,"Попередній перегляд."
+"Usage options provide more details about how an image will be used.","Параметри використання надають більш детальну інформацію про те, як буде використано зображення."
+"Add Option","Додати опцію"
+"New Option","Нова опція"
+"Option Title","Назва опції"
+"Help Text","Текст довідки"
+"Add Value","Додайте цінності"
+Title,Назва
+"Option Type","Тип опції"
+"-- Please select --","-- Будь ласка, виберіть --"
+Required,Потрібно
+Price,Ціна
+"Price Type","Тип ціни"
+"Image Size","Розмір зображення"
+Edit,Редагувати
+"Only Custom Usages are supported","Підтримуються лише користувацькі використання"
+"We offer important volume <b>licensing discounts</b>.","Ми пропонуємо суттєві <b>знижки на ліцензування</b> великих обсягів."
+"Have questions? Call %1 and ask for custom quote.","Маєте запитання? Телефонуйте за номером %1 і запитуйте індивідуальну пропозицію."
+"We will work with your budget.","Ми будемо працювати з вашим бюджетом."
+Availability,Доступність
+"In stock","В наявності"
+"Out of stock","Немає в наявності"
+Change,Зміна
+"Compatible file extensions to upload","Сумісні розширення файлів для завантаження"
+"Maximum image width","Максимальна ширина зображення"
+"Maximum image height","Максимальна висота зображення"
+"less info","менше інформації"
+"more info","більше інформації"
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Ліцензійне зображення - це вид ""оренди"" зображення для конкретного використання; приклади включають ліцензування зображення для обкладинки книги, ілюстрації для журнальної статті або використання зображення в євангелізаційній листівці."
+"License Image","Зображення ліцензії"
+"Download - price based on use.","Завантаження - ціна залежить від використання."
+Close,Закрити
+"License Pricing Calculator","Калькулятор вартості ліцензії"
+"Select options from the drop down menu to calculate a price to use this image.","Виберіть опції з випадаючого меню, щоб розрахувати вартість використання цього зображення."
+"Choose Category","Виберіть категорію"
+"Choose a category to see the specific usages available.","Виберіть категорію, щоб переглянути конкретні варіанти використання."
+"Previous Usage","Попереднє використання"
+"Choose a previous calculation from your order history.","Виберіть попередній розрахунок з історії замовлень."
+"Specific Usage","Специфічне використання"
+"Choose the usage which best describes how you intend to use the image.","Виберіть варіант використання, який найкраще описує те, як ви збираєтеся використовувати зображення."
+"Go to <a href=""%1"">My Downloadable Products</a>","Перейдіть до розділу <a href=""%1"">Мої продукти для завантаження</a>"
+"Incl. Tax","Вкл. податок"
+"Total Incl. Tax","Всього з урахуванням податку"
+"Excl. Tax","Без урахування податків"
+Total,Всього
+"Downloadable Products","Продукти для завантаження"
+"Order #","Номер замовлення"
+Date,Дата
+Status,Статус
+"Remaining Downloads","Решта завантажень"
+"View Order","Переглянути замовлення"
+"Start Download","Почати завантаження"
+"You have not purchased any downloadable products yet.","Ви ще не придбали жодного продукту для завантаження."
+SKU,SKU
+download,завантажити
+"Gift Message","Подарункове повідомлення"
+From:,Звідки?
+To:,До:
+Message:,Повідомлення:
+"Product Name","Назва продукту"
+Qty,Кількість
+Subtotal,"Проміжний підсумок"
+"Discount Amount","Сума знижки"
+"Row Total","Рядок Всього"
+"Qty Invoiced","Кількість виставлених рахунків"
+Ordered,Замовив
+Shipped,Відправлено
+Canceled,Скасовано
+Refunded,Відшкодовано
+"Add Bulk Products","Додати сипучі продукти"
+Calculator,Калькулятор
+"DevStone Extensions","Розширення DevStone"
+"Usage Calculator","Калькулятор використання"
+General,Генерал
+"Custom Category","Користувацька категорія"
+"select the custom category","виберіть користувацьку категорію"
+"This field is going to be used for Custom License","Це поле буде використовуватися для індивідуальної ліцензії"
+"Category Form","Форма категорії"
+"Main Information","Основна інформація"
+"Add New Category","Додати нову категорію"
+"Delete items","Видалення елементів"
+"Are you sure you wan't to delete selected items?","Ви впевнені, що не хочете видалити вибрані елементи?"
+Terms,Умови
+"Size Form","Розмірна форма"
+Active,Активний
+Inactive,Неактивний
+"Add New Size","Додати новий розмір"
+Code,Код
+"Max Width","Максимальна ширина"
+"Max Height","Максимальна висота"
+"Usage Form","Форма використання"
+"Can be free","Може бути безкоштовним"
+No,Ні
+Yes,Так
+"Add future customer email","Додайте електронну пошту майбутнього клієнта"
+"Add Email","Додати електронну пошту"
+"Add New Usage","Додати нове використання"

@@ -93,6 +93,7 @@ Price,価格
 "Price Type",価格タイプ
 "Image Size",画像サイズ
 Edit,編集
+"Only Custom Usages are supported",カスタム使用法のみサポート
 "We offer important volume <b>licensing discounts</b>.",当社は、重要なボリューム<b>ライセンス割引を</b>提供しています。
 "Have questions? Call %1 and ask for custom quote.",ご質問がありますか？1までお電話ください。
 "We will work with your budget.",ご予算に応じて対応いたします。
@@ -146,6 +147,7 @@ Ordered,注文済み
 Shipped,出荷済み
 Canceled,キャンセル
 Refunded,払い戻し
+"Add Bulk Products",バルク製品の追加
 Calculator,電卓
 "DevStone Extensions",DevStoneエクステンション
 "Usage Calculator",利用計算機

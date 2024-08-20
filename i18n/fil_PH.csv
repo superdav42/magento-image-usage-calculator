@@ -1,0 +1,177 @@
+Back,Takaisin
+Delete,Poista
+"Are you sure you want to do this?","Oletko varma, että haluat tehdä tämän?"
+"Save and Continue Edit","Tallenna ja jatka Muokkaa"
+Save,Tallenna
+ID,ID
+Email,Sähköposti
+Name,Nimi
+Company,Yritys
+Conditions,Ehdot
+"Apply the rule only if the following conditions are met (leave blank for all products).","Sovelletaan sääntöä vain, jos seuraavat ehdot täyttyvät (jätä tyhjäksi kaikkien tuotteiden osalta)."
+"Add Custom License","Lisää mukautettu lisenssi"
+"-- Please Select --","-- Valitse --"
+"Unable to fetch previous categories.","Edellisiä kategorioita ei pystytä hakemaan."
+AM,AM
+PM,PM
+None,"Ei ole"
+"You deleted the record.","Poistit tietueen."
+"Record does not exist.","Tietuetta ei ole olemassa."
+"This record no longer exists.","Tätä tietuetta ei enää ole olemassa."
+"Category Edit","Kategoria Muokkaa"
+Category,Luokka
+"Please correct the data sent.","Korjatkaa lähetetyt tiedot."
+"There was an error saving the data: ","Tietojen tallentamisessa tapahtui virhe: "
+"A total of %1 record(s) have been deleted.","Yhteensä %1 tietuetta on poistettu."
+"You saved this record.","Tallensit tämän tietueen."
+"Something went wrong while saving the record.","Jokin meni pieleen tallennettaessa tietuetta."
+"Category Identifier","Luokan tunniste"
+"To apply changes you should fill in required ""%1"" field","Jos haluat soveltaa muutoksia, sinun on täytettävä vaadittu ""%1""-kenttä"
+"Size Edit","Koko Muokkaa"
+Size,Koko
+"Size Identifier",Kokotunniste
+"Usage Edit","Käyttö Muokkaa"
+Usage,Käyttö
+"Usage Identifier","Käytön tunniste"
+"Could not save the category: %1","Kategoriaa ei voitu tallentaa: %1"
+"Category with id ""%1"" does not exist.","Kategoriaa tunnuksella ""%1"" ei ole olemassa."
+"Could not delete the Category: %1","Kategoriaa: %1 ei voitu poistaa"
+"Could not save the size: %1","Kokoa ei voitu tallentaa: %1"
+"Size with id ""%1"" does not exist.","Kokoa tunnuksella ""%1"" ei ole olemassa."
+"Could not delete the Size: %1","Kokoa ei voitu poistaa: %1"
+"The option type to get group instance is incorrect.","Ryhmäinstanssin saamiseksi valittu asetustyyppi on väärä."
+"Select type options required values rows.","Valitse tyyppivaihtoehdot vaaditut arvot rivit."
+"usage_id should be specified","usage_id olisi määriteltävä"
+"Could not remove custom option","Mukautettua vaihtoehtoa ei voitu poistaa"
+"Please specify date required option(s).","Ilmoita päivämäärä, jonka haluatte valita."
+"Please specify time required option(s).","Määritä haluamasi aika vaihtoehto(t)."
+"Please specify product's required option(s).","Täsmennä tuotteen tarvitsema(t) lisävaruste(et)."
+"The option instance type in options group is incorrect.","Vaihtoehtojen ryhmässä olevan vaihtoehdon tyyppi on virheellinen."
+"The product instance type in options group is incorrect.","Vaihtoehtoryhmän tuotekappaleen tyyppi on virheellinen."
+"The configuration item option instance in options group is incorrect.","Määrityskohteen vaihtoehto-instanssi options-ryhmässä on virheellinen."
+"The configuration item instance in options group is incorrect.","Määrityskohteen instanssi asetusten ryhmässä on virheellinen."
+"The BuyRequest instance in options group is incorrect.","Vaihtoehtoryhmän BuyRequest-instanssi on virheellinen."
+"We can't add the product to the cart because of an option validation issue.","Emme voi lisätä tuotetta ostoskoriin, koska vaihtoehdon validointi on virheellinen."
+"%1 doesn't extends \Magento\Catalog\Model\Product\Option\Type\DefaultType","%1 ei sisällä \Magento\Catalog\Model\Product\Option\Type\DefaultType-tyyppiä"
+"The file options format is not valid.","Tiedostovaihtoehtojen muoto ei ole kelvollinen."
+px.,px.
+"The file '%1' for '%2' has an invalid extension.","Tiedostolla '%1' for '%2' on virheellinen tiedostopääte."
+"The maximum allowed image size for '%1' is %2x%3 px.","Kuvan %1 suurin sallittu koko on %2x%3 px."
+"The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.","Lataamasi tiedosto '%1' on suurempi kuin palvelimemme sallima %2 megatavua."
+"The file '%1' is empty. Please choose another one","Tiedosto '%1' on tyhjä. Valitse toinen tiedosto"
+"The file '%1' is invalid. Please choose another one","Tiedosto '%1' on virheellinen. Valitse toinen tiedosto"
+"File '%1' is not an image.","Tiedosto '%1' ei ole kuva."
+"Validation failed. Required options were not filled or the file was not uploaded.","Validointi epäonnistui. Vaadittuja vaihtoehtoja ei täytetty tai tiedostoa ei ladattu."
+"The file you uploaded is larger than %1 Megabytes allowed by server","Lataamasi tiedosto on suurempi kuin palvelimen sallima %1 megatavua"
+"Option required.","Vaihtoehto vaaditaan."
+"The file is empty. Please choose another one","Tiedosto on tyhjä. Valitse toinen tiedosto"
+"Some of the selected item options are not currently available.","Jotkin valitut kohdevaihtoehdot eivät ole tällä hetkellä saatavilla."
+"Could not save the usageCustomer: %1","Käyttöasiakasta ei voitu tallentaa: %1"
+"UsageCustomer with id ""%1"" does not exist.","KäyttöAsiakasta tunnuksella ""%1"" ei ole olemassa."
+"Could not delete the UsageCustomer: %1","Käyttöasiakasta: %1 ei voitu poistaa"
+"Could not save the usage: %1","Käyttöä ei voitu tallentaa: %1"
+"Usage with id ""%1"" does not exist.","Käyttöä tunnuksella ""%1"" ei ole olemassa."
+"Could not delete the Usage: %1","Käyttöä ei voitu poistaa: %1"
+"Unable to attach licenses to customer %s","Lisenssejä ei pystytä liittämään asiakkaaseen %s"
+"You cannot add this item to your cart because this
+                                custom license can only be used %1 time(s)","Et voi lisätä tätä tuotetta ostoskoriin, koska se on
+                                mukautettua lisenssiä voidaan käyttää vain %1 kertaa(t)"
+"Max Usage",Maksimikäyttö
+"Usage Options",Käyttöasetukset
+Preview.,Esikatselu.
+"Usage options provide more details about how an image will be used.","Käyttöasetukset antavat lisätietoja siitä, miten kuvaa käytetään."
+"Add Option","Lisää vaihtoehto"
+"New Option","Uusi vaihtoehto"
+"Option Title","Vaihtoehdon nimi"
+"Help Text","Ohjeen teksti"
+"Add Value","Lisää arvoa"
+Title,Otsikko
+"Option Type","Vaihtoehto Tyyppi"
+"-- Please select --","-- Valitse --"
+Required,Vaadittu
+Price,Hinta
+"Price Type",Hintatyyppi
+"Image Size","Kuvan koko"
+Edit,Muokkaa
+"Only Custom Usages are supported","Vain mukautettuja käyttötapoja tuetaan"
+"We offer important volume <b>licensing discounts</b>.","Tarjoamme merkittäviä <b>volyymilisensointialennuksia</b>."
+"Have questions? Call %1 and ask for custom quote.","Onko kysyttävää? Soita %1 ja pyydä tarjous."
+"We will work with your budget.","Työskentelemme budjettisi mukaan."
+Availability,Saatavuus
+"In stock",Varastossa
+"Out of stock","Ei varastossa"
+Change,Muuta
+"Compatible file extensions to upload","Yhteensopivat tiedostopäätteet ladattavaksi"
+"Maximum image width","Kuvan enimmäisleveys"
+"Maximum image height","Kuvan enimmäiskorkeus"
+"less info","vähemmän tietoa"
+"more info",lisätietoja
+"License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.","Lisenssikuva on eräänlainen kuvan ""vuokraaminen"" tiettyä käyttötarkoitusta varten; esimerkkeinä voidaan mainita kuvan lisensointi kirjan kanteen, kuvitus lehtiartikkeliin tai kuvan käyttö evankelioimiseen tarkoitetussa esitteessä."
+"License Image",Lisenssikuva
+"Download - price based on use.","Lataa - hinta perustuu käyttöön."
+Close,Sulje
+"License Pricing Calculator","Lisenssin hinnoittelulaskuri"
+"Select options from the drop down menu to calculate a price to use this image.","Valitse vaihtoehdot pudotusvalikosta laskeaksesi hinnan tämän kuvan käytöstä."
+"Choose Category","Valitse luokka"
+"Choose a category to see the specific usages available.","Valitse luokka nähdäksesi käytettävissä olevat erityiskäytöt."
+"Previous Usage","Edellinen käyttö"
+"Choose a previous calculation from your order history.","Valitse edellinen laskelma tilaushistoriastasi."
+"Specific Usage","Erityinen käyttö"
+"Choose the usage which best describes how you intend to use the image.","Valitse käyttötapa, joka kuvaa parhaiten sitä, miten aiot käyttää kuvaa."
+"Go to <a href=""%1"">My Downloadable Products</a>","Siirry <a href=""%1"">ladattaviin tuotteisiini</a>"
+"Incl. Tax","Sis. vero"
+"Total Incl. Tax","Yhteensä veroineen"
+"Excl. Tax","Ilman veroja"
+Total,Yhteensä
+"Downloadable Products","Ladattavat tuotteet"
+"Order #","Tilaa #"
+Date,Päivämäärä
+Status,Tila
+"Remaining Downloads","Jäljellä olevat lataukset"
+"View Order","Näytä tilaus"
+"Start Download","Aloita lataaminen"
+"You have not purchased any downloadable products yet.","Et ole vielä ostanut ladattavia tuotteita."
+SKU,SKU
+download,lataa
+"Gift Message",Lahjaviesti
+From:,From:
+To:,To:
+Message:,Viesti:
+"Product Name","Tuotteen nimi"
+Qty,Määrä
+Subtotal,Yhteensä
+"Discount Amount","Alennuksen määrä"
+"Row Total","Rivi Yhteensä"
+"Qty Invoiced","Laskutettu määrä"
+Ordered,Tilattu
+Shipped,Lähetetty
+Canceled,Peruutettu
+Refunded,Palautettu
+"Add Bulk Products","Lisää irtotuotteita"
+Calculator,Laskin
+"DevStone Extensions",DevStone-laajennukset
+"Usage Calculator",Käyttölaskuri
+General,Yleistä
+"Custom Category","Mukautettu luokka"
+"select the custom category","valitse mukautettu luokka"
+"This field is going to be used for Custom License","Tätä kenttää käytetään mukautettua lisenssiä varten"
+"Category Form","Luokka Lomake"
+"Main Information","Tärkeimmät tiedot"
+"Add New Category","Lisää uusi luokka"
+"Delete items","Poista kohteita"
+"Are you sure you wan't to delete selected items?","Oletko varma, ettet halua poistaa valittuja kohteita?"
+Terms,Ehdot
+"Size Form","Koko Lomake"
+Active,Aktiivinen
+Inactive,Inaktiivinen
+"Add New Size","Lisää uusi koko"
+Code,Koodi
+"Max Width","Max leveys"
+"Max Height","Max korkeus"
+"Usage Form",Käyttölomake
+"Can be free","Voi olla vapaa"
+No,Ei
+Yes,Kyllä
+"Add future customer email","Lisää tulevan asiakkaan sähköpostiosoite"
+"Add Email","Lisää sähköpostiosoite"
+"Add New Usage","Lisää uusi käyttö"

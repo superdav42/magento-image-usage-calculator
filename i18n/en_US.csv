@@ -93,6 +93,7 @@ Price,Price
 "Price Type","Price Type"
 "Image Size","Image Size"
 Edit,Edit
+"Only Custom Usages are supported","Only Custom Usages are supported"
 "We offer important volume <b>licensing discounts</b>.","We offer important volume <b>licensing discounts</b>."
 "Have questions? Call %1 and ask for custom quote.","Have questions? Call %1 and ask for custom quote."
 "We will work with your budget.","We will work with your budget."
@@ -146,6 +147,7 @@ Ordered,Ordered
 Shipped,Shipped
 Canceled,Canceled
 Refunded,Refunded
+"Add Bulk Products","Add Bulk Products"
 Calculator,Calculator
 "DevStone Extensions","DevStone Extensions"
 "Usage Calculator","Usage Calculator"
