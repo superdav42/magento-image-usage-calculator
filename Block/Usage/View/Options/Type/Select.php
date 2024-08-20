@@ -57,7 +57,7 @@ class Select extends \DevStone\UsageCalculator\Block\Usage\View\Options\Abstract
                 $select->addOption(
                     $_value->getOptionTypeId(),
                     $_value->getTitle(),
-                    ['price' => $this->pricingHelper->currencyByStore($_value->getPrice(), $store, false)]
+                    ['price' => $_value->getPrice()]
                 );
             }
             if ($_option->getType() == \Magento\Catalog\Api\Data\ProductCustomOptionInterface::OPTION_TYPE_MULTIPLE) {
@@ -150,7 +150,7 @@ class Select extends \DevStone\UsageCalculator\Block\Usage\View\Options\Abstract
                     $checked .
                     ' data-selector="' . $dataSelector . '"' .
                     ' price="' .
-                    $this->pricingHelper->currencyByStore($_value->getPrice(true), $store, false) .
+                    $_value->getPrice(true) .
                     '" />' .
                     '<label class="label admin__field-label" for="options_' .
                     $_option->getId() .
