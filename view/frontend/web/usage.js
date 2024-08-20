@@ -193,10 +193,10 @@ define([
                 finalPrice = 0;
                 terms = "";
             }
-
-            if (95 !== ((finalPrice * 100) % 100)) {
-                finalPrice = Math.round(finalPrice);
-            }
+            // This is tricky with multiple currencies, so I am disabling this for now.
+            // if (95 !== ((finalPrice * 100) % 100)) {
+            //     finalPrice = Math.round(finalPrice);
+            // }
 
             $(self.options.priceHolderSelector).trigger('updatePrice', {
                 'prices': {
