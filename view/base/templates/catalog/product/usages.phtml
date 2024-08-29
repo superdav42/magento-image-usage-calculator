@@ -1,0 +1,26 @@
+<?php /* @var $block \DevStone\UsageCalculator\Block\Catalog\Product\Usage */ ?>
+<?php foreach ($block->getCategories() as $category):  ?>
+	<?php $usages = $block->getUsages($category) ?>
+
+    <div class="category-container field" style="display:none;" id="category_container_<?= $category->getId() ?>">
+        <label class="label" for="usage_<?= $category->getId() ?>_usages">
+            <span><?= __('Specific Usage') ?>:</span> <a href="#" data-less="<?= __('less info') ?>" tabindex="-1"><?= __('more info') ?></a>
+        </label>
+        <div class="help-text">
+			<?= __('Choose the usage which best describes how you intend to use the image.') ?>
+        </div>
+        <div class="control">
+			<?= $block->getUsagesSelectHtml($usages, $category); ?>
+        </div>
+    </div>
+
+	<?php foreach ($usages as $usage): ?>
+        <div class="usage-container" style="display:none;" id="usage_container_<?= $usage->getId() ?>">
+			<?php foreach ($usage->getOptions() as $_option): ?>
+
+				<?= $block->getOptionHtml($_option) ?>
+
+			<?php endforeach; ?>
+        </div>
+	<?php endforeach; ?>
+<?php endforeach; ?>
