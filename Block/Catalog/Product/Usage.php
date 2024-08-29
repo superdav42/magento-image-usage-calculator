@@ -205,11 +205,19 @@ class Usage extends AbstractProduct
 
     public function isCustomerLoggedIn(): bool
     {
+        $current_customer_id = $this->_coreRegistry->registry('current_customer_id');
+        if ($current_customer_id) {
+            return true;
+        }
         return $this->session->isLoggedIn();
     }
 
     public function getCustomerId(): ?int
     {
+        $current_customer_id = $this->_coreRegistry->registry('current_customer_id');
+        if ($current_customer_id) {
+            return $current_customer_id;
+        }
         return $this->session->getCustomerId();
     }
 
@@ -367,7 +375,20 @@ class Usage extends AbstractProduct
             ];
         }
 
-        return $this->serializer->serialize(['links' => $linksConfig]);
+        $currentProduct = $this->getProduct();
+        $config = [
+            "categorySelectElement" => "#usage_category",
+            "allElements" => "#usages_all",
+            'links' => $linksConfig
+        ];
+
+        if ($currentProduct->hasPreconfiguredValues()) {
+            $config['selectedOptions'] = $currentProduct->getPreconfiguredValues()->getData('options');
+            $config['selectedCategory'] = $currentProduct->getPreconfiguredValues()->getData('usage_category');
+            $config['selectedUsage'] = $currentProduct->getPreconfiguredValues()->getData('usage_id');
+        }
+
+        return $this->serializer->serialize($config);
     }
 
     /**

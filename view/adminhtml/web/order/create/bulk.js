@@ -162,5 +162,16 @@
          jQuery.async('#order-items .admin__page-section-title', (function () {
              order.itemsArea.addControlButton(searchButton);
          }));
+
+         var cartButtonId = 'add_cart_products',
+             cartButton = new ControlButton(jQuery.mage.__('Add All To Cart'), searchButtonId);
+         cartButton.onClick = function () {
+             jQuery('#order-items_grid .col-actions select.admin__control-select').val('cart');
+             order.itemsUpdate();
+         }
+         jQuery.async('#order-items .order-discounts', (function () {
+             order.itemsArea.addControlButton(cartButton);
+         }));
+
      }));
 });

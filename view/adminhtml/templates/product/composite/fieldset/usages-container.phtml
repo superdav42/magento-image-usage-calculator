@@ -12,6 +12,51 @@
             <span>Configure Usage</span>
         </legend><br />
         <div id="usages-container" class="usages-container field">
+
+        <div class="usages-container-inner">
+
+            <legend class="legend usages-title"><?= __('License Pricing Calculator') ?></legend>
+            <p><?= __('Select options from the drop down menu to calculate a price to use this image.') ?></p>
+
+            <div class="control" id="downloadable-usages-list"
+                 data-mage-init='{"usage":{
+             "categorySelectElement":"#usage_category",
+             "allElements":"#usages_all"}
+         }'
+                 data-container-for="downloadable-usages">
+                <div class="field active">
+                    <label class="label" for="usage_category">
+                        <span><?= __('Choose Category') ?>:</span> <a href="#" data-less="<?= __('less info') ?>" tabindex="-1"><?= __('more info') ?></a>
+                    </label>
+                    <div class="help-text">
+                        <?= __('Choose a category to see the specific usages available.') ?>
+                    </div>
+                    <div class="control">
+                        <?= $block->getCategoriesSelectHtml() ?>
+                    </div>
+                </div>
+                <?php if(count( $block->getPreviousCategories() ) ): ?>
+                    <div class="category-container field" style="display:none;" id="category_container_previous">
+                        <label class="label" for="usage_previous_usages">
+                            <span><?= __('Previous Usage') ?>:</span> <a href="#" data-less="<?= __('less info') ?>" tabindex="-1"><?= __('more info') ?></a>
+                        </label>
+                        <div class="help-text">
+                            <?= __('Choose a previous calculation from your order history.') ?>
+                        </div>
+                        <div class="control">
+                            <?= $block->getPreviousSelectHtml() ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?= $block->getChildHtml('all.usages'); ?>
+                <?= $block->getChildHtml('custom.usages'); ?>
+            </div>
+            <span id="usages-advice-container"></span>
+        </div>
+        </div>
+
+<?php /*
+        <div id="usages-container" class="usages-container field">
             <div class="usages-container-inner">
                 <div>
                     <?php
@@ -21,7 +66,7 @@
                     <input type="hidden" name="usage_category" value="<?= $category->getId() ?>" />
                     <div class="category-container field"  id="category_container_">
                         <div class="help-text">
-                            <?= __('Only Custom Usages are supported') ?>
+
                         </div>
                         <div class="control">
                             <?= $block->getUsagesSelectHtml($usages, $category); ?>
@@ -30,8 +75,25 @@
                 </div>
             </div>
         </div>
-
+*/
+?>
     </fieldset>
+    <?php
+$config = $block->getJsonConfig();
 
+    $scriptString = <<<script
+require([
+    "usage"
+], function(usage){
+    var config = {$config};
+    config.keepOpen = true;
+    usage(
+        config,
+        document.getElementById('downloadable-usages-list')
+    );
+});
+script;
+    ?>
+    <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
 <?php endif;?>
 

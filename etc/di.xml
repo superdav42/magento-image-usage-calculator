@@ -202,4 +202,6 @@
     <preference for="DevStone\UsageCalculator\Api\UsageCustomerRepositoryInterface" type="DevStone\UsageCalculator\Model\UsageCustomerRepository"/>
     <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomerInterface" type="DevStone\UsageCalculator\Model\UsageCustomer"/>
     <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Magento\Sales\Model\AdminOrder\Create" type="DevStone\UsageCalculator\Model\AdminOrder\Create"/>
+
 </config>
