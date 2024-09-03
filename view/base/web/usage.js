@@ -4,9 +4,10 @@
 define([
     'jquery',
     'priceBox',
+    'Chessio_Matomo/js/tracker',
     'jquery/ui',
-    'domReady!'
-], function ($, priceBox) {
+    'domReady!',
+], function ($, priceBox, trackerComponent) {
     'use strict';
     var self;
 
@@ -105,10 +106,18 @@ define([
                 $('#usage-button').toggle();
                 $('#maincontent .product-info-main .usages-more-info-call').toggle();
                 if (self.hidden) {
+                    if (location.hash.substr(0, 8) === '#license') {
+                        self.track('open', 'hash');
+                    } else {
+                        self.track('open', 'click');
+                    }
+
                     self.element.find(self.options.categorySelectElement).prop('disabled', false).val('').trigger('change');
                     $('#previously_usage_category').prop('disabled', false);
+
                     location.hash = "#license";
                 } else {
+                    self.track('close', 'click');
                     $('.usages-container-inner').find('select, input, textarea').prop('disabled', true);
                     $(self.options.priceHolderSelector + ', .product-options-bottom').hide();
                     location.hash = "";
@@ -158,7 +167,7 @@ define([
          * Reload product price with selected link price included
          * @private
          */
-        _reloadPrice: function () {
+        _reloadPrice: function (e) {
             var finalPrice = 0,
                 basePrice = 0,
                 $usage,
@@ -246,6 +255,9 @@ define([
                 $('#usages-advice-container').html(terms);
                 $(self.options.priceHolderSelector + ', .product-options-bottom').show();
             }
+            if (e && e.target && $(e.target).val()) {
+                self.track($('label[for='+e.target.id+'] span').text(), $(e.target).find('option:selected').text());
+            }
         },
 
         /**
@@ -274,6 +286,11 @@ define([
                 }
             });
             location.hash = encodeURI(hashVal);
+        },
+        track: function (action, name, currentPrice) {
+            trackerComponent.getTracker().done(function (tracker) {
+                tracker.trackEvent('License Image', action, name, currentPrice);
+            });
         }
     });
 
