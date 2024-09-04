@@ -4,10 +4,9 @@
 define([
     'jquery',
     'priceBox',
-    'Chessio_Matomo/js/tracker',
     'jquery/ui',
     'domReady!',
-], function ($, priceBox, trackerComponent) {
+], function ($, priceBox) {
     'use strict';
     var self;
 
@@ -288,9 +287,13 @@ define([
             location.hash = encodeURI(hashVal);
         },
         track: function (action, name, currentPrice) {
-            trackerComponent.getTracker().done(function (tracker) {
-                tracker.trackEvent('License Image', action, name, currentPrice);
-            });
+            if ( ! self.options.keepOpen ) {
+                requirejs(['Chessio_Matomo/js/tracker'], function (trackerComponent) {
+                    trackerComponent.getTracker().done(function (tracker) {
+                        tracker.trackEvent('License Image', action, name, currentPrice);
+                    });
+                });
+            }
         }
     });
 
