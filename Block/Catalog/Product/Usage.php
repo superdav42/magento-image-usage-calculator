@@ -62,6 +62,7 @@ class Usage extends AbstractProduct
     protected CollectionFactory $orderCollectionFactory;
     protected SortOrderBuilder $sortOrderBuilder;
     private DataHelper $config;
+    private array $previousCategories;
 
     public function __construct(
         Context                         $context,
@@ -527,6 +528,10 @@ class Usage extends AbstractProduct
      */
     public function getPreviousCategories(): array
     {
+        if (isset($this->previousCategories)) {
+            return $this->previousCategories;
+        }
+
         $previousCategories = [];
         try {
             $items = $this->checkoutSession->getQuote()->getAllVisibleItems();
@@ -544,8 +549,10 @@ class Usage extends AbstractProduct
                 $ordersCollection = $this->orderCollectionFactory->create()
                     ->addFieldToSelect('*')
                     ->addFieldToFilter('customer_id', $this->getCustomerId())
+                    ->addFieldToFilter('created_at', ['from' => '2023-05-01 00:00:00'])
                     ->setPageSize(20 - count($previousCategories))
                     ->setOrder('created_at', 'desc');
+                $tried = 0;
                 /**
                  * @var Order $order
                  * @var OrderItemInterface $item
@@ -568,10 +575,11 @@ class Usage extends AbstractProduct
                         } catch (Exception $e) {
                             // Probably usage was deleted, skip.
                             continue;
+                            $tried++;
                         }
 
-                        if (count($previousCategories) >= 10) {
-                            break;
+                        if (count($previousCategories) >= 10 || $tried > 20) {
+                            break 2;
                         }
                     }
                 }
@@ -580,7 +588,8 @@ class Usage extends AbstractProduct
             $this->_logger->error(__('Unable to fetch previous categories.'));
             $this->_logger->error($e->getMessage());
         }
-        return $previousCategories;
+        $this->previousCategories = $previousCategories;
+        return $this->previousCategories;
     }
 
     /**
