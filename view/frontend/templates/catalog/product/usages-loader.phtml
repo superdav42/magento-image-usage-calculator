@@ -2,7 +2,7 @@
 <?php if ($block->getProduct()->isSaleable() ):?>
 	<div id="usages-container" class="usages-container field" <?php if (!$block->showButton()): ?>style="margin-bottom: 0;" <?php endif; ?>>
 		<?php if ($block->showButton()): ?>
-			<button id="usage-button" class="cta-button" title="<?= __('License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.') ?>">
+			<button disabled id="usage-button" class="cta-button" title="<?= __('License Image is a type of “renting” of an image for a specific use; examples include licensing an image for the cover of a book, an illustration for a magazine article, or use of an image in an evangelistic handbill.') ?>">
 				<span class="calc-icon">&nbsp;</span>
 				<span class="button-main">
             <span><?= __('License Image') ?></span>
@@ -17,10 +17,13 @@
     require([
         'jquery'
     ], function($) {
+
+        $('#product-options-wrapper .price-box, .product-options-bottom').hide();
+
 		$('#usage-button').one('click', function(event ){
 		event.preventDefault()
      //               observer.disconnect();
-
+            $(this).prop('disabled', true);
             $.ajax({
                 method: 'GET',
                 url: '<?= $block->getBaseUrl() ?>usage/usage/ajax?id=<?= $block->getProduct()->getId() ?>',
@@ -32,9 +35,10 @@
             });
 
 
-        });
+        }).prop('disabled', false);
         if (location.hash.substr(0, 8) === '#license') {
             $('#usage-button').click();
         }
+
     });
 </script>

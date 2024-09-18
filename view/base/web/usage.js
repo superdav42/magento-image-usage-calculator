@@ -123,7 +123,7 @@ define([
                 }
 
                 self.hidden = !self.hidden;
-            });
+            }).prop('disabled', false);
             try {
                 $(self.options.priceHolderSelector).priceBox('setDefault', {
                     'basePrice': {
