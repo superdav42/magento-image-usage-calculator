@@ -4,7 +4,7 @@
 define([
     'jquery',
     'priceBox',
-    'jquery/ui',
+    'jquery-ui-modules/widget',
     'domReady!',
 ], function ($, priceBox) {
     'use strict';

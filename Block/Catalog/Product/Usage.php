@@ -575,9 +575,8 @@ class Usage extends AbstractProduct
                         } catch (Exception $e) {
                             // Probably usage was deleted, skip.
                             continue;
-                            $tried++;
                         }
-
+                        $tried++;
                         if (count($previousCategories) >= 10 || $tried > 20) {
                             break 2;
                         }
