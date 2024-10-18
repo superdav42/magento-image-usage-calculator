@@ -20,7 +20,7 @@ class ListProduct
             return $proceed($product);
         }
 
-        $priceText = 'Calculate Price';
+        $priceText = __('Calculate Price');
 
         return $priceText;
     }
