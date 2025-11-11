@@ -36,7 +36,11 @@ class Ajax extends Action implements HttpGetActionInterface
             return $resultForward;
         }
 
-        return $this->resultFactory->create(ResultFactory::TYPE_LAYOUT);
+        $result = $this->resultFactory->create(ResultFactory::TYPE_LAYOUT);
+        // Prevent caching for all page cache systems (varnish, fastly, built-in)
+        $result->setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+        
+        return $result;
     }
 
 

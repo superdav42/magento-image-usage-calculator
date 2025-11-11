@@ -3,9 +3,9 @@
     <container name="root">
         <block class="DevStone\UsageCalculator\Block\Catalog\Product\Usage" name="usage.info" as="type_image_usage" before="-" template="DevStone_UsageCalculator::catalog/product/usages-container.phtml">
             <block class="DevStone\UsageCalculator\Block\Catalog\Product\Usage" name="all.usages" template="DevStone_UsageCalculator::catalog/product/usages.phtml">
-                <arguments>
-                    <argument name="cache_lifetime" xsi:type="number">360</argument>
-                </arguments>
+<!--                <arguments>-->
+<!--                    <argument name="cache_lifetime" xsi:type="number">360</argument>-->
+<!--                </arguments>-->
 
                 <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\DefaultType" name="usage.info.options.default" as="default" template="DevStone_UsageCalculator::catalog/product/type/default.phtml"/>
                 <block class="DevStone\UsageCalculator\Block\Usage\View\Options\Type\Text" name="usage.info.options.text" as="text" template="DevStone_UsageCalculator::catalog/product/type/text.phtml"/>

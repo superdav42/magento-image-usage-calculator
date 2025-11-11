@@ -7,6 +7,8 @@ namespace DevStone\UsageCalculator\Api\Data;
 /**
  * @method getName()
  * @method getMaxUsage()
+ * @method getAdminNote()
+ * @method setAdminNote($note)
  */
 interface UsageInterface
 {

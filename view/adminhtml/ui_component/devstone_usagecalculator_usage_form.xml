@@ -113,6 +113,22 @@
                 </item>
             </argument>
         </field>
+        <field name="admin_note">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string">Admin Note (Red Alert Text)</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">main_fieldset</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="sortOrder" xsi:type="number">14</item>
+                    <item name="notice" xsi:type="string">This note will be displayed in RED TEXT below all usage options on the frontend to alert customers. Leave empty if no special notice is needed.</item>
+                </item>
+            </argument>
+        </field>
 
         <field name="price">
             <argument name="data" xsi:type="array">

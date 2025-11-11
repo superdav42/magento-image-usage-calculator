@@ -73,6 +73,15 @@ class UsageSetup extends EavSetup
                 'sort_order' => 1,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                 'group' => 'General Information',
+            ],
+            'admin_note' => [
+                'type' => 'text',
+                'label' => 'Admin Note',
+                'input' => 'textarea',
+                'required' => false,
+                'sort_order' => 35,
+                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                'group' => 'General Information',
             ]
         ];
     }

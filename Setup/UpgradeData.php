@@ -88,6 +88,23 @@ class UpgradeData implements UpgradeDataInterface
             );
         }
 
+        if (version_compare($context->getVersion(), '1.0.8') < 0) {
+            $usageSetup->addAttribute(
+                'devstone_usage',
+                'admin_note',
+                [
+                    'type' => 'text',
+                    'label' => 'Admin Note',
+                    'input' => 'textarea',
+                    'required' => false,
+                    'sort_order' => 35,
+                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                    'group' => 'General Information',
+                    'note' => 'This note will be displayed in red text below all usage options on the frontend to alert customers.'
+                ]
+            );
+        }
+
         $usageSetup->installEntities();
         $entities = $usageSetup->getDefaultEntities();
         foreach ($entities as $entityName => $entity) {

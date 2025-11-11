@@ -21,6 +21,11 @@
 				<?= $block->getOptionHtml($_option) ?>
 
 			<?php endforeach; ?>
+			<?php if ($usage->getAdminNote()): ?>
+                <div class="usage-admin-note" style="color: #ff0000; font-weight: bold; padding: 10px 0; margin: 10px 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
+                    <?= $block->escapeHtml($usage->getAdminNote()) ?>
+                </div>
+            <?php endif; ?>
         </div>
 	<?php endforeach; ?>
 <?php endforeach; ?>
