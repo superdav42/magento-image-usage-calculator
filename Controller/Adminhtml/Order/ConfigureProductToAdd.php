@@ -34,7 +34,7 @@ class ConfigureProductToAdd extends \Magento\Sales\Controller\Adminhtml\Order\Cr
         Escaper $escaper,
         PageFactory $resultPageFactory,
         ForwardFactory $resultForwardFactory,
-        StoreManagerInterface $storeManager = null
+        ?StoreManagerInterface $storeManager = null
     ) {
         parent::__construct(
             $context,
@@ -52,6 +52,7 @@ class ConfigureProductToAdd extends \Magento\Sales\Controller\Adminhtml\Order\Cr
      *
      * @return \Magento\Framework\View\Result\Layout
      */
+    #[\Override]
     public function execute()
     {
         // Prepare data

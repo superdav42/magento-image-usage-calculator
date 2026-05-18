@@ -48,53 +48,27 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Usage extends AbstractProduct
 {
-    protected Data $pricingHelper;
-    protected SerializerInterface $serializer;
-    protected SearchCriteriaBuilder $searchCriteriaBuilder;
-    protected UsageRepositoryInterface $usageRepository;
-    protected CategoryRepositoryInterface $categoryRepository;
     private array $usages;
-    protected UsageCustomerCollectionFactory $usageCustomerCollectionFactory;
-    protected Option $optionModel;
-    protected \Magento\Customer\Model\Session $session;
-    protected Session $checkoutSession;
-    protected UsageOptionCollectionFactory $usageOptionCollectionFactory;
-    protected CollectionFactory $orderCollectionFactory;
-    protected SortOrderBuilder $sortOrderBuilder;
-    private DataHelper $config;
     private array $previousCategories;
 
     public function __construct(
         Context                         $context,
-        Data                            $pricingHelper,
-        SerializerInterface             $serializer,
-        SearchCriteriaBuilder           $searchCriteriaBuilder,
-        UsageRepositoryInterface        $usageRepository,
-        CategoryRepositoryInterface     $categoryRepository,
-        Option                          $option,
-        UsageCustomerCollectionFactory  $usageCustomerCollectionFactory,
-        \Magento\Customer\Model\Session $session,
-        Session                         $checkoutSession,
-        UsageOptionCollectionFactory    $usageOptionCollection,
-        CollectionFactory               $orderCollectionFactory,
-        SortOrderBuilder                $sortOrderBuilder,
-        DataHelper                      $config,
+        protected Data                            $pricingHelper,
+        protected SerializerInterface             $serializer,
+        protected SearchCriteriaBuilder           $searchCriteriaBuilder,
+        protected UsageRepositoryInterface        $usageRepository,
+        protected CategoryRepositoryInterface     $categoryRepository,
+        protected Option                          $optionModel,
+        protected UsageCustomerCollectionFactory  $usageCustomerCollectionFactory,
+        protected \Magento\Customer\Model\Session $session,
+        protected Session                         $checkoutSession,
+        protected UsageOptionCollectionFactory    $usageOptionCollectionFactory,
+        protected CollectionFactory               $orderCollectionFactory,
+        protected SortOrderBuilder                $sortOrderBuilder,
+        private readonly DataHelper                      $config,
         array                           $data = []
     ) {
-        $this->pricingHelper = $pricingHelper;
-        $this->serializer = $serializer;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->usageRepository = $usageRepository;
-        $this->categoryRepository = $categoryRepository;
-        $this->optionModel = $option;
-        $this->usageCustomerCollectionFactory = $usageCustomerCollectionFactory;
-        $this->session = $session;
-        $this->checkoutSession = $checkoutSession;
-        $this->usageOptionCollectionFactory = $usageOptionCollection;
-        $this->orderCollectionFactory = $orderCollectionFactory;
-        $this->sortOrderBuilder = $sortOrderBuilder;
         parent::__construct($context, $data);
-        $this->config = $config;
     }
 
     public function getLinksPurchasedSeparately(): bool
@@ -572,7 +546,7 @@ class Usage extends AbstractProduct
                             )) {
                                 $previousCategories[] = $previousCategoriesByItems;
                             }
-                        } catch (Exception $e) {
+                        } catch (Exception) {
                             // Probably usage was deleted, skip.
                             continue;
                         }

@@ -11,6 +11,7 @@ class UsageCustomer extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      *
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init(

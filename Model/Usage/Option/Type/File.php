@@ -110,8 +110,8 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
         \Magento\Catalog\Model\Product\Option\UrlBuilder $urlBuilder,
         \Magento\Framework\Escaper $escaper,
         array $data = [],
-        Filesystem $filesystem = null,
-        Json $serializer = null
+        ?Filesystem $filesystem = null,
+        ?Json $serializer = null
     ) {
         $this->_itemOptionFactory = $itemOptionFactory;
         $this->_urlBuilder = $urlBuilder;
@@ -123,7 +123,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
         $this->mediaDirectory = $this->filesystem->getDirectoryWrite(DirectoryList::MEDIA);
         $this->validatorInfo = $validatorInfo;
         $this->validatorFile = $validatorFile;
-        $this->serializer = $serializer ? $serializer : ObjectManager::getInstance()->get(Json::class);
+        $this->serializer = $serializer ?: ObjectManager::getInstance()->get(Json::class);
         parent::__construct($checkoutSession, $scopeConfig, $data);
     }
 
@@ -132,6 +132,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      *
      * @return boolean
      */
+    #[\Override]
     public function isCustomizedView()
     {
         return true;
@@ -143,6 +144,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param array $optionInfo
      * @return string|void
      */
+    #[\Override]
     public function getCustomizedView($optionInfo)
     {
         try {
@@ -151,7 +153,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
             } elseif (isset($optionInfo['value'])) {
                 return $optionInfo['value'];
             }
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return $optionInfo['value'];
         }
     }
@@ -210,6 +212,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @throws \Exception
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
+    #[\Override]
     public function validateUserValue($values)
     {
         $this->_checkoutSession->setUseNotice(false);
@@ -249,16 +252,12 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
             $value = $this->validatorFile->setProduct($this->getProduct())
                 ->validate($this->_getProcessingParams(), $option);
             $this->setUserValue($value);
-        } catch (ProductException $e) {
-            switch ($this->getProcessMode()) {
-                case \Magento\Catalog\Model\Product\Type\AbstractType::PROCESS_MODE_FULL:
-                    throw new LocalizedException(__('Please specify product\'s required option(s).'));
-                    break;
-                default:
-                    $this->setUserValue(null);
-                    break;
-            }
-        } catch (\Magento\Framework\Validator\Exception $e) {
+        } catch (ProductException) {
+            match ($this->getProcessMode()) {
+                \Magento\Catalog\Model\Product\Type\AbstractType::PROCESS_MODE_FULL => throw new LocalizedException(__('Please specify product\'s required option(s).')),
+                default => $this->setUserValue(null),
+            };
+        } catch (\Magento\Framework\Validator\Exception) {
             $this->setUserValue(null);
         } catch (LocalizedException $e) {
             $this->setIsValid(false);
@@ -278,6 +277,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      *
      * @return string|null Prepared option value
      */
+    #[\Override]
     public function prepareForCart()
     {
         $option = $this->getOption();
@@ -318,6 +318,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $optionValue Prepared for cart option value
      * @return string
      */
+    #[\Override]
     public function getFormattedOptionValue($optionValue)
     {
         if ($this->_formattedOptionValue === null) {
@@ -325,12 +326,10 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
             if ($value === null) {
                 return $optionValue;
             }
-            $customOptionUrlParams = $this->getCustomOptionUrlParams()
-                ? $this->getCustomOptionUrlParams()
-                : [
-                    'id' => $this->getConfigurationItemOption()->getId(),
-                    'key' => $value['secret_key']
-                ];
+            $customOptionUrlParams = $this->getCustomOptionUrlParams() ?: [
+                'id' => $this->getConfigurationItemOption()->getId(),
+                'key' => $value['secret_key']
+            ];
 
             $value['url'] = ['route' => $this->_customOptionDownloadUrl, 'params' => $customOptionUrlParams];
 
@@ -363,7 +362,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
                 $this->_escaper->escapeHtml($title),
                 $sizes
             );
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw new LocalizedException(__('The file options format is not valid.'));
         }
     }
@@ -391,6 +390,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $optionValue Prepared for cart option value
      * @return string
      */
+    #[\Override]
     public function getPrintableOptionValue($optionValue)
     {
         return strip_tags($this->getFormattedOptionValue($optionValue));
@@ -404,6 +404,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      *
      * @deprecated 101.1.0
      */
+    #[\Override]
     public function getEditableOptionValue($optionValue)
     {
         $unserializedValue = $this->serializer->unserialize($optionValue);
@@ -428,6 +429,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      *
      * @deprecated 101.1.0
      */
+    #[\Override]
     public function parseOptionValue($optionValue, $productOptionValues)
     {
         // search quote item option Id in option value
@@ -447,6 +449,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $optionValue
      * @return string|null
      */
+    #[\Override]
     public function prepareOptionValueForRequest($optionValue)
     {
         $unserializedValue = $this->serializer->unserialize($optionValue);
@@ -484,7 +487,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
             } else {
                 $this->mediaDirectory->copyFile($quotePath, $orderPath);
             }
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return $this;
         }
         return $this;

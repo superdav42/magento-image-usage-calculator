@@ -52,6 +52,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @return $this
      * @throws LocalizedException
      */
+    #[\Override]
     public function validateUserValue($values)
     {
         parent::validateUserValue($values);
@@ -78,6 +79,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      *
      * @return string|null Prepared option value
      */
+    #[\Override]
     public function prepareForCart()
     {
         if ($this->getIsValid() && $this->getUserValue()) {
@@ -93,6 +95,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $optionValue Prepared for cart option value
      * @return string
      */
+    #[\Override]
     public function getFormattedOptionValue($optionValue)
     {
         if ($this->_formattedOptionValue === null) {
@@ -107,6 +110,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $optionValue Prepared for cart option value
      * @return string
      */
+    #[\Override]
     public function getPrintableOptionValue($optionValue)
     {
         return $this->getFormattedOptionValue($optionValue);
@@ -128,6 +132,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $optionValue Prepared for cart option value
      * @return string
      */
+    #[\Override]
     public function getEditableOptionValue($optionValue)
     {
         $option = $this->getOption();
@@ -169,6 +174,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param array $productOptionValues Values for product option
      * @return string|null
      */
+    #[\Override]
     public function parseOptionValue($optionValue, $productOptionValues)
     {
         $values = [];
@@ -195,6 +201,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $optionValue
      * @return string
      */
+    #[\Override]
     public function prepareOptionValueForRequest($optionValue)
     {
         if (!$this->_isSingleSelection()) {
@@ -210,6 +217,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param float $basePrice
      * @return float
      */
+    #[\Override]
     public function getOptionPrice($optionValue, $basePrice)
     {
         $option = $this->getOption();
@@ -256,6 +264,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $skuDelimiter Delimiter for Sku parts
      * @return string
      */
+    #[\Override]
     public function getOptionSku($optionValue, $skuDelimiter)
     {
         $option = $this->getOption();

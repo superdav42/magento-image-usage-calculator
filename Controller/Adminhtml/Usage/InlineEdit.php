@@ -47,6 +47,7 @@ class InlineEdit extends Action
     /**
      * @return \Magento\Framework\Controller\ResultInterface
      */
+    #[\Override]
     public function execute()
     {
         /** @var \Magento\Framework\Controller\Result\Json $resultJson */

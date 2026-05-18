@@ -91,41 +91,16 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
      */
     const IMPORT_OPTIONS_MODAL = 'import_options_modal';
     const CUSTOM_OPTIONS_LISTING = 'product_custom_options_listing';
-    /**#@-*/
-
-    protected LocatorInterface $locator;
-    protected StoreManagerInterface $storeManager;
-    protected ProductOptionsPrice $productOptionsPrice;
-    protected UrlInterface $urlBuilder;
-    protected ArrayManager $arrayManager;
     protected array $meta = [];
-    protected CurrencyInterface $localeCurrency;
-    protected UsageCustomOptionRepositoryInterface $optionRepository;
-    protected SizesOptionsProvider $sizesOptionsProvider;
 
-    public function __construct(
-        LocatorInterface $locator,
-        StoreManagerInterface $storeManager,
-        ProductOptionsPrice $productOptionsPrice,
-        UrlInterface $urlBuilder,
-        ArrayManager $arrayManager,
-        UsageCustomOptionRepositoryInterface $optionRepo,
-        SizesOptionsProvider $sizesOptionsProvider,
-        CurrencyInterface $localeCurrency
-    ) {
-        $this->locator = $locator;
-        $this->storeManager = $storeManager;
-        $this->productOptionsPrice = $productOptionsPrice;
-        $this->urlBuilder = $urlBuilder;
-        $this->arrayManager = $arrayManager;
-        $this->optionRepository = $optionRepo;
-        $this->sizesOptionsProvider = $sizesOptionsProvider;
-        $this->localeCurrency = $localeCurrency;
+    public function __construct(protected LocatorInterface $locator, protected StoreManagerInterface $storeManager, protected ProductOptionsPrice $productOptionsPrice, protected UrlInterface $urlBuilder, protected ArrayManager $arrayManager, protected UsageCustomOptionRepositoryInterface $optionRepository, protected SizesOptionsProvider $sizesOptionsProvider, protected CurrencyInterface $localeCurrency)
+    {
     }
 
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function modifyData(array $data)
     {
         foreach ($data as $id => &$usage) {
@@ -181,6 +156,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
      * {@inheritdoc}
      * @since 101.0.0
      */
+    #[\Override]
     public function modifyMeta(array $meta)
     {
         $this->meta = $meta;
@@ -947,6 +923,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
      * @return string
      * @since 101.0.0
      */
+    #[\Override]
     protected function formatPrice($value)
     {
         if (!is_numeric($value)) {
@@ -956,7 +933,7 @@ class UsageOptions extends \Magento\Catalog\Ui\DataProvider\Product\Form\Modifie
             $store = $this->storeManager->getStore();
             $currency = $this->localeCurrency->getCurrency($store->getBaseCurrencyCode());
             $value = $currency->toCurrency($value, ['display' => Currency::NO_SYMBOL]);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return parent::formatPrice($value);
         }
 

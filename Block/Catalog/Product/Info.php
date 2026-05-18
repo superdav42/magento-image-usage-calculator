@@ -12,18 +12,12 @@ use Magento\Catalog\Block\Product\Context;
 
 Class Info extends \Magento\Framework\View\Element\Template
 {
-    protected \Magento\Store\Model\Information $storeInfo;
-
-    protected \Magento\Store\Model\Store $store;
-
     public function __construct(
         Context $context,
-        \Magento\Store\Model\Information $storeInfo,
-        \Magento\Store\Model\Store $store,
+        protected \Magento\Store\Model\Information $storeInfo,
+        protected \Magento\Store\Model\Store $store,
         array $data = [])
     {
-        $this->storeInfo = $storeInfo;
-        $this->store = $store;
         parent::__construct($context, $data);
     }
 

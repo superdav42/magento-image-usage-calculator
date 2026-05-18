@@ -22,6 +22,7 @@ class Collection extends AbstractCollection
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init(

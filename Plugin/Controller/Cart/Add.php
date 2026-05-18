@@ -28,36 +28,8 @@ use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
  */
 class Add
 {
-    protected CustomerSession $customerSession;
-    protected RequestInterface $request;
-    protected UsageRepositoryInterface $usageRepository;
-    protected CollectionFactory $orderCollectionFactory;
-    protected Session $checkoutSession;
-    protected ScopeConfigInterface $scopeConfig;
-    protected ManagerInterface $messageInterface;
-    protected RedirectFactory $resultRedirectFactory;
-    private Data $data;
-
-    public function __construct(
-        CustomerSession          $session,
-        RequestInterface         $request,
-        CollectionFactory        $orderCollectionFactory,
-        Session                  $checkoutSession,
-        ScopeConfigInterface     $config,
-        ManagerInterface         $messageInterface,
-        RedirectFactory          $redirectFactory,
-        UsageRepositoryInterface $usageRepository,
-        Data                     $data
-    ) {
-        $this->request = $request;
-        $this->customerSession = $session;
-        $this->usageRepository = $usageRepository;
-        $this->orderCollectionFactory = $orderCollectionFactory;
-        $this->checkoutSession = $checkoutSession;
-        $this->scopeConfig = $config;
-        $this->messageInterface = $messageInterface;
-        $this->resultRedirectFactory = $redirectFactory;
-        $this->data = $data;
+    public function __construct(protected CustomerSession          $customerSession, protected RequestInterface         $request, protected CollectionFactory        $orderCollectionFactory, protected Session                  $checkoutSession, protected ScopeConfigInterface     $scopeConfig, protected ManagerInterface         $messageInterface, protected RedirectFactory          $resultRedirectFactory, protected UsageRepositoryInterface $usageRepository, private readonly Data                     $data)
+    {
     }
 
     public function aroundExecute(AddSubject $subject, callable $proceed): mixed
@@ -87,7 +59,7 @@ class Add
                             return $this->resultRedirectFactory->create()->setPath('*/*/');
                         }
                     }
-                } catch (LocalizedException $e) {
+                } catch (LocalizedException) {
 
                 }
             }
@@ -139,7 +111,7 @@ class Add
             }
 
             return $totalUsageCount;
-        } catch (LocalizedException $e) {
+        } catch (LocalizedException) {
 
         }
         return $totalUsageCount;

@@ -47,6 +47,7 @@ class InlineEdit extends Action
     /**
      * @return \Magento\Framework\Controller\ResultInterface
      */
+    #[\Override]
     public function execute()
     {
         /** @var \Magento\Framework\Controller\Result\Json $resultJson */
@@ -64,8 +65,8 @@ class InlineEdit extends Action
 
         try {
             $this->objectCollection
-                ->addFieldToFilter('entity_id', array('in' => array_keys($postItems)))
-                ->walk('saveCollection', array($postItems));
+                ->addFieldToFilter('entity_id', ['in' => array_keys($postItems)])
+                ->walk('saveCollection', [$postItems]);
         } catch (\Exception $e) {
             $messages[] = __('There was an error saving the data: ') . $e->getMessage();
             $error = true;

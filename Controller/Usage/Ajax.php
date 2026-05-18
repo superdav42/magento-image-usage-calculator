@@ -25,6 +25,7 @@ class Ajax extends Action implements HttpGetActionInterface
      * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
      * @throws \Magento\Framework\Exception\NotFoundException
      */
+    #[\Override]
     public function execute()
     {
         $productId = (int)$this->getRequest()->getParam('id');
@@ -62,7 +63,7 @@ class Ajax extends Action implements HttpGetActionInterface
             if (!$product->isVisibleInCatalog() || !$product->isVisibleInSiteVisibility()) {
                 throw new NoSuchEntityException();
             }
-        } catch (NoSuchEntityException $noEntityException) {
+        } catch (NoSuchEntityException) {
             return false;
         }
 

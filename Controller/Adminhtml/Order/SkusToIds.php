@@ -42,11 +42,12 @@ class SkusToIds extends \Magento\Backend\App\Action
      *
      * @return \Magento\Framework\View\Result\Layout
      */
+    #[\Override]
     public function execute()
     {
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $filterGroup = $this->filterGroupBuilder->create();
-        $skus = strtolower($this->getRequest()->getParam('skus'));
+        $skus = strtolower((string) $this->getRequest()->getParam('skus'));
 
         $skus_array = preg_split('/(\s+|,)/i', $skus);
 

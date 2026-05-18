@@ -92,6 +92,7 @@ class DataProvider extends AbstractDataProvider
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
+    #[\Override]
     public function getData()
     {
         if (!$this->loadedData) {
@@ -119,6 +120,7 @@ class DataProvider extends AbstractDataProvider
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
+    #[\Override]
     public function getMeta()
     {
         $meta = parent::getMeta();

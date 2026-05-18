@@ -30,6 +30,7 @@ class SaveHandler implements ExtensionInterface
      * @return \DevStone\UsageCalculator\Api\Data\UsageInterface|object
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function execute($entity, $arguments = [])
     {
         $options = $entity->getOptions();
@@ -37,10 +38,9 @@ class SaveHandler implements ExtensionInterface
         $optionIds = [];
 
         if ($options) {
-            $optionIds = array_map(function ($option) {
+            $optionIds = array_map(fn($option) =>
                 /** @var \DevStone\UsageCalculatorModel\Usage\Option $option */
-                return $option->getOptionId();
-            }, $options);
+                $option->getOptionId(), $options);
         }
 
         /** @var \DevStone\UsageCalculator\Api\Data\UsageInterface $entity */

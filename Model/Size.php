@@ -38,10 +38,11 @@ class Size extends AbstractModel implements IdentityInterface
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('DevStone\UsageCalculator\Model\ResourceModel\Size');
+        $this->_init(\DevStone\UsageCalculator\Model\ResourceModel\Size::class);
     }
 
     /**
@@ -49,6 +50,7 @@ class Size extends AbstractModel implements IdentityInterface
      *
      * @return array
      */
+    #[\Override]
     public function getIdentities()
     {
         return [self::CACHE_TAG . '_' . $this->getId()];

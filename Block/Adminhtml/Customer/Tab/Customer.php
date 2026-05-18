@@ -73,8 +73,8 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
         \DevStone\UsageCalculator\Model\ResourceModel\UsageCustomer\CollectionFactory $collectionFactory,
         \DevStone\UsageCalculator\Model\ResourceModel\Customer\CollectionFactory $customerCollectionFactory,
         array $data = [],
-        Visibility $visibility = null,
-        Status $status = null
+        ?Visibility $visibility = null,
+        ?Status $status = null
     ) {
         $this->customerCollectionFactory = $customerCollectionFactory;
         $this->coreRegistry = $coreRegistry;
@@ -89,6 +89,7 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
     /**
      *
      */
+    #[\Override]
     protected function _construct()
     {
         parent::_construct();
@@ -104,6 +105,7 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
      * @return $this|Extended
      * @throws \Magento\Framework\Exception\LocalizedException
      */
+    #[\Override]
     protected function _addColumnFilterToCollection($column)
     {
         if ($column->getId() == 'in_usage') {
@@ -137,6 +139,7 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
      * @return Extended
      * @throws \Magento\Framework\Exception\LocalizedException
      */
+    #[\Override]
     protected function _prepareCollection()
     {
         $collection = $this->customerCollectionFactory->create();
@@ -154,6 +157,7 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
      * @return Extended
      * @throws \Exception
      */
+    #[\Override]
     protected function _prepareColumns()
     {
         $this->addColumn(
@@ -217,6 +221,7 @@ class Customer extends \Magento\Backend\Block\Widget\Grid\Extended
     /**
      * @return string
      */
+    #[\Override]
     public function getGridUrl()
     {
         return $this->getUrl('*/*/customer', ['_current' => true]);

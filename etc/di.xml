@@ -136,10 +136,21 @@
     <preference for="DevStone\UsageCalculator\Api\UsageCustomOptionRepositoryInterface" type="DevStone\UsageCalculator\Model\Usage\Option\Repository" />
     <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomOptionTypeInterface" type="DevStone\UsageCalculator\Model\Usage\Option\Type" />
 
-    <preference for="DevStone\UsageCalculator\Api\UsageCustomOptionTypeListInterface" type="DevStone\UsageCalculator\Model\UsageOptions\TypeList" />
+    <!-- Dead preference removed during Magento 2.4.8 upgrade: the implementation
+         class DevStone\UsageCalculator\Model\UsageOptions\TypeList does not exist
+         in the module, and UsageCustomOptionTypeListInterface is not referenced
+         from any other code. Magento 2.4.8 di:compile now validates that the
+         implementation class exists, surfacing this latent issue.
+         TODO: PR this fix to superdav42/magento-image-usage-calculator. -->
+    <!-- <preference for="DevStone\UsageCalculator\Api\UsageCustomOptionTypeListInterface" type="DevStone\UsageCalculator\Model\UsageOptions\TypeList" /> -->
     <preference for="DevStone\UsageCalculator\Api\Data\UsageCustomOptionValuesInterface" type="DevStone\UsageCalculator\Model\Usage\Option\Value" />
-    <preference for="DevStone\UsageCalculator\Api\Data\CustomOptionInterface" type="DevStone\UsageCalculator\Model\CustomOptions\CustomOption" />
-    <preference for="DevStone\UsageCalculator\Api\Data\UsageOptionInterface" type="DevStone\UsageCalculator\Model\UsageOption" />
+    <!-- Dead preferences removed during Magento 2.4.8 upgrade: implementation
+         classes DevStone\UsageCalculator\Model\CustomOptions\CustomOption and
+         DevStone\UsageCalculator\Model\UsageOption do not exist; the interfaces
+         have no other consumers. di:compile validates these in 2.4.8.
+         TODO: PR upstream to superdav42/magento-image-usage-calculator. -->
+    <!-- <preference for="DevStone\UsageCalculator\Api\Data\CustomOptionInterface" type="DevStone\UsageCalculator\Model\CustomOptions\CustomOption" /> -->
+    <!-- <preference for="DevStone\UsageCalculator\Api\Data\UsageOptionInterface" type="DevStone\UsageCalculator\Model\UsageOption" /> -->
 
 <!--
     <type name="Magento\Quote\Model\Quote\Item\Repository">

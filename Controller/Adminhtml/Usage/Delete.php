@@ -45,6 +45,7 @@ class Delete extends Action
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('DevStone_UsageCalculator::usage');
@@ -55,6 +56,7 @@ class Delete extends Action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */
+    #[\Override]
     public function execute()
     {
         $resultRedirect = $this->resultRedirectFactory->create();

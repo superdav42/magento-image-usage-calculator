@@ -22,23 +22,16 @@ use Magento\Framework\Controller\ResultInterface;
  */
 class Save extends Action
 {
-    protected UsageFactory $objectFactory;
-    protected Initialization\Helper $helper;
-    protected Data $data;
-
     /**
      * @param Context $context
      * @param UsageFactory $objectFactory
      */
     public function __construct(
         Context $context,
-        UsageFactory $objectFactory,
-        Initialization\Helper $helper,
-        Data $data
+        protected UsageFactory $objectFactory,
+        protected Initialization\Helper $helper,
+        protected Data $data
     ) {
-        $this->objectFactory = $objectFactory;
-        $this->helper = $helper;
-        $this->data = $data;
         parent::__construct($context);
 
     }
@@ -46,11 +39,13 @@ class Save extends Action
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     protected function _isAllowed(): bool
     {
         return $this->_authorization->isAllowed('DevStone_UsageCalculator::usage');
     }
 
+    #[\Override]
     public function execute(): ResultInterface
     {
         $storeId = (int)$this->getRequest()->getParam('store_id');

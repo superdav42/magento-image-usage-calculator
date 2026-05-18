@@ -30,6 +30,7 @@ class Select extends DefaultValidator
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
+    #[\Override]
     protected function validateOptionValue(Option $option)
     {
         $values = $option->getValues() ?: $option->getData('values');
@@ -51,9 +52,9 @@ class Select extends DefaultValidator
             if (isset($value['is_delete']) && (bool)$value['is_delete']) {
                 continue;
             }
-            $type = isset($value['price_type']) ? $value['price_type'] : null;
-            $price = isset($value['price']) ? $value['price'] : null;
-            $title = isset($value['title']) ? $value['title'] : null;
+            $type = $value['price_type'] ?? null;
+            $price = $value['price'] ?? null;
+            $title = $value['title'] ?? null;
             if (!$this->isValidOptionPrice($type, $price, $storeId)
                 || !$this->isValidOptionTitle($title, $storeId)
             ) {

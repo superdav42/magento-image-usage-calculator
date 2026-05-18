@@ -50,6 +50,7 @@ class Attribute extends EavAttribute
      * @param AbstractModel $object
      * @return $this
      */
+    #[\Override]
     protected function _afterSave(AbstractModel $object)
     {
         $this->_clearUselessAttributeValues($object);
@@ -90,6 +91,7 @@ class Attribute extends EavAttribute
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
+    #[\Override]
     public function deleteEntity(AbstractModel $object)
     {
         if (!$object->getEntityAttributeId()) {

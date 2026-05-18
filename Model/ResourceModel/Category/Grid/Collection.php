@@ -53,9 +53,9 @@ class Collection extends CategoryCollection implements SearchResultInterface
         $eventPrefix,
         $eventObject,
         $resourceModel,
-        $model = 'Magento\Framework\View\Element\UiComponent\DataProvider\Document',
+        $model = \Magento\Framework\View\Element\UiComponent\DataProvider\Document::class,
         $connection = null,
-        AbstractDb $resource = null
+        ?AbstractDb $resource = null
     ) {
         parent::__construct(
             $entityFactory,
@@ -74,6 +74,7 @@ class Collection extends CategoryCollection implements SearchResultInterface
     /**
      * @return AggregationInterface
      */
+    #[\Override]
     public function getAggregations()
     {
         return $this->aggregations;
@@ -83,6 +84,7 @@ class Collection extends CategoryCollection implements SearchResultInterface
      * @param AggregationInterface $aggregations
      * @return $this
      */
+    #[\Override]
     public function setAggregations($aggregations)
     {
         $this->aggregations = $aggregations;
@@ -96,6 +98,7 @@ class Collection extends CategoryCollection implements SearchResultInterface
      * @param int $offset
      * @return array
      */
+    #[\Override]
     public function getAllIds($limit = null, $offset = null)
     {
         return $this->getConnection()->fetchCol($this->_getAllIdsSelect($limit, $offset), $this->_bindParams);
@@ -106,6 +109,7 @@ class Collection extends CategoryCollection implements SearchResultInterface
      *
      * @return SearchCriteriaInterface|null
      */
+    #[\Override]
     public function getSearchCriteria()
     {
         return null;
@@ -118,7 +122,8 @@ class Collection extends CategoryCollection implements SearchResultInterface
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function setSearchCriteria(SearchCriteriaInterface $searchCriteria = null)
+    #[\Override]
+    public function setSearchCriteria(?SearchCriteriaInterface $searchCriteria = null)
     {
         return $this;
     }
@@ -128,6 +133,7 @@ class Collection extends CategoryCollection implements SearchResultInterface
      *
      * @return int
      */
+    #[\Override]
     public function getTotalCount()
     {
         return $this->getSize();
@@ -140,6 +146,7 @@ class Collection extends CategoryCollection implements SearchResultInterface
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function setTotalCount($totalCount)
     {
         return $this;
@@ -152,7 +159,8 @@ class Collection extends CategoryCollection implements SearchResultInterface
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function setItems(array $items = null)
+    #[\Override]
+    public function setItems(?array $items = null)
     {
         return $this;
     }

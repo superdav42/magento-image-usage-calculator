@@ -14,20 +14,11 @@ use Psr\Log\LoggerInterface;
 
 class CheckNewCustomerLicenses implements ObserverInterface
 {
-    protected SearchCriteriaBuilder $searchCriteriaBuilder;
-    private UsageCustomerRepositoryInterface $usageCustomerRepository;
-    private LoggerInterface $logger;
-
-    public function __construct(
-        SearchCriteriaBuilder $searchCriteriaBuilder,
-        UsageCustomerRepositoryInterface $usageCustomerRepository,
-        LoggerInterface $logger
-    ) {
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->usageCustomerRepository = $usageCustomerRepository;
-        $this->logger = $logger;
+    public function __construct(protected SearchCriteriaBuilder $searchCriteriaBuilder, private readonly UsageCustomerRepositoryInterface $usageCustomerRepository, private readonly LoggerInterface $logger)
+    {
     }
 
+    #[\Override]
     public function execute(Observer $observer)
     {
         try {

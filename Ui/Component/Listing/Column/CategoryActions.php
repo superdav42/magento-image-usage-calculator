@@ -51,6 +51,7 @@ class CategoryActions extends Column
      * @param array $dataSource
      * @return array
      */
+    #[\Override]
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {

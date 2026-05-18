@@ -205,9 +205,7 @@ class Helper
             }
 
             if (isset($customOptionData['values'])) {
-                $customOptionData['values'] = array_filter($customOptionData['values'], function ($valueData) {
-                    return empty($valueData['is_delete']);
-                });
+                $customOptionData['values'] = array_filter($customOptionData['values'], fn($valueData) => empty($valueData['is_delete']));
             }
 
             $customOption = $this->customOptionFactory->create(['data' => $customOptionData]);

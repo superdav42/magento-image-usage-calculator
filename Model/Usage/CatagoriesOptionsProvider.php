@@ -11,25 +11,9 @@ use DevStone\UsageCalculator\Helper\Data;
 class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceInterface
 {
     /**
-     * @var \DevStone\UsageCalculator\Api\CategoryRepositoryInterface
-     */
-    private $categoryRepository;
-
-    /**
-     * @var \Magento\Framework\Api\SearchCriteriaBuilder
-     */
-    private $searchCriteriaBuilder;
-
-    /**
-     * @var \Magento\Framework\Convert\DataObject
-     */
-    private $objectConverter;
-
-    /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $scopeConfig;
-    protected Data $config;
 
     /**
      * CatagoriesOptionsProvider constructor.
@@ -39,17 +23,13 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
      * @param \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository
      */
     public function __construct(
-        \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
-        \Magento\Framework\Convert\DataObject $objectConverter,
+        private readonly \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
+        private readonly \Magento\Framework\Convert\DataObject $objectConverter,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository,
-        Data $config
+        private readonly \DevStone\UsageCalculator\Api\CategoryRepositoryInterface $categoryRepository,
+        protected Data $config
     ) {
-        $this->categoryRepository = $categoryRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->objectConverter = $objectConverter;
         $this->scopeConfig = $scopeConfig;
-        $this->config = $config;
     }
 
     /**
@@ -82,6 +62,7 @@ class CatagoriesOptionsProvider implements \Magento\Framework\Data\OptionSourceI
      * Return array of options as value-label pair
      * @return array Format: array(array('value' => '<value>', 'label' => '<label>'), ...)
      */
+    #[\Override]
     public function toOptionArray()
     {
         $searchCriteria = $this->searchCriteriaBuilder->create();

@@ -58,6 +58,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option', 'option_id');
@@ -69,6 +70,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * @param \Magento\Framework\Model\AbstractModel $object
      * @return \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
+    #[\Override]
     protected function _afterSave(\Magento\Framework\Model\AbstractModel $object)
     {
         $this->_saveValuePrices($object);

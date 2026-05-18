@@ -52,6 +52,7 @@ class Edit extends Action
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('DevStone_UsageCalculator::size');
@@ -63,6 +64,7 @@ class Edit extends Action
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
+    #[\Override]
     public function execute()
     {
         // 1. Get ID

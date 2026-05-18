@@ -54,7 +54,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
         \Magento\Rule\Block\Conditions $conditions,
         \Magento\Backend\Block\Widget\Form\Renderer\Fieldset $rendererFieldset,
         array $data = [],
-        \Magento\CatalogRule\Model\RuleFactory $ruleFactory = null
+        ?\Magento\CatalogRule\Model\RuleFactory $ruleFactory = null
     ) {
         $this->_rendererFieldset = $rendererFieldset;
         $this->_conditions = $conditions;
@@ -68,6 +68,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
      *
      * @codeCoverageIgnore
      */
+    #[\Override]
     public function getTabClass()
     {
         return null;
@@ -76,6 +77,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function getTabUrl()
     {
         return null;
@@ -84,6 +86,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function isAjaxLoaded()
     {
         return false;
@@ -92,6 +95,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function getTabLabel()
     {
         return __('Conditions');
@@ -100,6 +104,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function getTabTitle()
     {
         return __('Conditions');
@@ -108,6 +113,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function canShowTab()
     {
         return true;
@@ -116,6 +122,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function isHidden()
     {
         return false;
@@ -126,6 +133,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
      *
      * @return $this
      */
+    #[\Override]
     protected function _prepareForm()
     {
         $model = $this->_coreRegistry->registry(\Magento\SalesRule\Model\RegistryConstants::CURRENT_SALES_RULE);
@@ -210,7 +218,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
      */
     private function setConditionFormName(\Magento\Rule\Model\Condition\AbstractCondition $conditions, $formName)
     {
-        $conditions->setFormName($formName);
+        $conditions->setFormName();
         if ($conditions->getConditions() && is_array($conditions->getConditions())) {
             foreach ($conditions->getConditions() as $condition) {
                 $this->setConditionFormName($condition, $formName);

@@ -49,9 +49,10 @@ class Attribute extends EavAttribute implements ScopedAttributeInterface
     /**
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
-        $this->_init('DevStone\UsageCalculator\Model\ResourceModel\Attribute');
+        $this->_init(\DevStone\UsageCalculator\Model\ResourceModel\Attribute::class);
     }
 
     /**
@@ -61,6 +62,7 @@ class Attribute extends EavAttribute implements ScopedAttributeInterface
      * @throws LocalizedException
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
+    #[\Override]
     public function beforeSave() //@codingStandardsIgnoreLine
     {
         $this->setData('modulePrefix', self::MODULE_NAME);
@@ -77,6 +79,7 @@ class Attribute extends EavAttribute implements ScopedAttributeInterface
      *
      * @return \Magento\Framework\Model\AbstractModel
      */
+    #[\Override]
     public function afterSave() //@codingStandardsIgnoreLine
     {
         /**
@@ -148,6 +151,7 @@ class Attribute extends EavAttribute implements ScopedAttributeInterface
      *
      * @return \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
      */
+    #[\Override]
     public function getSourceModel()
     {
         $model = $this->getData('source_model');
@@ -164,14 +168,16 @@ class Attribute extends EavAttribute implements ScopedAttributeInterface
      *
      * @return string
      */
+    #[\Override]
     public function _getDefaultSourceModel()
     {
-        return 'Magento\Eav\Model\Entity\Attribute\Source\Table';
+        return \Magento\Eav\Model\Entity\Attribute\Source\Table::class;
     }
 
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function afterDelete() //@codingStandardsIgnoreLine
     {
         $this->_eavConfig->clear();

@@ -54,11 +54,6 @@ class UsageRepository implements UsageRepositoryInterface
     protected $resource;
 
     /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
-
-    /**
      * @var \Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface
      */
     protected $extensionAttributesJoinProcessor;
@@ -80,7 +75,7 @@ class UsageRepository implements UsageRepositoryInterface
         UsageSearchResultsInterfaceFactory $searchResultsFactory,
         DataObjectHelper $dataObjectHelper,
         DataObjectProcessor $dataObjectProcessor,
-        StoreManagerInterface $storeManager,
+        private readonly StoreManagerInterface $storeManager,
         \Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface $extensionAttributesJoinProcessor
     ) {
         $this->resource = $resource;
@@ -89,13 +84,13 @@ class UsageRepository implements UsageRepositoryInterface
         $this->searchResultsFactory = $searchResultsFactory;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->dataObjectProcessor = $dataObjectProcessor;
-        $this->storeManager = $storeManager;
         $this->extensionAttributesJoinProcessor = $extensionAttributesJoinProcessor;
     }
 
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function save(
         \DevStone\UsageCalculator\Api\Data\UsageInterface $usage
     ) {
@@ -117,6 +112,7 @@ class UsageRepository implements UsageRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function getById(int $usageId): UsageInterface
     {
 //        $usage = $this->usageFactory->create();
@@ -147,6 +143,7 @@ class UsageRepository implements UsageRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function getList(
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
@@ -188,6 +185,7 @@ class UsageRepository implements UsageRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function delete(
         \DevStone\UsageCalculator\Api\Data\UsageInterface $usage
     ) {
@@ -205,6 +203,7 @@ class UsageRepository implements UsageRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function deleteById($usageId)
     {
         return $this->delete($this->getById($usageId));

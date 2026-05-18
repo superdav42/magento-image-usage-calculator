@@ -36,6 +36,7 @@ class Index extends Action
      *
      * @return boolean
      */
+    #[\Override]
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('DevStone_UsageCalculator::usage');
@@ -46,6 +47,7 @@ class Index extends Action
      *
      * @return \Magento\Backend\Model\View\Result\Page
      */
+    #[\Override]
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */

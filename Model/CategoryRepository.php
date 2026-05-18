@@ -56,11 +56,6 @@ class CategoryRepository implements CategoryRepositoryInterface
     protected $resource;
 
     /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
-
-    /**
      * @param ResourceCategory $resource
      * @param CategoryFactory $categoryFactory
      * @param CategoryCollectionFactory $categoryCollectionFactory
@@ -77,7 +72,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         CategorySearchResultsInterfaceFactory $searchResultsFactory,
         DataObjectHelper $dataObjectHelper,
         DataObjectProcessor $dataObjectProcessor,
-        StoreManagerInterface $storeManager
+        private readonly StoreManagerInterface $storeManager
     ) {
         $this->resource = $resource;
         $this->categoryFactory = $categoryFactory;
@@ -85,12 +80,12 @@ class CategoryRepository implements CategoryRepositoryInterface
         $this->searchResultsFactory = $searchResultsFactory;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->dataObjectProcessor = $dataObjectProcessor;
-        $this->storeManager = $storeManager;
     }
 
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function save(
         CategoryInterface $category
     ) {
@@ -112,6 +107,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function getById($categoryId)
     {
         $category = $this->categoryFactory->create();
@@ -125,6 +121,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function getList(
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
@@ -199,6 +196,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function delete(
         CategoryInterface $category
     ) {
@@ -216,6 +214,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function deleteById($categoryId)
     {
         return $this->delete($this->getById($categoryId));

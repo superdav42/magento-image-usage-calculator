@@ -45,6 +45,7 @@ class MassDelete extends Action
      * @return \Magento\Backend\Model\View\Result\Redirect
      * @throws \Magento\Framework\Exception\LocalizedException|\Exception
      */
+    #[\Override]
     public function execute()
     {
         $collection = $this->filter->getCollection($this->objectCollection);

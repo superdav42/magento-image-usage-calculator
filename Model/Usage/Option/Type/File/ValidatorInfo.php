@@ -49,10 +49,9 @@ class ValidatorInfo extends Validator
     }
 
     /**
-     * @param mixed $useQuotePath
      * @return $this
      */
-    public function setUseQuotePath($useQuotePath)
+    public function setUseQuotePath(mixed $useQuotePath)
     {
         $this->useQuotePath = $useQuotePath;
         return $this;
@@ -81,7 +80,7 @@ class ValidatorInfo extends Validator
         $validatorChain = $this->validateFactory->create();
         try {
             $validatorChain = $this->buildImageValidator($validatorChain, $option, $this->fileFullPath);
-        } catch (\Magento\Framework\Exception\InputException $notImage) {
+        } catch (\Magento\Framework\Exception\InputException) {
             return false;
         }
 

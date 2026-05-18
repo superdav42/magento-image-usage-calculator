@@ -37,6 +37,7 @@ class BackButton implements ButtonProviderInterface
     /**
      * @return array
      */
+    #[\Override]
     public function getButtonData(): array
     {
         return [

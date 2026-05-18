@@ -31,6 +31,7 @@ class CustomLicense implements \Magento\Framework\View\Element\UiComponent\Contr
     /**
      * @return array
      */
+    #[\Override]
     public function getButtonData()
     {
         return [

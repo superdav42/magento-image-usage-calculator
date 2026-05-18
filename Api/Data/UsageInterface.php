@@ -40,7 +40,7 @@ interface UsageInterface
      * @param \DevStone\UsageCalculator\Api\Data\UsageCustomOptionInterface[] $options
      * @return $this
      */
-    public function setOptions(array $options = null);
+    public function setOptions(?array $options = null);
 
     /**
      * Set category_id

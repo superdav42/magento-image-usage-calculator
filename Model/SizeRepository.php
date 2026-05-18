@@ -58,11 +58,6 @@ class SizeRepository implements SizeRepositoryInterface
      */
     protected $resource;
 
-    /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
-
 
     /**
      * @param ResourceSize $resource
@@ -82,7 +77,7 @@ class SizeRepository implements SizeRepositoryInterface
         SizeSearchResultsInterfaceFactory $searchResultsFactory,
         DataObjectHelper $dataObjectHelper,
         DataObjectProcessor $dataObjectProcessor,
-        StoreManagerInterface $storeManager
+        private readonly StoreManagerInterface $storeManager
     ) {
         $this->resource = $resource;
         $this->sizeFactory = $sizeFactory;
@@ -91,12 +86,12 @@ class SizeRepository implements SizeRepositoryInterface
         $this->dataObjectHelper = $dataObjectHelper;
         $this->dataSizeFactory = $dataSizeFactory;
         $this->dataObjectProcessor = $dataObjectProcessor;
-        $this->storeManager = $storeManager;
     }
 
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function save(
         \DevStone\UsageCalculator\Api\Data\SizeInterface $size
     ) {
@@ -118,6 +113,7 @@ class SizeRepository implements SizeRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function getById($sizeId)
     {
         $size = $this->sizeFactory->create();
@@ -131,6 +127,7 @@ class SizeRepository implements SizeRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function getList(
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
@@ -169,6 +166,7 @@ class SizeRepository implements SizeRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function delete(
         \DevStone\UsageCalculator\Api\Data\SizeInterface $size
     ) {
@@ -186,6 +184,7 @@ class SizeRepository implements SizeRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function deleteById($sizeId)
     {
         return $this->delete($this->getById($sizeId));

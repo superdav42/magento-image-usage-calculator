@@ -12,6 +12,7 @@ class File extends DefaultValidator
      * @param Option $option
      * @return bool
      */
+    #[\Override]
     protected function validateOptionValue(Option $option)
     {
         $result = parent::validateOptionValue($option);

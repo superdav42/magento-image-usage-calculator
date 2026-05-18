@@ -51,6 +51,7 @@ class DefaultValidator extends \Magento\Framework\Validator\AbstractValidator
      * @return boolean
      * @throws Zend_Validate_Exception If validation of $value is impossible
      */
+    #[\Override]
     public function isValid($value)
     {
         $messages = [];
@@ -134,10 +135,9 @@ class DefaultValidator extends \Magento\Framework\Validator\AbstractValidator
     /**
      * Check whether value is empty
      *
-     * @param mixed $value
      * @return bool
      */
-    protected function isEmpty($value)
+    protected function isEmpty(mixed $value)
     {
         return empty($value);
     }

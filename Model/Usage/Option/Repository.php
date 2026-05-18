@@ -65,9 +65,9 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
         \DevStone\UsageCalculator\Api\UsageRepositoryInterface $usageRepository,
         \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option $optionResource,
         \DevStone\UsageCalculator\Model\Usage\Option\Converter $converter,
-        \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\CollectionFactory $collectionFactory = null,
-        \DevStone\UsageCalculator\Model\Usage\OptionFactory $optionFactory = null,
-        \Magento\Framework\EntityManager\MetadataPool $metadataPool = null
+        ?\DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\CollectionFactory $collectionFactory = null,
+        ?\DevStone\UsageCalculator\Model\Usage\OptionFactory $optionFactory = null,
+        ?\Magento\Framework\EntityManager\MetadataPool $metadataPool = null
     ) {
         $this->usageRepository = $usageRepository;
         $this->optionResource = $optionResource;
@@ -83,6 +83,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function getList($id)
     {
         $usage = $this->usageRepository->getById($id);
@@ -92,6 +93,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function getUsageOptions(UsageInterface $usage, $requiredOnly = false)
     {
         return $this->collectionFactory->create()->getUsageOptions(
@@ -104,6 +106,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function get($sku, $optionId)
     {
         $product = $this->usageRepository->getById($sku);
@@ -117,6 +120,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function delete(UsageCustomOptionInterface $entity)
     {
         $this->optionResource->delete($entity);
@@ -126,6 +130,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function duplicate(
         UsageInterface $product,
         UsageInterface $duplicate
@@ -142,6 +147,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function save(UsageCustomOptionInterface $option)
     {
         $usageId = $option->getUsageId();
@@ -159,9 +165,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
                 $options = $this->getUsageOptions($usage);
             }
 
-            $persistedOption = array_filter($options, function ($iOption) use ($option) {
-                return $option->getOptionId() == $iOption->getOptionId();
-            });
+            $persistedOption = array_filter($options, fn($iOption) => $option->getOptionId() == $iOption->getOptionId());
             $persistedOption = reset($persistedOption);
 
             if (!$persistedOption) {
@@ -183,6 +187,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     public function deleteByIdentifier($sku, $optionId)
     {
         $product = $this->usageRepository->getById($sku);
@@ -197,7 +202,7 @@ class Repository implements \DevStone\UsageCalculator\Api\UsageCustomOptionRepos
             if (empty($options)) {
                 $this->usageRepository->save($product);
             }
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw new CouldNotSaveException(__('Could not remove custom option'));
         }
         return true;

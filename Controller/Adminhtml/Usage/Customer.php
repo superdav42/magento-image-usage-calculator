@@ -45,6 +45,7 @@ class Customer extends \Magento\Backend\App\Action
      *
      * @return \Magento\Framework\Controller\Result\Raw
      */
+    #[\Override]
     public function execute()
     {
         /** @var \Magento\Framework\Controller\Result\Raw $resultRaw */

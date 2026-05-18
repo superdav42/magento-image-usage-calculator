@@ -41,7 +41,7 @@ class Usage extends AbstractEntity
     ) {
         parent::__construct($context, $data);
         $this->setType(UsageSetup::ENTITY_TYPE_CODE);
-        $this->setConnection(UsageSetup::ENTITY_TYPE_CODE . '_read', UsageSetup::ENTITY_TYPE_CODE . '_write');
+        $this->setConnection(UsageSetup::ENTITY_TYPE_CODE . '_read');
         $this->_storeManager = $storeManager;
     }
 
@@ -50,6 +50,7 @@ class Usage extends AbstractEntity
      *
      * @return string[]
      */
+    #[\Override]
     protected function _getDefaultAttributes()
     {
         return [
@@ -93,6 +94,7 @@ class Usage extends AbstractEntity
      * @param mixed $value
      * @return $this
      */
+    #[\Override]
     protected function _saveAttribute($object, $attribute, $value)
     {
         $table = $attribute->getBackend()->getTable();
@@ -147,6 +149,7 @@ class Usage extends AbstractEntity
      * @param string $table
      * @return \Magento\Framework\DB\Select
      */
+    #[\Override]
     protected function _getLoadAttributesSelect($object, $table)
     {
 

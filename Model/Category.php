@@ -36,6 +36,7 @@ class Category extends AbstractModel implements IdentityInterface, \DevStone\Usa
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         parent::_construct();
@@ -47,6 +48,7 @@ class Category extends AbstractModel implements IdentityInterface, \DevStone\Usa
      *
      * @return array
      */
+    #[\Override]
     public function getIdentities()
     {
         return [self::CACHE_TAG . '_' . $this->getId()];
@@ -67,12 +69,14 @@ class Category extends AbstractModel implements IdentityInterface, \DevStone\Usa
         return $this;
     }
 
+    #[\Override]
     public function setName($name)
     {
         $this->setData(self::NAME, $name);
         return $this;
     }
 
+    #[\Override]
     public function getName()
     {
         return $this->getData(self::NAME);

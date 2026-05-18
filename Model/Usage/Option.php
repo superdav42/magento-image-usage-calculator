@@ -107,8 +107,8 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
         \DevStone\UsageCalculator\Model\Usage\Option\Type\Factory $optionFactory,
         \Magento\Framework\Stdlib\StringUtils $string,
         Option\Validator\Pool $validatorPool,
-        \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
-        \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
+        ?\Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
+        ?\Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         $this->productOptionValue = $productOptionValue;
@@ -132,6 +132,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @return \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * @deprecated 101.1.0 because resource models should be used directly
      */
+    #[\Override]
     protected function _getResource()
     {
         return $this->_resource ?: parent::_getResource();
@@ -140,6 +141,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
     /**
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init(\DevStone\UsageCalculator\Model\ResourceModel\Usage\Option::class);
@@ -166,11 +168,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      */
     public function getValueById($valueId)
     {
-        if (isset($this->values[$valueId])) {
-            return $this->values[$valueId];
-        }
-
-        return null;
+        return $this->values[$valueId] ?? null;
     }
 
     /**
@@ -188,6 +186,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
     /**
      * @return ProductCustomOptionValuesInterface[]|null
      */
+    #[\Override]
     public function getValues()
     {
         return $this->values;
@@ -264,7 +263,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param Usage $product
      * @return $this
      */
-    public function setUsage(Usage $usage = null)
+    public function setUsage(?Usage $usage = null)
     {
         $this->usage = $usage;
         return $this;
@@ -294,7 +293,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
             self::OPTION_TYPE_TIME => self::OPTION_GROUP_DATE,
         ];
 
-        return isset($optionGroupsToTypes[$type]) ? $optionGroupsToTypes[$type] : '';
+        return $optionGroupsToTypes[$type] ?? '';
     }
 
     /**
@@ -320,6 +319,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @since 101.0.0
      */
+    #[\Override]
     public function beforeSave()
     {
         parent::beforeSave();
@@ -357,6 +357,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @return \Magento\Framework\Model\AbstractModel
      * @throws \Magento\Framework\Exception\LocalizedException
      */
+    #[\Override]
     public function afterSave()
     {
         $this->getValueInstance()->unsetValues();
@@ -389,6 +390,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param bool $flag
      * @return float
      */
+    #[\Override]
     public function getPrice($flag = false)
     {
         if ($flag && $this->getPriceType() == self::$typePercent) {
@@ -491,6 +493,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      *
      * @return $this
      */
+    #[\Override]
     protected function _clearData()
     {
         $this->_data = [];
@@ -503,6 +506,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      *
      * @return $this
      */
+    #[\Override]
     protected function _clearReferences()
     {
         if (!empty($this->values)) {
@@ -516,6 +520,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     protected function _getValidationRulesBeforeSave()
     {
         return $this->validatorPool->get($this->getType());
@@ -539,6 +544,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @return int|null
      * @codeCoverageIgnoreStart
      */
+    #[\Override]
     public function getOptionId()
     {
         return $this->_getData(self::KEY_OPTION_ID);
@@ -549,6 +555,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      *
      * @return string
      */
+    #[\Override]
     public function getTitle()
     {
         return $this->_getData(self::KEY_TITLE);
@@ -559,6 +566,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      *
      * @return string
      */
+    #[\Override]
     public function getHelp()
     {
         return $this->_getData(self::KEY_HELP);
@@ -569,6 +577,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      *
      * @return string
      */
+    #[\Override]
     public function getType()
     {
         return $this->_getData(self::KEY_TYPE);
@@ -579,6 +588,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      *
      * @return int
      */
+    #[\Override]
     public function getSortOrder()
     {
         return $this->_getData(self::KEY_SORT_ORDER);
@@ -590,6 +600,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
+    #[\Override]
     public function getIsRequire()
     {
         return $this->_getData(self::KEY_IS_REQUIRE);
@@ -600,6 +611,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      *
      * @return string|null
      */
+    #[\Override]
     public function getPriceType()
     {
         return $this->_getData(self::KEY_PRICE_TYPE);
@@ -622,6 +634,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param int $optionId
      * @return $this
      */
+    #[\Override]
     public function setOptionId($optionId)
     {
         return $this->setData(self::KEY_OPTION_ID, $optionId);
@@ -633,6 +646,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param string $title
      * @return $this
      */
+    #[\Override]
     public function setTitle($title)
     {
         return $this->setData(self::KEY_TITLE, $title);
@@ -644,6 +658,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param string $help
      * @return $this
      */
+    #[\Override]
     public function setHelp($help)
     {
         return $this->setData(self::KEY_HELP, $help);
@@ -655,6 +670,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param string $type
      * @return $this
      */
+    #[\Override]
     public function setType($type)
     {
         return $this->setData(self::KEY_TYPE, $type);
@@ -666,6 +682,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param int $sortOrder
      * @return $this
      */
+    #[\Override]
     public function setSortOrder($sortOrder)
     {
         return $this->setData(self::KEY_SORT_ORDER, $sortOrder);
@@ -677,6 +694,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param bool $isRequired
      * @return $this
      */
+    #[\Override]
     public function setIsRequire($isRequired)
     {
         return $this->setData(self::KEY_IS_REQUIRE, $isRequired);
@@ -688,6 +706,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param float $price
      * @return $this
      */
+    #[\Override]
     public function setPrice($price)
     {
         return $this->setData(self::KEY_PRICE, $price);
@@ -699,6 +718,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param string $priceType
      * @return $this
      */
+    #[\Override]
     public function setPriceType($priceType)
     {
         return $this->setData(self::KEY_PRICE_TYPE, $priceType);
@@ -708,7 +728,8 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param \DevStone\UsageCalculator\Api\Data\UsageCustomOptionValuesInterface[] $values
      * @return $this
      */
-    public function setValues(array $values = null)
+    #[\Override]
+    public function setValues(?array $values = null)
     {
         $this->values = $values;
         return $this;
@@ -719,6 +740,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      *
      * @return \DevStone\UsageCalculator\Api\Data\UsageCustomOptionExtensionInterface|null
      */
+    #[\Override]
     public function getExtensionAttributes()
     {
         return $this->_getExtensionAttributes();
@@ -778,6 +800,7 @@ class Option extends AbstractExtensibleModel implements UsageCustomOptionInterfa
      * @param \DevStone\UsageCalculator\Api\Data\UsageCustomOptionExtensionInterface $extensionAttributes
      * @return $this
      */
+    #[\Override]
     public function setExtensionAttributes(
         \DevStone\UsageCalculator\Api\Data\UsageCustomOptionExtensionInterface $extensionAttributes
     ) {

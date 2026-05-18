@@ -62,7 +62,7 @@ abstract class AbstractOptions extends \Magento\Framework\View\Element\Template
      * @param \Magento\Catalog\Model\Product $product
      * @return \Magento\Catalog\Block\Product\View\Options\AbstractOptions
      */
-    public function setProduct(\Magento\Catalog\Model\Product $product = null)
+    public function setProduct(?\Magento\Catalog\Model\Product $product = null)
     {
         $this->_product = $product;
         return $this;

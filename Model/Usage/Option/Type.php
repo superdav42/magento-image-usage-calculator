@@ -21,6 +21,7 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      *
      * @return string
      */
+    #[\Override]
     public function getLabel()
     {
         return $this->getData(self::KEY_LABEL);
@@ -31,6 +32,7 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      *
      * @return string
      */
+    #[\Override]
     public function getCode()
     {
         return $this->getData(self::KEY_CODE);
@@ -41,6 +43,7 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      *
      * @return string
      */
+    #[\Override]
     public function getGroup()
     {
         return $this->getData(self::KEY_GROUP);
@@ -52,6 +55,7 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      * @param string $label
      * @return $this
      */
+    #[\Override]
     public function setLabel($label)
     {
         return $this->setData(self::KEY_LABEL, $label);
@@ -63,6 +67,7 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      * @param string $code
      * @return $this
      */
+    #[\Override]
     public function setCode($code)
     {
         return $this->setData(self::KEY_CODE, $code);
@@ -74,6 +79,7 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      * @param string $group
      * @return $this
      */
+    #[\Override]
     public function setGroup($group)
     {
         return $this->setData(self::KEY_GROUP, $group);
@@ -84,6 +90,7 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      *
      * @return \DevStone\UsageCalculator\Api\Data\UsageCustomOptionTypeExtensionInterface|null
      */
+    #[\Override]
     public function getExtensionAttributes()
     {
         return $this->_getExtensionAttributes();
@@ -95,6 +102,7 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      * @param \DevStone\UsageCalculator\Api\Data\UsageCustomOptionTypeExtensionInterface $extensionAttributes
      * @return $this
      */
+    #[\Override]
     public function setExtensionAttributes(
         \DevStone\UsageCalculator\Api\Data\UsageCustomOptionTypeExtensionInterface $extensionAttributes
     ) {

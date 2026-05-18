@@ -91,6 +91,7 @@ class UsageSetup extends EavSetup
      *
      * @return array
      */
+    #[\Override]
     public function getDefaultEntities()
     {
         $categoryAttributes = $this->getAttributes();

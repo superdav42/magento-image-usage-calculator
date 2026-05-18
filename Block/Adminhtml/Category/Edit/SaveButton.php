@@ -19,6 +19,7 @@ class SaveButton implements ButtonProviderInterface
     /**
      * @return array
      */
+    #[\Override]
     public function getButtonData()
     {
         $data = [

@@ -30,6 +30,7 @@ class ReadHandler implements ExtensionInterface
      * @return \DevStone\UsageCalculator\Api\Data\UsageInterface|object
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function execute($entity, $arguments = [])
     {
         $options = [];

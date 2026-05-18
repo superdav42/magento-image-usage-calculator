@@ -21,21 +21,8 @@ class CustomLicense implements ModifierInterface
 {
     const FIELD_NAME = 'max_usage';
 
-    protected RequestInterface $request;
-    protected CatagoriesOptionsProvider $categoriesOptionsProvider;
-    protected UsageRepositoryInterface $usageRepository;
-    protected CollectionFactory $usageCustomerCollectionFactory;
-
-    public function __construct(
-        RequestInterface $request,
-        CatagoriesOptionsProvider $categoriesOptionsProvider,
-        UsageRepositoryInterface $usageRepository,
-        CollectionFactory $usageCustomerCollectionFactory
-    ) {
-        $this->request = $request;
-        $this->categoriesOptionsProvider = $categoriesOptionsProvider;
-        $this->usageRepository = $usageRepository;
-        $this->usageCustomerCollectionFactory = $usageCustomerCollectionFactory;
+    public function __construct(protected RequestInterface $request, protected CatagoriesOptionsProvider $categoriesOptionsProvider, protected UsageRepositoryInterface $usageRepository, protected CollectionFactory $usageCustomerCollectionFactory)
+    {
     }
 
     /**
@@ -43,6 +30,7 @@ class CustomLicense implements ModifierInterface
      * @return array
      * @since 100.1.0
      */
+    #[\Override]
     public function modifyData(array $data)
     {
         foreach ($data as &$item) {
@@ -64,7 +52,7 @@ class CustomLicense implements ModifierInterface
                             }
                         }
                     }
-                } catch (LocalizedException $e) {
+                } catch (LocalizedException) {
 
                 }
             }
@@ -77,6 +65,7 @@ class CustomLicense implements ModifierInterface
      * @return array
      * @since 100.1.0
      */
+    #[\Override]
     public function modifyMeta(array $meta)
     {
         $customLicense = $this->request->getParam('custom_license');

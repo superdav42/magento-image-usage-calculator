@@ -36,30 +36,17 @@ class AssignCustomers extends Template
      */
     protected $blockGrid;
 
-    protected Registry $registry;
-    protected SerializerInterface $serializer;
-    protected RequestInterface $request;
-    protected CollectionFactory $collectionFactory;
-    protected UsageCustomerRepositoryInterface $usageCustomerRepository;
-    protected SearchCriteriaBuilder $searchCriteriaBuilder;
-
     public function __construct(
         Context $context,
-        Registry $registry,
-        SerializerInterface $serializer,
-        RequestInterface $request,
-        CollectionFactory $collectionFactory,
-        UsageCustomerRepositoryInterface $usageCustomerRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
+        protected Registry $registry,
+        protected SerializerInterface $serializer,
+        protected RequestInterface $request,
+        protected CollectionFactory $collectionFactory,
+        protected UsageCustomerRepositoryInterface $usageCustomerRepository,
+        protected SearchCriteriaBuilder $searchCriteriaBuilder,
         array $data = []
     ) {
-        $this->registry = $registry;
-        $this->serializer = $serializer;
-        $this->request = $request;
-        $this->collectionFactory = $collectionFactory;
         parent::__construct($context, $data);
-        $this->usageCustomerRepository = $usageCustomerRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**

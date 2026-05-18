@@ -70,7 +70,7 @@ class Collection extends AbstractCollection
         Helper $resourceHelper,
         UniversalFactory $universalFactory,
         StoreManagerInterface $storeManager,
-        AdapterInterface $connection = null
+        ?AdapterInterface $connection = null
     ) {
         $this->_storeManager = $storeManager;
         parent::__construct(
@@ -92,6 +92,7 @@ class Collection extends AbstractCollection
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init(\DevStone\UsageCalculator\Model\Usage::class,
@@ -155,6 +156,7 @@ class Collection extends AbstractCollection
      * @param array|int $attributeIds
      * @return \Magento\Eav\Model\Entity\Collection\AbstractCollection
      */
+    #[\Override]
     protected function _getLoadAttributesSelect($table, $attributeIds = [])
     {
         if (empty($attributeIds)) {
@@ -223,6 +225,7 @@ class Collection extends AbstractCollection
      * @param string $type
      * @return \Magento\Framework\DB\Select
      */
+    #[\Override]
     protected function _addLoadAttributesSelectValues($select, $table, $type)
     {
         $storeId = $this->getStoreId();
@@ -250,6 +253,7 @@ class Collection extends AbstractCollection
      * @param string $fieldAlias
      * @return \Magento\Eav\Model\Entity\Collection\AbstractCollection
      */
+    #[\Override]
     protected function _joinAttributeToSelect($method, $attribute, $tableAlias, $condition, $fieldCode, $fieldAlias)
     {
         if (isset($this->_joinAttributes[$fieldCode]['store_id'])) {

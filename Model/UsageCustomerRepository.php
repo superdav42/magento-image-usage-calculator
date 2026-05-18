@@ -25,32 +25,14 @@ use Magento\Framework\Exception\NoSuchEntityException;
 
 class UsageCustomerRepository implements UsageCustomerRepositoryInterface
 {
-    protected ResourceUsageCustomer $resource;
-    protected UsageCustomerInterfaceFactory $usageCustomerFactory;
-    protected UsageCustomerCollectionFactory $usageCustomerCollectionFactory;
-    protected UsageCustomerSearchResultsInterfaceFactory $searchResultsFactory;
-    protected CollectionProcessorInterface $collectionProcessor;
-    protected SearchCriteriaBuilder $searchCriteriaBuilder;
-
-    public function __construct(
-        ResourceUsageCustomer $resource,
-        UsageCustomerInterfaceFactory $usageCustomerFactory,
-        UsageCustomerCollectionFactory $usageCustomerCollectionFactory,
-        UsageCustomerSearchResultsInterfaceFactory $searchResultsFactory,
-        CollectionProcessorInterface $collectionProcessor,
-        SearchCriteriaBuilder $searchCriteriaBuilder
-    ) {
-        $this->resource = $resource;
-        $this->usageCustomerFactory = $usageCustomerFactory;
-        $this->usageCustomerCollectionFactory = $usageCustomerCollectionFactory;
-        $this->searchResultsFactory = $searchResultsFactory;
-        $this->collectionProcessor = $collectionProcessor;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+    public function __construct(protected ResourceUsageCustomer $resource, protected UsageCustomerInterfaceFactory $usageCustomerFactory, protected UsageCustomerCollectionFactory $usageCustomerCollectionFactory, protected UsageCustomerSearchResultsInterfaceFactory $searchResultsFactory, protected CollectionProcessorInterface $collectionProcessor, protected SearchCriteriaBuilder $searchCriteriaBuilder)
+    {
     }
 
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function save(UsageCustomerInterface $usageCustomer): UsageCustomerInterface
     {
         try {
@@ -67,6 +49,7 @@ class UsageCustomerRepository implements UsageCustomerRepositoryInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function get($usageCustomerId): UsageCustomerInterface
     {
         $usageCustomer = $this->usageCustomerFactory->create();
@@ -80,6 +63,7 @@ class UsageCustomerRepository implements UsageCustomerRepositoryInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function getByUsageAndCustomer($usageId, $customerId): ?UsageCustomerInterface
     {
         $searchCriteria = $this->searchCriteriaBuilder
@@ -97,6 +81,7 @@ class UsageCustomerRepository implements UsageCustomerRepositoryInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function getByUsageAndEmail($usageId, $email): ?UsageCustomerInterface
     {
         $searchCriteria = $this->searchCriteriaBuilder
@@ -114,6 +99,7 @@ class UsageCustomerRepository implements UsageCustomerRepositoryInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function getList(SearchCriteriaInterface $searchCriteria): SearchResultsInterface
     {
         $collection = $this->usageCustomerCollectionFactory->create();
@@ -136,6 +122,7 @@ class UsageCustomerRepository implements UsageCustomerRepositoryInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function delete(UsageCustomerInterface $usageCustomer): bool
     {
         try {
@@ -156,6 +143,7 @@ class UsageCustomerRepository implements UsageCustomerRepositoryInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function deleteList(SearchCriteriaInterface $searchCriteria): bool
     {
         $collection = $this->usageCustomerCollectionFactory->create();
@@ -169,6 +157,7 @@ class UsageCustomerRepository implements UsageCustomerRepositoryInterface
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function deleteById($usageCustomerId): bool
     {
         return $this->delete($this->get($usageCustomerId));

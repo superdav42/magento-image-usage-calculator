@@ -59,12 +59,12 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
         Registry $registry,
         FormFactory $formFactory,
         TimezoneInterface $localeDate,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null,
         array $data = [],
-        ExtensionAttributesFactory $extensionFactory = null,
-        AttributeValueFactory $customAttributeFactory = null,
-        Json $serializer = null
+        ?ExtensionAttributesFactory $extensionFactory = null,
+        ?AttributeValueFactory $customAttributeFactory = null,
+        ?Json $serializer = null
     ){
         parent::__construct($context, $registry, $formFactory, $localeDate, $resource, $resourceCollection, $data, $extensionFactory, $customAttributeFactory, $serializer);
     }
@@ -74,10 +74,11 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('DevStone\UsageCalculator\Model\ResourceModel\Usage');
+        $this->_init(\DevStone\UsageCalculator\Model\ResourceModel\Usage::class);
     }
 
     /**
@@ -85,6 +86,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      *
      * @return array
      */
+    #[\Override]
     public function getIdentities()
     {
         return [self::CACHE_TAG . '_' . $this->getId()];
@@ -110,6 +112,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      *
      * @return UsageCustomOptionInterface[]|null
      */
+    #[\Override]
     public function getOptions()
     {
         return $this->getData('options');
@@ -119,7 +122,8 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      * @param UsageCustomOptionInterface[] $options
      * @return $this
      */
-    public function setOptions(array $options = null)
+    #[\Override]
+    public function setOptions(?array $options = null)
     {
         $this->setData('options', $options);
         return $this;
@@ -128,6 +132,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
     /**
      * @return AbstractModel|void
      */
+    #[\Override]
     public function afterSave()
     {
         parent::afterSave();
@@ -141,6 +146,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
     /**
      * @return AbstractModel|void
      */
+    #[\Override]
     public function afterLoad()
     {
         parent::afterLoad();
@@ -156,6 +162,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      * @param string $categoryId
      * @return UsageInterface
      */
+    #[\Override]
     public function setCategoryId($categoryId)
     {
         return $this->setData('category_id', $categoryId);
@@ -165,6 +172,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      * Get category_id
      * @return string|null
      */
+    #[\Override]
     public function getCategoryId()
     {
         return $this->getData('category_id');
@@ -178,6 +186,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      * @throws LocalizedException
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
+    #[\Override]
     public function beforeSave()
     {
         // Serialize conditions
@@ -192,6 +201,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
         return $this;
     }
 
+    #[\Override]
     public function getActions()
     {
         return null;
@@ -203,6 +213,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      * @param Combine $conditions
      * @return $this
      */
+    #[\Override]
     public function setConditions($conditions)
     {
         $this->_conditions = $conditions;
@@ -216,6 +227,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      * @param null|Combine $conditions
      * @return $this
      */
+    #[\Override]
     protected function _resetConditions($conditions = null)
     {
         if (null === $conditions) {
@@ -232,6 +244,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      *
      * @return Combine
      */
+    #[\Override]
     public function getConditionsInstance()
     {
         return $this->combineFactory->create();
@@ -242,6 +255,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      *
      * @return Combine
      */
+    #[\Override]
     public function getConditions()
     {
         if (empty($this->_conditions)) {
@@ -270,6 +284,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      * @param array $data
      * @return $this
      */
+    #[\Override]
     public function loadPost(array $data)
     {
         $arr = $this->_convertFlatToRecursive($data);
@@ -292,6 +307,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      * @return array
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
+    #[\Override]
     protected function _convertFlatToRecursive(array $data)
     {
         $arr = [];
@@ -335,6 +351,7 @@ class Usage extends \Magento\Rule\Model\AbstractModel implements IdentityInterfa
      *
      * @return Collection
      */
+    #[\Override]
     public function getActionsInstance(){
         return null;
     }

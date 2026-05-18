@@ -64,8 +64,8 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
         \DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value\CollectionFactory $valueCollectionFactory,
-        \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
-        \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
+        ?\Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
+        ?\Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         $this->_valueCollectionFactory = $valueCollectionFactory;
@@ -81,6 +81,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
     /**
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init(\DevStone\UsageCalculator\Model\ResourceModel\Usage\Option\Value::class);
@@ -88,10 +89,9 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
 
     /**
      * @codeCoverageIgnoreStart
-     * @param mixed $value
      * @return $this
      */
-    public function addValue($value)
+    public function addValue(mixed $value)
     {
         $this->_values[] = $value;
         return $this;
@@ -216,6 +216,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      * @param bool $flag
      * @return float|int
      */
+    #[\Override]
     public function getPrice($flag = false)
     {
         if ($flag && $this->getPriceType() == self::TYPE_PERCENT) {
@@ -317,6 +318,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      * @return string
      * @codeCoverageIgnoreStart
      */
+    #[\Override]
     public function getTitle()
     {
         return $this->_getData(self::KEY_TITLE);
@@ -327,6 +329,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      *
      * @return int
      */
+    #[\Override]
     public function getSortOrder()
     {
         return $this->_getData(self::KEY_SORT_ORDER);
@@ -337,6 +340,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      *
      * @return string
      */
+    #[\Override]
     public function getPriceType()
     {
         return $this->_getData(self::KEY_PRICE_TYPE);
@@ -349,6 +353,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      *
      * @return string|null
      */
+    #[\Override]
     public function getOptionTypeId()
     {
         return $this->_getData(self::KEY_OPTION_TYPE_ID);
@@ -360,6 +365,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      * @param string $title
      * @return $this
      */
+    #[\Override]
     public function setTitle($title)
     {
         return $this->setData(self::KEY_TITLE, $title);
@@ -371,6 +377,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      * @param int $sortOrder
      * @return $this
      */
+    #[\Override]
     public function setSortOrder($sortOrder)
     {
         return $this->setData(self::KEY_SORT_ORDER, $sortOrder);
@@ -382,6 +389,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      * @param float $price
      * @return $this
      */
+    #[\Override]
     public function setPrice($price)
     {
         return $this->setData(self::KEY_PRICE, $price);
@@ -393,6 +401,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      * @param string $priceType
      * @return $this
      */
+    #[\Override]
     public function setPriceType($priceType)
     {
         return $this->setData(self::KEY_PRICE_TYPE, $priceType);
@@ -406,6 +415,7 @@ class Value extends AbstractModel implements \DevStone\UsageCalculator\Api\Data\
      * @param int $optionTypeId
      * @return int|null
      */
+    #[\Override]
     public function setOptionTypeId($optionTypeId)
     {
         return $this->setData(self::KEY_OPTION_TYPE_ID, $optionTypeId);

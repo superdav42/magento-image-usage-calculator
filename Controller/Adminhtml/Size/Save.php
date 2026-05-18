@@ -32,6 +32,7 @@ class Save extends Action
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('DevStone_UsageCalculator::size');
@@ -42,6 +43,7 @@ class Save extends Action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */
+    #[\Override]
     public function execute()
     {
         $data = $this->getRequest()->getParams();

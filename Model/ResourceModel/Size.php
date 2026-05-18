@@ -18,6 +18,7 @@ class Size extends AbstractDb
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init('devstone_downloadable_image_size', 'entity_id');

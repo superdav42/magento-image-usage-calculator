@@ -35,8 +35,6 @@ class Collection extends UsageCollection implements SearchResultInterface
      * @var AggregationInterface
      */
     protected $aggregations;
-	private $_eventPrefix;
-	private $_eventObject;
 
 	/**
      * Collection constructor.
@@ -49,7 +47,7 @@ class Collection extends UsageCollection implements SearchResultInterface
      * @param EavEntityFactory $eavEntityFactory
      * @param Helper $resourceHelper
      * @param UniversalFactory $universalFactory
-     * @param StoreManagerInterface $eventPrefix
+     * @param StoreManagerInterface $_eventPrefix
      * @param $eventObject
      * @param $resourceModel
      * @param string $model
@@ -69,11 +67,11 @@ class Collection extends UsageCollection implements SearchResultInterface
         Helper $resourceHelper,
         UniversalFactory $universalFactory,
         StoreManagerInterface $storeManager,
-        $eventPrefix,
-        $eventObject,
+        private $_eventPrefix,
+        private $_eventObject,
         $resourceModel,
-        $model = 'DevStone\UsageCalculator\Ui\Component\Listing\DataProvider\Document',
-        AdapterInterface $connection = null
+        $model = \DevStone\UsageCalculator\Ui\Component\Listing\DataProvider\Document::class,
+        ?AdapterInterface $connection = null
     ) {
         parent::__construct(
             $entityFactory,
@@ -88,14 +86,13 @@ class Collection extends UsageCollection implements SearchResultInterface
             $storeManager,
             $connection
         );
-        $this->_eventPrefix = $eventPrefix;
-        $this->_eventObject = $eventObject;
         $this->_init($model, $resourceModel);
     }
 
     /**
      * @return AggregationInterface
      */
+    #[\Override]
     public function getAggregations()
     {
         return $this->aggregations;
@@ -105,6 +102,7 @@ class Collection extends UsageCollection implements SearchResultInterface
      * @param AggregationInterface $aggregations
      * @return $this
      */
+    #[\Override]
     public function setAggregations($aggregations)
     {
         $this->aggregations = $aggregations;
@@ -118,6 +116,7 @@ class Collection extends UsageCollection implements SearchResultInterface
      * @param int $offset
      * @return array
      */
+    #[\Override]
     public function getAllIds($limit = null, $offset = null)
     {
         return $this->getConnection()->fetchCol($this->_getAllIdsSelect($limit, $offset), $this->_bindParams);
@@ -128,6 +127,7 @@ class Collection extends UsageCollection implements SearchResultInterface
      *
      * @return SearchCriteriaInterface|null
      */
+    #[\Override]
     public function getSearchCriteria()
     {
         return null;
@@ -140,7 +140,8 @@ class Collection extends UsageCollection implements SearchResultInterface
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function setSearchCriteria(SearchCriteriaInterface $searchCriteria = null)
+    #[\Override]
+    public function setSearchCriteria(?SearchCriteriaInterface $searchCriteria = null)
     {
         return $this;
     }
@@ -150,6 +151,7 @@ class Collection extends UsageCollection implements SearchResultInterface
      *
      * @return int
      */
+    #[\Override]
     public function getTotalCount()
     {
         return $this->getSize();
@@ -162,6 +164,7 @@ class Collection extends UsageCollection implements SearchResultInterface
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function setTotalCount($totalCount)
     {
         return $this;
@@ -174,11 +177,13 @@ class Collection extends UsageCollection implements SearchResultInterface
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function setItems(array $items = null)
+    #[\Override]
+    public function setItems(?array $items = null)
     {
         return $this;
     }
 
+    #[\Override]
     public function setOrder($attribute, $dir = self::SORT_ORDER_ASC)
     {
         if ( 'price' === $attribute ) {

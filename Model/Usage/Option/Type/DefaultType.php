@@ -272,7 +272,7 @@ class DefaultType extends \Magento\Framework\DataObject
      */
     public function getCustomizedView($optionInfo)
     {
-        return isset($optionInfo['value']) ? $optionInfo['value'] : $optionInfo;
+        return $optionInfo['value'] ?? $optionInfo;
     }
 
     /**
@@ -381,10 +381,7 @@ class DefaultType extends \Magento\Framework\DataObject
                 }
             }
         }
-        if (isset($this->_productOptions[$this->getProduct()->getId()])) {
-            return $this->_productOptions[$this->getProduct()->getId()];
-        }
-        return [];
+        return $this->_productOptions[$this->getProduct()->getId()] ?? [];
     }
 
     /**

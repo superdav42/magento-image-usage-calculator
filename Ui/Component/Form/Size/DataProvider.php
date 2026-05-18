@@ -58,6 +58,7 @@ class DataProvider extends AbstractDataProvider
      *
      * @return array
      */
+    #[\Override]
     public function getData()
     {
         if (!$this->loadedData) {

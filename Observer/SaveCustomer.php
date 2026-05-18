@@ -20,30 +20,15 @@ use Magento\Store\Model\ScopeInterface;
  */
 class SaveCustomer implements ObserverInterface
 {
-    protected UsageCustomerFactory $usageCustomerFactory;
-    protected CollectionFactory $usageCustomerCollectionFactory;
-    protected ScopeConfigInterface $scopeConfig;
-    protected UsageCustomerRepositoryInterface $usageCustomerRepository;
-    protected SearchCriteriaBuilder $searchCriteriaBuilder;
-
-    public function __construct(
-        ScopeConfigInterface $config,
-        UsageCustomerFactory $usageCustomerFactory,
-        CollectionFactory $collectionFactory,
-        UsageCustomerRepositoryInterface $usageCustomerRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder
-    ) {
-        $this->usageCustomerFactory = $usageCustomerFactory;
-        $this->usageCustomerCollectionFactory = $collectionFactory;
-        $this->scopeConfig = $config;
-        $this->usageCustomerRepository = $usageCustomerRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+    public function __construct(protected ScopeConfigInterface $scopeConfig, protected UsageCustomerFactory $usageCustomerFactory, protected CollectionFactory $usageCustomerCollectionFactory, protected UsageCustomerRepositoryInterface $usageCustomerRepository, protected SearchCriteriaBuilder $searchCriteriaBuilder)
+    {
     }
 
     /**
      * @param Observer $observer
      * @throws Exception
      */
+    #[\Override]
     public function execute(Observer $observer)
     {
         /**
@@ -63,7 +48,7 @@ class SaveCustomer implements ObserverInterface
             ->addFilter('customer_id', 0, 'neq');
         if (isset($customers)) {
 
-            $customersArray = json_decode($customers);
+            $customersArray = json_decode((string) $customers);
             foreach ($customersArray as $customerId) {
                 $usageCustomer = $this->usageCustomerFactory->create();
 

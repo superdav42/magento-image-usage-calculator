@@ -206,7 +206,7 @@ interface UsageCustomOptionInterface extends \Magento\Framework\Api\ExtensibleDa
      * @param \DevStone\UsageCalculator\Api\Data\UsageCustomOptionValuesInterface[] $values
      * @return $this
      */
-    public function setValues(array $values = null);
+    public function setValues(?array $values = null);
 
     /**
      * Retrieve existing extension attributes object or create a new one.

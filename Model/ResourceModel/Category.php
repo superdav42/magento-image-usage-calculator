@@ -18,6 +18,7 @@ class Category extends AbstractDb
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init('devstone_usage_category', 'entity_id');

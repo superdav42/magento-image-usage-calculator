@@ -52,6 +52,7 @@ class Edit extends Action
     /**
      * {@inheritdoc}
      */
+    #[\Override]
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('DevStone_UsageCalculator::usage');
@@ -63,6 +64,7 @@ class Edit extends Action
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
+    #[\Override]
     public function execute()
     {
         // 1. Get ID
@@ -82,7 +84,7 @@ class Edit extends Action
 
                 return $resultRedirect->setPath('*/*/');
             }
-            $model->getConditions()->setFormName('devstone_usagecalculator_usage_form');
+            $model->getConditions()->setFormName();
             $model->getConditions()->getConditions()[0]['form_name'] = 'devstone_usagecalculator_usage_form';
             $form = $model->getConditionsFieldSetId($model->getConditions()->getFormName());
             $model->getConditions()->setJsFormObject(

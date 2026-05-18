@@ -119,7 +119,7 @@ class ValidatorFile extends Validator
             $fileInfo['title'] = $fileInfo['name'];
         } catch (\Magento\Framework\Validator\Exception $e) {
             throw $e;
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             // when file exceeds the upload_max_filesize, $_FILES is empty
             if ($this->validateContentLength()) {
                 $value = $this->fileSize->getMaxFileSizeInMb();
@@ -143,7 +143,7 @@ class ValidatorFile extends Validator
         $userValue = [];
 
         if ($upload->isUploaded($file) && $upload->isValid($file)) {
-            $extension = pathinfo(strtolower($fileInfo['name']), PATHINFO_EXTENSION);
+            $extension = pathinfo(strtolower((string) $fileInfo['name']), PATHINFO_EXTENSION);
 
             $fileName = \Magento\MediaStorage\Model\File\Uploader::getCorrectFileName($fileInfo['name']);
             $dispersion = \Magento\MediaStorage\Model\File\Uploader::getDispretionPath($fileName);

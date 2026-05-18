@@ -73,6 +73,7 @@ class Validate extends Action
      *
      * @return \Magento\Framework\Controller\Result\Json
      */
+    #[\Override]
     public function execute()
     {
         $this->response->setError(0);

@@ -75,6 +75,7 @@ class Value extends AbstractDb
      *
      * @return void
      */
+    #[\Override]
     protected function _construct()
     {
         $this->_init(\DevStone\UsageCalculator\Setup\UsageSetup::ENTITY_TYPE_CODE . '_option_type_value',
@@ -88,6 +89,7 @@ class Value extends AbstractDb
      * @param AbstractModel $object
      * @return AbstractDb
      */
+    #[\Override]
     protected function _afterSave(AbstractModel $object)
     {
         $this->_saveValuePrices($object);

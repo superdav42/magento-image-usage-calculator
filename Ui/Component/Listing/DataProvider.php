@@ -21,6 +21,7 @@ class DataProvider extends UiDataProvider
      * @param SearchResultInterface $searchResult
      * @return array
      */
+    #[\Override]
     protected function searchResultToOutput(SearchResultInterface $searchResult)
     {
         $searchResult->setStoreId($this->request->getParam('store', 0))
@@ -32,6 +33,7 @@ class DataProvider extends UiDataProvider
     /**
      * @return void
      */
+    #[\Override]
     protected function prepareUpdateUrl()
     {
         $storeId = $this->request->getParam('store', 0);

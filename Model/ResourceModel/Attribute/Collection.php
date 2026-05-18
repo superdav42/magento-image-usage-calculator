@@ -45,8 +45,8 @@ class Collection extends EavCollection
         ManagerInterface $eventManager,
         Config $eavConfig,
         EavEntityFactory $eavEntityFactory,
-        AdapterInterface $connection = null,
-        AbstractDb $resource = null
+        ?AdapterInterface $connection = null,
+        ?AbstractDb $resource = null
     ) {
         $this->_eavEntityFactory = $eavEntityFactory;
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $eavConfig, $connection, $resource);
@@ -57,6 +57,7 @@ class Collection extends EavCollection
      *
      * @return $this
      */
+    #[\Override]
     protected function _initSelect()
     {
         $this->getSelect()->from(
@@ -97,6 +98,7 @@ class Collection extends EavCollection
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function setEntityTypeFilter($typeId)
     {
         return $this;

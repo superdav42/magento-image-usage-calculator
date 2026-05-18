@@ -47,6 +47,7 @@ class Text extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
+    #[\Override]
     public function validateUserValue($values)
     {
         parent::validateUserValue($values);
@@ -69,6 +70,7 @@ class Text extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      *
      * @return string|null Prepared option value
      */
+    #[\Override]
     public function prepareForCart()
     {
         if ($this->getIsValid() && strlen($this->getUserValue()) > 0) {
@@ -84,6 +86,7 @@ class Text extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
      * @param string $value Prepared for cart option value
      * @return string
      */
+    #[\Override]
     public function getFormattedOptionValue($value)
     {
         return $this->_escaper->escapeHtml($value);

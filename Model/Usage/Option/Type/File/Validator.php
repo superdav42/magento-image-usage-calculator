@@ -66,49 +66,37 @@ abstract class Validator
     {
         $result = [];
         foreach ($errors as $errorCode) {
-            switch ($errorCode) {
-                case \Zend_Validate_File_ExcludeExtension::FALSE_EXTENSION:
-                    $result[] = __(
-                        "The file '%1' for '%2' has an invalid extension.",
-                        $fileInfo['title'],
-                        $option->getTitle()
-                    );
-                    break;
-                case \Zend_Validate_File_Extension::FALSE_EXTENSION:
-                    $result[] = __(
-                        "The file '%1' for '%2' has an invalid extension.",
-                        $fileInfo['title'],
-                        $option->getTitle()
-                    );
-                    break;
-                case \Zend_Validate_File_ImageSize::WIDTH_TOO_BIG:
-                case \Zend_Validate_File_ImageSize::HEIGHT_TOO_BIG:
-                    $result[] = __(
-                        "The maximum allowed image size for '%1' is %2x%3 px.",
-                        $option->getTitle(),
-                        $option->getImageSizeX(),
-                        $option->getImageSizeY()
-                    );
-                    break;
-                case \Zend_Validate_File_FilesSize::TOO_BIG:
-                    $result[] = __(
-                        "The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.",
-                        $fileInfo['title'],
-                        $this->fileSize->getMaxFileSizeInMb()
-                    );
-                    break;
-                case \Zend_Validate_File_ImageSize::NOT_DETECTED:
-                    $result[] = __(
-                        "The file '%1' is empty. Please choose another one",
-                        $fileInfo['title']
-                    );
-                    break;
-                default:
-                    $result[] = __(
-                        "The file '%1' is invalid. Please choose another one",
-                        $fileInfo['title']
-                    );
-            }
+            $result[] = match ($errorCode) {
+                \Zend_Validate_File_ExcludeExtension::FALSE_EXTENSION => __(
+                    "The file '%1' for '%2' has an invalid extension.",
+                    $fileInfo['title'],
+                    $option->getTitle()
+                ),
+                \Zend_Validate_File_Extension::FALSE_EXTENSION => __(
+                    "The file '%1' for '%2' has an invalid extension.",
+                    $fileInfo['title'],
+                    $option->getTitle()
+                ),
+                \Zend_Validate_File_ImageSize::WIDTH_TOO_BIG, \Zend_Validate_File_ImageSize::HEIGHT_TOO_BIG => __(
+                    "The maximum allowed image size for '%1' is %2x%3 px.",
+                    $option->getTitle(),
+                    $option->getImageSizeX(),
+                    $option->getImageSizeY()
+                ),
+                \Zend_Validate_File_FilesSize::TOO_BIG => __(
+                    "The file '%1' you uploaded is larger than the %2 megabytes allowed by our server.",
+                    $fileInfo['title'],
+                    $this->fileSize->getMaxFileSizeInMb()
+                ),
+                \Zend_Validate_File_ImageSize::NOT_DETECTED => __(
+                    "The file '%1' is empty. Please choose another one",
+                    $fileInfo['title']
+                ),
+                default => __(
+                    "The file '%1' is invalid. Please choose another one",
+                    $fileInfo['title']
+                ),
+            };
         }
         return $result;
     }
@@ -182,7 +170,7 @@ abstract class Validator
     {
         // Maybe array with file info came in
         if (is_array($fileInfo)) {
-            return strstr($fileInfo['type'], 'image/');
+            return strstr((string) $fileInfo['type'], 'image/');
         }
 
         // File path came in - check the physical file

@@ -24,10 +24,6 @@ class UsageActions extends Column
      * Url path
      */
     const URL_PATH_EDIT = 'devstone_usagecalculator/usage/edit';
-    protected UrlInterface $urlBuilder;
-    protected CollectionFactory $collectionFactory;
-    protected ScopeConfigInterface $scopeConfig;
-    private Data $config;
 
     /**
      * UsageActions constructor.
@@ -42,18 +38,14 @@ class UsageActions extends Column
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        UrlInterface $urlBuilder,
-        ScopeConfigInterface $scopeConfig,
-        CollectionFactory $collectionFactory,
-        Data $config,
+        protected UrlInterface $urlBuilder,
+        protected ScopeConfigInterface $scopeConfig,
+        protected CollectionFactory $collectionFactory,
+        private readonly Data $config,
         array $components = [],
         array $data = []
     ) {
-        $this->urlBuilder = $urlBuilder;
-        $this->collectionFactory = $collectionFactory;
-        $this->scopeConfig = $scopeConfig;
         parent::__construct($context, $uiComponentFactory, $components, $data);
-        $this->config = $config;
     }
 
     /**
@@ -62,6 +54,7 @@ class UsageActions extends Column
      * @param array $dataSource
      * @return array
      */
+    #[\Override]
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {

@@ -12,6 +12,7 @@ class Collection extends \Magento\Customer\Model\ResourceModel\Customer\Collecti
     /**
      * @return $this|\Magento\Customer\Model\ResourceModel\Customer\Collection
      */
+    #[\Override]
     protected function _initSelect()
     {
         parent::_initSelect();
