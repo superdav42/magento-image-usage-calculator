@@ -65,6 +65,7 @@ class Delete extends Action
         try {
             $objectInstance = $this->objectFactory->create()->load($id);
             if ($objectInstance->getId()) {
+                $this->deleteUsageCustomer((int)$id);
                 $objectInstance->delete();
                 $this->messageManager->addSuccessMessage(__('You deleted the record.'));
             } else {
@@ -73,19 +74,20 @@ class Delete extends Action
         } catch (\Exception $exception) {
             $this->messageManager->addErrorMessage($exception->getMessage());
         }
-        $this->deleteUsageCustomer();
         return $resultRedirect->setPath('*/*');
     }
 
     /**
+     * Delete custom-license customer assignments for a usage.
      *
+     * @param int|null $usageId Usage entity ID; defaults to the request value.
      */
-    public function deleteUsageCustomer()
+    public function deleteUsageCustomer(?int $usageId = null)
     {
         $collection = $this->usageCollectionFactory->create();
 
-        $id = $this->getRequest()->getParam('entity_id', null);
-        $collection->addFieldToFilter('usage_id', ['eq' => $id]);
+        $usageId ??= (int)$this->getRequest()->getParam('entity_id');
+        $collection->addFieldToFilter('usage_id', ['eq' => $usageId]);
 
         foreach ($collection as $usage) {
             $usage->delete();
