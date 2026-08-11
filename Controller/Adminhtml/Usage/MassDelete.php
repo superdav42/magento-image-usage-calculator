@@ -62,8 +62,9 @@ class MassDelete extends Action
     {
         $collection = $this->filter->getCollection($this->objectCollection);
         $collectionSize = $collection->getSize();
+        $usageIds = $collection->getAllIds();
+        $this->deleteUsageCustomer($usageIds);
         $collection->walk('delete');
-        $this->deleteUsageCustomer();
         $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted.', $collectionSize));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
@@ -73,12 +74,17 @@ class MassDelete extends Action
 
     /**
      * Delete all the Custom License Usage
+     *
+     * @param int[] $usageIds Usage entity IDs selected for deletion.
      */
-    public function deleteUsageCustomer()
+    public function deleteUsageCustomer(array $usageIds)
     {
+        if ($usageIds === []) {
+            return;
+        }
+
         $collection = $this->usageCollectionFactory->create();
-        $selectedUsage = $this->getRequest()->getParam('selected');
-        $collection->addFieldToFilter('usage_id', ['in' => $selectedUsage]);
+        $collection->addFieldToFilter('usage_id', ['in' => $usageIds]);
         foreach ($collection as $usage) {
             $usage->delete();
         }

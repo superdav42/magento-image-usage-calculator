@@ -48,7 +48,7 @@ class SaveCustomer implements ObserverInterface
             ->addFilter('customer_id', 0, 'neq');
         if (isset($customers)) {
 
-            $customersArray = json_decode((string) $customers);
+            $customersArray = json_decode((string) $customers, true, 512, JSON_THROW_ON_ERROR);
             foreach ($customersArray as $customerId) {
                 $usageCustomer = $this->usageCustomerFactory->create();
 
@@ -59,7 +59,9 @@ class SaveCustomer implements ObserverInterface
                 $usageCustomer = $this->usageCustomerRepository->save($usageCustomer);
                 $savedIds[] = $usageCustomer->getId();
             }
-            $searchCriteria->addFilter('entity_id', $savedIds, 'nin');
+            if ($savedIds !== []) {
+                $searchCriteria->addFilter('entity_id', $savedIds, 'nin');
+            }
         }
         $this->usageCustomerRepository->deleteList($searchCriteria->create());
 
@@ -82,7 +84,9 @@ class SaveCustomer implements ObserverInterface
                 $usageCustomer = $this->usageCustomerRepository->save($usageCustomer);
                 $savedIds[] = $usageCustomer->getId();
             }
-            $searchCriteria->addFilter('entity_id', $savedIds, 'nin');
+            if ($savedIds !== []) {
+                $searchCriteria->addFilter('entity_id', $savedIds, 'nin');
+            }
         }
         $this->usageCustomerRepository->deleteList($searchCriteria->create());
     }

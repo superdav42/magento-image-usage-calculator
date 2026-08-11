@@ -128,6 +128,7 @@ class Usage extends AbstractProduct
                 ->create();
             $searchCriteria = $this->searchCriteriaBuilder
                 ->addFilter('category_id', $customLicenseId, 'neq')
+                ->addFilter('is_active', 1)
                 ->addSortOrder($sortOrder)
                 ->create();
             $items = $this->usageRepository->getList($searchCriteria)->getItems();
@@ -146,6 +147,9 @@ class Usage extends AbstractProduct
                         'entity_id',
                         $customerUsage,
                         'in'
+                    )->addFilter(
+                        'is_active',
+                        1
                     )->create();
                     $customerUsageItems = $this->usageRepository->getList($searchCriteria)->getItems();
                     /** @var \DevStone\UsageCalculator\Model\Usage $customerUsageItem */
